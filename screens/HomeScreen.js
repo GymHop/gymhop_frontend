@@ -9,37 +9,59 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import GymTile from '../components/gyms/GymTile';
+
+import * as ActionCreators from '../actions/gymActions';
 
 import { MonoText } from '../components/StyledText';
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+  componentDidMount() {
+    if (this.props.gyms.length === 0) {
+      this.props.Actions.getGyms("token");
+    }
+  }
 
   render() {
+    var main;
+    if (this.props.pending) {
+      main = (
+        <View>
+          <Text>Pending...</Text>
+        </View>
+      )
+    } else {
+      main = this.props.gyms.map((gym, idx) => {
+        return (
+          <GymTile gym={gym} key={idx} navigator={this.props.navigation}/>
+        )
+      })
+    }
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
-
           </View>
 
           <View style={styles.getStartedContainer}>
+              {main}
 
           </View>
 
           <View style={styles.helpContainer}>
-            
+
           </View>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
         </View>
       </View>
     );
@@ -92,7 +114,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
   },
   welcomeContainer: {
     alignItems: 'center',
@@ -107,8 +128,11 @@ const styles = StyleSheet.create({
     marginLeft: -10,
   },
   getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: "center",
+    // alignItems: 'space-between' // if
   },
   homeScreenFilename: {
     marginVertical: 7,
@@ -167,3 +191,17 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
+
+function mapStateToProps(state) {
+  return {
+    gyms: state.gyms.gyms,
+    pending: state.gyms.pending,
+    error: state.gyms.error
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    Actions: bindActionCreators(ActionCreators, dispatch)
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

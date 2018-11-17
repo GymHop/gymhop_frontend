@@ -4,11 +4,13 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import QRReaderScreen from '../screens/QRReaderScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import QRScreen from '../screens/QRScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
+  QR: QRScreen
 });
 
 HomeStack.navigationOptions = {
@@ -25,16 +27,16 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const GymOwnerStack = createStackNavigator({
+  QRReader: QRReaderScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+GymOwnerStack.navigationOptions = {
+  tabBarLabel: 'Owner',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name={Platform.OS === 'ios' ? 'ios-location-pin' : 'location-pin'}
     />
   ),
 };
@@ -55,6 +57,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  GymOwnerStack,
   SettingsStack,
 });
