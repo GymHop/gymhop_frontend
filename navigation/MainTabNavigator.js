@@ -36,7 +36,7 @@ GymOwnerStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-location-pin' : 'location-pin'}
+      name={Platform.OS === 'ios' ? 'ios-hammer' : 'location-pin'}
     />
   ),
 };

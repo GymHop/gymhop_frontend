@@ -4,10 +4,12 @@ import { combineReducers } from 'redux';
 
 import gymReducer from './gymReducer';
 import checkinReducer from './checkinReducer';
+import userReducer from './userReducer';
 
 const appReducer = combineReducers({
   gyms: gymReducer,
-  checkin: checkinReducer
+  checkin: checkinReducer,
+  user: userReducer,
 })
 
 const rootReducer = (state, action) => {
