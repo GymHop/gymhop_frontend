@@ -1,11 +1,12 @@
 import axios from 'axios';
 import {domain} from './api-config.js';
 
-function getUserDetails(token){
-  axios.get(
-      domain + "/api/v1/user_profiles",
+export function getUserDetails(token){
+  console.log("getting user details with "+ token);
+  return axios.get(
+      domain + "/api/v1/user_profiles/",
       {
-        "Authorization": "Token " + token
+        headers: {"Authorization": "Token " + token}
       }
   )
 }

@@ -24,7 +24,7 @@ class HomeScreen extends React.Component {
   };
   componentDidMount() {
     if (this.props.gyms.length === 0) {
-      this.props.Actions.getGyms("token");
+      this.props.Actions.getGyms(this.props.token);
     }
   }
 
@@ -196,7 +196,8 @@ function mapStateToProps(state) {
   return {
     gyms: state.gyms.gyms,
     pending: state.gyms.pending,
-    error: state.gyms.error
+    error: state.gyms.error,
+    token: state.user.token
   }
 }
 function mapDispatchToProps(dispatch) {

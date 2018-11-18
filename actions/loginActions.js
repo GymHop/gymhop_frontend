@@ -8,7 +8,8 @@ import * as LoginAPI from "../api/login";
 
 export function attemptLoginPending() {
   return {
-    type: POST_USER_LOGIN_PENDING}
+    type: POST_USER_LOGIN_PENDING
+  }
 }
 export function attemptLoginSuccess(results) {
   return {
@@ -18,13 +19,16 @@ export function attemptLoginSuccess(results) {
 }
 export function attemptLoginFailure() {
   return {
-    type: POST_USER_LOGIN_FAILURE}
+    type: POST_USER_LOGIN_FAILURE
+  }
 }
 
-function attemptLogin(identifier, password) {
+export function attemptLogin(identifier, password) {
   return (dispatch) => {
+    console.log("attempting login action");
     dispatch(attemptLoginPending());
     LoginAPI.attemptLogin(identifier, password).then((results) => {
+      console.log("successful");
       dispatch(attemptLoginSuccess(results));
     }).catch((error) => {
       console.log("error loggin in");

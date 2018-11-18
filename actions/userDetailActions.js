@@ -1,6 +1,6 @@
 import {
-  GET_USER_DETAILS_PENDING
-  GET_USER_DETAILS_SUCCESS
+  GET_USER_DETAILS_PENDING,
+  GET_USER_DETAILS_SUCCESS,
   GET_USER_DETAILS_FAILURE
 } from './actiontypes';
 
@@ -26,10 +26,15 @@ export function getUserDetailsFailure() {
 export function getUserDetails(token) {
   return (dispatch) => {
     dispatch(getUserDetailsPending())
+    console.log("getting user details pending");
+    console.log(UserDetailsAPI);
     UserDetailsAPI.getUserDetails(token).then((results) => {
-      dispatch(getUserDetailsSuccess(results);
+      console.log("got user details");
+      dispatch(getUserDetailsSuccess(results));
     }).catch((error) => {
       console.log("error getting user details");
+      console.log(error);
+      console.log("error");
       dispatch(getUserDetailsFailure());
     })
   }

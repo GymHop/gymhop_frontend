@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TextInput
+  View, Text, TextInput, TouchableOpacity, ActivityIndicator,
 } from 'react-native';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as ActionCreators from "../actions/loginActions";
+import * as UserDetailsActionCreators from '../actions/userDetailActions';
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -17,7 +18,22 @@ class LoginScreen extends Component {
     }
   }
 
+  componentDidMount() {
+
+  }
+
   render() {
+    if (this.props.token !== null) {
+      console.log("good login, getting user details and moving the user to the next page");
+      this.props.UserActions.getUserDetails(this.props.token)
+      this.props.navigation.navigate("Main");
+    }
+    var loading;
+    if (this.props.pending) {
+      loading = (
+        <ActivityIndicator size="large" color="#0000ff" />
+      )
+    };
     return (
       <View>
         <Text>Login screen</Text>
@@ -32,6 +48,12 @@ class LoginScreen extends Component {
            onChangeText={(text) => this.setState({password: text})}
            value={this.state.text}
          />
+         <TouchableOpacity onPress={() => {
+           this.props.Actions.attemptLogin(this.state.username, this.state.password);
+         }}>
+            <Text>Login</Text>
+         </TouchableOpacity>
+         {loading}
       </View>
     )
   }
@@ -40,14 +62,15 @@ class LoginScreen extends Component {
 function mapStateToProps(state){
   return {
     token: state.user.token,
-    pending: state.user.pending,
+    pending: state.user.loginPending,
     details: state.user.details
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    Actions: bindActionCreators(ActionCreators, dispatch)
+    Actions: bindActionCreators(ActionCreators, dispatch),
+    UserActions: bindActionCreators(UserDetailsActionCreators, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
