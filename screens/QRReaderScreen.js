@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Text, LayoutAnimation, Dimensions } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, LayoutAnimation, Dimensions, Vibration } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 
 import { connect } from 'react-redux';
@@ -34,17 +34,17 @@ class QRReaderScreen extends React.Component {
   _handleBarCodeRead = result => {
     if (result.data !== this.state.lastScannedUrl) {
       LayoutAnimation.spring();
+      Vibration.vibrate([100, 100, 100])
       console.log("SCANNED!");
       let split = result.data.split("_")
       var data = {
-        user: split[2],
         gym: split[0]
       }
       console.log("sending below to server");
       console.log(data);
 
-      this.props.Actions.checkinUser("REPLACEWITHTOKEN", data)
-      this.setState({ lastScannedUrl: result.data });
+      this.props.Actions.checkinUser(this.props.token, data)
+      this.setState({ lastScannedUrl: result.data }); // reset lastScannedUrl to allow for another scan
     }
   };
 
@@ -72,7 +72,8 @@ class QRReaderScreen extends React.Component {
 function mapStateToProps(state) {
   return {
     pending: state.checkin.pending,
-    checkin: state.checkin.checkin
+    checkin: state.checkin.checkin,
+    token: state.user.token
   }
 }
 

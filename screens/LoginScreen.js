@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TextInput, TouchableOpacity, ActivityIndicator,
+  View, Text, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet, Image, Button
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -33,25 +33,34 @@ class LoginScreen extends Component {
       loading = (
         <ActivityIndicator size="large" color="#0000ff" />
       )
-    };
+    }
+
     return (
-      <View>
-        <Text>Login screen</Text>
+      <View style={styles.container}>
+        <Image 
+          source={require('../assets/images/gymHopWhite.png')} 
+          style={styles.headLogo}
+        />
+        <Text style={styles.header}>Login to begin accessing gyms!</Text>
         <TextInput
-           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+           style={styles.loginInput}
+           placeholder={'User ID'}
+           placeholderTextColor={'#8f8f8f'}
            onChangeText={(text) => this.setState({username: text})}
            value={this.state.text}
          />
          <TextInput
-           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+           style={styles.loginInput}
+           placeholder={'Password'}
+           placeholderTextColor={'#8f8f8f'}
            secureTextEntry={true}
            onChangeText={(text) => this.setState({password: text})}
            value={this.state.text}
          />
-         <TouchableOpacity onPress={() => {
+         <TouchableOpacity style={styles.loginButton} onPress={() => {
            this.props.Actions.attemptLogin(this.state.username, this.state.password);
          }}>
-            <Text>Login</Text>
+            <Text style={styles.loginText}>Login</Text>
          </TouchableOpacity>
          {loading}
       </View>
@@ -73,4 +82,49 @@ function mapDispatchToProps(dispatch){
     UserActions: bindActionCreators(UserDetailsActionCreators, dispatch)
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#000000'
+    // https://facebook.github.io/react-native/docs/stylesheet
+    // refer to this
+  },
+  headLogo: {
+    backgroundColor: '#000000',
+    width: '100%',
+  },
+  header: {
+    color: '#ffffff',
+    marginBottom: '2%'
+  },
+  loginInput: {
+    height: 40,
+    backgroundColor: '#ffffff',
+    borderColor: 'gray',
+    borderWidth: 1,
+    color: '#ffffff',
+    marginTop: '5%',
+    width: '75%'
+    
+  },
+  loginButton: {
+    backgroundColor: '#ffffff',
+    height: '10%',
+    width: '50%',
+    marginTop: '10%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  loginText: {
+    padding: 35,
+    fontSize: 24,
+    color: '#000000',
+  }
+});
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
