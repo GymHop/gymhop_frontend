@@ -2,16 +2,33 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   Image, StyleSheet, Text,
-  TouchableOpacity, View, NavigatorIOS,
+  TouchableOpacity, View, NavigatorIOS, Header
 } from 'react-native';
 
 import QRScreen from "../../screens/QRScreen";
 
 const styles = StyleSheet.create({
-  item: {
-    width: "40%",
-  }
-})
+  gymTileContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      width: '100%',
+      height: '80%'
+  },
+  gymTileButton: {
+    backgroundColor: '#000000',
+    width: '100%',
+    marginTop: 20,
+    padding: 15
+
+  },
+  gymTileText: {
+    fontSize: 18,
+    color: '#ffffff',
+    padding: 5
+    
+  },
+});
 
 export default class GymTile extends Component {
   constructor(props) {
@@ -27,10 +44,12 @@ export default class GymTile extends Component {
             passProps: {gym: this.props.gym}
           })
       }}>
-        <View style={styles.item}>
-          <Text>{this.props.gym.name}</Text>
+        <View styles={styles.gymTileContainer}>
+          <View style={styles.gymTileButton}>
+            <Text style={styles.gymTileText}>{this.props.gym.name} {'\n'} Location: {this.props.gym.location}</Text>
+          </View>
         </View>
       </TouchableOpacity>
     )
   }
-}
+};

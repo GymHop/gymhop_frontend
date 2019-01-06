@@ -19,7 +19,7 @@ export function getUserDetailsSuccess(results) {
 }
 export function getUserDetailsFailure() {
   return {
-    type: GET_USER_DETAILS_FAILURE
+    type: GET_USER_DETAILS_FAILURE,
   }
 }
 
@@ -35,7 +35,6 @@ export function getUserDetails(token) {
       console.log("error getting user details");
       console.log(error);
       console.log("error");
-      dispatch(getUserDetailsFailure());
     })
   }
 }

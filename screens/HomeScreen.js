@@ -46,6 +46,11 @@ class HomeScreen extends React.Component {
 
     return (
       <View style={styles.container}>
+        <Image 
+            source={require('../assets/images/gymHopWhite.png')} 
+            style={styles.headLogo}
+            resizeMode='contain'
+        />
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
           </View>
@@ -106,6 +111,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  headLogo: {
+    backgroundColor: '#000000',
+    width: '100%',
+    height: '15%',
+    marginTop: '10%'
+  },
   developmentModeText: {
     marginBottom: 20,
     color: 'rgba(0,0,0,0.4)',
@@ -133,6 +144,9 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: "center",
     // alignItems: 'space-between' // if
+    backgroundColor: '#ffffff',
+    color: '#000000',
+    fontSize: 18
   },
   homeScreenFilename: {
     marginVertical: 7,

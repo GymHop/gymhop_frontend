@@ -19,7 +19,7 @@ export function attemptLoginSuccess(results) {
 }
 export function attemptLoginFailure() {
   return {
-    type: POST_USER_LOGIN_FAILURE
+    type: POST_USER_LOGIN_FAILURE,
   }
 }
 
@@ -33,6 +33,7 @@ export function attemptLogin(identifier, password) {
     }).catch((error) => {
       console.log("error loggin in");
       dispatch(attemptLoginFailure())
+
     })
 
   }

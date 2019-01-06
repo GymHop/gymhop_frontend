@@ -7,6 +7,8 @@ import { bindActionCreators } from 'redux';
 
 import * as ActionCreators from '../actions/checkinActions';
 
+import { showMessage, hideMessage } from "react-native-flash-message";
+
 class QRReaderScreen extends React.Component {
   static navigationOptions = {
     title: 'QR Reader',
@@ -35,6 +37,14 @@ class QRReaderScreen extends React.Component {
     if (result.data !== this.state.lastScannedUrl) {
       LayoutAnimation.spring();
       Vibration.vibrate([100, 100, 100])
+      showMessage({
+        message: "Checked In!",
+        type: "info",
+        backgroundColor: "#00FF00",
+        flex: "1",
+        justifyContent: "center",
+        fontSize: "18"
+      });
       console.log("SCANNED!");
       let split = result.data.split("_")
       var data = {

@@ -9,12 +9,15 @@ import { bindActionCreators } from 'redux';
 import * as ActionCreators from "../actions/loginActions";
 import * as UserDetailsActionCreators from '../actions/userDetailActions';
 
+import { showMessage, hideMessage } from "react-native-flash-message";
+
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: null,
-      password: null
+      password: null,
+      error: false
     }
   }
 
@@ -22,24 +25,30 @@ class LoginScreen extends Component {
 
   }
 
-  render() {
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.token !== null) {
       console.log("good login, getting user details and moving the user to the next page");
       this.props.UserActions.getUserDetails(this.props.token)
       this.props.navigation.navigate("Main");
     }
+
+  }
+
+  render() {
+   
     var loading;
     if (this.props.pending) {
       loading = (
         <ActivityIndicator size="large" color="#0000ff" />
       )
     }
-
+    
     return (
       <View style={styles.container}>
         <Image 
-          source={require('../assets/images/gymHopWhite.png')} 
-          style={styles.headLogo}
+            source={require('../assets/images/gymHopWhite.png')} 
+            style={styles.headLogo}
+            resizeMode='contain'
         />
         <Text style={styles.header}>Login to begin accessing gyms!</Text>
         <TextInput
@@ -72,7 +81,7 @@ function mapStateToProps(state){
   return {
     token: state.user.token,
     pending: state.user.loginPending,
-    details: state.user.details
+    details: state.user.details,
   }
 }
 
@@ -93,9 +102,11 @@ const styles = StyleSheet.create({
     // https://facebook.github.io/react-native/docs/stylesheet
     // refer to this
   },
+
   headLogo: {
     backgroundColor: '#000000',
     width: '100%',
+
   },
   header: {
     color: '#ffffff',
@@ -106,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderColor: 'gray',
     borderWidth: 1,
-    color: '#ffffff',
+    color: '#000000',
     marginTop: '5%',
     width: '75%'
     

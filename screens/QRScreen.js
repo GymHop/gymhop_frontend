@@ -25,23 +25,33 @@ class QRScreen extends Component {
       <View style={styles.container}>
         <Text style={styles.title}>Check In to {gym.name}!</Text>
         <QRCode
+        style={styles.QRCode}
          value={(gym.id + "_" + gym.name)}
-         size={200}
-         bgColor='purple'
+         size={250}
+         bgColor='black'
          fgColor='white'/>
       </View>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FFFFFF'
+
     // https://facebook.github.io/react-native/docs/stylesheet
     // refer to this
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFFFFF',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
-    color: '#000000'
+    color: '#000000',
+    marginBottom: '10%',
+    fontSize: 18
+  },
+  QRCode: {
+    marginBottom: '20%'
   }
 })
 
