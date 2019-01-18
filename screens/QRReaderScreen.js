@@ -18,7 +18,8 @@ class QRReaderScreen extends React.Component {
     super(props);
     this.state = {
       hasCameraPermission: null,
-      lastScanned: null
+      lastScanned: null,
+      lastScanTime: null
     }
   }
 
@@ -34,7 +35,10 @@ class QRReaderScreen extends React.Component {
   };
 
   _handleBarCodeRead = result => {
-    if (result.data !== this.state.lastScannedUrl) {
+      
+      let resetDateTime;
+      resetDateTime = new Date(Date.now() - (1000*1800));
+    if (result.data !== this.state.lastScannedUrl || this.state.lastScanTime < resetDateTime) {
       LayoutAnimation.spring();
       Vibration.vibrate([100, 100, 100])
       showMessage({
@@ -54,7 +58,8 @@ class QRReaderScreen extends React.Component {
       console.log(data);
 
       this.props.Actions.checkinUser(this.props.token, data)
-      this.setState({ lastScannedUrl: result.data }); // reset lastScannedUrl to allow for another scan
+
+      this.setState({ lastScannedUrl: result.data, lastScanTime: lastScanTime}); // reset lastScannedUrl to allow for another scan
     }
   };
 

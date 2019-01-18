@@ -13,13 +13,13 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       justifyContent: 'center',
       width: '100%',
-      height: '80%'
+      height: '80%',
   },
   gymTileButton: {
     backgroundColor: '#000000',
-    width: '100%',
+    width: 400,
     marginTop: 20,
-    padding: 15
+    padding: 15,
 
   },
   gymTileText: {
@@ -35,6 +35,19 @@ export default class GymTile extends Component {
     super(props)
   }
   render() {
+    let dollarSigns;
+    switch (this.props.gym.price) {
+      case 0:
+        dollarSigns = ""
+      case 1:
+        dollarSigns = "$$"
+      case 2:
+        dollarSigns = "$$$$"
+      default:
+        dollarSigns = ""
+    }
+
+
     return (
       <TouchableOpacity onPress={() => {
           console.log("pressed on gym");
@@ -46,7 +59,9 @@ export default class GymTile extends Component {
       }}>
         <View styles={styles.gymTileContainer}>
           <View style={styles.gymTileButton}>
-            <Text style={styles.gymTileText}>{this.props.gym.name} {'\n'} Location: {this.props.gym.location}</Text>
+            <Text style={styles.gymTileText}>{this.props.gym.name} </Text>
+            <Text style={styles.gymTileText}>Location: {this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
+            <Text style={styles.gymTileText}>{dollarSigns}</Text>
           </View>
         </View>
       </TouchableOpacity>

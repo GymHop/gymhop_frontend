@@ -94,11 +94,11 @@ function mapDispatchToProps(dispatch){
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#000000'
+    backgroundColor: '#000000',
+    height: '100%'
     // https://facebook.github.io/react-native/docs/stylesheet
     // refer to this
   },
@@ -106,12 +106,15 @@ const styles = StyleSheet.create({
   headLogo: {
     backgroundColor: '#000000',
     width: '100%',
+    marginBottom: '10%',
 
   },
+
   header: {
     color: '#ffffff',
-    marginBottom: '2%'
+    fontSize: 18
   },
+
   loginInput: {
     height: 40,
     backgroundColor: '#ffffff',
@@ -119,7 +122,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: '#000000',
     marginTop: '5%',
-    width: '75%'
+    width: '75%',
+    borderRadius: 5,
+    textAlign: 'center'
     
   },
   loginButton: {
@@ -128,7 +133,8 @@ const styles = StyleSheet.create({
     width: '50%',
     marginTop: '10%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderRadius: 5
   },
   loginText: {
     padding: 35,

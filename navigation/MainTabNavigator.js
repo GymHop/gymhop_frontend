@@ -32,11 +32,11 @@ const GymOwnerStack = createStackNavigator({
 });
 
 GymOwnerStack.navigationOptions = {
-  tabBarLabel: 'Owner',
+  tabBarLabel: 'Scanner',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-hammer' : 'location-pin'}
+      name={Platform.OS === 'ios' ? 'ios-camera' : 'location-pin'}
     />
   ),
 };
