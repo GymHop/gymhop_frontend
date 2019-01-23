@@ -32,6 +32,14 @@ export function attemptLogin(identifier, password) {
       dispatch(attemptLoginSuccess(results));
     }).catch((error) => {
       console.log("error loggin in");
+      showMessage({
+        message: "Incorrect User or Password",
+        type: "info",
+        backgroundColor: "#bb0000",
+        flex: "1",
+        justifyContent: "center",
+        fontSize: "18"
+    });
       dispatch(attemptLoginFailure())
 
     })

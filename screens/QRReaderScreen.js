@@ -38,7 +38,7 @@ class QRReaderScreen extends React.Component {
       
       let resetDateTime;
       resetDateTime = new Date(Date.now() - (1000*1800));
-    if (result.data !== this.state.lastScannedUrl || this.state.lastScanTime < resetDateTime) {
+    if (result.data !== this.state.lastScannedUrl || (result.data === this.state.lastScannedUrl && this.state.lastScanTime < resetDateTime)) {
       LayoutAnimation.spring();
       Vibration.vibrate([100, 100, 100])
       showMessage({
@@ -56,12 +56,11 @@ class QRReaderScreen extends React.Component {
       }
       console.log("sending below to server");
       console.log(data);
-
       this.props.Actions.checkinUser(this.props.token, data)
-
+      }
+      let lastScanTime;
       this.setState({ lastScannedUrl: result.data, lastScanTime: lastScanTime}); // reset lastScannedUrl to allow for another scan
     }
-  };
 
   render() {
     return (
