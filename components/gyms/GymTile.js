@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   gymTileButton: {
     backgroundColor: '#000000',
-    width: '100%',
+    width: 400,
     marginTop: 20,
     padding: 15,
 

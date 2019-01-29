@@ -46,11 +46,13 @@ class HomeScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Image 
-            source={require('../assets/images/gymHopWhite.png')} 
+        <View style={styles.imageContainer}>
+          <Image 
+            source={require('../assets/images/gymhop.png')} 
             style={styles.headLogo}
             resizeMode='contain'
-        />
+          />
+          </View>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
           </View>
@@ -65,9 +67,9 @@ class HomeScreen extends React.Component {
           </View>
         </ScrollView>
 
-        <View style={styles.tabBarInfoContainer}>
+        {/* <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-        </View>
+        </View> */}
       </View>
     );
   }
@@ -110,12 +112,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+
+  },
+  imageContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   headLogo: {
-    backgroundColor: '#000000',
-    width: '100%',
-    height: '15%',
-    marginTop: '10%'
+    backgroundColor: '#fff',
+    width: '95%',
+    marginTop: '10%',
   },
   developmentModeText: {
     marginBottom: 20,
