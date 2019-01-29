@@ -48,11 +48,10 @@ class LoginScreen extends Component {
     return (
       <View style={styles.container}>
         <Image 
-            source={require('../assets/images/gymHopWhite.png')} 
+            source={require('../assets/images/loginheader.png')} 
             style={styles.headLogo}
             resizeMode='contain'
         />
-        <Text style={styles.header}>Login to begin accessing gyms!</Text>
         <TextInput
            style={styles.loginInput}
            placeholder={'User ID'}
@@ -73,14 +72,14 @@ class LoginScreen extends Component {
          }}>
             <Text style={styles.loginText}>Login</Text>
          </TouchableOpacity>
-
-         <TouchableOpacity style={styles.registerButton} onPress={() => {
-            console.log("pressed on register");
-            this.props.navigation.navigate("Register");
-            } 
-          }>
-            <Text style={styles.registerText}>Register</Text>
-          </TouchableOpacity>
+            <Text style={styles.registerText}>Don't have an account?</Text>
+            <TouchableOpacity style={styles.registerButton} onPress={() => {
+              console.log("pressed on register");
+              this.props.navigation.navigate("Register");
+              } 
+            }>
+              <Text style={styles.registerText}>Register Here!</Text>
+            </TouchableOpacity>
          {loading}
       </View>
     )
@@ -114,55 +113,44 @@ const styles = StyleSheet.create({
   },
 
   headLogo: {
+    marginTop: '35%',
     backgroundColor: '#000000',
-    width: '100%',
-    marginBottom: '10%',
+    width: '50%',
+    marginBottom: '-20%'
 
-  },
-
-  header: {
-    color: '#ffffff',
-    fontSize: 18
   },
 
   loginInput: {
     height: 40,
     backgroundColor: '#ffffff',
-    borderColor: 'gray',
-    borderWidth: 1,
+    borderColor: 'black',
+    borderWidth: 2,
+    marginBottom: '3%',
     color: '#000000',
-    marginTop: '5%',
     width: '75%',
-    borderRadius: 5,
+    borderRadius: 20,
     textAlign: 'center'
     
   },
   loginButton: {
-    backgroundColor: '#ffffff',
-    height: '10%',
-    width: '50%',
-    marginTop: '10%',
+    height: 40,
+    backgroundColor: '#8f8f8f',
+    width: '75%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5
+    borderRadius: 20,
   },
   loginText: {
-    padding: 35,
-    fontSize: 24,
+    fontSize: 20,
     color: '#000000',
   },
   registerButton: {
-    backgroundColor: '#ffffff',
-    height: '10%',
-    width: '50%',
-    marginTop: '10%',
-    justifyContent: 'center',
-    alignItems: 'center'
+    backgroundColor: '#000000',
   },
   registerText: {
-    padding: 35,
-    fontSize: 24,
-    color: '#000000',
+    marginTop: '5%',
+    fontSize: 14,
+    color: '#8f8f8f',
   }
 });
 
