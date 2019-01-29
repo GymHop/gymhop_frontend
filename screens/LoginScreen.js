@@ -74,7 +74,7 @@ class LoginScreen extends Component {
          </TouchableOpacity>
             <Text style={styles.registerText}>Don't have an account?</Text>
             <TouchableOpacity style={styles.registerButton} onPress={() => {
-              console.log("pressed on register");
+              console.log("pressed on register, bringing to register page");
               this.props.navigation.navigate("Register");
               } 
             }>

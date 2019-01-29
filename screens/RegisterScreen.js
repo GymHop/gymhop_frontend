@@ -21,6 +21,7 @@ class RegisterScreen extends React.Component {
       this.state = {
         username: null,
         password: null,
+        passwordConf: null,
         email: null
       }
   }
@@ -38,6 +39,19 @@ class RegisterScreen extends React.Component {
       this.props.navigation.navigate("Home");
     }
   };
+  handlePasswordConfirmation = (password, passwordConf) => {
+    // perform all neccassary validations
+    let pass = this.state.password;
+    let passConf = this.state.passwordConf;
+    if (pass !== passConf) {
+        console.log("Password's do not match")
+    } else { // If password matches, attempt register
+      this.props.Actions.registerUser({
+        username: this.state.username, 
+        password: this.state.password,
+        email: this.state.email});
+    }
+}
     render() {
 
       var loading;
@@ -56,11 +70,10 @@ class RegisterScreen extends React.Component {
         </View>)
       }
      
-
       return (
         <View style={styles.container}>  
           <Image 
-            source={require('../assets/images/gymHopWhite.png')} 
+            source={require('../assets/images/loginheader.png')} 
             style={styles.headLogo}
             resizeMode='contain'
         />
@@ -81,19 +94,32 @@ class RegisterScreen extends React.Component {
         />
         <TextInput
           style={styles.registerInput}
+          placeholder={'Confirm password'}
+          placeholderTextColor={'#8f8f8f'}
+          onChangeText={(text) => this.setState({passwordConf: text})}
+          value={this.state.text}
+        />
+        <TextInput
+          style={styles.registerInput}
           placeholder={'Enter your email adress'}
           placeholderTextColor={'#8f8f8f'}
           onChangeText={(text) => this.setState({email: text})}
           value={this.state.text}
         />
         <TouchableOpacity style={styles.registerButton} onPress={() => {
-           this.props.Actions.registerUser({
-             username: this.state.username, 
-             password: this.state.password,
-             email: this.state.email});
-         }}>
+          this.handlePasswordConfirmation();
+         }
+         }>
             <Text style={styles.registerText}>Register</Text>
          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.loginButton} onPress={() => {
+              console.log("Returning user to login page");
+              this.props.navigation.navigate("Login");
+              } 
+            }>
+            <Text style={styles.loginText}>Return to login</Text>
+            </TouchableOpacity>         
 
         </View>
 
@@ -121,29 +147,49 @@ class RegisterScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%'
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: '#000000',
+    height: '100%'
+  },
+  headLogo: {
+    marginTop: '10%',
+    backgroundColor: '#000000',
+    width: '50%',
+    marginBottom: '-20%'
+  
   },
   registerInput: {
     height: 40,
     backgroundColor: '#ffffff',
-    borderColor: 'gray',
-    borderWidth: 1,
+    borderColor: 'black',
+    borderWidth: 2,
+    marginBottom: '3%',
     color: '#000000',
-    marginTop: '5%',
-    width: '75%' 
+    width: '75%',
+    borderRadius: 20,
+    textAlign: 'center'
 },
 registerButton: {
-  backgroundColor: '#ffffff',
-  height: '10%',
-  width: '50%',
-  marginTop: '10%',
+  height: 40,
+  backgroundColor: '#8f8f8f',
+  width: '75%',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+  borderRadius: 20,
 },
 registerText: {
-  padding: 35,
-  fontSize: 24,
+  fontSize: 20,
   color: '#000000',
+},
+loginButton: {
+  backgroundColor: '#000000',
+},
+loginText: {
+  marginTop: '5%',
+  fontSize: 14,
+  color: '#8f8f8f',
 }
 })
 
