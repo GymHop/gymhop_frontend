@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet, Image, Button
+  View, Text, TextInput, TouchableOpacity, Platform, AsyncStorage,
+  ActivityIndicator, StyleSheet, Image, Button, KeyboardAvoidingView
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -21,34 +22,52 @@ class LoginScreen extends Component {
       username: null,
       password: null,
     }
+    this._storeToken = this._storeToken.bind(this);
+    this.getToken();
   }
 
-  componentDidMount() {
-
+  getToken = async () => {
+    const token = await AsyncStorage.getItem("@Auth:APIToken");
+    if (token != null) {
+      this.props.UserActions.getUserDetails(token)
+      this.props.navigation.navigate("Main");
+    }
   }
+
+  // componentDidMount() {
+  //
+  // }
+
+  _storeToken = async () => {
+    try {
+      await AsyncStorage.setItem('@Auth:APIToken', this.props.token);
+    } catch (e) {
+
+    }
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.token !== null) {
-      console.log(this.props.token)
+      this._storeToken();
       console.log("good login, getting user details and moving the user to the next page");
       this.props.UserActions.getUserDetails(this.props.token)
       this.props.navigation.navigate("Main");
-    } 
+    }
   }
 
   render() {
-   
+
     var loading;
     if (this.props.pending) {
       loading = (
         <ActivityIndicator size="large" color="#0000ff" />
       )
     }
-    
+
     return (
-      <View style={styles.container}>
-        <Image 
-            source={require('../assets/images/loginheader.png')} 
+      <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
+        <Image
+            source={require('../assets/images/loginheader.png')}
             style={styles.headLogo}
             resizeMode='contain'
         />
@@ -76,12 +95,12 @@ class LoginScreen extends Component {
             <TouchableOpacity style={styles.registerButton} onPress={() => {
               console.log("pressed on register, bringing to register page");
               this.props.navigation.navigate("Register");
-              } 
+              }
             }>
               <Text style={styles.registerText}>Register Here!</Text>
             </TouchableOpacity>
          {loading}
-      </View>
+      </KeyboardAvoidingView>
     )
         }
 }
@@ -113,7 +132,7 @@ const styles = StyleSheet.create({
   },
 
   headLogo: {
-    marginTop: '35%',
+    marginTop: Platform.OS === 'ios' ? '35%' : '-10%',
     backgroundColor: '#000000',
     width: '50%',
     marginBottom: '-20%'
@@ -130,7 +149,7 @@ const styles = StyleSheet.create({
     width: '75%',
     borderRadius: 20,
     textAlign: 'center'
-    
+
   },
   loginButton: {
     height: 40,

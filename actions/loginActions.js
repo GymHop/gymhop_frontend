@@ -33,6 +33,7 @@ export function attemptLogin(identifier, password) {
       console.log("successful");
       dispatch(attemptLoginSuccess(results));
     }).catch((error) => {
+
       console.log("error loggin in");
         showMessage({
           message: "Incorrect User or Password",
