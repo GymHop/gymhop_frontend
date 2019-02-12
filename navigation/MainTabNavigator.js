@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import QRReaderScreen from '../screens/QRReaderScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import QRScreen from '../screens/QRScreen';
+import PostCheckInScreen from '../screens/PostCheckInScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -29,6 +30,7 @@ HomeStack.navigationOptions = {
 
 const GymOwnerStack = createStackNavigator({
   QRReader: QRReaderScreen,
+  PostCheckIn: PostCheckInScreen
 });
 
 GymOwnerStack.navigationOptions = {
@@ -36,7 +38,7 @@ GymOwnerStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-hammer' : 'location-pin'}
+      name={Platform.OS === 'ios' ? 'ios-hammer' : 'ios-square-outline'}
     />
   ),
 };

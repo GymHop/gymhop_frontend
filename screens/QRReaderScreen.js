@@ -16,15 +16,26 @@ class QRReaderScreen extends React.Component {
 
   constructor(props){
     super(props);
+
+    this.scanned = false;
     this.state = {
       hasCameraPermission: null,
       lastScanned: null,
-      lastScanTime: null
+      lastScanTime: null,
     }
   }
 
   componentDidMount() {
     this._requestCameraPermission();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (Object.keys(this.props.checkin).length > 0 && this.scanned) {
+      this.props.navigation.push("PostCheckIn", {resetScanned: ()=> {console.log("reseting lastScannedUrl");this.setState({lastScannedUrl:null})}});
+      this.scanned = false;
+      //pass back navigation works but then scanning again is blocked.
+      // i believe it is because my passed resetScan fn is not being called even though it is explicitly called
+    }
   }
 
   _requestCameraPermission = async () => {
@@ -35,34 +46,36 @@ class QRReaderScreen extends React.Component {
   };
 
   _handleBarCodeRead = result => {
-      
-      let resetDateTime;
-      resetDateTime = new Date(Date.now() - (1000*1800));
-    if (result.data !== this.state.lastScannedUrl || this.state.lastScanTime < resetDateTime) {
-      LayoutAnimation.spring();
-      Vibration.vibrate([100, 100, 100])
-      showMessage({
-        message: "Checked In!",
-        type: "info",
-        backgroundColor: "#00FF00",
-        flex: "1",
-        justifyContent: "center",
-        fontSize: "18"
-      });
-      console.log("SCANNED!");
-      let split = result.data.split("_")
-      var data = {
-        gym: split[0]
-      }
-      console.log("sending below to server");
-      console.log(data);
-      this.props.Actions.checkinUser(this.props.token, data)
-      }
-      let lastScanTime;
-      this.setState({ lastScannedUrl: result.data, lastScanTime: lastScanTime}); // reset lastScannedUrl to allow for another scan
+        let resetDateTime;
+        resetDateTime = new Date(Date.now() - (1000*1800)); // 30 mins
+      if (result.data !== this.state.lastScannedUrl || this.state.lastScanTime < resetDateTime) {
+        LayoutAnimation.spring();
+        Vibration.vibrate([100, 100, 100])
+        showMessage({
+          message: "Checked In!",
+          type: "info",
+          backgroundColor: "#00FF00",
+          flex: "1",
+          justifyContent: "center",
+          fontSize: "18"
+        });
+        console.log("SCANNED!");
+        let split = result.data.split("_")
+        var data = {
+          gym: split[0]
+        }
+        console.log("sending below to server");
+        console.log(data);
+        this.props.Actions.checkinUser(this.props.token, data);
+        this.scanned = true;
+        }
+        let lastScanTime;
+        this.setState({ lastScannedUrl: result.data, lastScanTime: Date.now()}); // reset lastScannedUrl to allow for another scan
+
     }
 
   render() {
+    console.log(this.state);
     return (
       <View style={styles.container}>
 

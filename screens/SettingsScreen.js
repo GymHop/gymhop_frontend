@@ -1,14 +1,36 @@
 import React from 'react';
 import {
-  View, Text, Image, StyleSheet
-} from 'react-native'
+  View, Text, Image, StyleSheet,
+  AsyncStorage, Button
+} from 'react-native';
 
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+import * as ActionCreators from '../actions/tokenActions';
+
+
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'app.json',
+    title: 'Your Profile',
   };
+
+  constructor(props) {
+    super(props);
+    this.logout = this.logout.bind(this);
+
+  }
+
+  logout() {
+    this.props.Actions.logout();
+    try {
+      AsyncStorage.removeItem('@Auth:APIToken');
+    } catch (e) {
+
+    }
+    this.props.navigation.navigate("Auth");
+  }
 
   render() {
     var tierType
@@ -29,6 +51,9 @@ class SettingsScreen extends React.Component {
         />
         <Text>{this.props.firstName} {this.props.lastName}</Text>
         <Text>{tierType}</Text>
+        <Button onPress={this.logout}
+        title="Logout"
+        ></Button>
       </View>
       )
     }
@@ -44,6 +69,12 @@ function mapStateToProps(state) {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    Actions: bindActionCreators(ActionCreators, dispatch)
+  }
+}
+
 const styles = StyleSheet.create({
   profileContainer: {
     flex: 1,
@@ -54,4 +85,6 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect(mapStateToProps)(SettingsScreen)
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen)

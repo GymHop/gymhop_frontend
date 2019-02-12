@@ -11,7 +11,7 @@ export function configureStore(initialState){
     rootReducer,
     initialState,
     composeWithDevTools(
-      applyMiddleware(thunk),
+      applyMiddleware(thunk)
     )
   );
 }

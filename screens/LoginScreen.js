@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as ActionCreators from "../actions/loginActions";
+import * as TokenActionCreators from '../actions/tokenActions';
 import * as UserDetailsActionCreators from '../actions/userDetailActions';
 
 import { showMessage, hideMessage } from "react-native-flash-message";
@@ -27,13 +28,14 @@ class LoginScreen extends Component {
   }
 
   getToken = async () => {
-    const token = await AsyncStorage.getItem("@Auth:APIToken");
-    if (token != null) {
-      this.props.UserActions.getUserDetails(token)
-      this.props.navigation.navigate("Main");
-    }
-  }
-
+     const token = await AsyncStorage.getItem("@Auth:APIToken");
+     debugger;
+     if (token != null) {
+       this.props.TokenActions.setToken(token);
+       this.props.UserActions.getUserDetails(token)
+       this.props.navigation.navigate("Main");
+     }
+   }
   // componentDidMount() {
   //
   // }
@@ -41,8 +43,10 @@ class LoginScreen extends Component {
   _storeToken = async () => {
     try {
       await AsyncStorage.setItem('@Auth:APIToken', this.props.token);
+      console.log("Stored", this.props.token);
     } catch (e) {
-
+      console.log('error saving tokken');
+      console.log(e);
     }
   };
 
@@ -116,6 +120,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return {
     Actions: bindActionCreators(ActionCreators, dispatch),
+    TokenActions: bindActionCreators(TokenActionCreators, dispatch),
     UserActions: bindActionCreators(UserDetailsActionCreators, dispatch)
   }
 }

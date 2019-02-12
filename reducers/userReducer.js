@@ -7,7 +7,9 @@ import {
   GET_USER_DETAILS_FAILURE,
   POST_USER_LOGIN_PENDING,
   POST_USER_LOGIN_SUCCESS,
-  POST_USER_LOGIN_FAILURE
+  POST_USER_LOGIN_FAILURE,
+  LOG_OUT_USER,
+  SET_USER_TOKEN
 } from '../actions/actiontypes';
 
 export default function userReducer(state={
@@ -80,6 +82,16 @@ export default function userReducer(state={
       return {
         ...state,
         loginPending: false
+      }
+    case LOG_OUT_USER:
+      return {
+        ...state,
+        token: null
+      }
+    case SET_USER_TOKEN:
+      return {
+        ...state,
+        token: action.token
       }
     default:
       // console.log("default case hit with " + action.type);
