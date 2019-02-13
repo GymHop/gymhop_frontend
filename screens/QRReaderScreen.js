@@ -22,18 +22,20 @@ class QRReaderScreen extends React.Component {
       hasCameraPermission: null,
       lastScanned: null,
       lastScanTime: null,
+      lastScannedUrl: null
     }
   }
 
   componentDidMount() {
     this._requestCameraPermission();
+    
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (Object.keys(this.props.checkin).length > 0 && this.scanned) {
-      this.props.navigation.push("PostCheckIn", {resetScanned: ()=> {console.log("reseting lastScannedUrl");this.setState({lastScannedUrl:null})}});
+      this.props.navigation.push("PostCheckIn", {resetScanned: () => {this.setState({lastScannedUrl:null, lastScanTime:null})}});
       this.scanned = false;
-      //pass back navigation works but then scanning again is blocked.
+      // pass back navigation works but then scanning again is blocked.
       // i believe it is because my passed resetScan fn is not being called even though it is explicitly called
     }
   }

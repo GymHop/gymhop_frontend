@@ -7,6 +7,12 @@ class PostCheckIn extends React.Component {
 
   constructor(props) {
     super(props);
+    this.props.navigation.addListener(
+      'didBlur',
+      payload => {
+        this.props.navigation.state.params.resetScanned();
+      }
+    )
   }
 
   componentDidMount() {
@@ -17,11 +23,18 @@ class PostCheckIn extends React.Component {
       BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
     }
 
+    onNavigatorEvent = (event) => {
+            if (event.id == 'backPress') {
+                alert('back');
+            }
+    }
+
+
   handleBackPress = () => {
-     const { params} = this.props.navigation.state;
+     const { params } = this.props.navigation.state;
      params.resetScanned();
-     this.props.navigator.popToRoot({ animated: true });
-     return false;
+     this.props.navigation.goBack(null);
+     return true;
  }
 
   render() {
