@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Platform } from 'react-native';
 import {
   Image, StyleSheet, Text,
   TouchableOpacity, View, NavigatorIOS, Header
 } from 'react-native';
-
 import QRScreen from "../../screens/QRScreen";
+
 
 const styles = StyleSheet.create({
   gymTileContainer: {
@@ -16,20 +17,30 @@ const styles = StyleSheet.create({
       height: '80%',
   },
   gymTileButton: {
+    ...Platform.select({
+    ios: {
+      shadowOffset:{  width: 2,  height: 2,  },
+      shadowColor: 'black',
+      shadowOpacity: 1,
+      shadowRadius: 4
+      },
+    android: {
+      elevation: 25
+    },
+  }),
     backgroundColor: '#000000',
-    width: 400,
+    width: 350,
+    borderRadius: 15,
     marginTop: 20,
     padding: 15,
-
-  },
+},
   gymTileText: {
     fontSize: 18,
     color: '#ffffff',
     padding: 5
-    
+
   },
 });
-
 export default class GymTile extends Component {
   constructor(props) {
     super(props)
@@ -46,8 +57,6 @@ export default class GymTile extends Component {
       default:
         dollarSigns = ""
     }
-
-
     return (
       <TouchableOpacity onPress={() => {
           console.log("pressed on gym");

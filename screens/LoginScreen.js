@@ -70,11 +70,13 @@ class LoginScreen extends Component {
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
-        <Image
+        <View style={styles.headLogoContainer}>
+          <Image
             source={require('../assets/images/loginheader.png')}
             style={styles.headLogo}
             resizeMode='contain'
-        />
+          />
+        </View>
         <TextInput
            style={styles.loginInput}
            placeholder={'User ID'}
@@ -129,19 +131,22 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#000000',
     height: '100%'
     // https://facebook.github.io/react-native/docs/stylesheet
     // refer to this
   },
-
+  headLogoContainer: {
+    marginBottom: "7.11%",
+    width: '50%',
+  },
   headLogo: {
     marginTop: Platform.OS === 'ios' ? '35%' : '-10%',
     backgroundColor: '#000000',
-    width: '50%',
+    width: '100%',
     marginBottom: '-20%'
-
   },
 
   loginInput: {

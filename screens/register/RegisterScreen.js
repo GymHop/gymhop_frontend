@@ -6,18 +6,16 @@ import {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as ActionCreators from "../actions/registerActions";
-import * as RegisterUserActionCreators from '../actions/registerActions';
+import * as ActionCreators from "../../actions/registerActions";
+import * as RegisterUserActionCreators from '../../actions/registerActions';
 
 import { showMessage, hideMessage } from "react-native-flash-message";
-
-
-
 
 class RegisterScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
   constructor(props) {
     super(props);
       this.state = {
@@ -26,27 +24,14 @@ class RegisterScreen extends React.Component {
         passwordConf: null,
         email: null
       }
-      this._storeToken = this._storeToken.bind(this);
+      this.validateEmail = this.validateEmail.bind(this);
   }
 
-  _storeToken = async () => {
-    try {
-      await AsyncStorage.setItem('@Auth:APIToken', this.props.token);
-    } catch (e) {
 
-    }
-  };
   // componentDidUpdate wont run the first render but runs every other time something happens
   // on the screen
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.success === true) {
-      // navigate to secondary screen
-      console.log("good register, moving the user to the home page");
-      this._storeToken();
-      this.props.navigation.navigate("Home");
-    }
-  };
-  handlePasswordConfirmation = (password, passwordConf) => {
+
+  validateForm = () => {
     // perform all neccassary validations
     let pass = this.state.password;
     let passConf = this.state.passwordConf;
@@ -59,14 +44,31 @@ class RegisterScreen extends React.Component {
           justifyContent: "center",
           fontSize: "18"
         });
-    } else { // If password matches, attempt register
-      debugger;
-      this.props.Actions.registerUser({
-        username: this.state.username,
-        password: this.state.password,
-        email: this.state.email});
+    } else if (this.validateEmail(this.state.email)) {
+      // If the email is valid && password matches, move them to the second register screen
+      this.props.navigation.push("PopulateUserProfile");
     }
 }
+    validateEmail = (text) => {
+      let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
+      if(reg.test(text) === false)
+      {
+        showMessage({
+          message: "Please enter a valid email",
+          type: "warning",
+          flex: "1",
+          justifyContent: "center",
+          fontSize: "18"
+        });
+        this.setState({email:text})
+        return false;
+      }
+      else {
+        this.setState({email:text});
+        return true
+      }
+
+    }
     render() {
 
       var loading;
@@ -88,7 +90,7 @@ class RegisterScreen extends React.Component {
       return (
         <View style={styles.container}>
           <Image
-            source={require('../assets/images/loginheader.png')}
+            source={require('../../assets/images/loginheader.png')}
             style={styles.headLogo}
             resizeMode='contain'
         />
@@ -118,18 +120,17 @@ class RegisterScreen extends React.Component {
         />
         <TextInput
           style={styles.registerInput}
-          placeholder={'Enter your email adress'}
+          placeholder={'Enter your email address'}
           placeholderTextColor={'#8f8f8f'}
           onChangeText={(text) => this.setState({email: text})}
           value={this.state.text}
         />
         <TouchableOpacity style={styles.registerButton} onPress={() => {
-          this.handlePasswordConfirmation();
+          this.validateForm();
          }
          }>
             <Text style={styles.registerText}>Register</Text>
          </TouchableOpacity>
-
           <TouchableOpacity style={styles.loginButton} onPress={() => {
               console.log("Returning user to login page");
               this.props.navigation.navigate("Login");

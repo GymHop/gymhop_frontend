@@ -28,6 +28,7 @@ HomeStack.navigationOptions = {
   ),
 };
 
+//todo rename
 const GymOwnerStack = createStackNavigator({
   QRReader: QRReaderScreen,
   PostCheckIn: PostCheckInScreen
@@ -58,7 +59,12 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
-  GymOwnerStack,
-  SettingsStack,
-});
+    home: HomeStack,
+    scan: GymOwnerStack,
+    setting: SettingsStack,
+  },
+  {
+    initialRouteName: 'scan'
+  }
+
+);
