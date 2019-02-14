@@ -48,7 +48,7 @@ class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image 
-            source={require('../assets/images/gymhop.png')} 
+            source={require('../assets/images/gymHopWhite.png')} 
             style={styles.headLogo}
             resizeMode='contain'
           />
@@ -115,14 +115,28 @@ const styles = StyleSheet.create({
 
   },
   imageContainer: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
+    ...Platform.select({
+      ios: {
+        shadowOffset:{  width: 0,  height: 3,  },
+        shadowColor: 'black',
+        shadowOpacity: 1,
+        shadowRadius: 3,
+        zIndex: 999
+      },
+      android: {
+        elevate: 30
+      },
+    }),
+      backgroundColor: '#000000',    
+      width: '100%',
+      height: '18%',
+      justifyContent: 'center',
+      alignItems: 'center'
+},
   headLogo: {
-    backgroundColor: '#fff',
+    backgroundColor: '#000000',
     width: '95%',
-    marginTop: '10%',
+    marginTop: '15%',
   },
   developmentModeText: {
     marginBottom: 20,
