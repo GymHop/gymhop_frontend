@@ -26,12 +26,20 @@ HomeStack.navigationOptions = {
       }
     />
   ),
+
 };
 
 //todo rename
 const GymOwnerStack = createStackNavigator({
   QRReader: QRReaderScreen,
-  PostCheckIn: PostCheckInScreen
+  PostCheckIn: {
+    screen: PostCheckInScreen,
+    navigationOptions: {
+     headerTintColor: 'white',
+     headerStyle: { backgroundColor: 'black' }
+     }
+
+  }
 });
 
 GymOwnerStack.navigationOptions = {
@@ -42,6 +50,7 @@ GymOwnerStack.navigationOptions = {
       name={Platform.OS === 'ios' ? 'ios-hammer' : 'ios-square-outline'}
     />
   ),
+
 };
 
 const SettingsStack = createStackNavigator({

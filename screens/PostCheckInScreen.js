@@ -14,6 +14,7 @@ class PostCheckIn extends React.Component {
       }
     )
   }
+  
 
   componentDidMount() {
       BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
@@ -62,15 +63,15 @@ class PostCheckIn extends React.Component {
           </View>
           <View style={styles.nameHolder}>
             <Text style={styles.headingFirstName}>{this.props.userProfile.first_name}</Text>
-            <Text style={styles.headingLastName}>{this.props.userProfile.last_name}</Text>
+            <Text     transform={[{ translateX: 9 }]} style={styles.headingLastName}>{this.props.userProfile.last_name}</Text>
           </View>
         </View>
         <View style={styles.body}>
-          <Text>{this.getTier(this.props.userProfile.payment_tier)}</Text>
+          <Text style={styles.whiteText}>{this.getTier(this.props.userProfile.payment_tier)}</Text>
           <View>
             <View>
-              <Text>{this.props.checkin.when}</Text>
-              <Text>Check placeholder</Text>
+              <Text style={styles.whiteText}>{this.props.checkin.when}</Text>
+              <Text style={styles.whiteText}>Check placeholder</Text>
             </View>
           </View>
         </View>
@@ -85,24 +86,27 @@ class PostCheckIn extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'black'
   },
   heading: {
     flex: .3,
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   nameHolder: {
     flex: .4,
     justifyContent: "center"
   },
   headingFirstName: {
-    fontSize: 27
+    fontSize: 27,
+    color: "white"
   },
   headingLastName: {
     fontSize: 20,
-    translateX: 9
+    color: "white"
   },
   body: {
+    color: "white",
     flex: .7,
     flexDirection: "column",
     justifyContent: "space-around"
@@ -117,6 +121,9 @@ const styles = StyleSheet.create({
     borderRadius: 700,
     width: "70%",
     height: "100%"
+  },
+  whiteText: {
+    color: "white"
   }
 });
 
