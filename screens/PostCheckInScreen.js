@@ -14,7 +14,7 @@ class PostCheckIn extends React.Component {
       }
     )
   }
-  
+
 
   componentDidMount() {
       BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
@@ -67,11 +67,11 @@ class PostCheckIn extends React.Component {
           </View>
         </View>
         <View style={styles.body}>
-          <Text style={styles.whiteText}>{this.getTier(this.props.userProfile.payment_tier)}</Text>
+          <Text>{this.getTier(this.props.userProfile.payment_tier)}</Text>
           <View>
             <View>
-              <Text style={styles.whiteText}>{this.props.checkin.when}</Text>
-              <Text style={styles.whiteText}>Check placeholder</Text>
+              <Text>{this.props.checkin.when}</Text>
+              <Text>Check placeholder</Text>
             </View>
           </View>
         </View>
@@ -99,14 +99,11 @@ const styles = StyleSheet.create({
   },
   headingFirstName: {
     fontSize: 27,
-    color: "white"
   },
   headingLastName: {
     fontSize: 20,
-    color: "white"
   },
   body: {
-    color: "white",
     flex: .7,
     flexDirection: "column",
     justifyContent: "space-around"
