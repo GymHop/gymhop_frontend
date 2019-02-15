@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text, Image, TextInput } from 'react-native';
+import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 // import PhotoUploadForm from '../../components/registration/PhotoUploadForm';
 import BirthdayPicker from '../../components/registration/BirthdayPicker';
 import { styles } from '../../styles/registration';
@@ -15,6 +15,10 @@ class RegisterPart2 extends React.Component {
     super(props);
     this.state = {
       //user profile fields here
+      firstName: null,
+      lastName: null,
+      phoneNumber: null,
+      birthday: new Date().setYear(1996)
     }
     this._storeToken = this._storeToken.bind(this);
   }
@@ -74,20 +78,38 @@ class RegisterPart2 extends React.Component {
         inlineImageLeft='phone'
         keyboardType={'phone-pad'}
         placeholderTextColor={'#8f8f8f'}
-        onChangeText={(text) => this.setState({lastName: text})}
+        onChangeText={(text) => this.setState({phoneNumber: text})}
       />
       {/*<PhotoUploadForm onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>*/}
       <Text style={{color:"white"}}>Photo upload to be done after project ejection</Text>
       <Text style={[styles.whiteText, {marginTop: 10}]}>Enter your birthday</Text>
-      <View style={{borderRadius: 10, borderWidth: 1, borderColor: '#bdc3c7', overflow: 'hidden'}}>
+      <View style={{borderRadius: 10, borderWidth: 1, borderColor: '#bdc3c7', overflow: 'hidden', marginBottom:22}}>
         <BirthdayPicker
           styles={[styles.registerInput]}
           selectedYear={1996}
-          onYearValueChange={(year,i) => console.log("Year was changed to: ", year)}
-          onMonthValueChange={(month,i) => console.log("Month was changed to: ", month)}
-          onDayValueChange={(day,i) => console.log("Day was changed to: ", day)}
+          onYearValueChange={(year,i) => {
+            let bDay = this.state.birthday;
+            bDay.setYear(year);
+          }}
+          onMonthValueChange={(month,i) => {
+            let bDay = this.state.birthday;
+            bDay.setMonth(month);
+          }}
+          onDayValueChange={(day,i) => {
+            let bDay = this.state.birthday;
+            bDay.setDay(day);
+          }}
         />
       </View>
+      <TouchableOpacity style={styles.registerButton} onPress={() => {this.validateForm();}}>
+        <Text style={styles.registerText}>Register</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.loginButton} onPress={() => {
+            this.props.navigation.pop()
+        }}>
+        <Text style={styles.loginText}>Back</Text>
+      </TouchableOpacity>
+
       </View>
     )
   }

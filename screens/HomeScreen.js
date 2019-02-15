@@ -47,8 +47,8 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image 
-            source={require('../assets/images/gymHopWhite.png')} 
+          <Image
+            source={require('../assets/images/gymHopWhite.png')}
             style={styles.headLogo}
             resizeMode='contain'
           />
@@ -124,10 +124,10 @@ const styles = StyleSheet.create({
         zIndex: 999
       },
       android: {
-        elevate: 30
+        elevation: 30
       },
     }),
-      backgroundColor: '#000000',    
+      backgroundColor: '#000000',
       width: '100%',
       height: '18%',
       justifyContent: 'center',
