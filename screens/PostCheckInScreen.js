@@ -53,6 +53,13 @@ class PostCheckIn extends React.Component {
     console.log(this.props.userProfile.picture_url);
     return (
       <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image
+            source={require('../assets/images/gymHopWhite.png')}
+            style={styles.headLogo}
+            resizeMode='contain'
+          />
+        </View>
         <View style={styles.heading}>
           <View style={styles.imgContainer}>
             <Image
@@ -62,17 +69,22 @@ class PostCheckIn extends React.Component {
             />
           </View>
           <View style={styles.nameHolder}>
-            <Text style={styles.headingFirstName}>{this.props.userProfile.first_name}</Text>
-            <Text     transform={[{ translateX: 9 }]} style={styles.headingLastName}>{this.props.userProfile.last_name}</Text>
+            <Text style={styles.headingFirstName}>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</Text>
+            <Text style={styles.headingTier}>{this.getTier(this.props.userProfile.payment_tier)}</Text>
           </View>
         </View>
         <View style={styles.body}>
-          <Text>{this.getTier(this.props.userProfile.payment_tier)}</Text>
+
           <View>
-            <View>
-              <Text>{this.props.checkin.when}</Text>
-              <Text>Check placeholder</Text>
-            </View>
+            <Text>Checkin Complete!</Text>
+            <Text>{this.props.checkin.when}</Text>
+          </View>
+          <View>
+          <Image
+            source={require('../assets/images/checkmark.png')}
+            style={styles.checkmark}
+            resizeMode='contain'
+          />
           </View>
         </View>
       </View>
@@ -88,37 +100,54 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white'
   },
-  heading: {
-    flex: .3,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  nameHolder: {
-    flex: .4,
-    justifyContent: "center"
-  },
-  headingFirstName: {
-    fontSize: 27,
-  },
-  headingLastName: {
-    fontSize: 20,
-  },
-  body: {
-    flex: .7,
-    flexDirection: "column",
-    justifyContent: "space-around"
-  },
-  imgContainer: {
-    flex:.6,
+  imageContainer: {
+    flex: .16,
     flexDirection: "row",
     justifyContent: "center",
-    marginHorizontal: 10
+    backgroundColor: '#000000',
+    marginBottom: 7
   },
-  checkinImg: {
-    borderRadius: 700,
-    width: "70%",
-    height: "100%"
+  headLogo: {
+    width: '92%',
+    height: 64
   },
+  heading: {
+    flex: .3,
+    justifyContent: "space-around",
+  },
+    imgContainer: {
+      flex:.6,
+      flexDirection: "row",
+      justifyContent: "center",
+      marginHorizontal: 10
+    },
+      checkinImg: {
+        borderRadius: 700,
+        width: "100%",
+        height: "100%"
+      },
+    nameHolder: {
+      flex: .4,
+      alignItems: "center"
+    },
+      headingFirstName: {
+        fontSize: 32,
+      },
+      headingTier: {
+        fontSize: 19,
+      },
+  body: {
+    flex: .54,
+    flexDirection: "column",
+    // justifyContent: "space-around",
+    alignItems: "center"
+  },
+    checkmark: {
+      width: 340,
+      height: 165,
+      margin: 10
+    },
+
   whiteText: {
     color: "white"
   }
@@ -126,7 +155,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state){
   return {
-    checkin: state.checkin,
+    checkin: state.checkin.checkin,
     userProfile: state.user.details
   }
 }

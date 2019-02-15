@@ -1,10 +1,13 @@
 import React from 'react';
 
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 // import PhotoUploadForm from '../../components/registration/PhotoUploadForm';
 import BirthdayPicker from '../../components/registration/BirthdayPicker';
+import * as ActionCreators from '../../actions/registerActions';
 import { styles } from '../../styles/registration';
-import { connect } from 'react-redux';
 
 class RegisterPart2 extends React.Component {
   static navigationOptions = {
@@ -15,9 +18,9 @@ class RegisterPart2 extends React.Component {
     super(props);
     this.state = {
       //user profile fields here
-      firstName: null,
-      lastName: null,
-      phoneNumber: null,
+      first_name: null, // server side _ casing b/c its just faster to put together
+      last_name: null,
+      phone_number: null,
       birthday: new Date().setYear(1996)
     }
     this._storeToken = this._storeToken.bind(this);
@@ -31,17 +34,16 @@ class RegisterPart2 extends React.Component {
   };
 
   registerUser() {
-    // todo hookup redux
+    const baseUser = this.props.navigation.getParam('baseUser', {});
+
     this.props.Actions.registerUser({
-      ...this.state,
-      // username: this.state.username,
-      // password: this.state.password,
-      // email: this.state.email
+      ...baseUser,
+      ...this.state
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.success === true && this.props.userProfileSuccess === True) {
+    if (this.props.success === true && this.props.userProfileSuccess === true) {
       console.log("good register of user AND user profile, moving the user to the home page");
       this._storeToken()
       this.props.navigation.push("Main");
@@ -49,8 +51,7 @@ class RegisterPart2 extends React.Component {
   };
 
   render () {
-    const { navigation } = this.props;
-    const baseUser = navigation.getParam('baseUser', {});
+
 
 
     return (
@@ -64,13 +65,13 @@ class RegisterPart2 extends React.Component {
         style={styles.registerInput}
         placeholder={'First Name'}
         placeholderTextColor={'#8f8f8f'}
-        onChangeText={(text) => this.setState({firstName: text})}
+        onChangeText={(text) => this.setState({first_name: text})}
       />
       <TextInput
         style={styles.registerInput}
         placeholder={'Last Name'}
         placeholderTextColor={'#8f8f8f'}
-        onChangeText={(text) => this.setState({lastName: text})}
+        onChangeText={(text) => this.setState({last_name: text})}
       />
       <TextInput
         style={styles.registerInput}
@@ -78,7 +79,7 @@ class RegisterPart2 extends React.Component {
         inlineImageLeft='phone'
         keyboardType={'phone-pad'}
         placeholderTextColor={'#8f8f8f'}
-        onChangeText={(text) => this.setState({phoneNumber: text})}
+        onChangeText={(text) => this.setState({phone_number: text})}
       />
       {/*<PhotoUploadForm onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>*/}
       <Text style={{color:"white"}}>Photo upload to be done after project ejection</Text>
@@ -101,7 +102,7 @@ class RegisterPart2 extends React.Component {
           }}
         />
       </View>
-      <TouchableOpacity style={styles.registerButton} onPress={() => {this.validateForm();}}>
+      <TouchableOpacity style={styles.registerButton} onPress={() => {this.registerUser()}}>
         <Text style={styles.registerText}>Register</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.loginButton} onPress={() => {
@@ -119,7 +120,13 @@ class RegisterPart2 extends React.Component {
 function mapStateToProps(state) {
   return {
     success: state.user.registeredSuccessfully,
-    userProfileSuccess: false
   }
 }
-export default connect()(RegisterPart2)
+
+function mapDispatchToProps(dispatch){
+  return {
+    Actions: bindActionCreators(ActionCreators, dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPart2)

@@ -26,20 +26,15 @@ export function registerUserFailure(e) {
 
 export function registerUser(userData){
   // expecting userData to be an object
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(registerUserPending());
-    RegisterAPI.attemptRegister(userData.username,
-                                userData.password,
-                                userData.email).then((results) => {
-        dispatch(registerUserSuccess(results))
-    }).catch((error) => {
+    try {
+      let results = await RegisterAPI.attemptRegister(userData) // extras of variable length
+      dispatch(registerUserSuccess(results));
+    } catch (error) {
       console.log("Issue creating a User");
-      console.log(error.response.data);
-
-      dispatch(registerUserFailure(
-        error.response.data
-      ));
-    })
-
+      console.log(error);
+      // dispatch(registerUserFailure(error.response.data));
+    }
   }
 }

@@ -34,6 +34,10 @@ const GymOwnerStack = createStackNavigator({
   QRReader: QRReaderScreen,
   PostCheckIn: {
     screen: PostCheckInScreen,
+    navigationOptions: {
+     headerTintColor: 'white',
+     headerStyle: { backgroundColor: 'black' }
+     }
   }
 });
 

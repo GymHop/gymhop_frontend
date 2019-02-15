@@ -29,7 +29,6 @@ export function getUserDetails(token) {
     console.log("getting user details pending");
     console.log(UserDetailsAPI);
     UserDetailsAPI.getUserDetails(token).then((results) => {
-      console.log("got user details");
       dispatch(getUserDetailsSuccess(results));
     }).catch((error) => {
       console.log("error getting user details");

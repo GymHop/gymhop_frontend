@@ -28,7 +28,7 @@ class QRReaderScreen extends React.Component {
 
   componentDidMount() {
     this._requestCameraPermission();
-    
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -80,7 +80,6 @@ class QRReaderScreen extends React.Component {
     console.log(this.state);
     return (
       <View style={styles.container}>
-
         {this.state.hasCameraPermission === null
           ? <Text>Requesting for camera permission</Text>
           : this.state.hasCameraPermission === false

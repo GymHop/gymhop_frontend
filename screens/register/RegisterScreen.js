@@ -7,8 +7,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { styles } from '../../styles/registration';
-import * as ActionCreators from "../../actions/registerActions";
-import * as RegisterUserActionCreators from '../../actions/registerActions';
 
 import { showMessage, hideMessage } from "react-native-flash-message";
 
@@ -145,25 +143,20 @@ class RegisterScreen extends React.Component {
         </View>
 
       )
-        }
-      }
+  }
+}
 
-      function mapStateToProps(state){
-        return {
-          pending: state.user.registerPending,
-          details: state.user.details,
-          success: state.user.registeredSuccessfully,
-          token: state.user.token,
-          error: state.user.error,
-          errors: state.user.errors
-        }
-      }
+function mapStateToProps(state){
+  return {
+    pending: state.user.registerPending,
+    details: state.user.details,
+    success: state.user.registeredSuccessfully,
+    token: state.user.token,
+    error: state.user.error,
+    errors: state.user.errors
+  }
+}
 
-      function mapDispatchToProps(dispatch){
-        return {
-          Actions: bindActionCreators(ActionCreators, dispatch),
-          UserActions: bindActionCreators(RegisterUserActionCreators, dispatch)
-        }
-      }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen)
+
+export default connect(mapStateToProps)(RegisterScreen)

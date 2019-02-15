@@ -52,7 +52,7 @@ class HomeScreen extends React.Component {
             style={styles.headLogo}
             resizeMode='contain'
           />
-          </View>
+        </View>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
           </View>
