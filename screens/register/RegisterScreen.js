@@ -18,10 +18,10 @@ class RegisterScreen extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
-        username: "lawdog",
-        password: "abc",
-        passwordConf: "abc",
-        email: "lawdog123@gmail.com"
+        username: null,
+        password: null,
+        passwordConf: null,
+        email: null
       }
       this.validateEmail = this.validateEmail.bind(this);
   }
