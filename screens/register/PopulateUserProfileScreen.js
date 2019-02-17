@@ -20,7 +20,7 @@ class RegisterPart2 extends React.Component {
       //user profile fields here
       first_name: null, // server side _ casing b/c its just faster to put together
       last_name: null,
-      phone_number: null,
+      phone: null,
       birthday: new Date().setYear(1996)
     }
     this._storeToken = this._storeToken.bind(this);
@@ -79,7 +79,7 @@ class RegisterPart2 extends React.Component {
         inlineImageLeft='phone'
         keyboardType={'phone-pad'}
         placeholderTextColor={'#8f8f8f'}
-        onChangeText={(text) => this.setState({phone_number: text})}
+        onChangeText={(text) => this.setState({phone: text})}
       />
       {/*<PhotoUploadForm onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>*/}
       <Text style={{color:"white"}}>Photo upload to be done after project ejection</Text>

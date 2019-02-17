@@ -1,25 +1,31 @@
 import React from 'react';
 import {
-  View, Text, Image, StyleSheet,
-  AsyncStorage, Button
+  View, Text, Image, StyleSheet, TouchableOpacity,
+  AsyncStorage, Button, ScrollView
 } from 'react-native';
-
+import { Ionicons } from '@expo/vector-icons';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as ActionCreators from '../actions/tokenActions';
+import ProfileEdit from "../components/settings/ProfileEdit";
+import ProfilePage from "../components/settings/ProfilePage";
 
+import * as ActionCreators from '../actions/tokenActions';
+import * as UserActionCreators from '../actions/userDetailActions';
 
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'Your Profile',
+    header:null
   };
 
   constructor(props) {
     super(props);
+    this.state = {
+        editing: false
+    }
     this.logout = this.logout.bind(this);
-
+    this.toggleEditing = this.toggleEditing.bind(this);
   }
 
   logout() {
@@ -32,30 +38,18 @@ class SettingsScreen extends React.Component {
     this.props.navigation.navigate("Auth");
   }
 
+  toggleEditing() {
+    this.setState({editing: !this.state.editing});
+  }
+
   render() {
-    var tierType
-    switch (this.props.tier) {
-      case 1:
-        tierType = "Budget Tier";
-        break;
-      case 2:
-        tierType = "Premium tier";
-        break;
-      default:
-          tierType = "No Tier"
-    }
-    return (
-      <View style={styles.profileContainer}>
-        <Image source={{uri: this.props.profilePic}}
-          style={{width: 150, height: 150}}
-        />
-        <Text>{this.props.firstName} {this.props.lastName}</Text>
-        <Text>{tierType}</Text>
-        <Button onPress={this.logout}
-        title="Logout"
-        ></Button>
-      </View>
-      )
+
+      return this.state.editing ?
+        <ProfileEdit {...this.props}/>
+        :
+        <ProfilePage {...this.props}
+                     logout={this.logout}
+                     toggleEditing={this.toggleEditing} />;
     }
 }
 function mapStateToProps(state) {
@@ -65,26 +59,16 @@ function mapStateToProps(state) {
     lastName: state.user.details.last_name,
     birthday: state.user.details.birthday,
     phone: state.user.details.phone,
-    tier: state.user.details.payment_tier
+    tier: state.user.details.payment_tier,
+    billingStartDate: state.user.details.billing_start_date
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    Actions: bindActionCreators(ActionCreators, dispatch)
+    Actions: bindActionCreators(ActionCreators, dispatch),
+    UserActions: bindActionCreators(UserActionCreators, dispatch)
   }
 }
-
-const styles = StyleSheet.create({
-  profileContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 5
-  }
-})
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen)

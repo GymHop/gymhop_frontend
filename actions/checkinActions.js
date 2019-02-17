@@ -30,7 +30,8 @@ export function checkinUser(token, gymAndUserInfo) {
       dispatch(checkinUserSuccess(results))
     }).catch((error) => {
       console.log("error checking in a user");
-      console.log(error);
+      
+      console.log(error.response);
       dispatch(checkinUserFailure());
     });
   }

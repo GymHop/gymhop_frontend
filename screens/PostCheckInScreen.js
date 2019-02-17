@@ -3,6 +3,8 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, BackHandler } from 'react-native';
 import { connect } from 'react-redux';
 
+import { dateFormatter } from '../utils/datetime';
+
 class PostCheckIn extends React.Component {
 
   constructor(props) {
@@ -24,13 +26,6 @@ class PostCheckIn extends React.Component {
       BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
     }
 
-    onNavigatorEvent = (event) => {
-            if (event.id == 'backPress') {
-                alert('back');
-            }
-    }
-
-
   handleBackPress = () => {
      const { params } = this.props.navigation.state;
      params.resetScanned();
@@ -49,11 +44,13 @@ class PostCheckIn extends React.Component {
    }
  }
 
+
+
   render() {
     console.log(this.props.userProfile.picture_url);
     return (
       <View style={styles.container}>
-        <View style={styles.imageContainer}>
+        <View style={styles.gymhopLogoImageCntainer}>
           <Image
             source={require('../assets/images/gymHopWhite.png')}
             style={styles.headLogo}
@@ -76,15 +73,18 @@ class PostCheckIn extends React.Component {
         <View style={styles.body}>
 
           <View>
-            <Text>Checkin Complete!</Text>
-            <Text>{this.props.checkin.when}</Text>
+            <Text style={styles.checkinText}>Check in Complete!</Text>
+            <View style={styles.datetimeContainer}>
+              <Text style={styles.checkinSubtext} >{dateFormatter(this.props.checkin.when, "date")}</Text>
+              <Text style={styles.checkinSubtext}>{dateFormatter(this.props.checkin.when, "time")}</Text>
+            </View>
           </View>
-          <View>
-          <Image
-            source={require('../assets/images/checkmark.png')}
-            style={styles.checkmark}
-            resizeMode='contain'
-          />
+          <View style={styles.checkmarkContainer}>
+            <Image
+              source={require('../assets/images/checkmark.png')}
+              style={styles.checkmark}
+              resizeMode='contain'
+            />
           </View>
         </View>
       </View>
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white'
   },
-  imageContainer: {
-    flex: .16,
+  gymhopLogoImageCntainer: {
+    flex: .13,
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: '#000000',
@@ -112,22 +112,23 @@ const styles = StyleSheet.create({
     height: 64
   },
   heading: {
-    flex: .3,
-    justifyContent: "space-around",
+    flex: .4,
+    margin: 0
   },
     imgContainer: {
-      flex:.6,
+      display: "flex",
+      height:128,
+      width: "100%",
       flexDirection: "row",
       justifyContent: "center",
-      marginHorizontal: 10
     },
       checkinImg: {
-        borderRadius: 700,
-        width: "100%",
-        height: "100%"
+        borderRadius: 100,
+        height:128,
+        width: 128,
       },
     nameHolder: {
-      flex: .4,
+      display: "flex",
       alignItems: "center"
     },
       headingFirstName: {
@@ -137,16 +138,32 @@ const styles = StyleSheet.create({
         fontSize: 19,
       },
   body: {
-    flex: .54,
+    flex: .34,
     flexDirection: "column",
-    // justifyContent: "space-around",
+    justifyContent: "space-around",
     alignItems: "center"
   },
-    checkmark: {
-      width: 340,
-      height: 165,
-      margin: 10
+    datetimeContainer: {
+      display: "flex",
+      width: "60%",
+      flexDirection: "row",
+      justifyContent: "space-around"
     },
+      checkinSubtext: {
+        fontSize: 21
+      },
+    checkinText: {
+      textAlign: "center",
+      fontSize:29,
+      fontWeight: "bold"
+    },
+    checkmarkContainer: {
+      paddingTop: 100
+    },
+      checkmark: {
+        width: 255,
+        height: 124,
+      },
 
   whiteText: {
     color: "white"

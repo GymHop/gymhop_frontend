@@ -7,7 +7,10 @@ import {
   Text,
   TouchableOpacity,
   View,
+  StatusBar
 } from 'react-native';
+
+
 import { WebBrowser } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -53,7 +56,7 @@ class HomeScreen extends React.Component {
             resizeMode='contain'
           />
         </View>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <ScrollView style={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
           </View>
 
@@ -129,14 +132,14 @@ const styles = StyleSheet.create({
     }),
       backgroundColor: '#000000',
       width: '100%',
-      height: '18%',
+      height: 'auto',
       justifyContent: 'center',
       alignItems: 'center'
 },
   headLogo: {
     backgroundColor: '#000000',
-    width: '95%',
-    marginTop: '15%',
+    width: '35%',
+    marginTop: StatusBar.currentHeight,
   },
   developmentModeText: {
     marginBottom: 20,
@@ -144,8 +147,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 19,
     textAlign: 'center',
-  },
-  contentContainer: {
   },
   welcomeContainer: {
     alignItems: 'center',

@@ -32,8 +32,7 @@ class LoginScreen extends Component {
      debugger;
      if (token != null) {
        this.props.TokenActions.setToken(token);
-       this.props.UserActions.getUserDetails(token)
-       this.props.navigation.navigate("Main");
+       // setting the token will make component did update fire
      }
    }
   // componentDidMount() {

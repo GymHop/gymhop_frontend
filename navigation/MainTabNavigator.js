@@ -9,6 +9,8 @@ import SettingsScreen from '../screens/SettingsScreen';
 import QRScreen from '../screens/QRScreen';
 import PostCheckInScreen from '../screens/PostCheckInScreen';
 
+import Colors from '../constants/Colors';
+
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   QR: QRScreen
@@ -19,10 +21,9 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
+      iconSet={"feather"}
       name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+        'home'
       }
     />
   ),
@@ -35,7 +36,7 @@ const GymOwnerStack = createStackNavigator({
   PostCheckIn: {
     screen: PostCheckInScreen,
     navigationOptions: {
-     headerTintColor: 'white',
+     headerTintColor: "white",
      headerStyle: { backgroundColor: 'black' }
      }
   }
@@ -46,7 +47,8 @@ GymOwnerStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-hammer' : 'ios-square-outline'}
+      iconSet={"feather"}
+      name={'camera'}
     />
   ),
 
@@ -61,7 +63,8 @@ SettingsStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-camera' : 'md-options'}
+      iconSet={"ion"}
+      name={Platform.OS === 'ios' ? 'ios-person' : 'md-options'}
     />
   ),
 };

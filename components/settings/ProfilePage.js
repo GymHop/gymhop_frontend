@@ -1,0 +1,135 @@
+import React from 'react';
+
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Button } from 'react-native'
+import { dateFormatter } from '../../utils/datetime';
+
+import { Feather } from '@expo/vector-icons';
+import Colors from '../../constants/Colors';
+
+export default function ProfilePage({tier,
+                      profilePic,
+                      firstName,
+                      lastName,
+                      toggleEditing,
+                      logout,
+                      birthday,
+                      billingStartDate,
+                      gender,
+                      phone
+                    }) {
+    var tierType;
+    switch (tier) {
+      case 1:
+        tierType = "Budget Tier @40/month";
+        break;
+      case 2:
+        tierType = "Premium tier @80/month";
+        break;
+      default:
+          tierType = "No Tier"
+    }
+    var billingEndDate;
+    let d = new Date(billingStartDate)
+    d.setMonth(d.getMonth() + 1);
+
+    billingEndDate = dateFormatter(d, "date-time")
+
+    let bday = dateFormatter(birthday, "date-time")
+
+
+    return (
+      <View style={styles.profileContainer}>
+        <View style={styles.profilePicContainer}>
+          <Image source={{uri: profilePic}}
+          style={[styles.profilePic, {width: 150, height: 150}]}
+          />
+          <TouchableOpacity onPress={toggleEditing} style={styles.profileIconContainer} >
+            <Feather name="edit-2" size={32} color={Colors.tintColor} />
+          </TouchableOpacity>
+          <Text style={styles.editPromptText}>Tap to edit your details</Text>
+        </View>
+        <ScrollView style={styles.profileDetailsContainer}>
+          <View style={styles.dataLabel}>
+              <Text>First Name</Text>
+          </View>
+          <Text style={styles.dataField}>  {firstName}</Text>
+
+          <View style={styles.dataLabel}>
+            <Text>Last Name</Text>
+          </View>
+          <Text style={styles.dataField}>  {lastName}</Text>
+
+          <View style={styles.dataLabel}>
+            <Text>Billing End Date</Text>
+          </View>
+          <Text style={styles.dataField}>  {billingEndDate}</Text>
+
+          <View style={styles.dataLabel}>
+            <Text>Payment Tier</Text>
+          </View>
+          <Text style={styles.dataField}>  {tierType}</Text>
+
+          <View style={styles.dataLabel}>
+            <Text>Birthday</Text>
+          </View>
+          <Text style={styles.dataField}>{bday}</Text>
+
+          <View style={styles.dataLabel}>
+            <Text>Phone</Text>
+          </View>
+          <Text style={styles.dataField}>{phone}</Text>
+
+          <Button onPress={logout}
+          title="Logout"
+          ></Button>
+        </ScrollView>
+      </View>
+    )
+}
+
+
+const styles = StyleSheet.create({
+  profileContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 5,
+    backgroundColor: "white"
+  },
+    profilePicContainer: {
+      flex: .4,
+      marginTop: 60,
+      marginBottom: 30
+    },
+      profilePic: {
+        borderRadius: 25,
+        borderWidth: 2,
+        borderColor: 'white',
+      },
+      profileIconContainer: {
+        width: 32,
+        position: 'relative',
+        top: -26,
+        left: 127,
+        borderRadius:100,
+        backgroundColor: 'white'
+      },
+      editPromptText: {
+        color: "gray",
+      },
+    profileDetailsContainer: {
+      flex: .6,
+      width: "100%",
+      marginTop: 30
+    },
+      dataLabel: {
+        backgroundColor: Colors.tintColor, //"#737A7F",
+        width: "100%",
+        paddingVertical: 5
+      },
+      dataField: {
+        width: "100%",
+        paddingVertical: 8
+      }
+})
