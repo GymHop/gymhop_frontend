@@ -52,8 +52,11 @@ class RegisterPart2 extends React.Component {
 
   render () {
 
+    let year = this.state.birthday.getFullYear();
+    let month = this.state.birthday.getMonth();
+    let day = this.state.birthday.getDate();
 
-
+    // let selectedYear = this.state.birthday.getFullYear();
     return (
       <View style={styles.container}>
         <Image
@@ -87,18 +90,23 @@ class RegisterPart2 extends React.Component {
       <View style={{borderRadius: 10, borderWidth: 1, borderColor: '#bdc3c7', overflow: 'hidden', marginBottom:22}}>
         <BirthdayPicker
           styles={[styles.registerInput]}
-          selectedYear={1996}
+          selectedYear={year}
+          selectedMonth={month}
+          selectedDay={day}
           onYearValueChange={(year,i) => {
-            let bDay = this.state.birthday;
-            bDay.setYear(year);
+            let bDay = new Date(this.state.birthday);
+            bDay.setFullYear(year);
+            this.setState({birthday: bDay}) // never use the same instance of mutated state in setState
           }}
           onMonthValueChange={(month,i) => {
-            let bDay = this.state.birthday;
+            let bDay = new Date(this.state.birthday);
             bDay.setMonth(month);
+            this.setState({birthday: bDay})
           }}
           onDayValueChange={(day,i) => {
-            let bDay = this.state.birthday;
-            bDay.setDay(day);
+            let bDay = new Date(this.state.birthday);
+            bDay.setDate(day);
+            this.setState({birthday: bDay})
           }}
         />
       </View>

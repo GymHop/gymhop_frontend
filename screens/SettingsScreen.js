@@ -45,7 +45,8 @@ class SettingsScreen extends React.Component {
   render() {
 
       return this.state.editing ?
-        <ProfileEdit {...this.props}/>
+        <ProfileEdit { ...this.props }
+                      toggleEditing={this.toggleEditing}/>
         :
         <ProfilePage {...this.props}
                      logout={this.logout}
@@ -60,7 +61,9 @@ function mapStateToProps(state) {
     birthday: state.user.details.birthday,
     phone: state.user.details.phone,
     tier: state.user.details.payment_tier,
-    billingStartDate: state.user.details.billing_start_date
+    billingStartDate: state.user.details.billing_start_date,
+    token: state.user.token
+
   }
 }
 

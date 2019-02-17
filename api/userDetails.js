@@ -10,3 +10,13 @@ export function getUserDetails(token){
       }
   )
 }
+
+export function updateUserDetails(token, details) {
+  return axios.patch(
+      domain + "/api/v1/user_profiles/",
+      details,
+      {
+        headers: {"Authorization": "Token " + token}
+      }
+  )
+}
