@@ -1,5 +1,7 @@
 
-//user
+/*                              All users                                        */
+
+//AUTH
 export const POST_USER_LOGIN_PENDING = "POST_USER_LOGIN_PENDING";
 export const POST_USER_LOGIN_SUCCESS = "POST_USER_LOGIN_SUCCESS";
 export const POST_USER_LOGIN_FAILURE = "POST_USER_LOGIN_FAILURE";
@@ -30,3 +32,10 @@ export const GET_GYMS_FAILURE = "GET_GYMS_FAILURE";
 export const POST_CHECKIN_PENDING = "POST_CHECKIN_PENDING";
 export const POST_CHECKIN_SUCCESS = "POST_CHECKIN_SUCCESS";
 export const POST_CHECKIN_FAILURE = "POST_CHECKIN_FAILURE";
+
+/*                              Gym owners                                        */
+
+// statistics
+export const GET_GYM_STATISTICS_PENDING = "GET_GYM_STATISTICS_PENDING";
+export const GET_GYM_STATISTICS_SUCCESS = "GET_GYM_STATISTICS_SUCCESS";
+export const GET_GYM_STATISTICS_FAILURE = "GET_GYM_STATISTICS_FAILURE";
