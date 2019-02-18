@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from 'expo';
-import { Feather } from '@expo/vector-icons';
+import { Feather, Foundation } from '@expo/vector-icons';
 
 
 import Colors from '../constants/Colors';
@@ -8,6 +8,7 @@ import Colors from '../constants/Colors';
 export default class TabBarIcon extends React.Component {
   render() {
     switch (this.props.iconSet) {
+
       case 'feather':
         return (
           <Feather
@@ -15,7 +16,16 @@ export default class TabBarIcon extends React.Component {
           size={26}
           style={{ marginBottom: -3 }}
           color={this.props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}
-          />  
+          />
+        )
+      case 'foundation':
+        return (
+          <Foundation
+            name={this.props.name}
+            size={26}
+            style={{ marginBottom: -3 }}
+            color={this.props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+          />
         )
       default:
         return (

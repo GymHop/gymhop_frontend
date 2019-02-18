@@ -16,7 +16,8 @@ export default function ProfilePage({tier,
                       birthday,
                       billingStartDate,
                       gender,
-                      phone
+                      phone,
+                      updatePending
                     }) {
     var tierType;
     switch (tier) {
@@ -34,8 +35,9 @@ export default function ProfilePage({tier,
     d.setMonth(d.getMonth() + 1);
 
     billingEndDate = dateFormatter(d, "date-time")
-
-    let bday = dateFormatter(birthday, "date-time")
+    let bday = birthday ? dateFormatter(birthday, "date") : "";
+    console.log(updatePending);
+    console.log(bday);
 
 
     return (

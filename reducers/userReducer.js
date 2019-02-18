@@ -8,6 +8,9 @@ import {
   POST_USER_LOGIN_PENDING,
   POST_USER_LOGIN_SUCCESS,
   POST_USER_LOGIN_FAILURE,
+  UPDATE_USER_DETAILS_PENDING,
+  UPDATE_USER_DETAILS_SUCCESS,
+  UPDATE_USER_DETAILS_FAILURE,
   LOG_OUT_USER,
   SET_USER_TOKEN
 } from '../actions/actiontypes';
@@ -16,8 +19,10 @@ export default function userReducer(state={
     token: null,
     pending: false,
     userDetailsPending: false,
+    userDetailsUpdatePending: false,
     loginPending: false,
     error: false,
+    userDetailsUpdateSuccess: null,
     details: {},
     registeredSuccessfully: null
 }, action) {
@@ -93,10 +98,32 @@ export default function userReducer(state={
         ...state,
         token: action.token
       }
+    case UPDATE_USER_DETAILS_PENDING:
+      return {
+        ...state,
+        userDetailsUpdateSuccess: null,
+        userDetailsUpdatePending: true,
+    }
+    case UPDATE_USER_DETAILS_SUCCESS:
+      return {
+        ...state,
+        details: action.payload,
+        userDetailsUpdateSuccess: true,
+        userDetailsUpdatePending: false,
+    }
+    case UPDATE_USER_DETAILS_FAILURE:
+      return {
+        ...state,
+        userDetailsUpdateSuccess: false,
+        userDetailsUpdatePending: false,
+    }
     default:
       // console.log("default case hit with " + action.type);
       return {
         ...state
       }
   }
+}
+export const getUserStatus = (userReducer) => {
+  return userReducer.details.is_gym_owner
 }

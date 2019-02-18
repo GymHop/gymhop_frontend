@@ -62,7 +62,8 @@ function mapStateToProps(state) {
     phone: state.user.details.phone,
     tier: state.user.details.payment_tier,
     billingStartDate: state.user.details.billing_start_date,
-    token: state.user.token
+    token: state.user.token,
+    updatePending: state.user.userDetailsUpdatePending,
 
   }
 }

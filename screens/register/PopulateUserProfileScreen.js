@@ -16,12 +16,14 @@ class RegisterPart2 extends React.Component {
 
   constructor(props){
     super(props);
+    let dt = new Date()
+    dt.setYear(1996)
     this.state = {
       //user profile fields here
       first_name: null, // server side _ casing b/c its just faster to put together
       last_name: null,
       phone: null,
-      birthday: new Date().setYear(1996)
+      birthday: dt
     }
     this._storeToken = this._storeToken.bind(this);
   }
@@ -36,9 +38,18 @@ class RegisterPart2 extends React.Component {
   registerUser() {
     const baseUser = this.props.navigation.getParam('baseUser', {});
 
+
+    let user = {
+      fn: "dashdjkasd",
+      ln: "eanjkfhaukfds",
+      em: "ahbsujdfklashd" // @gmail.com
+    }
+
+    let { birthday, ...restOfState } = this.state
     this.props.Actions.registerUser({
       ...baseUser,
-      ...this.state
+      ...restOfState,
+      birthday: birthday.valueOf()
     });
   }
 
