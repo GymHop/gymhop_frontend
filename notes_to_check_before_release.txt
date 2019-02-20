@@ -1,0 +1,2 @@
+In the gym stats page the borderBottomWidth of hairline doesnt play well with the genymotion emulator
+  Check that it works on a normal device 

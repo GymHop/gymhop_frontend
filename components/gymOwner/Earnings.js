@@ -49,7 +49,7 @@ class Earnings extends Component {
     return (
       <View>
         <View style={styles.textContainer}>
-          <Text style={styles.headlineNumber}>{headlineNum}</Text>
+          <Text style={styles.headlineNumber}>${headlineNum}</Text>
           <Text style={styles.descriptor}>{descriptor}</Text>
         </View>
         <View>

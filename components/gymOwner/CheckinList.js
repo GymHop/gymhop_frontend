@@ -1,11 +1,15 @@
 import React from 'react';
 
 import { View, Text, StyleSheet } from 'react-native'
+import CheckinItem from './CheckinItem';
 
-const CheckinList = () => {
+const CheckinList = ({checkins}) => {
+
   return (
     <View>
-      <Text>CheckinList</Text>
+      {checkins.map((checkin, idx) => {
+        return <CheckinItem key={checkin.id} checkin={checkin} />
+      })}
     </View>
   )
 }

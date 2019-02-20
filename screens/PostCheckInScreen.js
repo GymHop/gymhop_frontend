@@ -107,10 +107,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
     marginBottom: 7
   },
-  headLogo: {
-    width: '92%',
-    height: 64
-  },
+    headLogo: {
+      width: '92%',
+      height: 64
+    },
   heading: {
     flex: .4,
     margin: 0

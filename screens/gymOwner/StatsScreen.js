@@ -23,7 +23,7 @@ class StatsScreen extends Component {
   }
 
   componentDidMount() {
-    if (!Object.keys(this.props.stats).length && !this.props.pending) {
+    if (this.props.stats.total_checkins == undefined && !this.props.pending) {
       this.props.Actions.getStatistics(this.props.token);
     }
   }
@@ -32,26 +32,33 @@ class StatsScreen extends Component {
     let { stats, pending } = this.props;
     if (pending) {
       return (
-        <View>
+        <View style={[styles.container, styles.loadingScreen]}>
+          <Text style={styles.loadingTextTitle}>Hi {this.props.firstName}</Text>
+          <Text style={styles.loadingTextSubtitle}>Loading your stats...</Text>
           <ActivityIndicator size="large" color="#0000ff" />
-          <Text>Hi {this.props.firstName}</Text>
-          <Text>Loading your stats...</Text>
         </View>
       )
     }
     let { total_checkins,
           for_month_of,
           owed_to_gym,
-          total_uniques } = stats;
+          total_uniques,
+          } = stats;
+    var { check_ins } = stats;
+    check_ins.sort((a, b) => {
+      return new Date(b.when) - new Date(a.when);
+    });
+
     return (
       <ScrollView style={styles.container}>
         <View style={styles.monthContainer}>
           <Text style={styles.monthText}>{for_month_of}</Text>
         </View>
+        {/*<View styles={styles.checkinGraph}>*/}
         <CheckinGraph
-          checkins={stats.checkins}
-          styles={styles.checkinGraph}
+        checkins={stats.check_ins}
         />
+        {/*</View>*/}
         <View style={styles.tileRow}>
           <View style={styles.tileElement}>
             <UniqueCheckins num={total_uniques} />
@@ -61,7 +68,7 @@ class StatsScreen extends Component {
           </View>
         </View>
         <CheckinList
-          checkins={stats.checkins}
+          checkins={check_ins}
         />
       </ScrollView>
     )
@@ -71,7 +78,7 @@ function mapStateToProps(state){
   return {
     stats: state.gymOwner.stats,
     pending: state.gymOwner.pending,
-    firstName: state.user.details.firstName,
+    firstName: state.user.details.first_name,
     token: state.user.token
   }
 }

@@ -5,9 +5,12 @@ GET_GYM_STATISTICS_FAILURE
 } from '../actions/actiontypes';
 
 export default function gymOwnerReducer(state={
-                                                stats: {},
+                                                stats: {
+                                                  check_ins: []
+                                                },
                                                 pending: null,
                                               }, action) {
+
       switch (action.type) {
         case GET_GYM_STATISTICS_PENDING:
           return {
