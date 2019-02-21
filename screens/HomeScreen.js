@@ -7,7 +7,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  StatusBar
+  StatusBar,
+  Dimensions
 } from 'react-native';
 
 
@@ -88,17 +89,21 @@ class HomeScreen extends React.Component {
             resizeMode='contain'
           />
         </View>
-        <ScrollView>
+        <ScrollView style={styles.contentContainer}>
           <View style={styles.mapsContainer}>
             <Text>Placeholder for google maps</Text>
           </View>
-          <Accordion
-            sections={this.props.gyms}
-            activeSections={this.state.activeSections}
-            renderHeader={this._renderHeader}
-            renderContent={this._renderContent}
-            onChange={this._updateSections}
-          />
+          <View style={styles.accordianContainer}>
+            <Accordion
+              sections={this.props.gyms}
+              activeSections={this.state.activeSections}
+              renderHeader={this._renderHeader}
+              renderContent={this._renderContent}
+              onChange={this._updateSections}
+              touchableComponent={TouchableOpacity}
+              underlayColor={"ffffffff"}
+            />
+          </View>
         </ScrollView>
 
       </View>
@@ -125,16 +130,26 @@ const styles = StyleSheet.create({
       },
     }),
       backgroundColor: '#000000',
-      width: '100%',
-      height: 'auto',
       justifyContent: 'center',
       alignItems: 'center'
-},
+    },
       brandLogo: {
       backgroundColor: '#000000',
       width: '35%',
       marginTop: StatusBar.currentHeight,
     },
+    contentContainer: {
+      flex: 1,
+
+    },
+      mapsContainer: {
+        height: ( Dimensions.get('window').height - StatusBar.currentHeight)* .35,
+        borderWidth: 1,
+        borderColor: "red"
+      },
+      accordianContainer: {
+        height: ( Dimensions.get('window').height - StatusBar.currentHeight)* .65,
+      }
 });
 
 function mapStateToProps(state) {

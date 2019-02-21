@@ -5,42 +5,11 @@ import {
   Image, StyleSheet, Text,
   TouchableOpacity, View, NavigatorIOS, Header
 } from 'react-native';
+
+import { styles } from '../../styles/gymList/tile'
 import QRScreen from "../../screens/QRScreen";
 
 
-const styles = StyleSheet.create({
-  gymTileContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      width: '100%',
-      height: '80%',
-  },
-  gymTileButton: {
-    ...Platform.select({
-    ios: {
-      shadowOffset:{  width: 2,  height: 2,  },
-      shadowColor: 'black',
-      shadowOpacity: 1,
-      shadowRadius: 4
-      },
-    android: {
-      elevation: 25
-    },
-  }),
-    backgroundColor: '#000000',
-    width: 350,
-    borderRadius: 15,
-    marginTop: 20,
-    padding: 15,
-},
-  gymTileText: {
-    fontSize: 18,
-    color: '#ffffff',
-    padding: 5
-
-  },
-});
 export default class GymTile extends Component {
   constructor(props) {
     super(props)
@@ -57,10 +26,17 @@ export default class GymTile extends Component {
       default:
         dollarSigns = ""
     }
+    let {gym} = this.props;
     return (
       <View styles={styles.gymTileContainer}>
-        <View style={styles.gymTileButton}>
-          <Text style={styles.gymTileText}>{this.props.gym.name} </Text>
+        <View style={styles.gymPhotoContainer}>
+          <Image
+          source={{uri: gym.lead_photo}}
+          style={styles.gymLeadPhoto}
+          />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.gymTileText}>{this.props.gym.name}</Text>
           <Text style={styles.gymTileText}>Location: {this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
           <Text style={styles.gymTileText}>{dollarSigns}</Text>
         </View>
