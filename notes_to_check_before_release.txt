@@ -1,2 +1,9 @@
 In the gym stats page the borderBottomWidth of hairline doesnt play well with the genymotion emulator
-  Check that it works on a normal device 
+  Check that it works on a normal device
+
+backend:
+  Gyms have to be retrieved based on a post of the user cooerdinates and then sorted by closest
+
+Post export
+  Google maps  https://github.com/react-native-community/react-native-maps/blob/master/docs/installation.md
+  react native photo gallery viewer

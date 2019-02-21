@@ -58,22 +58,13 @@ export default class GymTile extends Component {
         dollarSigns = ""
     }
     return (
-      <TouchableOpacity onPress={() => {
-          console.log("pressed on gym");
-          console.log(this.props);
-          this.props.navigator.push("QR",{
-            title: this.props.gym.name,
-            passProps: {gym: this.props.gym}
-          })
-      }}>
-        <View styles={styles.gymTileContainer}>
-          <View style={styles.gymTileButton}>
-            <Text style={styles.gymTileText}>{this.props.gym.name} </Text>
-            <Text style={styles.gymTileText}>Location: {this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
-            <Text style={styles.gymTileText}>{dollarSigns}</Text>
-          </View>
+      <View styles={styles.gymTileContainer}>
+        <View style={styles.gymTileButton}>
+          <Text style={styles.gymTileText}>{this.props.gym.name} </Text>
+          <Text style={styles.gymTileText}>Location: {this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
+          <Text style={styles.gymTileText}>{dollarSigns}</Text>
         </View>
-      </TouchableOpacity>
+      </View>
     )
   }
 };
