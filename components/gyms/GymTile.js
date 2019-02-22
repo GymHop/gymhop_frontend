@@ -15,20 +15,26 @@ export default class GymTile extends Component {
     super(props)
   }
   render() {
+    let {gym} = this.props;
+    console.log(gym.price);
+
     let dollarSigns;
-    switch (this.props.gym.price) {
+    switch (gym.price) {
       case 0:
-        dollarSigns = ""
+        dollarSigns = "";
+        break;
       case 1:
-        dollarSigns = "$$"
+        dollarSigns = "Budget";
+        break;
       case 2:
-        dollarSigns = "$$$$"
+        dollarSigns = "Premium ";
+        break;
       default:
         dollarSigns = ""
     }
-    let {gym} = this.props;
+
     return (
-      <View styles={styles.gymTileContainer}>
+      <View style={styles.gymTileContainer}>
         <View style={styles.gymPhotoContainer}>
           <Image
           source={{uri: gym.lead_photo}}
@@ -36,9 +42,11 @@ export default class GymTile extends Component {
           />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.gymTileText}>{this.props.gym.name}</Text>
-          <Text style={styles.gymTileText}>Location: {this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
-          <Text style={styles.gymTileText}>{dollarSigns}</Text>
+          <Text style={[styles.gymTileText, styles.gymTileTitle]}>{this.props.gym.name}</Text>
+          <Text style={styles.gymTileText}>{this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
+        </View>
+        <View style={styles.extraDetailsContainer}>
+          <Text style={[styles.gymTileText, {fontWeight:"bold"}]}>{dollarSigns}</Text>
         </View>
       </View>
     )

@@ -12,8 +12,6 @@ import {
 } from 'react-native';
 
 
-
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -25,6 +23,7 @@ import GymDetail from '../components/gyms/GymDetail';
 import * as ActionCreators from '../actions/gymActions';
 
 import { MonoText } from '../components/StyledText';
+import Layout from '../constants/Layout';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -57,7 +56,7 @@ class HomeScreen extends React.Component {
   _renderHeader(section, index, isActive, sections) {
     // header of expanded section
     return (
-      <GymTile gym={section}/>
+      <GymTile key={index} gym={section}/>
     )
   }
   _renderContent(section, index, isActive, sections) {
@@ -100,8 +99,7 @@ class HomeScreen extends React.Component {
               renderHeader={this._renderHeader}
               renderContent={this._renderContent}
               onChange={this._updateSections}
-              touchableComponent={TouchableOpacity}
-              underlayColor={"ffffffff"}
+              underlayColor={"#ffffff"}
             />
           </View>
         </ScrollView>
@@ -143,12 +141,14 @@ const styles = StyleSheet.create({
 
     },
       mapsContainer: {
-        height: ( Dimensions.get('window').height - StatusBar.currentHeight)* .35,
+        height: ( Layout.window.height - StatusBar.currentHeight)* .35,
         borderWidth: 1,
         borderColor: "red"
       },
       accordianContainer: {
-        height: ( Dimensions.get('window').height - StatusBar.currentHeight)* .65,
+        height: ( Layout.window.height - StatusBar.currentHeight)* .65,
+        width: Layout.window.width,
+        marginBottom: 60,
       }
 });
 

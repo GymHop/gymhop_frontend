@@ -1,29 +1,47 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet, Dimensions, Platform } from 'react-native'
+import Layout  from '../../constants/Layout'
 
 export const styles = StyleSheet.create({
   gymTileContainer: {
-      width: Dimensions.get('window').width,
+      width: Layout.window.width,
+      height: (Layout.window.height) * 2 / 12,
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: "center",
-      alignItems: "center"
+      justifyContent: "flex-start",
+      alignItems: "center",
+      maxWidth: Layout.window.width,
+      padding: 8,
+      borderBottomWidth: StyleSheet.hairlineWidth,
+      borderBottomColor: 'rgba(0, 0, 0, .3)',
+
       // paddingHorizontal: 10
   },
     gymPhotoContainer: {
-      width: "40%"
+      width: "23%",
+      padding: 3,
+      marginRight: 8
     },
       gymLeadPhoto: {
-        height: 15,
-        width: 24
+        height: "80%",
+        borderRadius: 100,
+        width: "100%"
       },
     textContainer: {
-      width: "50%",
+      width: (Layout.window.width - 16) * 3 / 5,
       display: "flex",
       flexDirection: "column",
-      justifyContent: "space-around"
+      paddingLeft: 6
     },
-      gymTileText: {
-        fontSize: 10,
-
+      gymTileTitle: {
+        fontSize: 16,
       },
+      gymTileText: {
+        fontSize: 12,
+      },
+     extraDetailsContainer: {
+       display: "flex",
+       justifyContent: "center",
+       width: (Layout.window.width - 20) * 15  / 100,
+
+     }
 });
