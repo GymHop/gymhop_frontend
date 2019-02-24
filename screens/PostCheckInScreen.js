@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 
 import { View, Text, Image, StyleSheet, BackHandler } from 'react-native';
 import { connect } from 'react-redux';
@@ -36,17 +36,22 @@ class PostCheckIn extends React.Component {
  getTier(num) {
    switch (num) {
      case 1:
-       return "Budget Tier";
+       return "Budget Member";
      case 2:
-        return "Primo memberino"
+        return "Premium Member"
      default:
-       return "No tier :("
+       return "No tier. Please upgrade your account in order to access this gym"
    }
  }
 
 
 
   render() {
+    if (Object.keys(this.props.errors).length) {
+      console.log(this.props.errors);
+    }
+    let checkin_failure = Object.keys(this.props.errors).length ? true : false;
+
     console.log(this.props.userProfile.picture_url);
     return (
       <View style={styles.container}>
@@ -71,17 +76,16 @@ class PostCheckIn extends React.Component {
           </View>
         </View>
         <View style={styles.body}>
-
           <View>
-            <Text style={styles.checkinText}>Check in Complete!</Text>
-            <View style={styles.datetimeContainer}>
+            <Text style={styles.checkinText}>{!checkin_failure ? "Check in Complete!" : "Invalid Checkin"}</Text>
+            {!checkin_failure ? (<View style={styles.datetimeContainer}>
               <Text style={styles.checkinSubtext} >{dateFormatter(this.props.checkin.when, "date")}</Text>
               <Text style={styles.checkinSubtext}>{dateFormatter(this.props.checkin.when, "time")}</Text>
-            </View>
+            </View>) : null}
           </View>
           <View style={styles.checkmarkContainer}>
             <Image
-              source={require('../assets/images/checkmark.png')}
+              source={!checkin_failure ? require('../assets/images/checkmark.png') : require('../assets/images/error.png')}
               style={styles.checkmark}
               resizeMode='contain'
             />
@@ -136,6 +140,9 @@ const styles = StyleSheet.create({
       },
       headingTier: {
         fontSize: 19,
+        padding: 26,
+        textAlign: "center"
+
       },
   body: {
     flex: .34,
@@ -173,7 +180,8 @@ const styles = StyleSheet.create({
 function mapStateToProps(state){
   return {
     checkin: state.checkin.checkin,
-    userProfile: state.user.details
+    userProfile: state.user.details,
+    errors: state.checkin.errors
   }
 }
 

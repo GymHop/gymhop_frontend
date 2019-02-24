@@ -11,9 +11,10 @@ export function checkinUserPending() {
     type: POST_CHECKIN_PENDING
   }
 }
-export function checkinUserFailure() {
+export function checkinUserFailure(results) {
   return {
-    type: POST_CHECKIN_FAILURE
+    type: POST_CHECKIN_FAILURE,
+    payload: results
   }
 }
 export function checkinUserSuccess(results) {
@@ -30,9 +31,9 @@ export function checkinUser(token, gymAndUserInfo) {
       dispatch(checkinUserSuccess(results))
     }).catch((error) => {
       console.log("error checking in a user");
-      
+
       console.log(error.response);
-      dispatch(checkinUserFailure());
+      dispatch(checkinUserFailure(error.response.data));
     });
   }
 }
