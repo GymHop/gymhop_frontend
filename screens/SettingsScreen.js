@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import ProfileEdit from "../components/settings/ProfileEdit";
-import ProfilePage from "../components/settings/ProfilePage";
+import ProfilePage from "../components/settings/FUCKU2";
 
 import * as ActionCreators from '../actions/tokenActions';
 import * as UserActionCreators from '../actions/userDetailActions';

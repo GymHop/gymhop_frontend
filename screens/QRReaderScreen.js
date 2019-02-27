@@ -1,6 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Text, LayoutAnimation, Dimensions, Vibration } from 'react-native';
-import { BarCodeScanner, Permissions } from 'expo';
+import { ScrollView, StyleSheet, View, Text, LayoutAnimation, Dimensions, Vibration, PermissionsAndroid } from 'react-native';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -28,8 +27,31 @@ class QRReaderScreen extends React.Component {
 
   componentDidMount() {
     this._requestCameraPermission();
-
   }
+
+  requestCameraPermission = async () => {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.CAMERA,
+      {
+        title: 'Camera Permission',
+        message:
+          'To Scan QR Codes ',
+        buttonNeutral: 'Ask Me Later',
+        buttonNegative: 'Cancel',
+        buttonPositive: 'OK',
+      },
+    );
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      return true
+    } else {
+      return false
+    }
+  } catch (err) {
+    return false
+    console.warn(err);
+  }
+}
 
   componentDidUpdate(prevProps, prevState) {
     console.log("post Checkin");
@@ -43,7 +65,7 @@ class QRReaderScreen extends React.Component {
   }
 
   _requestCameraPermission = async () => {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    const { status } = await this.requestCameraPermission();
     this.setState({
       hasCameraPermission: status === 'granted',
     });
@@ -88,13 +110,7 @@ class QRReaderScreen extends React.Component {
               ? <Text style={{ color: '#fff' }}>
                   Camera permission is not granted
                 </Text>
-              : <BarCodeScanner
-                  onBarCodeRead={this._handleBarCodeRead}
-                  style={{
-                    height: Dimensions.get('window').height,
-                    width: Dimensions.get('window').width,
-                  }}
-                />}
+              : null}
       </View>
     );
   }
