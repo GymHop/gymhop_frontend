@@ -3,7 +3,6 @@ import {
   View, Text, Image, StyleSheet, TouchableOpacity,
   AsyncStorage, Button, ScrollView
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 

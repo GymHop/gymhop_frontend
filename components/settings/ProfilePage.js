@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity, ScrollView, Button } from 'react-n
 import { dateFormatter } from '../../utils/datetime';
 import { styles } from '../../styles/settings';
 
-import { Feather } from '@expo/vector-icons';
+import Feather from 'react-native-vector-icons/Feather';
 import Colors from '../../constants/Colors';
 
 export default function ProfilePage({tier,

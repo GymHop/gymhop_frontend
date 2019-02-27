@@ -1,6 +1,8 @@
 import React from 'react';
-import { Icon } from 'expo';
-import { Feather, Foundation } from '@expo/vector-icons';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+import Foundation from 'react-native-vector-icons/Foundation';
+import Feather from 'react-native-vector-icons/Feather';
 
 
 import Colors from '../constants/Colors';
@@ -29,7 +31,7 @@ export default class TabBarIcon extends React.Component {
         )
       default:
         return (
-          <Icon.Ionicons
+          <Icon
             name={this.props.name}
             size={26}
             style={{ marginBottom: -3 }}
