@@ -65,7 +65,7 @@
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_media.xml.flat",
-        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\4bddf871844db300df8bc2136b5440e3\\res\\layout\\notification_template_media.xml"
+        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\7980e1d4c6c65617e75555409deede0b\\res\\layout\\notification_template_media.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_amu_bubble_shadow.9.png.flat",
@@ -126,6 +126,10 @@
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
         "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\053dc8cce927fbd982b030bce093a07f\\res\\drawable-mdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_surface_view.xml.flat",
+        "source": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\node_modules\\react-native-camera\\android\\build\\intermediates\\packaged_res\\debug\\layout\\surface_view.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
@@ -385,7 +389,7 @@
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_media_action.xml.flat",
-        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\4bddf871844db300df8bc2136b5440e3\\res\\layout\\notification_media_action.xml"
+        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\7980e1d4c6c65617e75555409deede0b\\res\\layout\\notification_media_action.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
@@ -557,7 +561,7 @@
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_media_cancel_action.xml.flat",
-        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\4bddf871844db300df8bc2136b5440e3\\res\\layout\\notification_media_cancel_action.xml"
+        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\7980e1d4c6c65617e75555409deede0b\\res\\layout\\notification_media_cancel_action.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -1065,7 +1069,7 @@
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_narrow_custom.xml.flat",
-        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\4bddf871844db300df8bc2136b5440e3\\res\\layout\\notification_template_big_media_narrow_custom.xml"
+        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\7980e1d4c6c65617e75555409deede0b\\res\\layout\\notification_template_big_media_narrow_custom.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_redbox_top_border_background.xml.flat",
@@ -1089,7 +1093,7 @@
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_lines_media.xml.flat",
-        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\4bddf871844db300df8bc2136b5440e3\\res\\layout\\notification_template_lines_media.xml"
+        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\7980e1d4c6c65617e75555409deede0b\\res\\layout\\notification_template_lines_media.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -1130,6 +1134,10 @@
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_disabled.xml.flat",
         "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\3247570af75b25b9ca25ec82d959461f\\res\\drawable\\common_google_signin_btn_icon_disabled.xml"
+    },
+    {
+        "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout-v14_texture_view.xml.flat",
+        "source": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\node_modules\\react-native-camera\\android\\build\\intermediates\\packaged_res\\debug\\layout-v14\\texture_view.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_text_light.xml.flat",
@@ -1193,7 +1201,7 @@
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_narrow.xml.flat",
-        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\4bddf871844db300df8bc2136b5440e3\\res\\layout\\notification_template_big_media_narrow.xml"
+        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\7980e1d4c6c65617e75555409deede0b\\res\\layout\\notification_template_big_media_narrow.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_fps_view.xml.flat",
@@ -1245,7 +1253,7 @@
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_media_custom.xml.flat",
-        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\4bddf871844db300df8bc2136b5440e3\\res\\layout\\notification_template_media_custom.xml"
+        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\7980e1d4c6c65617e75555409deede0b\\res\\layout\\notification_template_media_custom.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -1321,7 +1329,7 @@
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media.xml.flat",
-        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\4bddf871844db300df8bc2136b5440e3\\res\\layout\\notification_template_big_media.xml"
+        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\7980e1d4c6c65617e75555409deede0b\\res\\layout\\notification_template_big_media.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_icon_group.xml.flat",
@@ -1861,7 +1869,7 @@
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_custom.xml.flat",
-        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\4bddf871844db300df8bc2136b5440e3\\res\\layout\\notification_template_big_media_custom.xml"
+        "source": "C:\\Users\\David\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-28.0.0.aar\\7980e1d4c6c65617e75555409deede0b\\res\\layout\\notification_template_big_media_custom.xml"
     },
     {
         "merged": "C:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",

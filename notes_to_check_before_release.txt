@@ -7,3 +7,14 @@ backend:
 Post export
   Google maps  https://github.com/react-native-community/react-native-maps/blob/master/docs/installation.md
   react native photo gallery viewer
+
+
+Keyboard avoiding view on all user inputs is a must
+
+
+List of todo for tomorrow (in order of priority):
+  gym qr code algo. hash lat long + gym.id
+  Rory change gym name backend
+  replacing all icons
+  gif video of woring app
+  backend for location sorting of gyms
