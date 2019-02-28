@@ -16,7 +16,6 @@ export default class GymTile extends Component {
   }
   render() {
     let {gym} = this.props;
-    console.log(gym.price);
 
     let dollarSigns;
     switch (gym.price) {

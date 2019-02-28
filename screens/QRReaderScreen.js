@@ -54,8 +54,6 @@ class QRReaderScreen extends React.Component {
 }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("post Checkin");
-    console.log(this.props);
     if ((Object.keys(this.props.checkin).length > 0 || Object.keys(this.props.errors).length > 0) && this.scanned) {
       this.props.navigation.push("PostCheckIn", {resetScanned: () => {this.setState({lastScannedUrl:null, lastScanTime:null})}});
       this.scanned = false;
@@ -101,7 +99,6 @@ class QRReaderScreen extends React.Component {
     }
 
   render() {
-    console.log(this.state);
     return (
       <View style={styles.container}>
         {this.state.hasCameraPermission === null

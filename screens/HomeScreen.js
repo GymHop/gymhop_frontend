@@ -19,6 +19,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 
 import GymTile from '../components/gyms/GymTile';
 import GymDetail from '../components/gyms/GymDetail';
+import GymMap from '../components/gyms/Map';
 
 import * as ActionCreators from '../actions/gymActions';
 
@@ -34,25 +35,19 @@ class HomeScreen extends React.Component {
     this.state = {
       activeSections: []
     }
-    this._renderSectionTitle = this._renderSectionTitle.bind(this);
     this._renderHeader = this._renderHeader.bind(this);
     this._renderContent = this._renderContent.bind(this);
     this._updateSections = this._updateSections.bind(this);
+    this.getGymIdxFromActiveSections = this.getGymIdxFromActiveSections.bind(this);
   }
+
   componentDidMount() {
     if (this.props.gyms.length === 0) {
       this.props.Actions.getGyms(this.props.token);
     }
   }
 
-  _renderSectionTitle(section, index, isActive, sections) {
-    // unexapanded
-    return (
-      <View>
-        <Text>_renderSectionTitle</Text>
-      </View>
-    )
-  }
+
   _renderHeader(section, index, isActive, sections) {
     // header of expanded section
     return (
@@ -69,6 +64,16 @@ class HomeScreen extends React.Component {
     this.setState({activeSections})
   }
 
+  getGymIdxFromActiveSections() {
+    //this works only because
+    //because Accordion can only have one section open at a time
+    // if you want multiple sections open this will break the map
+    if (this.state.activeSections.length == 0) {
+      return null;
+    }
+    return this.state.activeSections[0]
+  }
+
   render() {
 
     if (this.props.pending) {
@@ -78,6 +83,7 @@ class HomeScreen extends React.Component {
         </View>
       )
     }
+
 
     return (
       <View style={styles.container}>
@@ -90,7 +96,9 @@ class HomeScreen extends React.Component {
         </View>
         <ScrollView style={styles.contentContainer}>
           <View style={styles.mapsContainer}>
-            <Text>Placeholder for google maps</Text>
+            <GymMap gyms={this.props.gyms}
+                    selectedGymIdx={this.getGymIdxFromActiveSections()}
+            />
           </View>
           <View style={styles.accordianContainer}>
             <Accordion
@@ -141,9 +149,9 @@ const styles = StyleSheet.create({
 
     },
       mapsContainer: {
+        flex: 1,
         height: ( Layout.window.height - StatusBar.currentHeight)* .35,
-        borderWidth: 1,
-        borderColor: "red"
+        width: (Layout.window.width),
       },
       accordianContainer: {
         height: ( Layout.window.height - StatusBar.currentHeight)* .65,

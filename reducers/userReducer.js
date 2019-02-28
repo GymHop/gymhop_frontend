@@ -56,7 +56,6 @@ export default function userReducer(state={
       }
     case GET_USER_DETAILS_SUCCESS:
       console.log("got user details");
-      console.log(action.payload);
       return {
         ...state,
         userDetailsPending:false,
