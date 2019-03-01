@@ -4,6 +4,7 @@ import { View, Text, Image, StyleSheet, BackHandler } from 'react-native';
 import { connect } from 'react-redux';
 
 import { dateFormatter } from '../utils/datetime';
+import Layout from '../constants/Layout';
 
 class PostCheckIn extends React.Component {
 
@@ -165,11 +166,11 @@ const styles = StyleSheet.create({
       fontWeight: "bold"
     },
     checkmarkContainer: {
-      paddingTop: 100
+      paddingTop: 30
     },
       checkmark: {
-        width: 255,
-        height: 124,
+        width: Layout.window.height*2/9,
+        height: Layout.window.height/9,
       },
 
   whiteText: {

@@ -43,7 +43,21 @@ class HomeScreen extends React.Component {
 
   componentDidMount() {
     if (this.props.gyms.length === 0) {
-      this.props.Actions.getGyms(this.props.token);
+      navigator.geolocation.getCurrentPosition((pos) => {
+        var crd = pos.coords;
+        let coords = {
+          latitude: crd.latitude,
+          longitude: crd.longitude
+        }
+          // get location aware list of gyms
+          this.props.Actions.getGyms(this.props.token, coords);
+        },
+        (err) => {
+          // error getting location, just get all gyms
+          this.props.Actions.getGyms(this.props.token);
+        }
+
+      );
     }
   }
 

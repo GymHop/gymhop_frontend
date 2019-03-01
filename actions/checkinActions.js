@@ -24,10 +24,10 @@ export function checkinUserSuccess(results) {
   }
 }
 
-export function checkinUser(token, gymAndUserInfo) {
+export function checkinUser(token, codeAndUserInfo) {
   return (dispatch) => {
     dispatch(checkinUserPending());
-    CheckinAPI.checkin(token, gymAndUserInfo).then((results) => {
+    CheckinAPI.checkin(token, codeAndUserInfo).then((results) => {
       dispatch(checkinUserSuccess(results))
     }).catch((error) => {
       console.log("error checking in a user");

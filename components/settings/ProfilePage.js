@@ -6,6 +6,7 @@ import { styles } from '../../styles/settings';
 
 import Feather from 'react-native-vector-icons/Feather';
 import Colors from '../../constants/Colors';
+import Layout from '../../constants/Layout';
 
 export default function ProfilePage({tier,
                       profilePic,
@@ -36,15 +37,14 @@ export default function ProfilePage({tier,
 
     billingEndDate = dateFormatter(d, "date-time")
     let bday = birthday ? dateFormatter(birthday, "date") : "";
-    console.log(updatePending);
-    console.log(bday);
 
+    let profileHeight = Layout.window.height/9
 
     return (
       <View style={styles.profileContainer}>
         <View style={styles.profilePicContainer}>
           <Image source={{uri: profilePic}}
-          style={[styles.profilePic, {width: 150, height: 150}]}
+          style={[styles.profilePic, {width: profileHeight, height: profileHeight }]}
           />
           <TouchableOpacity onPress={toggleEditing} style={styles.profileIconContainer} >
             <Feather name="edit-2" size={32} color={Colors.tintColor} />

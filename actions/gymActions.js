@@ -26,10 +26,10 @@ export function getGymFailure(error) {
   }
 }
 
-export function getGyms(token) {
+export function getGyms(token, coords={}) {
   return (dispatch) => {
     dispatch(getGymPending());
-    GymAPI.getGyms(token).then((results) => {
+    GymAPI.getGyms(token, coords).then((results) => {
       dispatch(getGymSuccess(results));
     }).catch((error) => {
       console.log("Error getting gyms");

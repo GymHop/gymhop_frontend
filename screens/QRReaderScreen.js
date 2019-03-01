@@ -59,7 +59,10 @@ class QRReaderScreen extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if ((Object.keys(this.props.checkin).length > 0 || Object.keys(this.props.errors).length > 0) && this.scanned) {
-      this.props.navigation.push("PostCheckIn", {resetScanned: () => {this.setState({lastScannedUrl:null, lastScanTime:null})}});
+      this.props.navigation.push("PostCheckIn", {resetScanned: () => {
+        this.setState({lastScannedUrl:null, lastScanTime:null});
+        this.scanner.reactivate();
+      }});
       this.scanned = false;
       // pass back navigation works but then scanning again is blocked.
       // i believe it is because my passed resetScan fn is not being called even though it is explicitly called
@@ -88,12 +91,12 @@ class QRReaderScreen extends React.Component {
           fontSize: "18"
         });
         console.log("SCANNED!");
-        let split = result.data.split("_")
+        console.log(result.data);
+
         var data = {
-          gym: split[0]
+          code: result.data
         }
         console.log("sending below to server");
-        console.log(data);
         this.props.Actions.checkinUser(this.props.token, data);
         this.scanned = true;
         }
@@ -106,16 +109,8 @@ class QRReaderScreen extends React.Component {
     return (
       <QRCodeScanner
                 onRead={this._handleBarCodeRead}
-                topContent={
-                  <Text style={styles.centerText}>
-                    Go to <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text> on your computer and scan the QR code.
-                  </Text>
-                }
-                bottomContent={
-                  <TouchableOpacity style={styles.buttonTouchable}>
-                    <Text style={styles.buttonText}>OK. Got it!</Text>
-                  </TouchableOpacity>
-                }
+                showMarker={true}
+                ref={(node) => { this.scanner = node }}
         />
     );
   }
