@@ -7,7 +7,8 @@ export function getGyms(token, coords={}) {
     lat: coords.latitude || "",
     lng: coords.longitude || ""
   }
-  return axios.get(domain+"/api/v1/gyms",
+  console.log(token);
+  return axios.get(domain+"/api/v1/gyms/",
             {
               params: latLng,
               headers: {"Authorization": "Token " + token}

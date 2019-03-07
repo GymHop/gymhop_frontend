@@ -164,11 +164,11 @@ const styles = StyleSheet.create({
     },
       mapsContainer: {
         flex: 1,
-        height: ( Layout.window.height - StatusBar.currentHeight)* .35,
+        height: ( Layout.noStatusBarHeight)* .35,
         width: (Layout.window.width),
       },
       accordianContainer: {
-        height: ( Layout.window.height - StatusBar.currentHeight)* .65,
+        height: ( Layout.noStatusBarHeight)* .65,
         width: Layout.window.width,
         marginBottom: 60,
       }
