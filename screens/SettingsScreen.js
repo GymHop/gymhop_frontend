@@ -3,6 +3,7 @@ import {
   View, Text, Image, StyleSheet, TouchableOpacity,
   AsyncStorage, Button, ScrollView
 } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -44,12 +45,12 @@ class SettingsScreen extends React.Component {
   render() {
 
       return this.state.editing ?
-        <ProfileEdit { ...this.props }
-                      toggleEditing={this.toggleEditing}/>
+        (<ProfileEdit { ...this.props }
+                      toggleEditing={this.toggleEditing}/>)
         :
-        <ProfilePage {...this.props}
+        (<ProfilePage {...this.props}
                      logout={this.logout}
-                     toggleEditing={this.toggleEditing} />;
+                     toggleEditing={this.toggleEditing} />)
     }
 }
 function mapStateToProps(state) {

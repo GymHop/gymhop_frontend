@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
 import AppNavigator from './navigation/AppNavigator';
-
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
@@ -20,11 +20,11 @@ export default class App extends React.Component {
   render() {
       return (
         <Provider store={store} >
-          <View style={styles.container}>
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <SafeAreaView style={styles.container}>
+            {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
             <AppNavigator />
             <FlashMessage position="top" />
-          </View>
+          </SafeAreaView>
         </Provider>
       );
 
@@ -35,6 +35,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
   },
 });

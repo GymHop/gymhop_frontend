@@ -2,6 +2,8 @@ import React from 'react';
 import { ScrollView, StyleSheet, View, Text,
          LayoutAnimation, Dimensions, TouchableOpacity,
          Vibration, PermissionsAndroid } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
 
@@ -14,7 +16,7 @@ import { showMessage, hideMessage } from "react-native-flash-message";
 
 class QRReaderScreen extends React.Component {
   static navigationOptions = {
-    title: 'QR Reader',
+    header: null,
   };
 
   constructor(props){
@@ -107,11 +109,11 @@ class QRReaderScreen extends React.Component {
 
   render() {
     return (
-      <QRCodeScanner
-                onRead={this._handleBarCodeRead}
-                showMarker={true}
-                ref={(node) => { this.scanner = node }}
-        />
+        <QRCodeScanner
+                  onRead={this._handleBarCodeRead}
+                  showMarker={true}
+                  ref={(node) => { this.scanner = node }}
+          />
     );
   }
 }

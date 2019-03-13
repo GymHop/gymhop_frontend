@@ -19,12 +19,14 @@ export const styles = StyleSheet.create({
     gymPhotoContainer: {
       width: "23%",
       padding: 3,
-      marginRight: 8
+      marginRight: 8,
+
     },
       gymLeadPhoto: {
-        height: "80%",
-        borderRadius: 100,
-        width: "100%"
+        width: 85,
+        height: 85,
+        borderRadius: 85 / 2,
+        overflow: "hidden",
       },
     textContainer: {
       width: (Layout.window.width - 16) * 3 / 5,
