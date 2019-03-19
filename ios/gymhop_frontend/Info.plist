@@ -30,6 +30,12 @@
   <string>Used to Read bar codes</string>
   <key>NSLocationWhenInUseUsageDescription</key>
   <string>Used to find the gyms closest to the user</string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>Used to find the gyms closest to the user</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>Used to find the gyms closest to the user</string>
+  
+  
   <key>NSPhotoLibraryAddUsageDescription</key>
   <string>Used for profile picture</string>
   <key>NSPhotoLibraryUsageDescription</key>
@@ -40,8 +46,12 @@
   <string>Not used but used by react native</string>
   <key>NSMotionUsageDescription</key>
   <string>Not used but used by react native</string>
+  
   <key>NSMicrophoneUsageDescription</key>
-  <string>Not used but used by react native</string>
+  <string>Included in the qr code scanner component. Microphone data not used in any way</string>
+  <key>NSLocationUsageDescription</key>
+  <string>Used to find the gyms closest to the user.</string>
+  
   <key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>

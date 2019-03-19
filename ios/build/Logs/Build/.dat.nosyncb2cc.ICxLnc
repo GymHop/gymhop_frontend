@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>9</integer>
+	<key>logs</key>
+	<dict>
+		<key>E83DCF53-6D7C-45CD-9F09-1431B2B79787</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E83DCF53-6D7C-45CD-9F09-1431B2B79787.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>W</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>gymhop_frontend project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>gymhop_frontend</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project gymhop_frontend with scheme gymhop_frontend and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>574656013.29251599</real>
+			<key>timeStoppedRecording</key>
+			<real>574656024.61236799</real>
+			<key>title</key>
+			<string>Building project gymhop_frontend with scheme gymhop_frontend and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>E83DCF53-6D7C-45CD-9F09-1431B2B79787</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
