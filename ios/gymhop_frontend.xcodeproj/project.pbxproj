@@ -1585,7 +1585,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.react.example.gymhop-frontend3132019";
+				PRODUCT_BUNDLE_IDENTIFIER = "us.gymhop.gymhop-frontend3132019";
 				PRODUCT_NAME = gymhop_frontend;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1616,7 +1616,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.react.example.gymhop-frontend3132019";
+				PRODUCT_BUNDLE_IDENTIFIER = "us.gymhop.gymhop-frontend3132019";
 				PRODUCT_NAME = gymhop_frontend;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";

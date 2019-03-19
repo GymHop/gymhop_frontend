@@ -1,19 +1,20 @@
 import { StyleSheet } from 'react-native';
+import Layout from '../constants/Layout';
 
 export const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#000000',
     height: '100%'
   },
   headLogo: {
-    marginTop: '10%',
+    marginTop: 0,
     backgroundColor: '#000000',
-    width: '50%',
-    marginBottom: '-20%'
-
+    width: Layout.window.width / 3,
+    height: Layout.window.width / 2,
   },
   registerInput: {
     height: 40,
@@ -26,6 +27,10 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     textAlign: 'center'
 },
+registerBirthdayPicker: {
+  height: 240,
+  color: "#ffffff"
+},
 registerButton: {
   height: 40,
   backgroundColor: '#8f8f8f',
@@ -33,6 +38,7 @@ registerButton: {
   justifyContent: 'center',
   alignItems: 'center',
   borderRadius: 20,
+  marginBottom: 4
 },
 registerText: {
   fontSize: 20,
@@ -42,7 +48,7 @@ loginButton: {
   backgroundColor: '#000000',
 },
 loginText: {
-  marginTop: '5%',
+  marginTop: 2,
   fontSize: 14,
   color: '#8f8f8f',
 },

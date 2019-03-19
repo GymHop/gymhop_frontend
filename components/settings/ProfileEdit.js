@@ -66,6 +66,7 @@ class ProfileEdit extends Component {
         <View style={[styles.birthdayContainer]}>
           <Text>Your Birthday</Text>
           <BirthdayPicker
+            lightmode={false}
             styles={[styles.birthdayInput]}
             selectedYear={year}
             selectedMonth={month}

@@ -8,6 +8,42 @@
 		<data>
 		TneGhDkoD7Q01Gl8e5EScUBsgfM=
 		</data>
+		<key>AppIcon20x20@2x.png</key>
+		<data>
+		gikhxV3p1aWz265P7SWXxWTZbnk=
+		</data>
+		<key>AppIcon20x20@3x.png</key>
+		<data>
+		L3B5oNIWocscchOTrIq95SZ+MSQ=
+		</data>
+		<key>AppIcon29x29@2x.png</key>
+		<data>
+		09Tz0H/h/DEXX7V6tCJyKGIzRiM=
+		</data>
+		<key>AppIcon29x29@3x.png</key>
+		<data>
+		DktFtluPQhk7Ksz3Bh1Vku4H56c=
+		</data>
+		<key>AppIcon40x40@2x.png</key>
+		<data>
+		bqErP8gtwnqRQGT58dYLHvIx08I=
+		</data>
+		<key>AppIcon40x40@3x.png</key>
+		<data>
+		51s14Wc7qws75Oz5PyFGH1k8hZ4=
+		</data>
+		<key>AppIcon60x60@2x.png</key>
+		<data>
+		51s14Wc7qws75Oz5PyFGH1k8hZ4=
+		</data>
+		<key>AppIcon60x60@3x.png</key>
+		<data>
+		QG9U7yP7qaHBcRQj2fDz4c4JviY=
+		</data>
+		<key>Assets.car</key>
+		<data>
+		cd4iuIqvGLiD0eDnkWr9TVJUCLg=
+		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
 		Gy0k+uSlCY8+vfJqM7OOzJiN7WU=
@@ -75,7 +111,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		WrgfkGK4vuk/aIv0f1/Jl3LZRtA=
+		XDxxN+YO2ZLyWTE3klAMW+9+AlM=
 		</data>
 		<key>Ionicons.ttf</key>
 		<data>
@@ -103,7 +139,7 @@
 		</data>
 		<key>PlugIns/gymhop_frontendTests.xctest.dSYM/Contents/Resources/DWARF/gymhop_frontendTests</key>
 		<data>
-		vRrs09zYGMKgivMlvnuoxKE3IQI=
+		i6Bzi6lmpyGrZOOD8PTNj7qqC7M=
 		</data>
 		<key>PlugIns/gymhop_frontendTests.xctest/Info.plist</key>
 		<data>
@@ -115,7 +151,7 @@
 		</data>
 		<key>PlugIns/gymhop_frontendTests.xctest/gymhop_frontendTests</key>
 		<data>
-		2mSYoHmMramQUAR7KIt2nez3QAc=
+		Ok5Qtw6+VC2KIbFLyCWGqqYBIkQ=
 		</data>
 		<key>SimpleLineIcons.ttf</key>
 		<data>
@@ -137,6 +173,105 @@
 			<key>hash2</key>
 			<data>
 			eVXKFBJ7MEEsEU6xPP1wK12rJl/rGIDRaV1zyqgkzeE=
+			</data>
+		</dict>
+		<key>AppIcon20x20@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			gikhxV3p1aWz265P7SWXxWTZbnk=
+			</data>
+			<key>hash2</key>
+			<data>
+			lmn2YXrOabK0A61tx69BfjPIfgC9ZiH6P2kd0kjsU6U=
+			</data>
+		</dict>
+		<key>AppIcon20x20@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			L3B5oNIWocscchOTrIq95SZ+MSQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			P26Q2HRq0g4J95wCaE9HQ4do5wToqzJGnF1+e6stOzg=
+			</data>
+		</dict>
+		<key>AppIcon29x29@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			09Tz0H/h/DEXX7V6tCJyKGIzRiM=
+			</data>
+			<key>hash2</key>
+			<data>
+			Y1XpcFjTZBpEAuLhroGoeISCcPYvAB27bSh9kWZg5Is=
+			</data>
+		</dict>
+		<key>AppIcon29x29@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			DktFtluPQhk7Ksz3Bh1Vku4H56c=
+			</data>
+			<key>hash2</key>
+			<data>
+			lWzp9Z+LHXphKTj+TrjbrYrIb23WVE5Hfg+Tjxt8YGU=
+			</data>
+		</dict>
+		<key>AppIcon40x40@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bqErP8gtwnqRQGT58dYLHvIx08I=
+			</data>
+			<key>hash2</key>
+			<data>
+			3WldOESm2zcdSeZdi+KGKS4bXPJENmaiXa7K2djG1ns=
+			</data>
+		</dict>
+		<key>AppIcon40x40@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			51s14Wc7qws75Oz5PyFGH1k8hZ4=
+			</data>
+			<key>hash2</key>
+			<data>
+			HIoS9yObxyIRMBNAEjdnCnGYgGQR+qJUf7gRJHkEPzA=
+			</data>
+		</dict>
+		<key>AppIcon60x60@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			51s14Wc7qws75Oz5PyFGH1k8hZ4=
+			</data>
+			<key>hash2</key>
+			<data>
+			HIoS9yObxyIRMBNAEjdnCnGYgGQR+qJUf7gRJHkEPzA=
+			</data>
+		</dict>
+		<key>AppIcon60x60@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QG9U7yP7qaHBcRQj2fDz4c4JviY=
+			</data>
+			<key>hash2</key>
+			<data>
+			+2KcOXtWRMdl9yxKdTU6oA6drbFdmmFveQ8blztrnYk=
+			</data>
+		</dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cd4iuIqvGLiD0eDnkWr9TVJUCLg=
+			</data>
+			<key>hash2</key>
+			<data>
+			fpuvQoary47pZgG0xG8uGwHheCbwCgCiqfj4gVZXXnk=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
@@ -365,11 +500,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vRrs09zYGMKgivMlvnuoxKE3IQI=
+			i6Bzi6lmpyGrZOOD8PTNj7qqC7M=
 			</data>
 			<key>hash2</key>
 			<data>
-			wdVLKyIpazZXiG47lmULXoyjCU+kj67Vk8Gt41bEFCQ=
+			1FpwQ9Pg2RmfZFb3gg+pXGuzkfR4KjD8Fu0Yf1sGcV4=
 			</data>
 		</dict>
 		<key>PlugIns/gymhop_frontendTests.xctest/Info.plist</key>
@@ -398,11 +533,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2mSYoHmMramQUAR7KIt2nez3QAc=
+			Ok5Qtw6+VC2KIbFLyCWGqqYBIkQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			z59YfPCOJJDB0sGh5i0M4LcuH0gcRL4rsDuInoS3/Pw=
+			GiTnoBjpbnY/n3u84A49Qrru2Cs1E6PC0hjtHfoYpyU=
 			</data>
 		</dict>
 		<key>SimpleLineIcons.ttf</key>

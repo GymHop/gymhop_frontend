@@ -96,11 +96,12 @@ class RegisterPart2 extends React.Component {
         onChangeText={(text) => this.setState({phone: text})}
       />
       {/*<PhotoUploadForm onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>*/}
-      <Text style={{color:"white"}}>Photo upload to be done after project ejection</Text>
+      {/*<Text style={{color:"white"}}>Photo upload to be done after project ejection</Text>*/}
       <Text style={[styles.whiteText, {marginTop: 10}]}>Enter your birthday</Text>
-      <View style={{borderRadius: 10, borderWidth: 1, borderColor: '#bdc3c7', overflow: 'hidden', marginBottom:22}}>
+      <View style={{marginBottom:22}}>
         <BirthdayPicker
-          styles={[styles.registerInput]}
+          styles={[styles.registerInput, styles.registerBirthdayPicker]}
+          lightmode
           selectedYear={year}
           selectedMonth={month}
           selectedDay={day}
