@@ -7,7 +7,7 @@
     "axios": "^0.18.0",
     "babel-preset-react-native": "^5.0.2",
     "react": "^16.8.3",
-    "react-native": "^0.58.5",
+    "react-native": "^0.58.6",
     "react-native-camera": "^1.12.0",
     "react-native-collapsible": "^1.4.0",
     "react-native-flash-message": "^0.1.10",
@@ -25,7 +25,8 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "thunk": "^0.0.1"
+    "thunk": "^0.0.1",
+    "yarn": "^1.13.0"
   },
   "devDependencies": {
     "metro-react-native-babel-preset": "^0.52.0"

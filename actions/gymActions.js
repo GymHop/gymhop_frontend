@@ -33,6 +33,7 @@ export function getGyms(token, coords={}) {
       dispatch(getGymSuccess(results));
     }).catch((error) => {
       console.log("Error getting gyms");
+      console.log(error.response);
       dispatch(getGymFailure(error))
     })
   }

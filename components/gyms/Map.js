@@ -91,6 +91,7 @@ export default class GymMap extends Component {
 const styles = StyleSheet.create({
   map: {
     flex: 1,
-    height: ( Layout.window.height - StatusBar.currentHeight)* .35,
-    width: (Layout.window.width),}
+    height:  ( Layout.noStatusBarHeight)* .35,
+    width: (Layout.window.width)
+  }
 })

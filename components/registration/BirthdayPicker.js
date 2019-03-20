@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { StyleSheet, View, Picker, } from 'react-native';
+import { StyleSheet, View, Picker} from 'react-native';
 
 export default class BirthdayPicker extends React.Component {
   static defaultProps= {
@@ -8,6 +8,7 @@ export default class BirthdayPicker extends React.Component {
     selectedMonth:  (new Date()).getMonth(),
     selectedDay:    (new Date()).getDate(),
     yearsBack:      100,
+    lightmode:      false,
 
     onYearValueChange: function(year, idx) { },
     onMonthValueChange: function(month, idx) { },
@@ -56,7 +57,7 @@ export default class BirthdayPicker extends React.Component {
     return (year == 0 && month == 1) ? 29 : (new Date(year, month + 1, 0).getDate());
   }
 
-  renderYearPickerItems() {
+  renderYearPickerItems = () => {
 
     var currentYear = (new Date()).getFullYear();
     var centerYear = this.startingYear;
@@ -66,27 +67,33 @@ export default class BirthdayPicker extends React.Component {
     var endYear = currentYear;
 
     var years = [];
+    let lightmode = this.props.lightmode;
     for (var i = startYear; i <= endYear; i++) {
-      years.push(<Picker.Item label={i.toString()} value={i} key={i} />);
+      years.push(<Picker.Item itemStyle={[lightmode ? styles.lightmode : {}]}
+        label={i.toString()} value={i} key={i} />);
     }
-    years.push(<Picker.Item label="----" value={0} key={0} />);
+    years.push(<Picker.Item itemStyle={[lightmode ? styles.lightmode : {}]}
+      label="----" value={0} key={0} />);
     return years;
   }
 
-  renderMonthPickerItems() {
+  renderMonthPickerItems = () => {
     var months = this.getMonthNames();
     return months.map(function(month, index) {
-      return <Picker.Item label={month} value={index} key={index} />;
-    });
+      return <Picker.Item itemStyle={[this.props.lightmode ? styles.lightmode : {}]}
+      label={month} value={index} key={index} />;
+    }.bind(this));
   }
 
-  renderDayPickerItems() {
+  renderDayPickerItems = () => {
 
     var numDays = this.getNumDaysInMonth(this.state.year, this.state.month);
 
     var days = [];
+    let lightmode = this.props.lightmode;
     for (var i = 1; i <= numDays; i++) {
-        days.push(<Picker.Item label={i.toString()} value={i} key={i} />);
+        days.push(<Picker.Item itemStyle={[lightmode ? styles.lightmode : {}]}
+          label={i.toString()} value={i} key={i} />);
     }
     return days;
   }
@@ -117,15 +124,15 @@ export default class BirthdayPicker extends React.Component {
   render() {
     return (
       <View style={[styles.container, ...this.props.styles]}>
-        <Picker style={[styles.monthPicker, styles.light]} selectedValue={this.state.month} onValueChange={this.onMonthChange}>
+        <Picker style={[styles.monthPicker]} selectedValue={this.state.month} onValueChange={this.onMonthChange}>
           {this.renderMonthPickerItems()}
         </Picker>
 
-        <Picker style={[styles.dayPicker, styles.light]} selectedValue={this.state.day} onValueChange={this.onDayChange}>
+        <Picker style={[styles.dayPicker]} selectedValue={this.state.day} onValueChange={this.onDayChange}>
           {this.renderDayPickerItems()}
         </Picker>
 
-        <Picker style={[styles.yearPicker, styles.light]} selectedValue={this.state.year} onValueChange={this.onYearChange}>
+        <Picker style={[styles.yearPicker]} selectedValue={this.state.year} onValueChange={this.onYearChange}>
           {this.renderYearPickerItems()}
         </Picker>
       </View>
@@ -138,5 +145,5 @@ const styles = StyleSheet.create({
   monthPicker:  { flex: 3, },
   dayPicker:    { flex: 1, },
   yearPicker:   { flex: 2, },
-  light:        { color: "white", backgroundColor: "black"}
+  lightmode:    { color: "white", backgroundColor: "black"}
 });

@@ -10,6 +10,7 @@ import {
   StatusBar,
   Dimensions
 } from 'react-native';
+import {SafeAreaView} from 'react-navigation';
 
 
 import { connect } from 'react-redux';
@@ -143,7 +144,8 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOpacity: 1,
         shadowRadius: 3,
-        zIndex: 999
+        zIndex: 999,
+        height: Layout.noStatusBarHeight * .04
       },
       android: {
         elevation: 30
@@ -156,7 +158,7 @@ const styles = StyleSheet.create({
       brandLogo: {
       backgroundColor: '#000000',
       width: '35%',
-      marginTop: StatusBar.currentHeight,
+      height: Layout.noStatusBarHeight * .03
     },
     contentContainer: {
       flex: 1,
@@ -164,11 +166,11 @@ const styles = StyleSheet.create({
     },
       mapsContainer: {
         flex: 1,
-        height: ( Layout.window.height - StatusBar.currentHeight)* .35,
+        height: ( Layout.noStatusBarHeight)* .35,
         width: (Layout.window.width),
       },
       accordianContainer: {
-        height: ( Layout.window.height - StatusBar.currentHeight)* .65,
+        height: ( Layout.noStatusBarHeight)* .65,
         width: Layout.window.width,
         marginBottom: 60,
       }

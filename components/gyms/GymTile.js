@@ -31,6 +31,8 @@ export default class GymTile extends Component {
       default:
         dollarSigns = ""
     }
+    console.log("lead photo url");
+    console.log(gym.lead_photo);
 
     return (
       <View style={styles.gymTileContainer}>
