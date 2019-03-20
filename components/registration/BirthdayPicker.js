@@ -142,8 +142,8 @@ export default class BirthdayPicker extends React.Component {
 
 const styles = StyleSheet.create({
   container:    { flexDirection: "row", },
-  monthPicker:  { flex: 3, },
-  dayPicker:    { flex: 1, },
-  yearPicker:   { flex: 2, },
+  monthPicker:  { flex: 5, },
+  dayPicker:    { flex: 4, },
+  yearPicker:   { flex: 5, },
   lightmode:    { color: "white", backgroundColor: "black"}
 });

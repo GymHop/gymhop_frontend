@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import Layout from '../constants/Layout';
 
 export const styles = StyleSheet.create({
@@ -23,13 +23,21 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     marginBottom: '3%',
     color: '#000000',
-    width: '75%',
+    width: Layout.window.width * .79,
     borderRadius: 20,
     textAlign: 'center'
 },
 registerBirthdayPicker: {
-  height: 240,
-  color: "#ffffff"
+  height: Platform.OS === "ios" ? 240 : 40,
+  ...Platform.select({
+      android: {
+        marginBottom: 10,
+      },
+    }),
+  color: "#ffffff",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center"
 },
 registerButton: {
   height: 40,

@@ -68,7 +68,7 @@ class HomeScreen extends React.Component {
     return (
       <GymTile key={index} gym={section}/>
     )
-  } 
+  }
   _renderContent(section, index, isActive, sections) {
     // content when expanded
     return <GymDetail gym={section} />
@@ -162,7 +162,6 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
       flex: 1,
-
     },
       mapsContainer: {
         flex: 1,
@@ -172,7 +171,7 @@ const styles = StyleSheet.create({
       accordianContainer: {
         height: ( Layout.noStatusBarHeight)* .65,
         width: Layout.window.width,
-        marginBottom: 60,
+        marginBottom: Layout.window.height / 4
       }
 });
 
