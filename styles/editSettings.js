@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar, Platform } from 'react-native';
 
 export const styles = StyleSheet.create({
 container: {
@@ -20,7 +20,12 @@ container: {
     overflow: 'hidden',
     marginBottom:22},
     birthdayInput: {
-        height: 240,
+        height: Platform.OS === "ios" ? 240 : 40,
+        ...Platform.select({
+            android: {
+              marginBottom: 10,
+            },
+          }),
 
         width: '100%',
 

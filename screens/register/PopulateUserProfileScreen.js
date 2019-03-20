@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text, Image, Platform, 
+import { View, Text, Image, Platform, Keyboard,
   TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -55,6 +55,13 @@ class RegisterPart2 extends React.Component {
     }
   };
 
+  handlePhoneInput = (text) => {
+    if (text.length > 10) {
+      Keyboard.dismiss();
+    }
+    this.setState({phone: text});
+  }
+
   render () {
 
     let year = this.state.birthday.getFullYear();
@@ -87,7 +94,7 @@ class RegisterPart2 extends React.Component {
         inlineImageLeft='phone'
         keyboardType={'phone-pad'}
         placeholderTextColor={'#8f8f8f'}
-        onChangeText={(text) => this.setState({phone: text})}
+        onChangeText={(text) => {this.handlePhoneInput(text)})}
       />
       {/*<PhotoUploadForm onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>*/}
       {/*<Text style={{color:"white"}}>Photo upload to be done after project ejection</Text>*/}
