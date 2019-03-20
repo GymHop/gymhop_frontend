@@ -67,7 +67,7 @@ class HomeScreen extends React.Component {
     return (
       <GymTile key={index} gym={section}/>
     )
-  }
+  } 
   _renderContent(section, index, isActive, sections) {
     // content when expanded
     return <GymDetail gym={section} />

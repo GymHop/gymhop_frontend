@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TextInput, TouchableOpacity, ActivityIndicator, Image, Button
+  View, Text, TextInput, TouchableOpacity, Platform,
+  ActivityIndicator, Image, Button, KeyboardAvoidingView
 } from 'react-native';
+
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -93,39 +95,42 @@ class RegisterScreen extends React.Component {
       }
 
       return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
           <Image
             source={require('../../assets/images/loginheader.png')}
             style={styles.headLogo}
             resizeMode='contain'
         />
         {errors}
-        <TextInput
-          style={styles.registerInput}
-          placeholder={'Enter new user ID'}
-          placeholderTextColor={'#8f8f8f'}
-          onChangeText={(text) => this.setState({username: text})}
-        />
-        <TextInput
-          style={styles.registerInput}
-          placeholder={'Enter new password'}
-          secureTextEntry={true}
-          placeholderTextColor={'#8f8f8f'}
-          onChangeText={(text) => this.setState({password: text})}
-        />
-        <TextInput
-          style={styles.registerInput}
-          placeholder={'Confirm password'}
-          secureTextEntry={true}
-          placeholderTextColor={'#8f8f8f'}
-          onChangeText={(text) => this.setState({passwordConf: text})}
-        />
-        <TextInput
-          style={styles.registerInput}
-          placeholder={'Enter your email address'}
-          placeholderTextColor={'#8f8f8f'}
-          onChangeText={(text) => this.setState({email: text})}
-        />
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.registerInput}
+            placeholder={'Enter new user ID'}
+            placeholderTextColor={'#8f8f8f'}
+            onChangeText={(text) => this.setState({username: text})}
+          />
+          <TextInput
+            style={styles.registerInput}
+            placeholder={'Enter new password'}
+            secureTextEntry={true}
+            placeholderTextColor={'#8f8f8f'}
+            onChangeText={(text) => this.setState({password: text})}
+          />
+          <TextInput
+            style={styles.registerInput}
+            placeholder={'Confirm password'}
+            secureTextEntry={true}
+            placeholderTextColor={'#8f8f8f'}
+            onChangeText={(text) => this.setState({passwordConf: text})}
+          />
+          <TextInput
+            style={styles.registerInput}
+            placeholder={'Enter your email address'}
+            placeholderTextColor={'#8f8f8f'}
+            onChangeText={(text) => this.setState({email: text})}
+          />
+        </View>
+
         <TouchableOpacity style={styles.registerButton} onPress={() => {
           this.validateForm();
          }
@@ -140,7 +145,7 @@ class RegisterScreen extends React.Component {
             <Text style={styles.loginText}>Return to login</Text>
             </TouchableOpacity>
 
-        </View>
+        </KeyboardAvoidingView>
 
       )
   }

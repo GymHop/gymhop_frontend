@@ -1,31 +1,40 @@
 import { StyleSheet } from 'react-native';
+import Layout from '../constants/Layout';
 
 export const styles = StyleSheet.create({
   container: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'space-around',
     backgroundColor: '#000000',
-    height: '100%'
+    height: '100%',
   },
   headLogo: {
-    marginTop: '10%',
+    marginTop: '6%',
     backgroundColor: '#000000',
-    width: '50%',
-    marginBottom: '-20%'
-
+    width: Layout.window.height / 7,
+    height: Layout.window.height / 7
   },
-  registerInput: {
-    height: 40,
-    backgroundColor: '#ffffff',
-    borderColor: 'black',
-    borderWidth: 2,
-    marginBottom: '3%',
-    color: '#000000',
-    width: '75%',
-    borderRadius: 20,
-    textAlign: 'center'
-},
+  inputContainer: {
+    width: Layout.window.width,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+    registerInput: {
+      height: 40,
+      backgroundColor: '#ffffff',
+      borderColor: 'black',
+      borderWidth: 2,
+      marginBottom: '3%',
+      color: '#000000',
+      width: '75%',
+      borderRadius: 20,
+      textAlign: 'center'
+  },
 registerButton: {
   height: 40,
   backgroundColor: '#8f8f8f',

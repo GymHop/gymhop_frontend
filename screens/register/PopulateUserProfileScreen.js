@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, Platform, 
+  TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -38,13 +39,6 @@ class RegisterPart2 extends React.Component {
   registerUser() {
     const baseUser = this.props.navigation.getParam('baseUser', {});
 
-
-    let user = {
-      fn: "dashdjkasd",
-      ln: "eanjkfhaukfds",
-      em: "ahbsujdfklashd" // @gmail.com
-    }
-
     let { birthday, ...restOfState } = this.state
     this.props.Actions.registerUser({
       ...baseUser,
@@ -69,7 +63,7 @@ class RegisterPart2 extends React.Component {
 
     // let selectedYear = this.state.birthday.getFullYear();
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
         <Image
           source={require('../../assets/images/loginheader.png')}
           style={styles.headLogo}
@@ -130,7 +124,7 @@ class RegisterPart2 extends React.Component {
         <Text style={styles.loginText}>Back</Text>
       </TouchableOpacity>
 
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }

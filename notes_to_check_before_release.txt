@@ -13,8 +13,8 @@ Keyboard avoiding view on all user inputs is a must
 
 
 List of todo for tomorrow (in order of priority):
-  gym qr code algo. hash lat long + gym.id
-  Rory change gym name backend
-  replacing all icons
-  gif video of woring app
-  backend for location sorting of gyms
+  gym qr code algo. hash lat long + gym.id || Done
+  Rory change gym name backend ||not done
+  replacing all icons || Done
+  gif video of working app
+  backend for location sorting of gyms || Done
