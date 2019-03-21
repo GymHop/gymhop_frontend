@@ -5,7 +5,6 @@ import { View, Text, Image, Platform, Keyboard, TouchableWithoutFeedback,
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-// import PhotoUploadForm from '../../components/registration/PhotoUploadForm';
 import BirthdayPicker from '../../components/registration/BirthdayPicker';
 import * as ActionCreators from '../../actions/registerActions';
 import { styles } from '../../styles/registration';
@@ -56,10 +55,12 @@ class RegisterPart2 extends React.Component {
   };
 
   handlePhoneInput = (text) => {
-    if (text.length > 9) {
+    if (text.replace(/\D/g,'').length > 9) {
       Keyboard.dismiss();
+      return;
     }
-    this.setState({phone: text});
+
+    this.setState({phone: text.replace(/\D/g,'')});
   }
 
   render () {
@@ -97,8 +98,6 @@ class RegisterPart2 extends React.Component {
           placeholderTextColor={'#8f8f8f'}
           onChangeText={(text) => {this.handlePhoneInput(text)}}
         />
-        {/*<PhotoUploadForm onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>*/}
-        {/*<Text style={{color:"white"}}>Photo upload to be done after project ejection</Text>*/}
         <Text style={[styles.whiteText, {marginTop: 10}]}>Enter your birthday</Text>
         <View style={{marginBottom:22}}>
           <BirthdayPicker

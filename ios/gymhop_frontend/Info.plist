@@ -22,38 +22,39 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>6</string>
-  <key>NSBluetoothPeripheralUsageDescription</key>
-  <string>Not used but used by react native</string>
-  <key>NSCalendarsUsageDescription</key>
-  <string>Not used but used by react native</string>
-  <key>NSCameraUsageDescription</key>
-  <string>Used to Read bar codes</string>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>Used to find the gyms closest to the user</string>
-  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-  <string>Used to find the gyms closest to the user</string>
-  <key>NSLocationAlwaysUsageDescription</key>
-  <string>Used to find the gyms closest to the user</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Not used but used by react native</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Not used but used by react native</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need the camera to read QR codes</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Used to find the gyms closest to the user</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Used to find the gyms closest to the user</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Used for profile picture</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Profile Picture</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Not used but used by react native</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Not used but used by react native</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Not used but used by react native</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Included in the qr code scanner component. Microphone data not used in any way</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Used to find the gyms closest to the user.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used so that the user can upload a profile picture</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allows the User to take a photo of themselves for use in a profile picture</string>
 
-
-  <key>NSPhotoLibraryAddUsageDescription</key>
-  <string>Used for profile picture</string>
-  <key>NSPhotoLibraryUsageDescription</key>
-  <string>Profile Picture</string>
-  <key>NSSpeechRecognitionUsageDescription</key>
-  <string>Not used but used by react native</string>
-  <key>NSAppleMusicUsageDescription</key>
-  <string>Not used but used by react native</string>
-  <key>NSMotionUsageDescription</key>
-  <string>Not used but used by react native</string>
-
-  <key>NSMicrophoneUsageDescription</key>
-  <string>Included in the qr code scanner component. Microphone data not used in any way</string>
-  <key>NSLocationUsageDescription</key>
-  <string>Used to find the gyms closest to the user.</string>
-
-  <key>LSApplicationCategoryType</key>
-	<string></string>
+	<key>LSApplicationCategoryType</key>
+	<string/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -75,10 +76,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>We need the camera to read QR codes</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

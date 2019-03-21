@@ -6,3 +6,6 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.keystore
+android/app/build/*
+android/app/.gradle/*
+android/app/.idea/*

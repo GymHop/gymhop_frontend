@@ -106,14 +106,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   gymhopLogoImageCntainer: {
-    flex: .13,
+    flex: .10,
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: '#000000',
     marginBottom: 7
   },
     headLogo: {
-      width: '92%',
+      width: '60%',
       height: 64
     },
   heading: {

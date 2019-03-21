@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BirthdayPicker from '../registration/BirthdayPicker';
-
-import { View, Text, StyleSheet, ActivityIndicator,
+import PhotoUploadForm from '../registration/PhotoUploadForm';
+import { View, Text, StyleSheet, ActivityIndicator, ScrollView,
          TouchableOpacity, TextInput, Button } from 'react-native'
 import { styles } from '../../styles/editSettings';
 
@@ -15,7 +15,7 @@ class ProfileEdit extends Component {
     let stateBDay = this.props.birthday ? new Date(this.props.birthday) : new Date()
     stateBDay.setHours(12);
     this.state = {
-      // profilePic: this.props.profilePic,
+      profile_pic: this.props.profilePic,
       first_name: this.props.firstName,
       last_name: this.props.lastName,
       birthday: stateBDay, // we set the time to avoid timezones bringing the day back one
@@ -41,12 +41,10 @@ class ProfileEdit extends Component {
     let day = this.state.birthday.getDate();
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
 
         {/* profile photo todo b/c of rn link constraint */}
         <Text>Your Profile Details</Text>
-        <Text>Fully aware this is super bare bones here D:</Text>
-
         <View>
           <TextInput
           style={styles.infoInput}
@@ -62,6 +60,10 @@ class ProfileEdit extends Component {
               value={this.state.last_name}
               placeholder="Last Name"
           />
+        </View>
+        <View style={styles.photoUploadContainer}>
+          <Text>Choose a photo for your profile</Text>
+          <PhotoUploadForm onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>
         </View>
         <View style={[styles.birthdayContainer]}>
           <Text>Your Birthday</Text>
@@ -108,7 +110,7 @@ class ProfileEdit extends Component {
         }
 
 
-      </View>
+      </ScrollView>
     )
   }
 

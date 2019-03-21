@@ -1,30 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import PhotoUpload from 'react-native-photo-upload';
 
+export default class PhotoUploadForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      src: this.props.profile_pic ? this.props.profile_pic : 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
+    }
+  }
 
-const PhotoUploadForm = ({onPhotoSelected}) => {
-  return (
-    <PhotoUpload
-          onPhotoSelect={avatar => {
-            if (avatar) {
-              this.onPhotoSelected(avatar)
-            }
-          }}
-         >
-          <Image
-            style={{
-              paddingVertical: 0,
-              width: 150,
-              height: 150,
-              borderRadius: 75
+  render() {
+
+    return (
+      <PhotoUpload
+            onPhotoSelect={avatar => {
+              if (avatar) {
+                this.props.onPhotoSelected(avatar);
+                this.setState({src: `data:image/gif;base64,${avatar}`})
+              }
             }}
-            source={{
-              uri: 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
-            }}
-          />
-         </PhotoUpload>
-  )
+           >
+            <Image
+              style={{
+                paddingVertical: 0,
+                width: 150,
+                height: 150,
+                borderRadius: 75
+              }}
+              source={{
+                uri: this.state.src
+              }}
+            />
+           </PhotoUpload>
+    )
+  }
 }
-export default PhotoUploadForm
