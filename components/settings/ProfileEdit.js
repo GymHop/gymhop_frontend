@@ -3,6 +3,8 @@ import BirthdayPicker from '../registration/BirthdayPicker';
 import PhotoUploadForm from '../registration/PhotoUploadForm';
 import { View, Text, StyleSheet, ActivityIndicator, ScrollView,
          TouchableOpacity, TextInput, Button } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 import { styles } from '../../styles/editSettings';
 
 class ProfileEdit extends Component {
@@ -41,7 +43,7 @@ class ProfileEdit extends Component {
     let day = this.state.birthday.getDate();
 
     return (
-      <ScrollView style={styles.container}>
+      <KeyboardAwareScrollView style={styles.container}>
 
         {/* profile photo todo b/c of rn link constraint */}
         <Text>Your Profile Details</Text>
@@ -110,7 +112,7 @@ class ProfileEdit extends Component {
         }
 
 
-      </ScrollView>
+      </KeyboardAwareScrollView>
     )
   }
 

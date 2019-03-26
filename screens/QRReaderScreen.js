@@ -111,7 +111,6 @@ class QRReaderScreen extends React.Component {
     return (
         <QRCodeScanner
                   onRead={this._handleBarCodeRead}
-                  showMarker={true}
                   ref={(node) => { this.scanner = node }}
                   cameraProps={{captureAudio: false}}
           />

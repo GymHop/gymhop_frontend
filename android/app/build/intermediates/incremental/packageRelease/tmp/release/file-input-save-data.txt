@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Mar 20 19:41:58 EDT 2019
+#Wed Mar 20 22:27:39 EDT 2019
 64.base=C\:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\transforms\\mergeJniLibs\\release\\0
 64.baseType=DIRECTORY
 33.base=C\:\\Users\\David\\Documents\\gymhop\\gymhop_frontend\\android\\app\\build\\intermediates\\transforms\\mergeJniLibs\\release\\0
