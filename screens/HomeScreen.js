@@ -21,6 +21,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 import GymTile from '../components/gyms/GymTile';
 import GymDetail from '../components/gyms/GymDetail';
 import GymMap from '../components/gyms/Map';
+import ErrorBar from '../components/errorBar/errorBar';
 
 import * as ActionCreators from '../actions/gymActions';
 
@@ -109,12 +110,14 @@ class HomeScreen extends React.Component {
             resizeMode='contain'
           />
         </View>
-        <ScrollView style={styles.contentContainer}>
-          <View style={styles.mapsContainer}>
+        <ErrorBar payment_tier={this.props.payment_tier} />
+        <View style={styles.mapsContainer}>
             <GymMap gyms={this.props.gyms}
                     selectedGymIdx={this.getGymIdxFromActiveSections()}
             />
-          </View>
+        </View>
+        <ScrollView style={styles.contentContainer}>
+
           <View style={styles.accordianContainer}>
             <Accordion
               sections={this.props.gyms}
@@ -140,15 +143,12 @@ const styles = StyleSheet.create({
     imageContainer: {
     ...Platform.select({
       ios: {
-        shadowOffset:{  width: 0,  height: 3,  },
-        shadowColor: 'black',
-        shadowOpacity: 1,
-        shadowRadius: 3,
         zIndex: 999,
         height: Layout.noStatusBarHeight * .04
       },
       android: {
-        elevation: 30
+        elevation: 30,
+        paddingVertical: 6
       },
     }),
       backgroundColor: '#000000',
@@ -160,16 +160,16 @@ const styles = StyleSheet.create({
       width: '35%',
       height: Layout.noStatusBarHeight * .03
     },
-    contentContainer: {
-      flex: 1,
+    mapsContainer: {
+      flex: .6,
+      height: ( Layout.noStatusBarHeight)* .25,
+      width: (Layout.window.width),
     },
-      mapsContainer: {
-        flex: 1,
-        height: ( Layout.noStatusBarHeight)* .35,
-        width: (Layout.window.width),
-      },
+    contentContainer: {
+      flex: .75,
+    },
       accordianContainer: {
-        height: ( Layout.noStatusBarHeight)* .65,
+        height: ( Layout.noStatusBarHeight)* .9,
         width: Layout.window.width,
         marginBottom: Layout.window.height / 4
       }
@@ -180,7 +180,8 @@ function mapStateToProps(state) {
     gyms: state.gyms.gyms,
     pending: state.gyms.pending,
     error: state.gyms.error,
-    token: state.user.token
+    token: state.user.token,
+    payment_tier: state.user.details.payment_tier
   }
 }
 function mapDispatchToProps(dispatch) {

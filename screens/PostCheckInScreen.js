@@ -1,10 +1,11 @@
   import React from 'react';
 
-import { View, Text, Image, StyleSheet, BackHandler } from 'react-native';
+import { View, Text, Image, StyleSheet, BackHandler, TouchableOpacity, Linking } from 'react-native';
 import { connect } from 'react-redux';
 
 import { dateFormatter } from '../utils/datetime';
 import Layout from '../constants/Layout';
+import ErrorBar from '../components/errorBar/errorBar';
 
 class PostCheckIn extends React.Component {
 
@@ -53,7 +54,6 @@ class PostCheckIn extends React.Component {
     }
     let checkin_failure = Object.keys(this.props.errors).length ? true : false;
 
-    console.log(this.props.userProfile.picture_url);
     return (
       <View style={styles.container}>
         <View style={styles.gymhopLogoImageCntainer}>
@@ -63,6 +63,7 @@ class PostCheckIn extends React.Component {
             resizeMode='contain'
           />
         </View>
+        <ErrorBar payment_tier={this.props.userProfile.payment_tier}/>
         <View style={styles.heading}>
           <View style={styles.imgContainer}>
             <Image
@@ -116,6 +117,15 @@ const styles = StyleSheet.create({
       width: '60%',
       height: 64
     },
+  errorBar: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: 'red',
+    color: 'white'
+  },
   heading: {
     flex: .4,
     margin: 0

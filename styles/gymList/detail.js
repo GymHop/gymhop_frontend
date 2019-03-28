@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
         padding: 1,
         flexDirection: "column",
         justifyContent: "space-around",
+        alignSelf: 'flex-start',
         height: 50, // make sure that the margin buttom of the entire section aligns with at least this number
 
       },

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import Colors from '../constants/Colors'
+import Layout from '../constants/Layout';
 
 export const styles = StyleSheet.create({
   profileContainer: {
@@ -13,7 +14,10 @@ export const styles = StyleSheet.create({
     profilePicContainer: {
       flex: .4,
       marginTop: 60,
-      marginBottom: 30
+      marginBottom: 30,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "flex-start"
     },
       profilePic: {
         borderRadius: 25,
@@ -24,7 +28,7 @@ export const styles = StyleSheet.create({
         width: 32,
         position: 'relative',
         top: -26,
-        left: 127,
+        left: Layout.window.height/6 - 24,
         borderRadius:100,
         backgroundColor: 'white'
       },

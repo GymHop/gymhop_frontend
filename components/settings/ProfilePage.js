@@ -38,7 +38,7 @@ export default function ProfilePage({tier,
     billingEndDate = dateFormatter(d, "date-time")
     let bday = birthday ? dateFormatter(birthday, "date") : "";
 
-    let profileHeight = Layout.window.height/9
+    let profileHeight = Layout.window.height/6
 
     return (
       <View style={styles.profileContainer}>
@@ -49,7 +49,9 @@ export default function ProfilePage({tier,
           <TouchableOpacity onPress={toggleEditing} style={styles.profileIconContainer} >
             <Feather name="edit-2" size={32} color={Colors.tintColor} />
           </TouchableOpacity>
-          <Text style={styles.editPromptText}>Tap to edit your details</Text>
+          <TouchableOpacity onPress={toggleEditing} >
+            <Text style={styles.editPromptText}>Tap to edit your details</Text>
+          </TouchableOpacity>
         </View>
         <ScrollView style={styles.profileDetailsContainer}>
           <View style={styles.dataLabel}>

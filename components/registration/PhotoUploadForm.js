@@ -17,6 +17,8 @@ export default class PhotoUploadForm extends Component {
       <PhotoUpload
             onPhotoSelect={avatar => {
               if (avatar) {
+                console.log("avatar changed");
+                
                 this.props.onPhotoSelected(avatar);
                 this.setState({src: `data:image/gif;base64,${avatar}`})
               }

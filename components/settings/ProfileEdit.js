@@ -32,6 +32,12 @@ class ProfileEdit extends Component {
   saveUserDetails() {
     var payload = {...this.state};
     payload.birthday = payload.birthday.valueOf();
+    console.log(this.props.profilePic);
+    console.log(this.state.profile_pic);    
+    if (this.props.profilePic === this.state.profile_pic) {
+      delete payload.profile_pic;
+    }
+        
     this.props.UserActions.updateUserDetails(this.props.token, payload);
     this.props.toggleEditing()
   }
@@ -65,7 +71,9 @@ class ProfileEdit extends Component {
         </View>
         <View style={styles.photoUploadContainer}>
           <Text>Choose a photo for your profile</Text>
-          <PhotoUploadForm onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>
+          <PhotoUploadForm 
+          profile_pic={this.state.profile_pic}
+          onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>
         </View>
         <View style={[styles.birthdayContainer]}>
           <Text>Your Birthday</Text>
