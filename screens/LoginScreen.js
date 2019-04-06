@@ -130,7 +130,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#000000',
     height: '100%'
     // https://facebook.github.io/react-native/docs/stylesheet
