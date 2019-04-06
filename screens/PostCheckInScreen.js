@@ -4,8 +4,11 @@ import { View, Text, Image, StyleSheet, BackHandler, TouchableOpacity, Linking }
 import { connect } from 'react-redux';
 
 import { dateFormatter } from '../utils/datetime';
+import { showMessage, hideMessage } from "react-native-flash-message";
+
 import Layout from '../constants/Layout';
 import ErrorBar from '../components/errorBar/errorBar';
+
 
 class PostCheckIn extends React.Component {
 

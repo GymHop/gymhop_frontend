@@ -5,6 +5,7 @@ import { ScrollView, StyleSheet, View, Text,
 import { SafeAreaView } from 'react-navigation';
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
+import { withNavigationFocus } from "react-navigation";
 
 
 import { connect } from 'react-redux';
@@ -18,6 +19,8 @@ class QRReaderScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+
 
   constructor(props){
     super(props);
@@ -34,6 +37,21 @@ class QRReaderScreen extends React.Component {
   componentDidMount() {
     this._requestCameraPermission();
   }
+
+  renderCamera() {
+         const isFocused = this.props.navigation.isFocused();
+
+         if (!isFocused) {
+             return null;
+         } else if (isFocused) {
+             return (
+               <QRCodeScanner
+                         onRead={this._handleBarCodeRead}
+                         ref={(node) => { this.scanner = node }}
+                         cameraProps={{captureAudio: false}}
+                 />
+             )
+         }
 
   requestCameraPermission = async () => {
   try {
@@ -100,13 +118,7 @@ class QRReaderScreen extends React.Component {
     }
 
   render() {
-    return (
-        <QRCodeScanner
-                  onRead={this._handleBarCodeRead}
-                  ref={(node) => { this.scanner = node }}
-                  cameraProps={{captureAudio: false}}
-          />
-    );
+    return this.renderCamera();
   }
 }
 function mapStateToProps(state) {
