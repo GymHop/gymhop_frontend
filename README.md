@@ -23,5 +23,7 @@ the keystore password is roryjudah
 Make sure to increment the bundle version in info.plist
 
 - open Xcode
+- click on top level ios project (its the blue thing in the top left that says gymhop_frontend with the little app store icon)
+- increment the build and do what you want to the version (major.minor.patch syntax is good)
 - set build target (thing in top left near play btn) to generic ios device
-- build -> archive -> say yes to everything
+- product -> archive -> say yes to everything

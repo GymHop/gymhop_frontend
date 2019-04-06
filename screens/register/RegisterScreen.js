@@ -45,6 +45,22 @@ class RegisterScreen extends React.Component {
           justifyContent: "center",
           fontSize: "18"
         });
+    } else if (this.state.username == null || this.state.username.length <= 3) {
+	showMessage({
+          message: "Please enter a username longer than 3 characters",
+          type: "warning",
+          flex: "1",
+          justifyContent: "center",
+          fontSize: "18"
+        });
+    } else if (this.state.password == null || this.state.password.length <= 3) {
+	showMessage({
+          message: "Please enter a password longer than 3 characters",
+          type: "warning",
+          flex: "1",
+          justifyContent: "center",
+          fontSize: "18"
+        });
     } else if (this.validateEmail(this.state.email)) {
       // If the email is valid && password matches, move them to the second register screen
       this.props.navigation.push("PopulateUserProfile", {

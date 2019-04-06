@@ -42,11 +42,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		cd4iuIqvGLiD0eDnkWr9TVJUCLg=
+		Vg8K9R8wZFsKt4sLm990P7tuq/M=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		Gy0k+uSlCY8+vfJqM7OOzJiN7WU=
+		zksqyn/aSJWtRGLUTHyxA1n0nxk=
 		</data>
 		<key>Entypo.ttf</key>
 		<data>
@@ -111,7 +111,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		hDwhWQni4zwx1+3jFvqc0m2/VfU=
+		RW3zEh6hs6r81fg63ohsZFCbGGM=
 		</data>
 		<key>Ionicons.ttf</key>
 		<data>
@@ -139,7 +139,7 @@
 		</data>
 		<key>PlugIns/gymhop_frontendTests.xctest.dSYM/Contents/Resources/DWARF/gymhop_frontendTests</key>
 		<data>
-		i6Bzi6lmpyGrZOOD8PTNj7qqC7M=
+		DafHd9kWVfy/dKBJSxvUis/O7ro=
 		</data>
 		<key>PlugIns/gymhop_frontendTests.xctest/Info.plist</key>
 		<data>
@@ -151,7 +151,7 @@
 		</data>
 		<key>PlugIns/gymhop_frontendTests.xctest/gymhop_frontendTests</key>
 		<data>
-		Ok5Qtw6+VC2KIbFLyCWGqqYBIkQ=
+		wL1YN9oL1P7f+lcSyvtLwb+75+I=
 		</data>
 		<key>SimpleLineIcons.ttf</key>
 		<data>
@@ -267,22 +267,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cd4iuIqvGLiD0eDnkWr9TVJUCLg=
+			Vg8K9R8wZFsKt4sLm990P7tuq/M=
 			</data>
 			<key>hash2</key>
 			<data>
-			fpuvQoary47pZgG0xG8uGwHheCbwCgCiqfj4gVZXXnk=
+			NPj/cT0T7HVlmgbAdiOyOIyHg3qerj/MyEi8MiSQRfg=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Gy0k+uSlCY8+vfJqM7OOzJiN7WU=
+			zksqyn/aSJWtRGLUTHyxA1n0nxk=
 			</data>
 			<key>hash2</key>
 			<data>
-			fX2IVyAuEeUbMG8U4Z6lpZxMD3VIw4Qs+jxAg6lxxtM=
+			uG7p9tXeaRbLfxSDReCIgqeI6/AYfJK5WZ+9FaO397s=
 			</data>
 		</dict>
 		<key>Entypo.ttf</key>
@@ -500,11 +500,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			i6Bzi6lmpyGrZOOD8PTNj7qqC7M=
+			DafHd9kWVfy/dKBJSxvUis/O7ro=
 			</data>
 			<key>hash2</key>
 			<data>
-			1FpwQ9Pg2RmfZFb3gg+pXGuzkfR4KjD8Fu0Yf1sGcV4=
+			otzHKH/NOJfA7wIRAiRKB+QNaAylue42UrmuQYneQcA=
 			</data>
 		</dict>
 		<key>PlugIns/gymhop_frontendTests.xctest/Info.plist</key>
@@ -533,11 +533,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Ok5Qtw6+VC2KIbFLyCWGqqYBIkQ=
+			wL1YN9oL1P7f+lcSyvtLwb+75+I=
 			</data>
 			<key>hash2</key>
 			<data>
-			GiTnoBjpbnY/n3u84A49Qrru2Cs1E6PC0hjtHfoYpyU=
+			jheTjX/p8sHbJ2LO54qaRCRB4qhzQIrQtuUpWfhhz5s=
 			</data>
 		</dict>
 		<key>SimpleLineIcons.ttf</key>

@@ -22,6 +22,18 @@ class PostCheckIn extends React.Component {
 
   componentDidMount() {
       BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+      let checkin_failure = Object.keys(this.props.errors).length ? true : false;
+
+      if (checkin_failure == false) {
+        showMessage({
+          message: "Checked In!",
+          type: "info",
+          backgroundColor: "#00FF00",
+          flex: "1",
+          justifyContent: "center",
+          fontSize: "18"
+        });
+      }
     }
 
     componentWillUnmount() {
@@ -53,6 +65,7 @@ class PostCheckIn extends React.Component {
       console.log(this.props.errors);
     }
     let checkin_failure = Object.keys(this.props.errors).length ? true : false;
+
 
     return (
       <View style={styles.container}>

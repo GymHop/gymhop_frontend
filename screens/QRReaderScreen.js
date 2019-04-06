@@ -84,14 +84,6 @@ class QRReaderScreen extends React.Component {
       if (result.data !== this.state.lastScannedUrl || this.state.lastScanTime < resetDateTime) {
         LayoutAnimation.spring();
         Vibration.vibrate([100, 100, 100])
-        showMessage({
-          message: "Checked In!",
-          type: "info",
-          backgroundColor: "#00FF00",
-          flex: "1",
-          justifyContent: "center",
-          fontSize: "18"
-        });
         console.log("SCANNED!");
         console.log(result.data);
 
