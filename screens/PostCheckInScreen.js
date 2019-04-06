@@ -11,6 +11,9 @@ import ErrorBar from '../components/errorBar/errorBar';
 
 
 class PostCheckIn extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
 
   constructor(props) {
     super(props);
@@ -84,7 +87,6 @@ class PostCheckIn extends React.Component {
           <View style={styles.imgContainer}>
             <Image
               style={styles.checkinImg}
-              resizeMode='contain'
               source={{ uri: this.props.userProfile.picture_url }}
             />
           </View>
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: '#000000',
-    marginBottom: 7
+    marginBottom: 10
   },
     headLogo: {
       width: '60%',
@@ -144,19 +146,22 @@ const styles = StyleSheet.create({
   },
   heading: {
     flex: .4,
-    margin: 0
+    margin: 0,
+    width: Layout.window.width,
   },
     imgContainer: {
-      display: "flex",
-      height:128,
-      width: "100%",
+      display: 'flex',
       flexDirection: "row",
       justifyContent: "center",
+      padding: 8
     },
       checkinImg: {
-        borderRadius: 100,
-        height:128,
-        width: 128,
+        height: 160,
+        width: 160,
+        borderRadius: '50%',
+        padding: 5,
+        borderColor: 'black',
+        borderWidth: '1'
       },
     nameHolder: {
       display: "flex",

@@ -52,6 +52,7 @@ class QRReaderScreen extends React.Component {
                  />
              )
          }
+       }
 
   requestCameraPermission = async () => {
   try {
