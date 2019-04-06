@@ -52,7 +52,11 @@ class QRReaderScreen extends React.Component {
                  />
              )
          }
+<<<<<<< HEAD
        }
+=======
+   }
+>>>>>>> 0c0575d7b318cf79ef6e2387c1cc835a78c7f849
 
   requestCameraPermission = async () => {
   try {
@@ -138,7 +142,7 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(QRReaderScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigationFocus(QRReaderScreen))
 
 const styles = StyleSheet.create({
   container: {

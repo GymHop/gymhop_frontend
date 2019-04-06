@@ -129,7 +129,9 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    alignItems: 'center',
+    // justifyContent: 'flex-start',
+    marginHorizontal: 10,
     backgroundColor: '#000000',
     height: '100%'
     // https://facebook.github.io/react-native/docs/stylesheet
