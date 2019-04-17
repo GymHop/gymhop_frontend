@@ -11,9 +11,6 @@ import ErrorBar from '../components/errorBar/errorBar';
 
 
 class PostCheckIn extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
 
   constructor(props) {
     super(props);
@@ -122,7 +119,8 @@ class PostCheckIn extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    height: '100%'
   },
   gymhopLogoImageCntainer: {
     flex: .10,
@@ -158,10 +156,10 @@ const styles = StyleSheet.create({
       checkinImg: {
         height: 160,
         width: 160,
-        borderRadius: '50%',
+        borderRadius: 50,
         padding: 5,
         borderColor: 'black',
-        borderWidth: '1'
+        borderWidth: 1
       },
     nameHolder: {
       display: "flex",
@@ -172,7 +170,7 @@ const styles = StyleSheet.create({
       },
       headingTier: {
         fontSize: 19,
-        padding: 26,
+        padding: 8,
         textAlign: "center"
 
       },

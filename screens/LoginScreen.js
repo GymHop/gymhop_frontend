@@ -11,6 +11,8 @@ import * as ActionCreators from "../actions/loginActions";
 import * as TokenActionCreators from '../actions/tokenActions';
 import * as UserDetailsActionCreators from '../actions/userDetailActions';
 
+import Layout from '../constants/Layout';
+
 import { showMessage, hideMessage } from "react-native-flash-message";
 
 class LoginScreen extends Component {
@@ -130,10 +132,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    // justifyContent: 'flex-start',
-    marginHorizontal: 10,
+    justifyContent: 'center',
     backgroundColor: '#000000',
-    height: '100%'
+    height: '100%',
     // https://facebook.github.io/react-native/docs/stylesheet
     // refer to this
   },
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? '35%' : '-10%',
     backgroundColor: '#000000',
     width: '100%',
-    marginBottom: '-20%'
+    marginBottom: '-20%',
   },
 
   loginInput: {
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
     color: '#000000',
     width: '75%',
     borderRadius: 20,
-    textAlign: 'center'
+    textAlign: 'center',
 
   },
   loginButton: {
@@ -167,6 +168,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+    borderColor: 'red'
   },
   loginText: {
     fontSize: 20,

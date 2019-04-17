@@ -25,6 +25,7 @@ class StatsScreen extends Component {
   componentDidMount() {
     if (this.props.stats.total_checkins == undefined && !this.props.pending) {
       this.props.Actions.getStatistics(this.props.token);
+      console.log('Statistics Arrived Fucker')
     }
   }
 
@@ -47,6 +48,7 @@ class StatsScreen extends Component {
     var { check_ins } = stats;
     check_ins.sort((a, b) => {
       return new Date(b.when) - new Date(a.when);
+      console.log('Fucking Returned')
     });
 
     return (

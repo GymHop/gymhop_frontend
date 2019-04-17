@@ -3,6 +3,8 @@ dependencies: \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Profiler/RCTProfile.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTAssert.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridge+Private.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridge.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridgeDelegate.h \

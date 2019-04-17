@@ -3,6 +3,8 @@ dependencies: \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Modules/RCTAsyncLocalStorage.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridgeModule.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTInvalidating.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTConvert.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Views/RCTAnimationType.h \

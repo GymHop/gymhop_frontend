@@ -3,67 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>logFormatVersion</key>
-	<integer>9</integer>
+	<integer>10</integer>
 	<key>logs</key>
-	<dict>
-		<key>5ACF9256-0A33-4B74-91BA-5D2ECB2FA5D3</key>
-		<dict>
-			<key>className</key>
-			<string>IDECommandLineBuildLog</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>5ACF9256-0A33-4B74-91BA-5D2ECB2FA5D3.xcactivitylog</string>
-			<key>highLevelStatus</key>
-			<string>W</string>
-			<key>schemeIdentifier-containerName</key>
-			<string>gymhop_frontend project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>gymhop_frontend</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Building project gymhop_frontend with scheme gymhop_frontend and configuration Debug</string>
-			<key>timeStartedRecording</key>
-			<real>576271902.95361304</real>
-			<key>timeStoppedRecording</key>
-			<real>576271927.00572705</real>
-			<key>title</key>
-			<string>Building project gymhop_frontend with scheme gymhop_frontend and configuration Debug</string>
-			<key>uniqueIdentifier</key>
-			<string>5ACF9256-0A33-4B74-91BA-5D2ECB2FA5D3</string>
-		</dict>
-		<key>9ABB1389-A6A7-440A-8E71-08A521A4EB04</key>
-		<dict>
-			<key>className</key>
-			<string>IDECommandLineBuildLog</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>9ABB1389-A6A7-440A-8E71-08A521A4EB04.xcactivitylog</string>
-			<key>highLevelStatus</key>
-			<string>W</string>
-			<key>schemeIdentifier-containerName</key>
-			<string>gymhop_frontend project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>gymhop_frontend</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Building project gymhop_frontend with scheme gymhop_frontend and configuration Debug</string>
-			<key>timeStartedRecording</key>
-			<real>575437277.49695694</real>
-			<key>timeStoppedRecording</key>
-			<real>575437292.33087802</real>
-			<key>title</key>
-			<string>Building project gymhop_frontend with scheme gymhop_frontend and configuration Debug</string>
-			<key>uniqueIdentifier</key>
-			<string>9ABB1389-A6A7-440A-8E71-08A521A4EB04</string>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

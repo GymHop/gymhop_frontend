@@ -38,7 +38,7 @@ const QRScanningStack = createStackNavigator({
     screen: PostCheckInScreen,
     navigationOptions: {
      headerTintColor: "white",
-     headerStyle: { backgroundColor: 'black' }
+     headerStyle: { backgroundColor: 'black',}
      }
   }
 });

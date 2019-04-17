@@ -2,6 +2,7 @@ import React from 'react';
 
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import { dateFormatter } from '../../utils/datetime';
+import Layout from '../../constants//Layout';
 
 const CheckinItem = ({checkin}) => {
   shortenName = (name) => {
@@ -11,7 +12,7 @@ const CheckinItem = ({checkin}) => {
     return name
 
   }
-
+  console.log(checkin.user.picture_url);
   return (
     <View style={styles.container}>
       <View style={styles.imgContainer}>
@@ -41,14 +42,16 @@ const styles = StyleSheet.create({
     paddingVertical: 6
   },
     imgContainer: {
-      padding: 7,
-      width: (Dimensions.get("window").width - (2*14))/5,
+      width: (Layout.window.width - (2*14))/5,
+      marginHorizontal: 7
     },
       img: {
         aspectRatio: 1,
-        borderRadius: 100,
-        height: "100%",
-        width: "92%",
+        flex: 1,
+        width: null,
+        height: (Layout.window.width - (2*14))/5,
+        borderRadius: ((Layout.window.width - (2*14))/5) / 2,
+        overflow: "hidden",
       },
     checkinDetails: {
       borderBottomColor: "gray",

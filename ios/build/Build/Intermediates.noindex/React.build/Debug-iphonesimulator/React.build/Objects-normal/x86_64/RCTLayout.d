@@ -5,6 +5,8 @@ dependencies: \
   /Users/rory/Documents/gymhop_frontend/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTAssert.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Views/RCTShadowView+Layout.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Views/RCTShadowView.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Views/RCTComponent.h \

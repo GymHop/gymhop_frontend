@@ -10,8 +10,11 @@ const CheckinGraph = ({checkins, styles}) => {
   var buckets = {};
   if (checkins.length > 0) {
     // first we bin the checkins by day
-    const earliestCheckin = new Date(checkins[checkins.length-1].when);
-    const latestCheckin = new Date(checkins[0].when);
+    // add a day after to make the graph have a proper axis
+    const earliestCheckin = new Date(checkins[checkins.length-1].when.split("T")[0]);
+    var latestCheckin = new Date(checkins[0].when.split("T")[0]);
+    latestCheckin = latestCheckin.setDate(latestCheckin.getDate()-1);
+
 
     var getDaysArray = function(start, end) {
         for(var arr=[],dt=start; dt<=end; dt.setDate(dt.getDate()+1)){
@@ -64,6 +67,10 @@ const CheckinGraph = ({checkins, styles}) => {
     return item.value
   })
 
+  console.log("count data below");
+  console.log(countData);
+
+
   return (
     <View style={{ height: 300, padding: 20, flexDirection: 'row' }}>
       <YAxis
@@ -78,7 +85,6 @@ const CheckinGraph = ({checkins, styles}) => {
           style={{ flex: 1 }}
           contentInset={verticalContentInset}
           svg={{stroke: Colors.tintColor, strokeWidth: 2, fill: 'rgba(75, 205, 255, 0.6)'}}
-          curve={shape.curveNatural}
           >
           <Grid />
         </AreaChart>

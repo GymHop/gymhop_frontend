@@ -37,7 +37,7 @@ class Earnings extends Component {
     console.log(this.filterEnum[this.state.filterIdx] === "Month");
     switch (this.filterEnum[this.state.filterIdx]) {
       case "Month":
-        headlineNum = this.props.currentLiability;
+        headlineNum = (Math.round(this.props.currentLiability*Math.pow(10,2))/Math.pow(10,2)).toFixed(2)
         break;
       default:
         headlineNum = 999;

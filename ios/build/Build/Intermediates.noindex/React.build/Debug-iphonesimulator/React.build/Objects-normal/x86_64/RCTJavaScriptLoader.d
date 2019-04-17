@@ -2,6 +2,8 @@ dependencies: \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTJavaScriptLoader.mm \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
   /Users/rory/Documents/gymhop_frontend/ios/build/Build/Products/Debug-iphonesimulator/include/cxxreact/JSBundleType.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridge.h \
   /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
