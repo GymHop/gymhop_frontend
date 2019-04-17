@@ -82,7 +82,10 @@ class QRReaderScreen extends React.Component {
     if ((Object.keys(this.props.checkin).length > 0 || Object.keys(this.props.errors).length > 0) && this.scanned) {
       this.props.navigation.push("PostCheckIn", {resetScanned: () => {
         this.setState({lastScannedUrl:null, lastScanTime:null});
-        this.scanner.reactivate();
+        setTimeout(() => {
+          this.scanner.reactivate();
+        }, 3000);
+
       }});
       this.scanned = false;
       // pass back navigation works but then scanning again is blocked.
