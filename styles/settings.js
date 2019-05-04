@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
           width: 32,
           position: 'relative',
           top: -26,
-          left: Layout.window.height/6 - 78,
+          left: Layout.window.height/6 - 72,
           borderRadius: 100,
           backgroundColor: 'white'
         },
@@ -46,15 +46,18 @@ export const styles = StyleSheet.create({
         backgroundColor: "white",
         borderTopColor: "gray",
         borderTopWidth: StyleSheet.hairlineWidth,
+
       },
         dataLabel: {
           borderTopColor: "gray",
           borderTopWidth: StyleSheet.hairlineWidth,
           width: "100%",
-          paddingVertical: 5
+          paddingVertical: 5,
+          marginLeft: 5
         },
         dataField: {
           width: "100%",
           paddingVertical: 8,
+          marginLeft: 10
         },
 })

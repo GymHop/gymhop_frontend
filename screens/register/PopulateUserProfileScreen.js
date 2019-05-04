@@ -40,19 +40,14 @@ class RegisterPart2 extends React.Component {
 
   registerUser() {
     const baseUser = this.props.navigation.getParam('baseUser', {});
-    var payload = {...this.state.profile_pic};
-    if (this.props.profilePic === this.state.profile_pic) {
-      delete payload.profile_pic;
-    }
+    
     let { birthday, ...restOfState } = this.state
     this.props.Actions.registerUser({
       ...baseUser,
       ...restOfState,
       birthday: birthday.valueOf(),
-      payload
 
     });
-    console.log(error.response)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -82,8 +77,10 @@ class RegisterPart2 extends React.Component {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
+        <View style={styles.textStyle}>
+        <Text style={styles.photoText}>Click here to add a photo to your profile</Text>
+        </View>
         <View style={styles.photoUploadContainer}>
-          <Text>Choose a photo for your profile</Text>
           <PhotoUploadForm
           profile_pic={this.state.profile_pic}
           onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>

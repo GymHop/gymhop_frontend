@@ -16,6 +16,12 @@ export const styles = StyleSheet.create({
     width: Layout.window.width / 3,
     height: Layout.window.width / 2,
   },
+  textStyle: {
+    marginTop: 25
+  },
+    photoText: {
+      color: "white",
+    },
   photoUploadContainer: {
     flex: 1,
     padding: 15,

@@ -47,7 +47,7 @@ export default class GymTile extends Component {
           <Text style={styles.gymTileText}>{this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
         </View>
         <View style={styles.extraDetailsContainer}>
-          <Text style={[styles.gymTileText, {fontWeight:"bold"}]}>{dollarSigns}</Text>
+          {/* <Text style={[styles.gymTileText, {fontWeight:"bold"}]}>{dollarSigns}</Text> */}
         </View>
       </View>
     )

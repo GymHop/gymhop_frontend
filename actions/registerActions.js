@@ -4,6 +4,8 @@ import {
   POST_USER_FAILURE,
 } from './actiontypes';
 
+import { updateUserDetails } from './userDetailActions';
+
 import * as RegisterAPI from '../api/register';
 
 export function registerUserPending() {
@@ -30,6 +32,12 @@ export function registerUser(userData){
     dispatch(registerUserPending());
     try {
       let results = await RegisterAPI.attemptRegister(userData) // extras of variable length
+      // results is going to have the token
+      let profile_pic_data = {
+        profile_pic: userData.profile_pic
+      }
+      let token = results.data.token;
+      dispatch(updateUserDetails(token, profile_pic_data))
       dispatch(registerUserSuccess(results));
     } catch (error) {
       console.log("Issue creating a User");

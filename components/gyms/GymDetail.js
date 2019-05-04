@@ -24,7 +24,7 @@ const GymDetail = ({gym}) => {
           <Text>{gym.amenities}</Text>
         </View>
         <View style={styles.tierContainer}>
-          <Text style={styles.tierText}>{getTierDisplay(gym.price)}</Text>
+          {/* <Text style={styles.tierText}>{getTierDisplay(gym.price)}</Text> */}
         </View>
       </View>
 
