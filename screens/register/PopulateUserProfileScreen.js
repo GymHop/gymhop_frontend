@@ -5,6 +5,8 @@ import { View, Text, Image, Platform, Keyboard, TouchableWithoutFeedback,
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+
+import PhotoUploadForm from '../../components/registration/PhotoUploadForm';
 import BirthdayPicker from '../../components/registration/BirthdayPicker';
 import * as ActionCreators from '../../actions/registerActions';
 import { styles } from '../../styles/registration';
@@ -19,13 +21,14 @@ class RegisterPart2 extends React.Component {
     let dt = new Date()
     dt.setYear(1996)
     this.state = {
-      //user profile fields here
+      profile_pic: null,//user profile fields here
       first_name: null, // server side _ casing b/c its just faster to put together
       last_name: null,
       phone: null,
       birthday: dt
     }
     this._storeToken = this._storeToken.bind(this);
+    this.registerUser = this.registerUser.bind(this);
   }
 
   _storeToken = async () => {
@@ -37,13 +40,19 @@ class RegisterPart2 extends React.Component {
 
   registerUser() {
     const baseUser = this.props.navigation.getParam('baseUser', {});
-
+    var payload = {...this.state.profile_pic};
+    if (this.props.profilePic === this.state.profile_pic) {
+      delete payload.profile_pic;
+    }
     let { birthday, ...restOfState } = this.state
     this.props.Actions.registerUser({
       ...baseUser,
       ...restOfState,
-      birthday: birthday.valueOf()
+      birthday: birthday.valueOf(),
+      payload
+
     });
+    console.log(error.response)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -73,11 +82,12 @@ class RegisterPart2 extends React.Component {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
-          <Image
-            source={require('../../assets/images/loginheader.png')}
-            style={styles.headLogo}
-            resizeMode='contain'
-        />
+        <View style={styles.photoUploadContainer}>
+          <Text>Choose a photo for your profile</Text>
+          <PhotoUploadForm
+          profile_pic={this.state.profile_pic}
+          onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>
+        </View>
         <TextInput
           style={styles.registerInput}
           placeholder={'First Name'}
@@ -131,8 +141,8 @@ class RegisterPart2 extends React.Component {
           }}>
           <Text style={styles.loginText}>Back</Text>
         </TouchableOpacity>
-
-        </KeyboardAvoidingView>
+        <View style={{ flex: 1 }} />
+      </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     )
   }

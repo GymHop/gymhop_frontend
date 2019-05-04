@@ -160,7 +160,7 @@ class RegisterScreen extends React.Component {
             }>
             <Text style={styles.loginText}>Return to login</Text>
             </TouchableOpacity>
-
+            <View style={{ flex: .7 }} />
         </KeyboardAvoidingView>
 
       )

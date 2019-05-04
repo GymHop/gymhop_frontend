@@ -106,6 +106,7 @@ class LoginScreen extends Component {
               <Text style={styles.registerText}>Register Here!</Text>
             </TouchableOpacity>
          {loading}
+         <View style={{ flex: 1 }} />
       </KeyboardAvoidingView>
     )
         }
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     backgroundColor: '#000000',
     height: '100%',
     // https://facebook.github.io/react-native/docs/stylesheet

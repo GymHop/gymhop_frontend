@@ -23,10 +23,28 @@ export default function ProfilePage({tier,
     var tierType;
     switch (tier) {
       case 1:
-        tierType = "Budget Tier @40/month";
+        tierType = "Default";
         break;
       case 2:
-        tierType = "Premium tier @80/month";
+        tierType = "Trial Member";
+        break;
+      case 3:
+        tierType = null;
+        break;
+      case 4:
+        tierType = "Budget tier @80/month";
+        break;
+      case 5:
+        tierType = null;
+        break;
+      case 6:
+        tierType = null;
+        break;
+      case 7:
+        tierType = null;
+        break;
+      case 8:
+        tierType = "Premium tier @80/month"
         break;
       default:
           tierType = "No Tier"
@@ -42,47 +60,48 @@ export default function ProfilePage({tier,
 
     return (
       <View style={styles.profileContainer}>
-        <View style={styles.profilePicContainer}>
-          <Image source={{uri: profilePic}}
-          style={[styles.profilePic, {width: profileHeight, height: profileHeight }]}
-          />
-          <TouchableOpacity onPress={toggleEditing} style={styles.profileIconContainer} >
-            <Feather name="edit-2" size={32} color={Colors.tintColor} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={toggleEditing} >
-            <Text style={styles.editPromptText}>Tap to edit your details</Text>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.profilePicContainer}>
+            <Image source={{uri: profilePic}}
+            style={[styles.profilePic, {width: profileHeight, height: profileHeight }]}
+            />
+            <TouchableOpacity onPress={toggleEditing} style={styles.profileIconContainer} >
+              <Feather name="edit-2" size={32} color={Colors.tintColor} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={toggleEditing} style={styles.promptTextContainer}>
+              <Text style={styles.editPromptText}>Tap to edit your details</Text>
+            </TouchableOpacity>
+          </View>
         <ScrollView style={styles.profileDetailsContainer}>
-          <View style={styles.dataLabel}>
-              <Text>First Name</Text>
+          <View style={styles.dataContainer}>
+            <View style={styles.dataLabel}>
+                <Text>First Name</Text>
+            </View>
+            <Text style={styles.dataField}>  {firstName}</Text>
           </View>
-          <Text style={styles.dataField}>  {firstName}</Text>
+            <View style={styles.dataLabel}>
+              <Text>Last Name</Text>
+            </View>
+            <Text style={styles.dataField}>  {lastName}</Text>
 
-          <View style={styles.dataLabel}>
-            <Text>Last Name</Text>
-          </View>
-          <Text style={styles.dataField}>  {lastName}</Text>
+            <View style={styles.dataLabel}>
+              <Text>Billing End Date</Text>
+            </View>
+            <Text style={styles.dataField}>  {billingEndDate}</Text>
 
-          <View style={styles.dataLabel}>
-            <Text>Billing End Date</Text>
-          </View>
-          <Text style={styles.dataField}>  {billingEndDate}</Text>
+            <View style={styles.dataLabel}>
+              <Text>Payment Tier</Text>
+            </View>
+            <Text style={styles.dataField}>  {tierType}</Text>
 
-          <View style={styles.dataLabel}>
-            <Text>Payment Tier</Text>
-          </View>
-          <Text style={styles.dataField}>  {tierType}</Text>
+            <View style={styles.dataLabel}>
+              <Text>Birthday</Text>
+            </View>
+            <Text style={styles.dataField}>{bday}</Text>
 
-          <View style={styles.dataLabel}>
-            <Text>Birthday</Text>
-          </View>
-          <Text style={styles.dataField}>{bday}</Text>
-
-          <View style={styles.dataLabel}>
-            <Text>Phone</Text>
-          </View>
-          <Text style={styles.dataField}>{phone}</Text>
+            <View style={styles.dataLabel}>
+              <Text>Phone</Text>
+            </View>
+            <Text style={styles.dataField}>{phone}</Text>
 
           <Button onPress={logout}
           title="Logout"

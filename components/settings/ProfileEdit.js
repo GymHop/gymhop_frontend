@@ -33,11 +33,11 @@ class ProfileEdit extends Component {
     var payload = {...this.state};
     payload.birthday = payload.birthday.valueOf();
     console.log(this.props.profilePic);
-    console.log(this.state.profile_pic);    
+    console.log(this.state.profile_pic);
     if (this.props.profilePic === this.state.profile_pic) {
       delete payload.profile_pic;
     }
-        
+
     this.props.UserActions.updateUserDetails(this.props.token, payload);
     this.props.toggleEditing()
   }
@@ -53,7 +53,7 @@ class ProfileEdit extends Component {
 
         {/* profile photo todo b/c of rn link constraint */}
         <Text>Your Profile Details</Text>
-        <View>
+        <View style={styles.infoInputField}>
           <TextInput
           style={styles.infoInput}
           onChangeText={(first_name) => this.setState({first_name})}
@@ -71,7 +71,7 @@ class ProfileEdit extends Component {
         </View>
         <View style={styles.photoUploadContainer}>
           <Text>Choose a photo for your profile</Text>
-          <PhotoUploadForm 
+          <PhotoUploadForm
           profile_pic={this.state.profile_pic}
           onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>
         </View>

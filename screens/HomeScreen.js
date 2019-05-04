@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
       brandLogo: {
       backgroundColor: '#000000',
       width: '35%',
-      height: Layout.noStatusBarHeight * .03
+      height: Layout.noStatusBarHeight * .03,
     },
     mapsContainer: {
       flex: .6,
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
       accordianContainer: {
         height: ( Layout.noStatusBarHeight)* .9,
         width: Layout.window.width,
-        marginBottom: Layout.window.height / 4
+        marginBottom: Layout.window.height / 4,
       }
 });
 

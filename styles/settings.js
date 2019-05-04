@@ -8,45 +8,53 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 5,
-    backgroundColor: "white"
+    backgroundColor: Colors.tintColor
   },
-    profilePicContainer: {
-      flex: .4,
-      marginTop: 60,
-      marginBottom: 30,
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-start"
-    },
-      profilePic: {
-        borderRadius: 25,
-        borderWidth: 2,
-        borderColor: 'white',
-      },
-      profileIconContainer: {
-        width: 32,
-        position: 'relative',
-        top: -26,
-        left: Layout.window.height/6 - 24,
-        borderRadius:100,
-        backgroundColor: 'white'
-      },
-      editPromptText: {
-        color: "gray",
-      },
-    profileDetailsContainer: {
-      flex: .6,
-      width: "100%",
-      marginTop: 30
-    },
-      dataLabel: {
-        backgroundColor: Colors.tintColor, //"#737A7F",
+      profilePicContainer: {
+        flex: .4,
+        marginTop: 60,
+        marginBottom: 5,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
         width: "100%",
-        paddingVertical: 5
+        alignItems: "center",
+        // borderBottomColor: "gray",
+        // borderBottomWidth: StyleSheet.hairlineWidth,
       },
-      dataField: {
+        profilePic: {
+          borderRadius: 25,
+          borderWidth: 2,
+          borderColor: 'white',
+        },
+        profileIconContainer: {
+          width: 32,
+          position: 'relative',
+          top: -26,
+          left: Layout.window.height/6 - 78,
+          borderRadius: 100,
+          backgroundColor: 'white'
+        },
+        editPromptText: {
+          color: "gray",
+          marginTop: -15
+        },
+      profileDetailsContainer: {
+        flex: .6,
         width: "100%",
-        paddingVertical: 8
+        marginTop: 5,
+        backgroundColor: "white",
+        borderTopColor: "gray",
+        borderTopWidth: StyleSheet.hairlineWidth,
       },
+        dataLabel: {
+          borderTopColor: "gray",
+          borderTopWidth: StyleSheet.hairlineWidth,
+          width: "100%",
+          paddingVertical: 5
+        },
+        dataField: {
+          width: "100%",
+          paddingVertical: 8,
+        },
 })

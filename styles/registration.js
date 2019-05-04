@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: '#000000',
     height: '100%'
@@ -15,6 +15,11 @@ export const styles = StyleSheet.create({
     backgroundColor: '#000000',
     width: Layout.window.width / 3,
     height: Layout.window.width / 2,
+  },
+  photoUploadContainer: {
+    flex: 1,
+    padding: 15,
+    marginBottom: 15,
   },
   registerInput: {
     height: 40,
@@ -28,7 +33,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center'
 },
 registerBirthdayPicker: {
-  height: Platform.OS === "ios" ? 240 : 40,
+  height: Platform.OS === "ios" ? 200 : 40,
   ...Platform.select({
       android: {
         marginBottom: 10,
@@ -62,5 +67,5 @@ loginText: {
 },
 whiteText: {
   color: 'white'
-}
+},
 })
