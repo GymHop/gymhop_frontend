@@ -31,11 +31,24 @@ export function registerUser(userData){
   return async (dispatch) => {
     dispatch(registerUserPending());
     try {
-      let results = await RegisterAPI.attemptRegister(userData) // extras of variable length
-      // results is going to have the token
+
       let profile_pic_data = {
         profile_pic: userData.profile_pic
       }
+
+      var picture = userData.profile_pic;
+        if (picture) {
+          console.log('Test');
+          delete userData.profile_pic;
+        }
+      let results = await RegisterAPI.attemptRegister(userData) // extras of variable length
+      // results is going to have the token
+      console.log(userData)
+
+      // let profile_pic_data = {
+      //   profile_pic: userData.profile_pic
+      // }
+
       let token = results.data.token;
       dispatch(updateUserDetails(token, profile_pic_data))
       dispatch(registerUserSuccess(results));

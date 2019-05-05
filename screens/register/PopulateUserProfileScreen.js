@@ -40,7 +40,7 @@ class RegisterPart2 extends React.Component {
 
   registerUser() {
     const baseUser = this.props.navigation.getParam('baseUser', {});
-    
+
     let { birthday, ...restOfState } = this.state
     this.props.Actions.registerUser({
       ...baseUser,
@@ -78,7 +78,7 @@ class RegisterPart2 extends React.Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
         <View style={styles.textStyle}>
-        <Text style={styles.photoText}>Click here to add a photo to your profile</Text>
+          <Text style={styles.photoText}>Click here to add a photo to your profile</Text>
         </View>
         <View style={styles.photoUploadContainer}>
           <PhotoUploadForm

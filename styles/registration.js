@@ -17,15 +17,16 @@ export const styles = StyleSheet.create({
     height: Layout.window.width / 2,
   },
   textStyle: {
-    marginTop: 25
+    marginTop: 25,
+    marginBottom: Platform.OS === "ios" ? 40 : 0,
   },
     photoText: {
       color: "white",
     },
   photoUploadContainer: {
     flex: 1,
-    padding: 15,
-    marginBottom: 15,
+    padding: 20,
+    marginBottom: Platform.OS === "ios" ? 40 : 15,
   },
   registerInput: {
     height: 40,
