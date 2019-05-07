@@ -53,11 +53,31 @@ class PostCheckIn extends React.Component {
  getTier(num) {
    switch (num) {
      case 1:
-       return "Budget Member";
+       tierType = "Default";
+       break;
      case 2:
-        return "Premium Member"
+       tierType = "Trial Member";
+       break;
+     case 3:
+       tierType = "No tier, Please upgrade your account.";
+       break;
+     case 4:
+       tierType = "Budget tier @40/month";
+       break;
+     case 5:
+       tierType = "No tier, Please upgrade your account.";
+       break;
+     case 6:
+       tierType = "No tier, Please upgrade your account.";
+       break;
+     case 7:
+       tierType = "No tier, Please upgrade your account.";
+       break;
+     case 8:
+       tierType = "Premium tier @80/month"
+       break;
      default:
-       return "No tier. Please upgrade your account in order to access this gym"
+         tierType = "No tier, Please upgrade your account."
    }
  }
 

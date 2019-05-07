@@ -32,7 +32,7 @@ export default function ProfilePage({tier,
         tierType = null;
         break;
       case 4:
-        tierType = "Budget tier @80/month";
+        tierType = "Budget tier @40/month";
         break;
       case 5:
         tierType = null;
