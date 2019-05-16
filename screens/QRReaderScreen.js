@@ -152,8 +152,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center'
   },
   topText: {
+    textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold',
     color: Colors.tintColor
