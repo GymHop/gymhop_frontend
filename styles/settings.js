@@ -1,8 +1,30 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform, } from 'react-native';
 import Colors from '../constants/Colors'
 import Layout from '../constants/Layout';
 
 export const styles = StyleSheet.create({
+  imageContainer: {
+    backgroundColor: 'black',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...Platform.select({
+      ios: {
+        zIndex: 999,
+        height: Layout.noStatusBarHeight * .04,
+
+      },
+      android: {
+        elevation: 30,
+        paddingVertical: 6,
+
+      },
+    })},
+      brandLogo: {
+        backgroundColor: '#000000',
+        width: '35%',
+        height: Layout.noStatusBarHeight * .03,
+      },
   profileContainer: {
     flex: 1,
     flexDirection: 'column',
@@ -12,7 +34,7 @@ export const styles = StyleSheet.create({
   },
       profilePicContainer: {
         flex: .4,
-        marginTop: 60,
+        marginTop: 30,
         marginBottom: 5,
         display: "flex",
         flexDirection: "column",

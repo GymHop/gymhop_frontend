@@ -4,6 +4,7 @@ import openMap from 'react-native-open-maps';
 import { View, Text, StyleSheet, Button, Linking } from 'react-native';
 import { styles } from "../../styles/gymList/detail";
 import { getTierDisplay } from "./helpers";
+import Colors from "../../constants/Colors";
 
 
 const GymDetail = ({gym}) => {
@@ -13,7 +14,7 @@ const GymDetail = ({gym}) => {
        longitude: parseFloat(gym.longitude)
     })
   }
-  let hours = gym.hours ? <Text>Hours: {}</Text> : null;
+  let hours = gym.hours ? <Text>Hours:{"\n"}{gym.hours}</Text> : null;
 
 
   return (
@@ -21,10 +22,11 @@ const GymDetail = ({gym}) => {
       <View style={styles.headingContainer}>
         <View style={styles.detailContainer}>
           {hours}
-          <Text>{gym.amenities}</Text>
+          {/* <Text>{gym.amenities}</Text> */}
         </View>
-        <View style={styles.tierContainer}>
-          {/* <Text style={styles.tierText}>{getTierDisplay(gym.price)}</Text> */}
+         <View style={styles.tierContainer}>
+            <Text>{gym.amenities}</Text>
+           {/* <Text style={styles.tierText}>{getTierDisplay(gym.price)}</Text>  */}
         </View>
       </View>
 
@@ -32,13 +34,13 @@ const GymDetail = ({gym}) => {
 
         <View style={styles.actionButton}>
             <Button
-                color={'#bdc3c7'}
+                color={Colors.tintColor}
                 onPress={goToGym}
                 title="Open Map 🗺" />
         </View>
         <View style={styles.actionButton}>
             <Button
-                color={'#bdc3c7'}
+                color={Colors.tintColor}
                 onPress={() => {
                   Linking.openURL(gym.website_url)
                 }}

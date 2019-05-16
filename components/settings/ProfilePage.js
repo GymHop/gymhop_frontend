@@ -59,7 +59,21 @@ export default function ProfilePage({tier,
     let profileHeight = Layout.window.height/6
 
     return (
+        // <View style={styles.imageContainer}>
+        //   <Image
+        //   source={require('../../assets/images/gymHopWhite.png')}
+        //   style={styles.brandLogo}
+        //   resizeMode='contain'
+        //   />
+        // </View>
       <View style={styles.profileContainer}>
+              <View style={styles.imageContainer}>
+          <Image
+          source={require('../../assets/images/gymHopWhite.png')}
+          style={styles.brandLogo}
+          resizeMode='contain'
+          />
+        </View>
           <View style={styles.profilePicContainer}>
             <Image source={{uri: profilePic}}
             style={[styles.profilePic, {width: profileHeight, height: profileHeight }]}

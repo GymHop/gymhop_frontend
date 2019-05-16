@@ -4,6 +4,8 @@ import { ScrollView, StyleSheet, View, Text,
          Vibration, PermissionsAndroid } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 
+import Colors from "../constants/Colors";
+
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { withNavigationFocus } from "react-navigation";
 
@@ -50,6 +52,8 @@ class QRReaderScreen extends React.Component {
                          ref={(node) => { this.scanner = node }}
                          cameraProps={{captureAudio: false}}
                          containerStyle={styles.container}
+                         showMarker={true}
+                         topContent={<Text style={styles.topText}>Scan QR Code Upon Entering Gym!</Text>}
                  />
              )
          }
@@ -148,6 +152,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  topText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: Colors.tintColor
   },
   bottomBar: {
     position: 'absolute',

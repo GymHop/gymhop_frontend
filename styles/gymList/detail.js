@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
         alignSelf: 'flex-start',
       },
       tierContainer: {
-        width: "35%",
+        width: "50%",
         padding: 1,
         justifyContent: "center",
 
@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
       justifyContent: "space-around"
     },
       actionButton: {
-        width: "35%"
-      }
+        width: "35%",
+      },
+
 });
