@@ -7,14 +7,12 @@ export const styles = StyleSheet.create({
       height: (Layout.window.height) * 2 / 12,
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: "flex-start",
+      justifyContent: 'space-between',
       alignItems: "center",
       maxWidth: Layout.window.width,
       padding: 8,
       borderBottomWidth: StyleSheet.hairlineWidth,
       borderBottomColor: 'rgba(0, 0, 0, .3)',
-
-      // paddingHorizontal: 10
   },
     gymPhotoContainer: {
       width: "23%",

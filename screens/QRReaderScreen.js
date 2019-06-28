@@ -15,7 +15,7 @@ import { bindActionCreators } from 'redux';
 
 import * as ActionCreators from '../actions/checkinActions';
 
-import { showMessage, hideMessage } from "react-native-flash-message";
+import NewUserScreen from '../components/NewUserScreen/NewUserScreen';
 
 class QRReaderScreen extends React.Component {
   static navigationOptions = {
@@ -47,6 +47,8 @@ class QRReaderScreen extends React.Component {
              return null;
          } else if (isFocused) {
              return (
+               <View style={styles.container}>
+               <NewUserScreen pagekey={"QR"} title={"Welcome to GymHop!"} description={"Find a gym near you on the home page, scan the QR code at the front desk of the gym, workout! It's that simple!"}/>
                <QRCodeScanner
                          onRead={this._handleBarCodeRead}
                          ref={(node) => { this.scanner = node }}
@@ -55,6 +57,7 @@ class QRReaderScreen extends React.Component {
                          showMarker={true}
                          topContent={<Text style={styles.topText}>Scan QR Code Upon Entering Gym!</Text>}
                  />
+                 </View>
              )
          }
        }

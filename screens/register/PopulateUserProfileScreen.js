@@ -10,6 +10,7 @@ import PhotoUploadForm from '../../components/registration/PhotoUploadForm';
 import BirthdayPicker from '../../components/registration/BirthdayPicker';
 import * as ActionCreators from '../../actions/registerActions';
 import { styles } from '../../styles/registration';
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 class RegisterPart2 extends React.Component {
   static navigationOptions = {
@@ -42,13 +43,44 @@ class RegisterPart2 extends React.Component {
     const baseUser = this.props.navigation.getParam('baseUser', {});
 
     let { birthday, ...restOfState } = this.state
-    this.props.Actions.registerUser({
-      ...baseUser,
-      ...restOfState,
-      birthday: birthday.valueOf(),
-
-    });
-  }
+    if (this.state.profile_pic === null) {
+      showMessage({
+        message: "Please upload a profile picture!",
+        type: "info",
+        backgroundColor: "red",
+        flex: "1",
+        justifyContent: "center",
+        fontSize: "18"
+      });
+    } else if (this.state.first_name === null) {
+      showMessage({
+        message: "Please input your first name!",
+        type: "info",
+        backgroundColor: "red",
+        flex: "1",
+        justifyContent: "center",
+        fontSize: "18"
+      });
+    } else if (this.state.last_name === null) {
+      showMessage({
+        message: "Please input your last name!",
+        type: "info",
+        backgroundColor: "red",
+        flex: "1",
+        justifyContent: "center",
+        fontSize: "18"
+      });
+    } else {
+      this.props.Actions.registerUser({
+        ...baseUser,
+        ...restOfState,
+        birthday: birthday.valueOf(),
+  
+      }
+      );
+    }
+    }
+    
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.success === true && this.props.userProfileSuccess === true) {

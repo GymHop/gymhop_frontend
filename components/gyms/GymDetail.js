@@ -11,11 +11,15 @@ const GymDetail = ({gym}) => {
   const goToGym = () => {
     openMap({
        latitude: parseFloat(gym.latitude),
-       longitude: parseFloat(gym.longitude)
+       longitude: parseFloat(gym.longitude),
+       end: gym.location['address_1', 'city']
     })
   }
   let hours = gym.hours ? <Text>Hours:{"\n"}{gym.hours}</Text> : null;
 
+  let schedulePhoto = gym.schedule_photo;
+  console.log("SCHEDULE PHOTO", schedulePhoto);
+  
 
   return (
     <View style={styles.container}>

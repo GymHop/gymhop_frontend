@@ -8,13 +8,16 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
-  Dimensions
+  Dimensions,
+  RefreshControl,
+  AsyncStorage
 } from 'react-native';
+import PropTypes from 'prop-types';
 import {SafeAreaView} from 'react-navigation';
 
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, compose } from 'redux';
 
 import Accordion from 'react-native-collapsible/Accordion';
 
@@ -28,22 +31,58 @@ import * as ActionCreators from '../actions/gymActions';
 import { MonoText } from '../components/StyledText';
 import Layout from '../constants/Layout';
 
+import { copilot, walkthroughable, CopilotStep } from 'react-native-copilot';
+
+const CopilotView = walkthroughable(View);
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  // static propTypes = {
+  //   start: PropTypes.func.isRequired,
+  //   copilotEvents: PropTypes.shape({
+  //     on: PropTypes.func.isRequired,
+  //   }).isRequired,
+  // };
+
   constructor(props) {
     super(props);
     this.state = {
-      activeSections: []
+      activeSections: [],
+      copilotDone: null,
+      // refreshing: false,
     }
     this._renderHeader = this._renderHeader.bind(this);
     this._renderContent = this._renderContent.bind(this);
     this._updateSections = this._updateSections.bind(this);
     this.getGymIdxFromActiveSections = this.getGymIdxFromActiveSections.bind(this);
+    this.handleStepChange = this.handleStepChange.bind(this);
   }
 
   componentDidMount() {
+    AsyncStorage.getItem("1", (err, result) => {
+      if (err) {
+      } else {
+        if (result == null) {
+          console.log("null value recieved", result);
+          this.props.copilotEvents.on('stepChange', this.handleStepChange);
+          this.props.start();
+          this.props.copilotEvents.on('stop', () => {
+            // Copilot tutorial finished!
+            this.props.copilotEvents.off('stop');
+            this.setState({copilotDone: true});
+          });
+          AsyncStorage.setItem("Home", JSON.stringify({"value":"true"}), (err,result) => {
+            console.log("error",err,"result",result);
+            });
+        } else {
+          console.log("result", result);
+        }
+      }
+    });
+
     if (this.props.gyms.length === 0) {
       navigator.geolocation.getCurrentPosition((pos) => {
         var crd = pos.coords;
@@ -63,11 +102,16 @@ class HomeScreen extends React.Component {
     }
   }
 
+  handleStepChange = (step) => {
+    console.log(`Current step is: ${step.name}`);
+  }
+
 
   _renderHeader(section, index, isActive, sections) {
     // header of expanded section
     return (
-      <GymTile key={index} gym={section}/>
+        <GymTile key={index} gym={section}/>
+
     )
   }
   _renderContent(section, index, isActive, sections) {
@@ -87,8 +131,38 @@ class HomeScreen extends React.Component {
     if (this.state.activeSections.length == 0) {
       return null;
     }
-    return this.state.activeSections[0]
+    return this.state.activeSections[0] 
   }
+
+  // _onRefresh = () => {
+  //   this.setState({refreshing: true});
+  //   if (this.props.gyms.length === 0) {
+  //     navigator.geolocation.getCurrentPosition((pos) => {
+  //       var crd = pos.coords;
+  //       let coords = {
+  //         latitude: crd.latitude,
+  //         longitude: crd.longitude
+  //       }
+  //         // get location aware list of gyms
+  //           this.props.Actions.getGyms(this.props.token, coords).then(() => {
+  //           this.setState({refreshing: false});
+
+  //         });
+  //       },
+  //       (err) => {
+  //         // error getting location, just get all gyms
+  //         this.props.Actions.getGyms(this.props.token).then(() => {
+  //           this.setState({refreshing: false});
+  //         })
+  //       }
+
+  //     );
+  //   }
+    // this.props.copilotEvents.on('stepChange', this.handleStepChange);
+    // this.props.start();
+  // }
+
+
 
   render() {
 
@@ -100,35 +174,94 @@ class HomeScreen extends React.Component {
       )
     }
 
+    if (this.state.copilotDone === true) {
+      return (
+        <View style={styles.container}>
+          <View style={styles.imageContainer}>
+                <Image
+                  source={require('../assets/images/gymHopWhite.png')}
+                  style={styles.brandLogo}
+                  resizeMode='contain'
+                />
+          </View>
+            <View>
+              <ErrorBar payment_tier={this.props.payment_tier} />
+            </View>
+          
+            <View style={styles.mapsContainer}>
+                <GymMap gyms={this.props.gyms}
+                        selectedGymIdx={this.getGymIdxFromActiveSections()}
+                />
+            </View>
+            <ScrollView 
+              style={styles.contentContainer}
+              // refreshControl={
+              //   <RefreshControl
+              //     refreshing={this.state.refreshing}
+              //     onRefresh={this._onRefresh}
+              //   /> }
+              >
+
+                <View style={styles.accordianContainer}>
+                    <Accordion
+                      sections={this.props.gyms}
+                      activeSections={this.state.activeSections}
+                      renderHeader={this._renderHeader}
+                      renderContent={this._renderContent}
+                      onChange={this._updateSections}
+                      underlayColor={"#ffffff"}
+                    />
+                </View>
+            </ScrollView>
+  
+        </View>
+      );
+    }  
+
 
     return (
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image
-            source={require('../assets/images/gymHopWhite.png')}
-            style={styles.brandLogo}
-            resizeMode='contain'
-          />
+              <Image
+                source={require('../assets/images/gymHopWhite.png')}
+                style={styles.brandLogo}
+                resizeMode='contain'
+              />
         </View>
-        <ErrorBar payment_tier={this.props.payment_tier} />
-        <View style={styles.mapsContainer}>
-            <GymMap gyms={this.props.gyms}
-                    selectedGymIdx={this.getGymIdxFromActiveSections()}
-            />
-        </View>
-        <ScrollView style={styles.contentContainer}>
-
-          <View style={styles.accordianContainer}>
-            <Accordion
-              sections={this.props.gyms}
-              activeSections={this.state.activeSections}
-              renderHeader={this._renderHeader}
-              renderContent={this._renderContent}
-              onChange={this._updateSections}
-              underlayColor={"#ffffff"}
-            />
-          </View>
-        </ScrollView>
+        <CopilotStep text="Click here to see our membership options (Opens browser)" order={3} name="Membership">
+          <CopilotView>
+            <ErrorBar payment_tier={this.props.payment_tier} />
+          </CopilotView>
+        </CopilotStep>
+        
+        <CopilotStep text="Welcome to the GymHop App Tutorial! Click Next to continue!" order={1} name="Intro">
+          <CopilotView style={styles.mapsContainer}>
+              <GymMap gyms={this.props.gyms}
+                      selectedGymIdx={this.getGymIdxFromActiveSections()}
+              />
+          </CopilotView>
+        </CopilotStep>
+          <ScrollView 
+            style={styles.contentContainer}
+            // refreshControl={
+            //   <RefreshControl
+            //     refreshing={this.state.refreshing}
+            //     onRefresh={this._onRefresh}
+            //   /> }
+            >
+            <CopilotStep text="This is our list of gyms! Click on a gym to see the location, description, hours, or get directions!" order={2} name="Gyms"> 
+              <CopilotView style={styles.accordianContainer}>
+                  <Accordion
+                    sections={this.props.gyms}
+                    activeSections={this.state.activeSections}
+                    renderHeader={this._renderHeader}
+                    renderContent={this._renderContent}
+                    onChange={this._updateSections}
+                    underlayColor={"#ffffff"}
+                  />
+              </CopilotView>
+            </CopilotStep>
+          </ScrollView>
 
       </View>
     );
@@ -139,6 +272,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+
   },
     imageContainer: {
     ...Platform.select({
@@ -166,12 +300,12 @@ const styles = StyleSheet.create({
       width: (Layout.window.width),
     },
     contentContainer: {
-      flex: .75,
+      flex: 1,
     },
       accordianContainer: {
         height: ( Layout.noStatusBarHeight)* .9,
         width: Layout.window.width,
-        marginBottom: Layout.window.height / 4,
+        marginBottom: Layout.window.height
       }
 });
 
@@ -189,4 +323,5 @@ function mapDispatchToProps(dispatch) {
     Actions: bindActionCreators(ActionCreators, dispatch)
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(copilot( {overlay: 'svg', // or 'view'
+animated: true, verticalOffset: 24})(HomeScreen));
