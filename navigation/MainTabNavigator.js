@@ -11,13 +11,37 @@ import SettingsScreen from '../screens/SettingsScreen';
 import QRScreen from '../screens/QRScreen';
 import PostCheckInScreen from '../screens/PostCheckInScreen';
 import StatsScreen from '../screens/gymOwner/StatsScreen';
+import ScheduleScreen from '../screens/ScheduleScreen';
+
+import { fromLeft } from 'react-navigation-transitions';
 
 import Colors from '../constants/Colors';
 
+const handleCustomTransition = ({ scenes }) => {
+  const prevScene = scenes[scenes.length - 2];
+  const nextScene = scenes[scenes.length - 1];
+ 
+  // Custom transitions go there
+  if (prevScene
+    && prevScene.route.routeName === 'Home'
+    && nextScene.route.routeName === 'Schedule') {
+    return fromLeft();
+    }
+  }
+
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
+  Schedule: {
+    screen: ScheduleScreen,
+    navigationOptions: {
+     headerTintColor: "white",
+     headerStyle: { backgroundColor: 'black',}
+     }
+  },
   QR: QRScreen
-});
+}, {
+    transitionConfig: (nav) => handleCustomTransition(nav)
+  });
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',

@@ -18,7 +18,6 @@ const GymDetail = ({gym}) => {
   let hours = gym.hours ? <Text>Hours:{"\n"}{gym.hours}</Text> : null;
 
   let schedulePhoto = gym.schedule_photo;
-  console.log("SCHEDULE PHOTO", schedulePhoto);
   
 
   return (

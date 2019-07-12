@@ -50,7 +50,6 @@
 		839947E180214534BC105B21 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E67E897B3B4B0AAAE0D44C /* EvilIcons.ttf */; };
 		A4370F0F84DB46D38D415D22 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B3CE1D87614AAFB28DC854 /* libAirMaps.a */; };
 		AD08E3CA47EB4797801995D1 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A3A13352422458AA42DE88F /* Octicons.ttf */; };
-		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B23DBB32127D40B4805F6920 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7A3EA184B4A4C5FA24EDA69 /* SimpleLineIcons.ttf */; };
 		B3F34E158B5540878836E993 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9713CE90ADC54E17BA34F2B3 /* libRNGestureHandler.a */; };
 		BCEEC131382E4A2EBDA511A5 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6A4BD8758A34902B9BA52D2 /* FontAwesome.ttf */; };
@@ -507,7 +506,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
-				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,

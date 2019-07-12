@@ -31,6 +31,7 @@ import * as ActionCreators from '../actions/gymActions';
 import { MonoText } from '../components/StyledText';
 import Layout from '../constants/Layout';
 
+import Colors from "../constants/Colors";
 import { copilot, walkthroughable, CopilotStep } from 'react-native-copilot';
 
 const CopilotView = walkthroughable(View);
@@ -52,7 +53,6 @@ class HomeScreen extends React.Component {
     this.state = {
       activeSections: [],
       copilotDone: null,
-      // refreshing: false,
     }
     this._renderHeader = this._renderHeader.bind(this);
     this._renderContent = this._renderContent.bind(this);
@@ -62,10 +62,10 @@ class HomeScreen extends React.Component {
   }
 
   componentDidMount() {
-    AsyncStorage.getItem("1", (err, result) => {
+    AsyncStorage.getItem("Home", (err, result) => {
       if (err) {
       } else {
-        if (result == null) {
+        if (result == null && this.state.copilotDone == null) {
           console.log("null value recieved", result);
           this.props.copilotEvents.on('stepChange', this.handleStepChange);
           this.props.start();
@@ -100,7 +100,7 @@ class HomeScreen extends React.Component {
 
       );
     }
-  }
+	}
 
   handleStepChange = (step) => {
     console.log(`Current step is: ${step.name}`);
@@ -110,8 +110,7 @@ class HomeScreen extends React.Component {
   _renderHeader(section, index, isActive, sections) {
     // header of expanded section
     return (
-        <GymTile key={index} gym={section}/>
-
+          <GymTile key={index} gym={section}/>
     )
   }
   _renderContent(section, index, isActive, sections) {
@@ -131,38 +130,8 @@ class HomeScreen extends React.Component {
     if (this.state.activeSections.length == 0) {
       return null;
     }
-    return this.state.activeSections[0] 
+    return this.state.activeSections[0]
   }
-
-  // _onRefresh = () => {
-  //   this.setState({refreshing: true});
-  //   if (this.props.gyms.length === 0) {
-  //     navigator.geolocation.getCurrentPosition((pos) => {
-  //       var crd = pos.coords;
-  //       let coords = {
-  //         latitude: crd.latitude,
-  //         longitude: crd.longitude
-  //       }
-  //         // get location aware list of gyms
-  //           this.props.Actions.getGyms(this.props.token, coords).then(() => {
-  //           this.setState({refreshing: false});
-
-  //         });
-  //       },
-  //       (err) => {
-  //         // error getting location, just get all gyms
-  //         this.props.Actions.getGyms(this.props.token).then(() => {
-  //           this.setState({refreshing: false});
-  //         })
-  //       }
-
-  //     );
-  //   }
-    // this.props.copilotEvents.on('stepChange', this.handleStepChange);
-    // this.props.start();
-  // }
-
-
 
   render() {
 
@@ -187,13 +156,13 @@ class HomeScreen extends React.Component {
             <View>
               <ErrorBar payment_tier={this.props.payment_tier} />
             </View>
-          
+
             <View style={styles.mapsContainer}>
                 <GymMap gyms={this.props.gyms}
                         selectedGymIdx={this.getGymIdxFromActiveSections()}
                 />
             </View>
-            <ScrollView 
+            <ScrollView
               style={styles.contentContainer}
               // refreshControl={
               //   <RefreshControl
@@ -213,10 +182,57 @@ class HomeScreen extends React.Component {
                     />
                 </View>
             </ScrollView>
-  
+
         </View>
       );
-    }  
+     } // else if (this.state.copilotDone == null && this.props.payment_tier != 0) {
+    //     return (
+    //       <View style={styles.container}>
+    //         <View style={styles.imageContainer}>
+    //               <Image
+    //                 source={require('../assets/images/gymHopWhite.png')}
+    //                 style={styles.brandLogo}
+    //                 resizeMode='contain'
+    //               />
+    //         </View>
+            
+    //           <View>
+    //             <ErrorBar payment_tier={this.props.payment_tier} />
+    //           </View>
+            
+    
+    //         <CopilotStep text="Welcome to the GymHop App Tutorial! Click Next to continue!" order={1} name="Intro">
+    //           <CopilotView style={styles.mapsContainer}>
+    //               <GymMap gyms={this.props.gyms}
+    //                       selectedGymIdx={this.getGymIdxFromActiveSections()}
+    //               />
+    //           </CopilotView>
+    //         </CopilotStep>
+    //           <ScrollView
+    //             style={styles.contentContainer}
+    //             // refreshControl={
+    //             //   <RefreshControl
+    //             //     refreshing={this.state.refreshing}
+    //             //     onRefresh={this._onRefresh}
+    //             //   /> }
+    //             >
+    //             <CopilotStep text="This is our list of gyms! Click on a gym to see the location, description, hours, or get directions!" order={2} name="Gyms">
+    //               <CopilotView style={styles.accordianContainer}>
+    //                   <Accordion
+    //                     sections={this.props.gyms}
+    //                     activeSections={this.state.activeSections}
+    //                     renderHeader={this._renderHeader}
+    //                     renderContent={this._renderContent}
+    //                     onChange={this._updateSections}
+    //                     underlayColor={"#ffffff"}
+    //                   />
+    //               </CopilotView>
+    //             </CopilotStep>
+    //           </ScrollView>
+    
+    //       </View>
+    //     );
+    //   }
 
 
     return (
@@ -233,7 +249,7 @@ class HomeScreen extends React.Component {
             <ErrorBar payment_tier={this.props.payment_tier} />
           </CopilotView>
         </CopilotStep>
-        
+
         <CopilotStep text="Welcome to the GymHop App Tutorial! Click Next to continue!" order={1} name="Intro">
           <CopilotView style={styles.mapsContainer}>
               <GymMap gyms={this.props.gyms}
@@ -241,7 +257,7 @@ class HomeScreen extends React.Component {
               />
           </CopilotView>
         </CopilotStep>
-          <ScrollView 
+          <ScrollView
             style={styles.contentContainer}
             // refreshControl={
             //   <RefreshControl
@@ -249,7 +265,7 @@ class HomeScreen extends React.Component {
             //     onRefresh={this._onRefresh}
             //   /> }
             >
-            <CopilotStep text="This is our list of gyms! Click on a gym to see the location, description, hours, or get directions!" order={2} name="Gyms"> 
+            <CopilotStep text="This is our list of gyms! Click on a gym to see the location, description, hours, or get directions!" order={2} name="Gyms">
               <CopilotView style={styles.accordianContainer}>
                   <Accordion
                     sections={this.props.gyms}
@@ -303,9 +319,10 @@ const styles = StyleSheet.create({
       flex: 1,
     },
       accordianContainer: {
-        height: ( Layout.noStatusBarHeight)* .9,
+        // height: ( Layout.noStatusBarHeight)* .9,
+        height: '100%',
         width: Layout.window.width,
-        marginBottom: Layout.window.height
+        // marginBottom: Layout.window.height,
       }
 });
 
@@ -323,5 +340,4 @@ function mapDispatchToProps(dispatch) {
     Actions: bindActionCreators(ActionCreators, dispatch)
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(copilot( {overlay: 'svg', // or 'view'
-animated: true, verticalOffset: 24})(HomeScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(copilot({overlay: 'svg', animated: true, ...Platform.select({ios: {}, android: {verticalOffset: 24}})})(HomeScreen));

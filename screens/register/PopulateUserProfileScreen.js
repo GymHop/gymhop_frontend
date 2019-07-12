@@ -90,14 +90,14 @@ class RegisterPart2 extends React.Component {
     }
   };
 
-  handlePhoneInput = (text) => {
-    if (text.replace(/\D/g,'').length > 9) {
-      Keyboard.dismiss();
-      return;
-    }
+  // handlePhoneInput = (text) => {
+  //   if (text.replace(/\D/g,'').length > 9) {
+  //     Keyboard.dismiss();
+  //     return;
+  //   }
 
-    this.setState({phone: text.replace(/\D/g,'')});
-  }
+  //   this.setState({phone: text.replace(/\D/g,'')});
+  // }
 
   render () {
 
@@ -135,7 +135,13 @@ class RegisterPart2 extends React.Component {
           inlineImageLeft='phone'
           keyboardType={'phone-pad'}
           placeholderTextColor={'#8f8f8f'}
-          onChangeText={(text) => {this.handlePhoneInput(text)}}
+          maxLength={10}
+          onChangeText={(text) => {
+            if (text.replace(/\D/g,'').length > 9) {
+              Keyboard.dismiss();
+            }
+              this.setState({phone: text.replace(/\D/g,'')});}}
+          // onChangeText={(text) => {this.handlePhoneInput(text)}}
         />
         <Text style={[styles.whiteText, {marginTop: 10}]}>Enter your birthday</Text>
         <View style={{marginBottom:22}}>

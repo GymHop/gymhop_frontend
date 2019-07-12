@@ -1,0 +1,30 @@
+dependencies: \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridge.m \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTBridge+Private.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/rory/Documents/gymhop_frontend/ios/build/gymhop_frontend/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/rory/Documents/gymhop_frontend/ios/build/gymhop_frontend/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/rory/Documents/gymhop_frontend/ios/build/gymhop_frontend/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/rory/Documents/gymhop_frontend/ios/build/gymhop_frontend/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTEventDispatcher.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Inspector/RCTInspectorPackagerConnection.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTModuleData.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Profiler/RCTProfile.h \
+  /Users/rory/Documents/gymhop_frontend/node_modules/react-native/React/Base/RCTReloadCommand.h

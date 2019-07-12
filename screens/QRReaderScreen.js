@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text,
          LayoutAnimation, Dimensions, TouchableOpacity,
-         Vibration, PermissionsAndroid } from 'react-native';
+         Vibration, PermissionsAndroid, AsyncStorage } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 
 import Colors from "../constants/Colors";
@@ -22,8 +22,6 @@ class QRReaderScreen extends React.Component {
     header: null,
   };
 
-
-
   constructor(props){
     super(props);
 
@@ -32,8 +30,10 @@ class QRReaderScreen extends React.Component {
       hasCameraPermission: null,
       lastScanned: null,
       lastScanTime: null,
-      lastScannedUrl: null
+      lastScannedUrl: null,
+      firstTime: true,
     }
+    this.renderCamera = this.renderCamera.bind(this);
   }
 
   componentDidMount() {

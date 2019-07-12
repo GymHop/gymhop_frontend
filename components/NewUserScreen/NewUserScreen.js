@@ -5,7 +5,8 @@ import {
   View,
   Text,
   TouchableHighlight,
-  StyleSheet
+  StyleSheet,
+  Image
 } from "react-native";
 
 import { withNavigation } from 'react-navigation';
@@ -39,8 +40,8 @@ class NewUserScreen extends Component {
               });
       // ---------------------------------------------------------
 
-      // Comment this in to make sure it stays up while testing: 
-      this.setModalVisible(true);
+      // Comment this in to make sure it stays up while testing:
+      //this.setModalVisible(true);
     }
     setModalVisible(visible) {
       this.setState({ modalVisible: visible });
@@ -69,6 +70,16 @@ class NewUserScreen extends Component {
                 <Text style={styles.screenDescription} allowFontScaling={true}>
                   {this.props.description}
                 </Text>
+                <Image
+                  source={require('../../assets/images/Step1.png')}
+                  style={styles.step1}
+                  resizeMode='contain'
+                />
+                <Image
+                  source={require('../../assets/images/Step2.png')}
+                  style={styles.step2}
+                  resizeMode='contain'
+                />
               </View>
               <View style={styles.screenExitContainer}>
                 <TouchableHighlight
@@ -104,17 +115,28 @@ class NewUserScreen extends Component {
       },
       screenTitle:{
         color:'white',
-            fontWeight:'bold',
+        fontWeight:'bold',
         fontSize:20,
         textAlign:'center',
-        margin:10,	
+        margin:10,
       },
       screenDescription:{
         color:'white',
-            fontSize:15,
+        fontSize:15,
+        height: '20%',
         marginRight:20,
-        marginLeft:20
+        marginLeft:20,
       },
+        step1: {
+          marginTop:10,
+          height: '30%',
+          width: '100%'
+        },
+        step2: {
+          marginTop: 25,
+          height: '35%',
+        },
+
       screenCloseIcon:{
         alignSelf:'flex-end',
         flex:0.5,
@@ -124,13 +146,16 @@ class NewUserScreen extends Component {
         flex:1,
         flexDirection:'row',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
       },
       screenDescriptionContainer:{
-        flex:6.5
+        flex:6.5,
+        justifyContent:'flex-start',
+        alignItems:'center',
+
       },
       screenExitContainer:{
-        flex:2,
+        flex:1,
         justifyContent:'flex-start',
         alignItems:'center',
       },
