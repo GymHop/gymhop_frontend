@@ -43,5 +43,14 @@ export const styles = StyleSheet.create({
        justifyContent: "center",
        width: (Layout.window.width - 20) * 15  / 100,
 
-     }
+     },
+      arrowPhoto: {
+        marginTop: 5,
+        marginLeft: 10,
+        width: 30,
+        height: 50
+      },
+      text: {
+        fontSize: 12,
+      }
 });

@@ -36,7 +36,7 @@ class GymTile extends Component {
 
 
   //   });
-   }
+    }
 
   // allowSingleClicksThrough = (evt, gestureState) => {
   //   let shouldMove = Math.abs(gestureState.dx) >= 5
@@ -76,6 +76,12 @@ class GymTile extends Component {
         </View>
         <View style={styles.extraDetailsContainer}>
           {/* <Text style={[styles.gymTileText, {fontWeight:"bold"}]}>{dollarSigns}</Text> */}
+          <Image
+          source={require('../../assets/images/arrow.png')}
+          resizeMode='contain'
+          style={styles.arrowPhoto}
+          />
+          <Text style={styles.text}>Classes</Text>
         </View>
       </View>
     )

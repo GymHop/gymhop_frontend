@@ -25,6 +25,7 @@ import GymTile from '../components/gyms/GymTile';
 import GymDetail from '../components/gyms/GymDetail';
 import GymMap from '../components/gyms/Map';
 import ErrorBar from '../components/errorBar/errorBar';
+import GymhopTouchable from '../components/gymhopAccordion/gymhopAccordionTouchable';
 
 import * as ActionCreators from '../actions/gymActions';
 
@@ -33,6 +34,7 @@ import Layout from '../constants/Layout';
 
 import Colors from "../constants/Colors";
 import { copilot, walkthroughable, CopilotStep } from 'react-native-copilot';
+
 
 const CopilotView = walkthroughable(View);
 
@@ -164,6 +166,7 @@ class HomeScreen extends React.Component {
             </View>
             <ScrollView
               style={styles.contentContainer}
+              scrollEnabled={true}
               // refreshControl={
               //   <RefreshControl
               //     refreshing={this.state.refreshing}
@@ -173,6 +176,8 @@ class HomeScreen extends React.Component {
 
                 <View style={styles.accordianContainer}>
                     <Accordion
+                      touchableComponent={GymhopTouchable}
+                      touchableProps={{...this.props}}
                       sections={this.props.gyms}
                       activeSections={this.state.activeSections}
                       renderHeader={this._renderHeader}
@@ -268,6 +273,8 @@ class HomeScreen extends React.Component {
             <CopilotStep text="This is our list of gyms! Click on a gym to see the location, description, hours, or get directions!" order={2} name="Gyms">
               <CopilotView style={styles.accordianContainer}>
                   <Accordion
+                    touchableComponent={GymhopTouchable}
+                    touchableProps={{...this.props}}
                     sections={this.props.gyms}
                     activeSections={this.state.activeSections}
                     renderHeader={this._renderHeader}

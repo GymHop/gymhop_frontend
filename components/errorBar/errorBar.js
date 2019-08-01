@@ -5,17 +5,6 @@ import { View, Text, Image, StyleSheet, BackHandler,
     TouchableOpacity, Linking } from 'react-native';
 
 const ErrorBar = ({payment_tier}) => {
-    // let onPress = e => {
-    //     return (
-    //         <View style={styles.errorBar}>
-    //         <TakeMoney 
-    //             amount={1}
-    //             email="info@vidhub.co"
-    //         />
-    //         </View>
-    //     )
-    // }
-
     if (payment_tier == 0) {
         return (
             <View style={styles.errorBar}>

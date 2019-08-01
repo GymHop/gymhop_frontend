@@ -1,7 +1,10 @@
 import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
  
-export default class TakeMoney extends React.Component {
+class TakeMoney extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   onToken = (token) => {
     fetch('/save-stripe-token', {
       method: 'POST',
@@ -25,3 +28,5 @@ export default class TakeMoney extends React.Component {
     )
   }
 }
+
+export default TakeMoney;

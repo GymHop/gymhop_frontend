@@ -18,7 +18,7 @@ export default function ProfilePage({tier,
                       billingStartDate,
                       gender,
                       phone,
-                      updatePending
+                      updatePending,
                     }) {
     var tierType;
     switch (tier) {
@@ -57,6 +57,7 @@ export default function ProfilePage({tier,
     let bday = birthday ? dateFormatter(birthday, "date") : "";
 
     let profileHeight = Layout.window.height/6
+  
 
     return (
         // <View style={styles.imageContainer}>
