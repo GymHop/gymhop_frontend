@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Layout from '../../constants/Layout';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 class GymDetailContainer extends Component {
   constructor(props) {
     super(props);
+  }
+
+  formatDistance = (distance) => {
+    return Math.round(distance*10)/10 +" Miles"
   }
 
   render() {
@@ -33,6 +38,8 @@ class GymDetailContainer extends Component {
         dollarSigns = ""
     }
 
+    console.log(gym);
+
 
     return (
       <View style={styles.container}>
@@ -42,12 +49,32 @@ class GymDetailContainer extends Component {
           style={styles.gymLeadPhoto} />
         </View>
         <View style={styles.textContainer}>
-          <Text style={[styles.gymTileText, styles.gymTileTitle]}>{this.props.gym.name} &mdash; {dollarSigns}</Text>
-          <Text style={styles.gymTileText}>{this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
+          <View style={styles.titleContainer}>
+            <Text style={[styles.gymTileText, styles.gymTileTitle]}>{this.props.gym.name}</Text>
+          </View>
+          <View style={styles.subTextContainer}>
+            <View style={styles.iconTextCenter}>
+              <Icon name="tag" size={16}/>
+              <Text style={styles.gymTileText}>{dollarSigns}</Text>
+            </View>
+            <View style={styles.iconTextCenter}>
+              <Icon name="location-pin" size={16}/>
+              <Text style={styles.gymTileText}>{this.formatDistance(gym.distance)}</Text>
+            </View>
+            <View style={styles.iconTextCenter}>
+              <Icon name="directions" size={16}/>
+              <Text style={styles.gymTileText}>{this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
+            </View>
+          </View>
+          <View style={styles.hoursContainer}>
+            <Text>Hours:</Text>
+            <Text>{gym.hours}</Text>
+          </View>
+          <View style={styles.descriptionContainer}>
+            <Text>Description</Text>
+            <Text>{gym.amenities}</Text>
+          </View>
         </View>
-        <Text>hours</Text>
-        <Text>{this.props.gym.description}</Text>
-
       </View>
     )
   }
@@ -59,22 +86,38 @@ const styles = StyleSheet.create({
   },
   gymPhotoContainer: {},
   gymLeadPhoto: {
-    height: 200,
+    height: 140,
     width: Layout.window.width
   },
   textContainer: {
-    width: (Layout.window.width - 16) * 3 / 5,
-    display: "flex",
-    flexDirection: "column",
-    paddingLeft: 6
+    padding: 17,
   },
-    gymTileTitle: {
-      fontSize: 16,
+    titleContainer: {
+      marginBottom: 5,
     },
-    gymTileText: {
-      fontSize: 12,
+      gymTileTitle: {
+        fontSize: 19,
+      },
+  subTextContainer: {
+    display: "flex",
+    flexDirection: "row",
+  },
+    iconTextCenter: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      marginRight: 6,
     },
-
+      gymTileText: {
+        fontSize: 12,
+        marginLeft: 4
+      },
+  hoursContainer: {
+    marginTop: 10
+  },
+  descriptionContainer: {
+    marginTop: 10
+  },
 })
 
 export default GymDetailContainer

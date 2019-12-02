@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, PanResponder, Animated, ScrollView } from 'reac
 import Layout from '../constants/Layout';
 
 const closedDistanceFromBottom = Layout.window.height * .85 - 49;
-const mediumDistanceFromBottom = Layout.window.height * .65 - 49;
+const mediumDistanceFromBottom = Layout.window.height * .50 - 49;
 const openDistanceFromBottom = Layout.window.height * .1 - 49;
 
 class PullUpMenu extends Component {
@@ -149,7 +149,7 @@ class PullUpMenu extends Component {
   isScrollAtTopMomentum = ({nativeEvent}) => {
     // we're at the top
     if (nativeEvent.contentOffset.y === 0) {
-      this.animateDownALevel()
+      this.animateToLevel(0);
       this.setState({allowMenuMovement: true})
     }
   }
@@ -157,12 +157,12 @@ class PullUpMenu extends Component {
   render() {
 
     let widthInterpolatedValue = this.heightAnimatedValue.interpolate({
-      inputRange: [Math.round(closedDistanceFromBottom/4), Math.round(closedDistanceFromBottom/1.5),],
-      outputRange: [Layout.window.width, Layout.window.width * .9,],
+      inputRange: [Math.round(mediumDistanceFromBottom), Math.round(closedDistanceFromBottom)],
+      outputRange: [Layout.window.width, Layout.window.width * .9],
       extrapolate: "clamp"
     })
     let leftInterpolatedValue = this.heightAnimatedValue.interpolate({
-      inputRange: [Math.round(closedDistanceFromBottom/4), Math.round(closedDistanceFromBottom/1.5)],
+      inputRange: [Math.round(mediumDistanceFromBottom), Math.round(closedDistanceFromBottom)],
       outputRange: [0, Layout.window.width * 0.05,],
       extrapolate: "clamp"
     })
@@ -196,12 +196,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
     borderRadius: 6,
-    paddingHorizontal:5,
     zIndex: 10,
     maxHeight: Layout.window.height * .9 - 49
   },
   pullUpBarContainer: {
-    marginTop: 4,
+    marginVertical: 4,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center"
