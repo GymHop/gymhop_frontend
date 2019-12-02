@@ -1,7 +1,8 @@
 import {
   GET_GYMS_PENDING,
   GET_GYMS_FAILURE,
-  GET_GYMS_SUCCESS
+  GET_GYMS_SUCCESS,
+  UI_SELECT_GYM
 } from './actiontypes';
 
 import * as GymAPI from '../api/gym';
@@ -36,5 +37,13 @@ export function getGyms(token, coords={}) {
       console.log(error.response);
       dispatch(getGymFailure(error))
     })
+  }
+}
+
+// for the ui
+export function selectGym(gym) {
+  return {
+    type: UI_SELECT_GYM,
+    payload: gym
   }
 }

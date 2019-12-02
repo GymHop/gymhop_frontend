@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, Image } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import { connect } from 'react-redux';
+
+import { selectGym } from '../../actions/gymActions';
 
 import Layout from '../../constants/Layout';
 
-export default class GymMap extends Component {
+class GymMap extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -80,6 +83,9 @@ export default class GymMap extends Component {
               key={gym.id}
               coordinate={latlng}
               title={gym.name}
+              onPress={(coord, position) => {
+                  this.props.selectGym(gym);
+              }}
               />
             )
           }
@@ -95,3 +101,11 @@ const styles = StyleSheet.create({
     width: (Layout.window.width)
   }
 })
+
+function mapDispatchToProps(dispatch) {
+  return {
+    selectGym: (gym) => dispatch(selectGym(gym))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(GymMap)

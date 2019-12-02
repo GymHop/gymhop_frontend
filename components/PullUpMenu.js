@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Text, StyleSheet, PanResponder, Animated } from 'react-native';
+import { View, Text, StyleSheet, PanResponder, Animated, ScrollView } from 'react-native';
 import Layout from '../constants/Layout';
 
 const closedDistanceFromBottom = Layout.window.height * .85 - 49;
@@ -11,33 +11,39 @@ class PullUpMenu extends Component {
   constructor(props) {
     super(props);
 
-    this.levels = ["CLOSED", "MEDIUM",, "FULL"]
+    this.levels = ["CLOSED", "MEDIUM", "FULL"]
     this.levelValues = [closedDistanceFromBottom,
                         mediumDistanceFromBottom,
                         openDistanceFromBottom, ]
     this.state = {
-      currentLevel: 0
+      currentLevel: 0,
+      allowMenuMovement: true,
+      justHitLevelTwo: false
     }
+    // is at top of scroll view?
+    // is within top scroll view range (image height most likely)
 
     this.heightAnimatedValue = new Animated.Value(closedDistanceFromBottom);
 
     this._panResponder = PanResponder.create({
         // Ask to be the responder
-        onStartShouldSetPanResponder: (evt, gestureState) => true,
-        onStartShouldSetPanResponderCapture: () => true,
-        onMoveShouldSetPanResponder: (evt, gestureState) => true,
-        onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+        onStartShouldSetPanResponder: this.shouldAllowPanresponderSet,
+        onStartShouldSetPanResponderCapture: this.shouldAllowPanresponderCapture,
+        onMoveShouldSetPanResponder: this.shouldAllowPanresponderSet,
+        onMoveShouldSetPanResponderCapture:  this.shouldAllowPanresponderCapture,
         onPanResponderMove: (e, gestureState) => {
-          console.log(gestureState.dy);
           // this.heightAnimatedValue.setValue(closedDistanceFromBottom + gestureState.dy)
+          if (this.state.currentLevel === 0 && gestureState.dy < 0) {
+            this.heightAnimatedValue.setValue(closedDistanceFromBottom+gestureState.dy);
+          }
         },
         onPanResponderRelease: (evt, gestureState) => {
           //determine which open size to open to
           // if they do a big swipe animated all the way down/up
-          if (gestureState.dy > Layout.window.height *.5) {
+          if (gestureState.dy > Layout.window.height *.3) {
             this.animateToLevel(0);
             return;
-          } else if (gestureState.dy < -Layout.window.height *.5) {
+          } else if (gestureState.dy < -Layout.window.height *.4) {
             this.animateToLevel(2);
             return;
           }
@@ -54,18 +60,44 @@ class PullUpMenu extends Component {
       });
   }
 
+  shouldAllowPanresponderCapture = (evt, gestureState) => {
+            // if they swipe up
+            // and we are at the top of the menu
+            // and the menu is fully open
+            //      -> then disable panresponder
+            // otherwise allow
+      return this.state.allowMenuMovement;
+  }
+
+  shouldAllowPanresponderSet = (evt, gestureState) => {
+    return this.state.allowMenuMovement;
+    // if (this.state.justHitLevelTwo && gestureState.dy < 0) {
+    //   return true;
+    // }
+    // return this.shouldAllowPanresponderCapture(evt, gestureState)
+  }
+
   animatedUpALevel = () => {
-    console.log("moving up a level");
     if (this.state.currentLevel === 2) {
-      return
+      this.setState({allowMenuMovement: false, justHitLevelTwo: true})
+      return;
     }
+    console.log("moving up a level");
     Animated.spring(
       this.heightAnimatedValue,
       {
         toValue: this.levelValues[this.state.currentLevel + 1]
       }
     ).start()
-    this.setState({currentLevel: this.state.currentLevel + 1})
+    if (this.state.currentLevel + 1 == 2) {
+      this.setState({
+        currentLevel: this.state.currentLevel + 1,
+        allowMenuMovement: false,
+        justHitLevelTwo: true
+      })
+    } else {
+      this.setState({currentLevel: this.state.currentLevel + 1})
+    }
   }
   animateDownALevel = () => {
     console.log("moving down a level");
@@ -89,7 +121,37 @@ class PullUpMenu extends Component {
         toValue: this.levelValues[level]
       }
     ).start()
-    this.setState({currentLevel: level})
+
+    if (level === 2) {
+      this.setState({currentLevel: level, allowMenuMovement: false, justHitLevelTwo: true})
+    } else {
+      this.setState({currentLevel: level})
+    }
+  }
+
+  isScrollAtTop = ({nativeEvent}) => {
+    if (this.state.justHitLevelTwo) {
+      this.setState({justHitLevelTwo: false});
+    }
+    if (nativeEvent.contentOffset != undefined) {
+      if (nativeEvent.contentOffset.y === 0) {
+        this.setState({allowMenuMovement: true})
+      } else {
+        console.log("not at top");
+        this.setState({allowMenuMovement: false})
+      }
+    } else {
+      console.log("cant capture scroll event");
+      this.setState({allowMenuMovement: false})
+    }
+  }
+
+  isScrollAtTopMomentum = ({nativeEvent}) => {
+    // we're at the top
+    if (nativeEvent.contentOffset.y === 0) {
+      this.animateDownALevel()
+      this.setState({allowMenuMovement: true})
+    }
   }
 
   render() {
@@ -118,7 +180,13 @@ class PullUpMenu extends Component {
         <View style={styles.pullUpBarContainer}>
           <View style={styles.pullUpBar}></View>
         </View>
-        {this.props.children}
+        <ScrollView
+          onScroll={this.isScrollAtTop}
+          scrollEnabled={!this.state.allowMenuMovement}
+          onMomentumScrollEnd={this.isScrollAtTopMomentum}
+          >
+          {this.props.children}
+        </ScrollView>
       </Animated.View>
     )
   }
@@ -130,6 +198,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     paddingHorizontal:5,
     zIndex: 10,
+    maxHeight: Layout.window.height * .9 - 49
   },
   pullUpBarContainer: {
     marginTop: 4,
