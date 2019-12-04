@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import { View, Text, StyleSheet, PanResponder, Animated, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
 import Layout from '../constants/Layout';
+import { setPullUpLevel } from '../actions/uiActions';
 
 const closedDistanceFromBottom = Layout.window.height * .85 - 49;
 const mediumDistanceFromBottom = Layout.window.height * .50 - 49;
@@ -58,6 +60,12 @@ class PullUpMenu extends Component {
           }
         }
       });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.currentLevel != this.state.currentLevel) {
+      this.props.setPullUpLevel(this.state.currentLevel);
+    }
   }
 
   shouldAllowPanresponderCapture = (evt, gestureState) => {
@@ -214,4 +222,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default PullUpMenu
+function mapDispatchToProps(dispatch) {
+  return {
+    setPullUpLevel: (level) => dispatch(setPullUpLevel(level))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PullUpMenu);

@@ -14,35 +14,8 @@ import QRScreen from "../../screens/QRScreen";
 
 class GymTile extends Component {
   constructor(props) {
-    super(props);
-  //   this._panResponder = PanResponder.create({
-  //     // Ask to be the responder
-  //     onStartShouldSetPanResponder: (evt, gestureState) => this.allowSingleClicksThrough(evt, gestureState),
-  //     onStartShouldSetPanResponderCapture: () => true,
-  //     onMoveShouldSetPanResponder: (evt, gestureState) => this.allowSingleClicksThrough(evt, gestureState),
-  //     onMoveShouldSetPanResponderCapture: (evt, gestureState) => this.allowSingleClicksThrough(evt, gestureState),
-  //     onPanResponderMove: (e, gestureState) => {
-  //       console.info('onPanResponderMove', gestureState.dx);
-  //       // React to the movement!
-  //     },
-  //     onPanResponderRelease: (evt, gestureState) => {
-  //       if (Math.abs(gestureState.dx) >= 80) {
-  //         this.props.navigation.push("Schedule", {
-  //           title: this.props.gym.name,
-  //           passProps: {gym: this.props.gym}
-  //         });
-  //       }
-  //     },
-
-
-  //   });
+      super(props);
     }
-
-  // allowSingleClicksThrough = (evt, gestureState) => {
-  //   let shouldMove = Math.abs(gestureState.dx) >= 5
-  //   if (shouldMove) {console.log("should capture")} else {console.log("should not capture")}
-  //   return shouldMove
-  // }
 
   render() {
     let {gym} = this.props;
@@ -63,7 +36,7 @@ class GymTile extends Component {
     }
 
     return (
-      <View style={styles.gymTileContainer} /*{...this._panResponder.panHandlers}*/ >
+      <View style={styles.gymTileContainer}>
         <View style={styles.gymPhotoContainer}>
           <Image
           source={{uri: gym.lead_photo}}

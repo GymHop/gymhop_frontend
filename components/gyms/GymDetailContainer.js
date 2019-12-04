@@ -5,6 +5,7 @@ import Layout from '../../constants/Layout';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import EnhancedHours from './EnhancedHours';
+import TodaysHours from './TodaysHours';
 
 
 class GymDetailContainer extends Component {
@@ -53,7 +54,7 @@ class GymDetailContainer extends Component {
         </View>
         <View style={styles.textContainer}>
           <View style={styles.titleContainer}>
-            <Text style={[styles.gymTileText, styles.gymTileTitle]}>{this.props.gym.name}</Text>
+            <Text style={[styles.gymTileTitle]}>{this.props.gym.name}</Text>
           </View>
           <View style={styles.subTextContainer}>
             <View style={styles.iconTextCenter}>
@@ -65,8 +66,7 @@ class GymDetailContainer extends Component {
               <Text style={styles.gymTileText}>{this.formatDistance(gym.distance)}</Text>
             </View>
             <View style={styles.iconTextCenter}>
-              <Icon name="directions" size={16}/>
-              <Text style={styles.gymTileText}>{this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
+              <TodaysHours hours={gym.hours_enhanced} />
             </View>
           </View>
           <EnhancedHours hours={gym.hours_enhanced} hoursString={gym.hours}/>
@@ -109,8 +109,7 @@ const styles = StyleSheet.create({
       marginRight: 6,
     },
       gymTileText: {
-        fontSize: 12,
-        marginLeft: 4
+        marginLeft: 7
       },
   hoursContainer: {
     marginTop: 10

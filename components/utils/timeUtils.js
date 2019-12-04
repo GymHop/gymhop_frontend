@@ -19,3 +19,11 @@ export function militaryToAMPM(time) {
   timeValue += (hours >= 12) ? "PM" : "AM";
   return timeValue
 }
+
+export function renderHoursString(hours) {
+  return hours.reduce((acc, hour) => {
+    let opening = militaryToAMPM(hour.from_hour);
+    let closing = militaryToAMPM(hour.to_hour);
+    return acc + ` ${opening}-${closing},`
+  }, "").replace(/(^,)|(,$)/g, "");
+}
