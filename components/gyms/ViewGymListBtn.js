@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { View, Text, StyleSheet, Animated, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
 import Icon from "react-native-vector-icons/Ionicons";
@@ -32,7 +32,7 @@ class ViewGymListBtn extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.level != this.props.level) {
-      if (level === 0) {
+      if (this.props.level === 0) {
         this.showBtn();
       } else {
         this.hideBtn();
@@ -43,9 +43,11 @@ class ViewGymListBtn extends Component {
   render() {
     return (
       <Animated.View style={[styles.container, { left: this.leftAnimatedValue }]}>
-        <View style={styles.btnContainer}>
+        <TouchableOpacity style={styles.btnContainer} onPress={() => {
+          this.props.navigation.push("GymList");
+        }}>
           <Icon size={20} name="ios-list" />
-        </View>
+        </TouchableOpacity>
       </Animated.View>
     )
   }
