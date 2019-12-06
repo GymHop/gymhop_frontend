@@ -6,12 +6,14 @@ import gymReducer from './gymReducer';
 import checkinReducer from './checkinReducer';
 import userReducer from './userReducer';
 import gymOwnerReducer from './gymOwnerReducer';
+import uiReducer from './uiReducer';
 
 const appReducer = combineReducers({
   gyms: gymReducer,
   checkin: checkinReducer,
   user: userReducer,
-  gymOwner: gymOwnerReducer
+  gymOwner: gymOwnerReducer,
+  ui: uiReducer
 })
 
 const rootReducer = (state, action) => {

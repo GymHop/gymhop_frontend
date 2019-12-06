@@ -7,7 +7,7 @@
     "@dwqs/react-native-image-viewer": "^2.0.0",
     "axios": "^0.19.0",
     "babel-preset-react-native": "^5.0.2",
-    "react": "^16.8.3",
+    "react": "16.6.0",
     "react-images-viewer": "^1.6.2",
     "react-native": "^0.59.9",
     "react-native-camera": "^1.12.0",
@@ -18,7 +18,7 @@
     "react-native-image-view": "^2.1.5",
     "react-native-image-zoom-viewer": "^2.2.26",
     "react-native-keyboard-aware-scroll-view": "^0.8.0",
-    "react-native-maps": "^0.23.0",
+    "react-native-maps": "^0.25.0",
     "react-native-open-maps": "^0.3.3",
     "react-native-photo-upload": "^1.3.0",
     "react-native-qrcode": "^0.2.7",
@@ -40,6 +40,7 @@
     "yarn": "^1.13.0"
   },
   "devDependencies": {
+    "jetifier": "^1.6.5",
     "metro-react-native-babel-preset": "^0.52.0"
   },
   "scripts": {

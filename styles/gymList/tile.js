@@ -16,14 +16,14 @@ export const styles = StyleSheet.create({
   },
     gymPhotoContainer: {
       width: "23%",
-      padding: 3,
+      padding: 6,
       marginRight: 8,
 
     },
       gymLeadPhoto: {
-        width: 85,
-        height: 85,
-        borderRadius: 85 / 2,
+        width: 80,
+        height: 80,
+        borderRadius: 80 / 2,
         overflow: "hidden",
       },
     textContainer: {

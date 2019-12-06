@@ -12,13 +12,13 @@ const GymDetail = ({gym}) => {
     openMap({
        latitude: parseFloat(gym.latitude),
        longitude: parseFloat(gym.longitude),
-       end: gym.location['address_1', 'city']
+       query:gym.location['address_1'] + " " + gym.location['city'] 
     })
   }
   let hours = gym.hours ? <Text>Hours:{"\n"}{gym.hours}</Text> : null;
 
   let schedulePhoto = gym.schedule_photo;
-  
+
 
   return (
     <View style={styles.container}>
@@ -54,4 +54,5 @@ const GymDetail = ({gym}) => {
     </View>
   )
 }
+
 export default GymDetail

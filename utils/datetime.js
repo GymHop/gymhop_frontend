@@ -1,10 +1,11 @@
 
 export function dateFormatter( strDate, format ){
     var theDate;
+    debugger;
     if (strDate instanceof Date) {
       theDate = strDate
     } else {
-      theDate = new Date(strDate);
+      theDate = new Date(strDate + " EST");
     }
     if( format=="time" )
        return getTimeFromDate(theDate);

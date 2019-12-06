@@ -7,27 +7,29 @@ import CustomBottomTabBar from '../components/CustomBottomTabBar';
 
 import HomeScreen from '../screens/HomeScreen';
 import QRReaderScreen from '../screens/QRReaderScreen';
+import GymListScreen from '../screens/GymListScreen';
+import GymDetailScreen from '../screens/GymDetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import QRScreen from '../screens/QRScreen';
 import PostCheckInScreen from '../screens/PostCheckInScreen';
 import StatsScreen from '../screens/gymOwner/StatsScreen';
 import ScheduleScreen from '../screens/ScheduleScreen';
 
-import { fromLeft } from 'react-navigation-transitions';
+import { fromLeft, fromRight } from 'react-navigation-transitions';
 
 import Colors from '../constants/Colors';
 
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
   const nextScene = scenes[scenes.length - 1];
- 
-  // Custom transitions go there
+
   if (prevScene
-    && prevScene.route.routeName === 'Home'
-    && nextScene.route.routeName === 'Schedule') {
-    return fromLeft();
-    }
-  }
+     && prevScene.route.routeName === 'GymList'
+     && nextScene.route.routeName === 'GymDetail') {
+     return fromRight();
+   }
+  return fromLeft()
+}
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -38,7 +40,9 @@ const HomeStack = createStackNavigator({
      headerStyle: { backgroundColor: 'black',}
      }
   },
-  QR: QRScreen
+  QR: QRScreen,
+  GymList: GymListScreen,
+  GymDetail: GymDetailScreen
 }, {
     transitionConfig: (nav) => handleCustomTransition(nav)
   });
@@ -118,7 +122,7 @@ SettingsStack.navigationOptions = {
 
 
 var bottomTabNavSettings = {
-  initialRouteName: 'scan',
+  initialRouteName: 'home',
   tabBarComponent: props =>
       <CustomBottomTabBar
         {...props}

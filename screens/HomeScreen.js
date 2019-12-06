@@ -10,7 +10,8 @@ import {
   StatusBar,
   Dimensions,
   RefreshControl,
-  AsyncStorage
+  AsyncStorage,
+  ActivityIndicator
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {SafeAreaView} from 'react-navigation';
@@ -21,11 +22,14 @@ import { bindActionCreators, compose } from 'redux';
 
 import Accordion from 'react-native-collapsible/Accordion';
 
+import PullUpMenu from '../components/PullUpMenu';
 import GymTile from '../components/gyms/GymTile';
 import GymDetail from '../components/gyms/GymDetail';
 import GymMap from '../components/gyms/Map';
 import ErrorBar from '../components/errorBar/errorBar';
 import GymhopTouchable from '../components/gymhopAccordion/gymhopAccordionTouchable';
+import GymDetailContainer from '../components/gyms/GymDetailContainer';
+import GymListBtn from '../components/gyms/ViewGymListBtn';
 
 import * as ActionCreators from '../actions/gymActions';
 
@@ -109,7 +113,7 @@ class HomeScreen extends React.Component {
   }
 
 
-  _renderHeader(section, index, isActive, sections) {
+  _renderHeader(section, index) {
     // header of expanded section
     return (
           <GymTile key={index} gym={section}/>
@@ -139,163 +143,72 @@ class HomeScreen extends React.Component {
 
     if (this.props.pending) {
       return (
-        <View>
-          <Text>Loading nearby gyms...</Text>
+        <View style={styles.loadingContainer}>
+          <Text style={styles.loadingText}>Loading nearby gyms...</Text>
+          <ActivityIndicator size="large" color="#000000" />
         </View>
       )
     }
 
-    if (this.state.copilotDone === true) {
+
       return (
         <View style={styles.container}>
-          <View style={styles.imageContainer}>
-                <Image
-                  source={require('../assets/images/gymHopWhite.png')}
-                  style={styles.brandLogo}
-                  resizeMode='contain'
-                />
-          </View>
-            <View>
-              <ErrorBar payment_tier={this.props.payment_tier} />
-            </View>
-
             <View style={styles.mapsContainer}>
                 <GymMap gyms={this.props.gyms}
                         selectedGymIdx={this.getGymIdxFromActiveSections()}
                 />
             </View>
-            <ScrollView
-              style={styles.contentContainer}
-              scrollEnabled={true}
-              // refreshControl={
-              //   <RefreshControl
-              //     refreshing={this.state.refreshing}
-              //     onRefresh={this._onRefresh}
-              //   /> }
-              >
-
-                <View style={styles.accordianContainer}>
-                    <Accordion
-                      touchableComponent={GymhopTouchable}
-                      touchableProps={{...this.props}}
-                      sections={this.props.gyms}
-                      activeSections={this.state.activeSections}
-                      renderHeader={this._renderHeader}
-                      renderContent={this._renderContent}
-                      onChange={this._updateSections}
-                      underlayColor={"#ffffff"}
-                    />
-                </View>
-            </ScrollView>
-
-        </View>
-      );
-     } // else if (this.state.copilotDone == null && this.props.payment_tier != 0) {
-    //     return (
-    //       <View style={styles.container}>
-    //         <View style={styles.imageContainer}>
-    //               <Image
-    //                 source={require('../assets/images/gymHopWhite.png')}
-    //                 style={styles.brandLogo}
-    //                 resizeMode='contain'
-    //               />
-    //         </View>
-            
-    //           <View>
-    //             <ErrorBar payment_tier={this.props.payment_tier} />
-    //           </View>
-            
-    
-    //         <CopilotStep text="Welcome to the GymHop App Tutorial! Click Next to continue!" order={1} name="Intro">
-    //           <CopilotView style={styles.mapsContainer}>
-    //               <GymMap gyms={this.props.gyms}
-    //                       selectedGymIdx={this.getGymIdxFromActiveSections()}
-    //               />
-    //           </CopilotView>
-    //         </CopilotStep>
-    //           <ScrollView
-    //             style={styles.contentContainer}
-    //             // refreshControl={
-    //             //   <RefreshControl
-    //             //     refreshing={this.state.refreshing}
-    //             //     onRefresh={this._onRefresh}
-    //             //   /> }
-    //             >
-    //             <CopilotStep text="This is our list of gyms! Click on a gym to see the location, description, hours, or get directions!" order={2} name="Gyms">
-    //               <CopilotView style={styles.accordianContainer}>
-    //                   <Accordion
-    //                     sections={this.props.gyms}
-    //                     activeSections={this.state.activeSections}
-    //                     renderHeader={this._renderHeader}
-    //                     renderContent={this._renderContent}
-    //                     onChange={this._updateSections}
-    //                     underlayColor={"#ffffff"}
-    //                   />
-    //               </CopilotView>
-    //             </CopilotStep>
-    //           </ScrollView>
-    
-    //       </View>
-    //     );
-    //   }
-
-
-    return (
-      <View style={styles.container}>
-        <View style={styles.imageContainer}>
+            <View style={styles.imageContainer}>
               <Image
                 source={require('../assets/images/gymHopWhite.png')}
                 style={styles.brandLogo}
                 resizeMode='contain'
               />
+            </View>
+            <View>
+              <ErrorBar payment_tier={this.props.payment_tier} />
+            </View>
+            <GymListBtn />
+            <PullUpMenu>
+              <GymDetailContainer gym={this.props.selectedGym} />
+            </PullUpMenu>
         </View>
-        <CopilotStep text="Click here to see our membership options (Opens browser)" order={3} name="Membership">
-          <CopilotView>
-            <ErrorBar payment_tier={this.props.payment_tier} />
-          </CopilotView>
-        </CopilotStep>
-
-        <CopilotStep text="Welcome to the GymHop App Tutorial! Click Next to continue!" order={1} name="Intro">
-          <CopilotView style={styles.mapsContainer}>
-              <GymMap gyms={this.props.gyms}
-                      selectedGymIdx={this.getGymIdxFromActiveSections()}
-              />
-          </CopilotView>
-        </CopilotStep>
-          <ScrollView
-            style={styles.contentContainer}
-            // refreshControl={
-            //   <RefreshControl
-            //     refreshing={this.state.refreshing}
-            //     onRefresh={this._onRefresh}
-            //   /> }
-            >
-            <CopilotStep text="This is our list of gyms! Click on a gym to see the location, description, hours, or get directions!" order={2} name="Gyms">
-              <CopilotView style={styles.accordianContainer}>
-                  <Accordion
-                    touchableComponent={GymhopTouchable}
-                    touchableProps={{...this.props}}
-                    sections={this.props.gyms}
-                    activeSections={this.state.activeSections}
-                    renderHeader={this._renderHeader}
-                    renderContent={this._renderContent}
-                    onChange={this._updateSections}
-                    underlayColor={"#ffffff"}
-                  />
-              </CopilotView>
-            </CopilotStep>
-          </ScrollView>
-
-      </View>
-    );
+      );
   }
 }
 
+//
+// <ScrollView
+//   style={styles.contentContainer}
+//   scrollEnabled={true}
+//   // refreshControl={
+//   //   <RefreshControl
+//   //     refreshing={this.state.refreshing}
+//   //     onRefresh={this._onRefresh}
+//   //   /> }
+//   >
+//
+//     <View style={styles.accordianContainer}>
+//       {this.props.gyms.map((gym, idx) => {
+//         return this._renderHeader(gym, idx)
+//       })}
+//     </View>
+// </ScrollView>
+
 const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+    loadingText: {
+      fontSize: 26,
+      textAlign: "center",
+      marginBottom:15
+    },
   container: {
     flex: 1,
     backgroundColor: '#fff',
-
   },
     imageContainer: {
     ...Platform.select({
@@ -318,8 +231,11 @@ const styles = StyleSheet.create({
       height: Layout.noStatusBarHeight * .03,
     },
     mapsContainer: {
-      flex: .6,
-      height: ( Layout.noStatusBarHeight)* .25,
+      position: "absolute",
+      zIndex: 1,
+      top: 0,
+      bottom: 0,
+      height: ( Layout.noStatusBarHeight)* 1,
       width: (Layout.window.width),
     },
     contentContainer: {
@@ -336,6 +252,7 @@ const styles = StyleSheet.create({
 function mapStateToProps(state) {
   return {
     gyms: state.gyms.gyms,
+    selectedGym: state.gyms.selectedGym,
     pending: state.gyms.pending,
     error: state.gyms.error,
     token: state.user.token,
