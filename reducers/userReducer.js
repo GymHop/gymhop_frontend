@@ -2,6 +2,7 @@ import {
   POST_USER_PENDING,
   POST_USER_SUCCESS,
   POST_USER_FAILURE,
+  CLEAR_REGISTRATION_ERRORS,
   GET_USER_DETAILS_PENDING,
   GET_USER_DETAILS_SUCCESS,
   GET_USER_DETAILS_FAILURE,
@@ -24,7 +25,8 @@ export default function userReducer(state={
     error: false,
     userDetailsUpdateSuccess: null,
     details: {},
-    registeredSuccessfully: null
+    registeredSuccessfully: null,
+    errors: {}
 }, action) {
   switch (action.type) {
     // post user == register
@@ -116,6 +118,11 @@ export default function userReducer(state={
         userDetailsUpdateSuccess: false,
         userDetailsUpdatePending: false,
     }
+    case CLEAR_REGISTRATION_ERRORS:
+      return {
+        ...state,
+        errors: {}
+      }
     default:
       // console.log("default case hit with " + action.type);
       return {

@@ -2,6 +2,7 @@ import {
   POST_USER_PENDING,
   POST_USER_SUCCESS,
   POST_USER_FAILURE,
+  CLEAR_REGISTRATION_ERRORS
 } from './actiontypes';
 
 import { updateUserDetails } from './userDetailActions';
@@ -47,7 +48,14 @@ export function registerUser(userData){
     } catch (error) {
       console.log("Issue creating a User");
       console.log(error);
-      // dispatch(registerUserFailure(error.response.data));
+      dispatch(registerUserFailure(error.response.data));
     }
+  }
+}
+
+
+export function clearErrors() {
+  return {
+    type: CLEAR_REGISTRATION_ERRORS
   }
 }

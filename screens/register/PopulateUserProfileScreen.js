@@ -75,12 +75,12 @@ class RegisterPart2 extends React.Component {
         ...baseUser,
         ...restOfState,
         birthday: birthday.valueOf(),
-  
+
       }
       );
     }
     }
-    
+
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.success === true && this.props.userProfileSuccess === true) {
@@ -88,16 +88,35 @@ class RegisterPart2 extends React.Component {
       this._storeToken()
       this.props.navigation.push("Main");
     }
+    if (Object.keys(this.props.registrationErrors).length != Object.keys(prevProps.registrationErrors).length) {
+      // issue signing up
+      console.log(this.props.registrationErrors);
+      if (this.props.registrationErrors.username != undefined) {
+        showMessage({
+          message: "Username already taken. Try another",
+          type: "info",
+          backgroundColor: "red",
+          flex: "1",
+          justifyContent: "center",
+          fontSize: "18",
+          duration: 3000
+        });
+      }
+      if (this.props.registrationErrors.email != undefined) {
+        showMessage({
+          message: "Email address already in use. Try another",
+          type: "info",
+          backgroundColor: "red",
+          flex: "1",
+          justifyContent: "center",
+          fontSize: "18",
+          duration: 3000
+        });
+      }
+      this.props.Actions.clearErrors();
+
+    }
   };
-
-  // handlePhoneInput = (text) => {
-  //   if (text.replace(/\D/g,'').length > 9) {
-  //     Keyboard.dismiss();
-  //     return;
-  //   }
-
-  //   this.setState({phone: text.replace(/\D/g,'')});
-  // }
 
   render () {
 
@@ -187,6 +206,7 @@ class RegisterPart2 extends React.Component {
 function mapStateToProps(state) {
   return {
     success: state.user.registeredSuccessfully,
+    registrationErrors: state.user.errors
   }
 }
 
