@@ -10,7 +10,9 @@ import Colors from "../../constants/Colors";
 
 import { styles } from '../../styles/gymList/tile'
 import QRScreen from "../../screens/QRScreen";
+import OpenOrClosedRightNow from './OpenOrClosedRightNow';
 import { selectGym } from '../../actions/gymActions';
+
 
 
 class GymTile extends Component {
@@ -50,7 +52,7 @@ class GymTile extends Component {
           </View>
           <View style={styles.textContainer}>
             <Text style={[styles.gymTileText, styles.gymTileTitle]}>{this.props.gym.name}</Text>
-            <Text style={styles.gymTileText}>{this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
+            <OpenOrClosedRightNow hours={gym.hours_enhanced} />
           </View>
           <View style={styles.extraDetailsContainer}>
             <Text style={styles.milesFigure}>{Math.round(gym.distance*10)/10}</Text>
