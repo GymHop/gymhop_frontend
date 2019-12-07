@@ -6,7 +6,8 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import EnhancedHours from './EnhancedHours';
 import TodaysHours from './TodaysHours';
-
+import GymSchedule from './Schedule';
+import ActionBar from './ActionBar';
 
 class GymDetailContainer extends Component {
   constructor(props) {
@@ -69,11 +70,13 @@ class GymDetailContainer extends Component {
               <TodaysHours hours={gym.hours_enhanced} />
             </View>
           </View>
+          <ActionBar gym={gym} />
           <EnhancedHours hours={gym.hours_enhanced} hoursString={gym.hours}/>
           <View style={styles.descriptionContainer}>
             <Text>Description</Text>
             <Text>{gym.amenities}</Text>
           </View>
+          <GymSchedule gym={gym} />
         </View>
       </View>
     )

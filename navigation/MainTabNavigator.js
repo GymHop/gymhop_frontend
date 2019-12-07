@@ -13,7 +13,6 @@ import SettingsScreen from '../screens/SettingsScreen';
 import QRScreen from '../screens/QRScreen';
 import PostCheckInScreen from '../screens/PostCheckInScreen';
 import StatsScreen from '../screens/gymOwner/StatsScreen';
-import ScheduleScreen from '../screens/ScheduleScreen';
 
 import { fromLeft, fromRight } from 'react-navigation-transitions';
 
@@ -33,13 +32,6 @@ const handleCustomTransition = ({ scenes }) => {
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  Schedule: {
-    screen: ScheduleScreen,
-    navigationOptions: {
-     headerTintColor: "white",
-     headerStyle: { backgroundColor: 'black',}
-     }
-  },
   QR: QRScreen,
   GymList: GymListScreen,
   GymDetail: GymDetailScreen

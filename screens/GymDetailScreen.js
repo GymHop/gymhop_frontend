@@ -10,6 +10,10 @@ class GymDetailScreen extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    header: null,
+  };
+
   render() {
     return (
       <View style={styles.container}>

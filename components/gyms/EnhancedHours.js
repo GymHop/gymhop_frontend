@@ -34,7 +34,7 @@ class EnhancedHours extends Component {
       <View style={styles.hoursByDayContainer}>
         {Object.keys(hoursByDay).map((day) => {
           return (
-            <View style={styles.dayContainer}>
+            <View style={styles.dayContainer} key={day+"__enhanced_hours"}>
               <Text>{day}: {renderHoursString(hoursByDay[day])}</Text>
             </View>
           )
@@ -56,6 +56,7 @@ class EnhancedHours extends Component {
       var hoursByDay_renderable = this.renderHoursByDay(hours);
       return (
         <View style={styles.hoursContainer}>
+          <Text>Hours: </Text>
           {hoursByDay_renderable}
         </View>
       )

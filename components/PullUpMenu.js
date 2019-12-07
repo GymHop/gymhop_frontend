@@ -189,6 +189,7 @@ class PullUpMenu extends Component {
           <View style={styles.pullUpBar}></View>
         </View>
         <ScrollView
+          contentContainerStyle={styles.tabbarPadded}
           onScroll={this.isScrollAtTop}
           scrollEnabled={!this.state.allowMenuMovement}
           onMomentumScrollEnd={this.isScrollAtTopMomentum}
@@ -219,7 +220,10 @@ const styles = StyleSheet.create({
       width: 60,
       borderRadius:10,
       backgroundColor: "#97999988"
-    }
+    },
+  tabbarPadded: {
+    paddingBottom: 109
+  }
 })
 
 function mapDispatchToProps(dispatch) {
