@@ -32,7 +32,7 @@ class LoginScreen extends Component {
   getToken = async () => {
      const token = await AsyncStorage.getItem("@Auth:APIToken");
      if (token != null) {
-       // this.props.TokenActions.setToken(token);
+       this.props.TokenActions.setToken(token);
        // setting the token will make component did update fire
      }
    }

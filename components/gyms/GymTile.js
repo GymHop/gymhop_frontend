@@ -53,13 +53,8 @@ class GymTile extends Component {
             <Text style={styles.gymTileText}>{this.props.gym.location['address_1']}, {this.props.gym.location['city']}</Text>
           </View>
           <View style={styles.extraDetailsContainer}>
-            {/* <Text style={[styles.gymTileText, {fontWeight:"bold"}]}>{dollarSigns}</Text> */}
-            <Image
-            source={require('../../assets/images/arrow.png')}
-            resizeMode='contain'
-            style={styles.arrowPhoto}
-            />
-            <Text style={styles.text}>Classes</Text>
+            <Text style={styles.milesFigure}>{Math.round(gym.distance*10)/10}</Text>
+            <Text style={styles.milesText}>miles</Text>
           </View>
         </View>
       </TouchableWithoutFeedback>

@@ -16,13 +16,14 @@ export const styles = StyleSheet.create({
   },
     gymPhotoContainer: {
       width: "23%",
-      padding: 6,
+      paddingVertical:10,
+      paddingHorizontal:6,
       marginRight: 8,
 
     },
       gymLeadPhoto: {
-        width: 80,
-        height: 80,
+        width: 70,
+        height: 70,
         borderRadius: 80 / 2,
         overflow: "hidden",
       },
@@ -40,17 +41,14 @@ export const styles = StyleSheet.create({
       },
      extraDetailsContainer: {
        display: "flex",
-       justifyContent: "center",
        width: (Layout.window.width - 20) * 15  / 100,
-
      },
-      arrowPhoto: {
-        marginTop: 5,
-        marginLeft: 10,
-        width: 30,
-        height: 50
+      milesFigure: {
+        fontSize: 20,
+        textAlign: "center"
       },
-      text: {
+      milesText: {
         fontSize: 12,
+        textAlign: "center"
       }
 });
