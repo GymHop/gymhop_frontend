@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import ImageView from 'react-native-image-view';
+import Layout from '../../constants/Layout';
+import Icon from 'react-native-vector-icons/Ionicons'
 
 class GymSchedule extends Component {
   constructor(props) {
@@ -23,20 +25,21 @@ class GymSchedule extends Component {
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => {
-          this.setState({visible: true})
-        }} style={styles.imageContainer3}>
-          <Image
-          source={{uri: schedulePhoto}}
-          style={styles.schedulePhoto}
-          resizeMode='contain'
-          />
-        </TouchableOpacity>
+        <View style={styles.actionButtonContainer}>
+          <TouchableOpacity
+            onPress={() => {this.setState({visible: true})}}
+            style={styles.lightGrayBtn}>
+            <Icon name="ios-calendar" size={18} color="#979999"/>
+            <Text style={styles.lightGrayBtnText}>Schedule</Text>
+          </TouchableOpacity>
+        </View>
+
         <ImageView
           images={images}
           imageIndex={0}
           isVisible={this.state.visible}
-          renderFooter={(currentImage) => (<View><Text>{gym.name}</Text></View>)}
+          onClose={() => this.setState({visible: false})}
+          renderFooter={(currentImage) => (<View><Text>{this.props.gym.name}</Text></View>)}
           />
       </View>
     )
@@ -45,8 +48,25 @@ class GymSchedule extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    marginVertical: 17,
+    alignItems: 'center'
+  },
+  lightGrayBtn: {
+    width: Layout.window.width / 1.8,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#97999988",
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+    backgroundColor: "white",
+    borderWidth: 1
+  },
+    lightGrayBtnText: {
+      fontSize: 16,
+      color: "#979999",
+      marginLeft: 4
+    },
 })
 
 export default GymSchedule
