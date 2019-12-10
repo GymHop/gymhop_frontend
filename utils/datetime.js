@@ -1,11 +1,22 @@
 
+
+function convertUTCDateToLocalDate(date) {
+    var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
+
+    var offset = date.getTimezoneOffset() / 60;
+    var hours = date.getHours();
+
+    newDate.setHours(hours - offset);
+
+    return newDate;
+}
+
 export function dateFormatter( strDate, format ){
     var theDate;
-    debugger;
     if (strDate instanceof Date) {
       theDate = strDate
     } else {
-      theDate = new Date(strDate + " EST");
+      theDate = new Date(strDate);
     }
     if( format=="time" )
        return getTimeFromDate(theDate);

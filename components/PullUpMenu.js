@@ -7,7 +7,7 @@ import { setPullUpLevel } from '../actions/uiActions';
 
 const closedDistanceFromBottom = Layout.window.height * .85 - 49;
 const mediumDistanceFromBottom = Layout.window.height * .50 - 49;
-const openDistanceFromBottom = Layout.window.height * .1 - 49;
+const openDistanceFromBottom = Layout.window.height * .07 - 49;
 
 class PullUpMenu extends Component {
   constructor(props) {
@@ -42,10 +42,10 @@ class PullUpMenu extends Component {
         onPanResponderRelease: (evt, gestureState) => {
           //determine which open size to open to
           // if they do a big swipe animated all the way down/up
-          if (gestureState.dy > Layout.window.height *.3) {
+          if (gestureState.dy > Layout.window.height *.25) {
             this.animateToLevel(0);
             return;
-          } else if (gestureState.dy < -Layout.window.height *.4) {
+          } else if (gestureState.dy < -Layout.window.height *.25) {
             this.animateToLevel(2);
             return;
           }
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 6,
     zIndex: 10,
-    maxHeight: Layout.window.height * .9 - 49
+    maxHeight: Layout.window.height * .93 - 49
   },
   pullUpBarContainer: {
     marginVertical: 4,

@@ -22,6 +22,25 @@ class PostCheckIn extends React.Component {
     )
   }
 
+  static navigationOptions = {
+      headerBackground: (
+        <View style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          backgroundColor: '#000000',
+          marginBottom: 40
+        }}>
+          <Image
+            source={require('../assets/images/gymHopWhite.png')}
+            style={{
+              width: '60%',
+              height: 44
+            }}
+            resizeMode='contain'
+          />
+        </View>
+      ),
+  };
 
   componentDidMount() {
       BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
@@ -92,13 +111,6 @@ class PostCheckIn extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.gymhopLogoImageCntainer}>
-          <Image
-            source={require('../assets/images/gymHopWhite.png')}
-            style={styles.headLogo}
-            resizeMode='contain'
-          />
-        </View>
         <ErrorBar payment_tier={this.props.userProfile.payment_tier}/>
         <View style={styles.heading}>
           <View style={styles.imgContainer}>
@@ -113,7 +125,7 @@ class PostCheckIn extends React.Component {
           </View>
         </View>
         <View style={styles.body}>
-          <View>
+          <View style={styles.checkinTextContainer}>
             <Text style={styles.checkinText}>{!checkin_failure ? "Check in Complete!" : "Invalid Checkin"}</Text>
             {!checkin_failure ? (<View style={styles.datetimeContainer}>
               <Text style={styles.checkinSubtext} >{dateFormatter(this.props.checkin.when, "date")}</Text>
@@ -142,17 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     height: '100%'
   },
-  gymhopLogoImageCntainer: {
-    flex: .10,
-    flexDirection: "row",
-    justifyContent: "center",
-    backgroundColor: '#000000',
-    marginBottom: 10
-  },
-    headLogo: {
-      width: '60%',
-      height: 64
-    },
+
   errorBar: {
     display: 'flex',
     flexDirection: 'row',
@@ -163,11 +165,12 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   heading: {
-    flex: .4,
-    margin: 0,
+    flex: .7,
+    marginTop: 15,
     width: Layout.window.width,
   },
     imgContainer: {
+      flex: 2,
       display: 'flex',
       flexDirection: "row",
       justifyContent: "center",
@@ -182,6 +185,7 @@ const styles = StyleSheet.create({
         borderWidth: 1
       },
     nameHolder: {
+      flex: 1,
       display: "flex",
       alignItems: "center"
     },
@@ -195,11 +199,14 @@ const styles = StyleSheet.create({
 
       },
   body: {
-    flex: .34,
+    flex: .5,
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center"
   },
+    checkinTextContainer: {
+      flexDirection: "column"
+    },
     datetimeContainer: {
       display: "flex",
       width: "60%",
@@ -215,7 +222,7 @@ const styles = StyleSheet.create({
       fontWeight: "bold"
     },
     checkmarkContainer: {
-      paddingTop: 30
+
     },
       checkmark: {
         width: Layout.window.height*2/9,
