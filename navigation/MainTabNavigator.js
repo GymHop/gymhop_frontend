@@ -13,6 +13,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import QRScreen from '../screens/QRScreen';
 import PostCheckInScreen from '../screens/PostCheckInScreen';
 import StatsScreen from '../screens/gymOwner/StatsScreen';
+import PaymentScreen from '../screens/PaymentScreen';
 
 import { fromLeft, fromRight } from 'react-navigation-transitions';
 
@@ -99,6 +100,7 @@ GymOwnerStack.navigationOptions = {
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
+  Payments: PaymentScreen
 });
 
 SettingsStack.navigationOptions = {
