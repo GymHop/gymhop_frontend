@@ -19,6 +19,7 @@ export default function ProfilePage({tier,
                       gender,
                       phone,
                       updatePending,
+                      navigation
                     }) {
     var tierType;
     switch (tier) {
@@ -26,7 +27,7 @@ export default function ProfilePage({tier,
         tierType = "Default";
         break;
       case 2:
-        tierType = "Trial Member";
+        tierType = "Weekly Member";
         break;
       case 3:
         tierType = null;
@@ -57,7 +58,11 @@ export default function ProfilePage({tier,
     let bday = birthday ? dateFormatter(birthday, "date") : "";
 
     let profileHeight = Layout.window.height/6
-  
+
+    gotoPayments = () => {
+      navigation.push("Payments");
+    }
+
 
     return (
         // <View style={styles.imageContainer}>
@@ -117,7 +122,9 @@ export default function ProfilePage({tier,
               <Text>Phone</Text>
             </View>
             <Text style={styles.dataField}>{phone}</Text>
-
+          <Button onPress={gotoPayments}
+          title="Payments"
+          ></Button>
           <Button onPress={logout}
           title="Logout"
           ></Button>
