@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { CheckBox } from 'react-native-elements'
 import { connect } from 'react-redux';
 import Layout from '../constants/Layout';
 import Icon from 'react-native-vector-icons/AntDesign'
@@ -8,40 +9,50 @@ import Icon from 'react-native-vector-icons/AntDesign'
 import SelectableCard from '../components/payments/SelectableCard';
 
 const METHOD_DATA = [{
-  supportedMethods: ['apple-pay', 'google-pay'],
+  supportedMethods: ['android-pay', 'apple-pay'],
   data: {
-    merchantIdentifier: 'merchant.com.your-app.namespace',
-    supportedNetworks: ['visa', 'mastercard', 'amex'],
+    merchantIdentifier: 'merchant.com.your-app.namespace', // ios
+    supportedNetworks: ['visa', 'mastercard'],
     countryCode: 'US',
-    currencyCode: 'USD'
+    currencyCode: 'USD',
+    environment: 'TEST', // defaults to production
+    paymentMethodTokenizationParameters: {
+     parameters: {
+       gateway: 'stripe',
+       'stripe:publishableKey': 'pk_test_77YUPGjCnGcpWsNkHegQjw8l',
+       'stripe:version': '5.0.0' // Only required on Android
+     }
+   }
   }
 }];
+
 
 class PaymentScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: null
+      selectedOption: null,
+      // autoRenew: false
     }
     this.paymentOptions = [
       {
         price: 70,
         period: "month",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        description: "Get access to our entire network for the entire month. Plus full support from our team",
         image: {
           uri: require("../assets/images/monthly_photo.jpg")
         },
-        background: "#BFBFBF",
+        background: "#39E3FF",
         icon: <Icon name="idcard" size={30} color="#000000" />
       },
       {
         price: 20,
         period: "week",
-        description: " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        description: "Our most popular option. Useful if you're on the go or just don't like that commitment thing",
         image: {
           uri: require("../assets/images/weekly_photo.jpg")
         },
-        background: "#BFBFBF",
+        background: "#FF695D",
         icon: <Icon name="carryout" size={30} color="#000000" />
       }
     ]
@@ -57,13 +68,68 @@ class PaymentScreen extends Component {
           },
     };
 
+  constructPaymentDetail = () => {
+    if (this.state.selectedOption) {
+      var userId = this.props.userId;
+      var passName = this.paymentOptions[this.state.selectedOption];
+      var passAmount = this.paymentOptions[this.state.selectedOption];
+
+      let details = {
+        id: 'gymhop_member_'+ userId,
+        displayItems: [
+          {
+            label: 'Gymhop US ' + passName,
+            amount: { currency: 'USD', value: '15.00' }
+          }
+        ],
+        total: {
+          label: 'Gymhop US',
+          amount: { currency: 'USD', value: passAmount }
+        }
+      };
+      return details;
+    } else {
+      console.log("the user needs to select an option before checking out");
+      return null;
+    }
+
+
+  }
+
+  getPassName = () => {
+    switch (this.state.selectedOption) {
+      case 0:
+        return "The Monthly Hustler";
+      case 1:
+        return "The Weekly Workhorse";
+      default:
+        return "Select a pass option"
+
+    }
+  }
+
   openNativePurchaseOption = () => {
+    let paymentOptions = this.constructPaymentDetail();
     console.log("purchasing starting with option " + this.state.selectedOption + " selected");
+    if (paymentOptions) {
+      debugger;
+      const paymentRequest = new PaymentRequest(METHOD_DATA, paymentOptions);
+      paymentRequest.show().then(paymentResponse => {
+        debugger;
+        const { transactionIdentifier, paymentData } = paymentResponse.details;
+        return processPayment(paymentResponse);
+      });
+
+    } else {
+      console.log("payment failed");
+    }
   }
 
   render() {
     var description = this.state.selectedOption != null ?
-      this.paymentOptions[this.state.selectedOption].description : ""
+      this.paymentOptions[this.state.selectedOption].description : "";
+    var borderColor = this.state.selectedOption != null ?
+      this.paymentOptions[this.state.selectedOption].background : "#979999";
 
     return (
       <View style={styles.container}>
@@ -90,14 +156,25 @@ class PaymentScreen extends Component {
         </View>
         <View style={styles.optionsExecuteContainer}>
           <View style={styles.descriptionContainer}>
-            <Text>{description}</Text>
+            <View style={styles.textContainer}>
+              <Text style={styles.selectedOptionText}>{this.getPassName()}</Text>
+              <Text>{description}</Text>
+            </View>
+            {/*<View style={styles.autoRenewContainer}>
+              <Text style={styles.autoRenewText}>Auto Renew?</Text>
+              <CheckBox
+                checked={this.state.autoRenew}
+                onPress={() => this.setState({autoRenew: !this.state.autoRenew})}/>
+            </View>*/}
           </View>
-          <Button
-            onPress={this.openNativePurchaseOption}
-            title="Purchase">
-          </Button>
         </View>
-
+        <View style={styles.selectBtnContainer}>
+          <TouchableOpacity
+            style={[{borderColor: borderColor} ,styles.lightGrayBtn]}
+            onPress={this.openNativePurchaseOption}>
+            <Text style={styles.lightGrayBtnText}>Purchase</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -121,6 +198,7 @@ const styles = StyleSheet.create({
   optionsSelectableContainer: {
     position: "relative",
     marginHorizontal: Layout.window.width *.02,
+    paddingTop: Layout.window.height *.03,
     zIndex: 2,
     flex: 2,
     backgroundColor: "#000000",
@@ -128,21 +206,64 @@ const styles = StyleSheet.create({
     justifyContent: "space-around"
   },
   optionsExecuteContainer: {
-    flex: 3,
+    flex: 1,
     zIndex: 1,
     position: "relative",
-    borderWidth: 1,
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#ffffff",
+    paddingHorizontal: Layout.window.width *.07,
+    marginHorizontal: Layout.window.width *.02,
     paddingTop: 70,
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
     alignItems: "center"
-  }
+  },
+    descriptionContainer: {
+      flexDirection: "row"
+    },
+    textContainer: {
+      flex: 3
+    },
+    autoRenewContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center"
+    },
+    autoRenewText: {
+      textAlign: "center"
+    },
+    selectedOptionText: {
+      fontSize: 16,
+      marginVertical: 4
+    },
+  selectBtnContainer: {
+    flex: 1,
+    zIndex: 1,
+    marginHorizontal: Layout.window.width *.02,
+    paddingHorizontal: Layout.window.width *.07,
+    backgroundColor: "#ffffff",
+    justifyContent: "center"
+  },
+  lightGrayBtn: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      alignItems: "center",
+      paddingHorizontal: 10,
+      paddingVertical: 7,
+      backgroundColor: "white",
+      borderWidth: 1
+    },
+      lightGrayBtnText: {
+        fontSize: 16,
+        color: "#979999",
+        marginLeft: 4
+      },
+
 })
 
 function mapStateToProps(state) {
   return {
     firstName: state.user.details.first_name,
+    userId: state.user.details.id,
     billingStartDate: state.user.details.billing_start_date,
   }
 }

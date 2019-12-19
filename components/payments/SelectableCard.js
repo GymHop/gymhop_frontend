@@ -7,7 +7,7 @@ import Layout from '../../constants/Layout';
 class SelectableCard extends Component {
   constructor(props) {
     super(props);
-    this.animatedTopValue = new Animated.Value(0);
+    this.animatedTopValue = new Animated.Value(10);
   }
 
   animateSelected = () => {
@@ -19,7 +19,7 @@ class SelectableCard extends Component {
   animateUnselect = () => {
     console.log("animateUnselect");
     Animated.spring(this.animatedTopValue, {
-      toValue: 0
+      toValue: 10
     }).start()
   }
 
@@ -60,15 +60,18 @@ class SelectableCard extends Component {
 
   render() {
     let animatedTop = this.animatedTopValue;
+    let animatedColor = this.animatedTopValue.interpolate({
+        inputRange: [0, 40],
+       outputRange: ['#F2F2F2', '#B3D6FF']
+    });
 
     return (
       <Animated.View style={[{backgroundColor: this.props.background, top: animatedTop}, styles.container]}>
-        <TouchableOpacity onPress={this.props.onSelect}>
+        <TouchableOpacity onPress={this.props.onSelect} style={styles.touchableContainer}>
               {this.props.icon}
               <Text style={styles.titleText}>{this.props.title}</Text>
               <Text style={styles.subTitle}>{this.props.price}/{this.props.period}</Text>
-              <Text>Auto Renews: {this.getAutoRenewDate(this.props.period)}</Text>
-              <Text>selected: {this.props.selected ? "selected" : ""}</Text>
+              <Text>Expires: {this.getAutoRenewDate(this.props.period)}</Text>
         </TouchableOpacity>
       </Animated.View>
     )
@@ -92,10 +95,8 @@ const styles = StyleSheet.create({
     elevation: 3,
     color: "#F2F2F2"
   },
-  overlayContainer: {
-    position: "relative",
-    display: "flex",
-    zIndex: 1
+  touchableContainer: {
+    flex: 1
   }
 })
 
