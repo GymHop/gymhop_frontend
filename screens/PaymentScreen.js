@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
-import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity, NativeModules } from 'react-native';
 import { CheckBox } from 'react-native-elements'
 import { connect } from 'react-redux';
+import { PaymentRequest } from 'react-native-payments';
 import Layout from '../constants/Layout';
-import Icon from 'react-native-vector-icons/AntDesign'
+import Icon from 'react-native-vector-icons/AntDesign';
+
 
 import SelectableCard from '../components/payments/SelectableCard';
 
@@ -17,7 +19,9 @@ const METHOD_DATA = [{
     currencyCode: 'USD',
     environment: 'TEST', // defaults to production
     paymentMethodTokenizationParameters: {
+      tokenizationType: 'PAYMENT_GATEWAY',
      parameters: {
+       publicKey: 'MHcCAQEEIOVqmUuHtMLy03ggwHyqIx+4s8h7tKcnHpIK2AvKxxQEoAoGCCqGSM49AwEHoUQDQgAEthRVJosvMAN11QSmz6JATSffE4buZojAa9C9z6H7saKu9qguWU4GoVC5JxljWlm5FIi0bBEPk87lPT+hBXvzkw==',
        gateway: 'stripe',
        'stripe:publishableKey': 'pk_test_77YUPGjCnGcpWsNkHegQjw8l',
        'stripe:version': '5.0.0' // Only required on Android
@@ -69,17 +73,17 @@ class PaymentScreen extends Component {
     };
 
   constructPaymentDetail = () => {
-    if (this.state.selectedOption) {
+    if (this.state.selectedOption != null) {
       var userId = this.props.userId;
-      var passName = this.paymentOptions[this.state.selectedOption];
-      var passAmount = this.paymentOptions[this.state.selectedOption];
+      var passName = this.paymentOptions[this.state.selectedOption].period+ "ly pass";
+      var passAmount = this.paymentOptions[this.state.selectedOption].price;
 
       let details = {
         id: 'gymhop_member_'+ userId,
         displayItems: [
           {
             label: 'Gymhop US ' + passName,
-            amount: { currency: 'USD', value: '15.00' }
+            amount: { currency: 'USD', value: passAmount }
           }
         ],
         total: {
@@ -112,7 +116,6 @@ class PaymentScreen extends Component {
     let paymentOptions = this.constructPaymentDetail();
     console.log("purchasing starting with option " + this.state.selectedOption + " selected");
     if (paymentOptions) {
-      debugger;
       const paymentRequest = new PaymentRequest(METHOD_DATA, paymentOptions);
       paymentRequest.show().then(paymentResponse => {
         debugger;

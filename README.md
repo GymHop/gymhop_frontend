@@ -4,7 +4,11 @@ This contains useful tips on how to build the project into files that can be sen
 
 ### Android
 
+## Running locally
+- npm jettify
+- react-native run-android
 
+## Building a release
 Make sure to increment the versionCode in android/app/build.gradle
 
 - cd android
