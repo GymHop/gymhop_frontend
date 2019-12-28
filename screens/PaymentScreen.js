@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity, NativeModules } from 'react-native';
 import { CheckBox } from 'react-native-elements'
 import { connect } from 'react-redux';
-import { PaymentRequest } from 'react-native-payments';
+import stripe from 'tipsi-stripe'
 import Layout from '../constants/Layout';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { createCharge } from '../actions/paymentActions';
 
 
 import SelectableCard from '../components/payments/SelectableCard';
@@ -31,6 +32,8 @@ const METHOD_DATA = [{
 }];
 
 
+
+
 class PaymentScreen extends Component {
   constructor(props) {
     super(props);
@@ -40,6 +43,7 @@ class PaymentScreen extends Component {
     }
     this.paymentOptions = [
       {
+        key: "70",
         price: 70,
         period: "month",
         description: "Get access to our entire network for the entire month. Plus full support from our team",
@@ -50,6 +54,7 @@ class PaymentScreen extends Component {
         icon: <Icon name="idcard" size={30} color="#000000" />
       },
       {
+        key: "20",
         price: 20,
         period: "week",
         description: "Our most popular option. Useful if you're on the go or just don't like that commitment thing",
@@ -60,6 +65,14 @@ class PaymentScreen extends Component {
         icon: <Icon name="carryout" size={30} color="#000000" />
       }
     ]
+  }
+
+  componentDidMount = () => {
+    stripe.setOptions({
+      publishableKey: 'pk_test_77YUPGjCnGcpWsNkHegQjw8l',
+      merchantId: 'MERCHANT_ID', // Optional
+      androidPayMode: 'test', // Android only
+    })
   }
 
   static navigationOptions = {
@@ -116,13 +129,13 @@ class PaymentScreen extends Component {
     let paymentOptions = this.constructPaymentDetail();
     console.log("purchasing starting with option " + this.state.selectedOption + " selected");
     if (paymentOptions) {
-      const paymentRequest = new PaymentRequest(METHOD_DATA, paymentOptions);
-      paymentRequest.show().then(paymentResponse => {
-        debugger;
-        const { transactionIdentifier, paymentData } = paymentResponse.details;
-        return processPayment(paymentResponse);
-      });
-
+      stripe.paymentRequestWithNativePay({
+      }).then((token) => {
+        let choosenTier = this.state.selectedOption;
+        this.props.Actions.createCharge(this.props.token, choosenTier, token)
+      }).catch((err) => {
+        console.log("Error retrieving token", err);
+      })
     } else {
       console.log("payment failed");
     }
@@ -148,6 +161,7 @@ class PaymentScreen extends Component {
           {this.paymentOptions.map((option, idx) => {
             return (
               <SelectableCard
+                  key={option.key}
                   selected={this.state.selectedOption === idx}
                   onSelect={() => {
                     this.setState({selectedOption: idx})
@@ -271,4 +285,10 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(PaymentScreen)
+function mapDispatchToProps(dispatch) {
+  return {
+    createCharge: (APItoken, choosenTier, token) => dispatch(createCharge(APItoken, choosenTier, token))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentScreen)

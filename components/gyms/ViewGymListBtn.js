@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     position: "absolute",
     zIndex: 2, // map is 1
-    bottom: Layout.window.height * .16 - 49,
+    bottom: 49 + 5,
     alignItems: "center",
     justifyContent: "center",
     shadowColor: "#000",
