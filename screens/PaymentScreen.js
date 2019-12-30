@@ -11,29 +11,6 @@ import { createCharge } from '../actions/paymentActions';
 
 import SelectableCard from '../components/payments/SelectableCard';
 
-const METHOD_DATA = [{
-  supportedMethods: ['android-pay', 'apple-pay'],
-  data: {
-    merchantIdentifier: 'merchant.com.your-app.namespace', // ios
-    supportedNetworks: ['visa', 'mastercard'],
-    countryCode: 'US',
-    currencyCode: 'USD',
-    environment: 'TEST', // defaults to production
-    paymentMethodTokenizationParameters: {
-      tokenizationType: 'PAYMENT_GATEWAY',
-     parameters: {
-       publicKey: 'MHcCAQEEIOVqmUuHtMLy03ggwHyqIx+4s8h7tKcnHpIK2AvKxxQEoAoGCCqGSM49AwEHoUQDQgAEthRVJosvMAN11QSmz6JATSffE4buZojAa9C9z6H7saKu9qguWU4GoVC5JxljWlm5FIi0bBEPk87lPT+hBXvzkw==',
-       gateway: 'stripe',
-       'stripe:publishableKey': 'pk_test_77YUPGjCnGcpWsNkHegQjw8l',
-       'stripe:version': '5.0.0' // Only required on Android
-     }
-   }
-  }
-}];
-
-
-
-
 class PaymentScreen extends Component {
   constructor(props) {
     super(props);
@@ -70,8 +47,8 @@ class PaymentScreen extends Component {
   componentDidMount = () => {
     stripe.setOptions({
       publishableKey: 'pk_test_77YUPGjCnGcpWsNkHegQjw8l',
-      merchantId: 'MERCHANT_ID', // Optional
-      androidPayMode: 'test', // Android only
+      merchantId: 'merchant.frontend.gymhop.us', // iOS
+      androidPayMode: 'test', // Android
     })
   }
 
@@ -110,7 +87,6 @@ class PaymentScreen extends Component {
       return null;
     }
 
-
   }
 
   getPassName = () => {
@@ -129,10 +105,23 @@ class PaymentScreen extends Component {
     let paymentOptions = this.constructPaymentDetail();
     console.log("purchasing starting with option " + this.state.selectedOption + " selected");
     if (paymentOptions) {
+      let price = this.paymentOptions[this.state.selectedOption].price.toString();
       stripe.paymentRequestWithNativePay({
+        total_price: price,
+        currency_code: 'USD',
+        shipping_address_required: false,
+        phone_number_required: false,
+        line_items: [{
+          currency_code: 'USD',
+          description: 'Gymhop Membership',
+          total_price: price,
+          unit_price: price,
+          quantity: '1',
+        }]
       }).then((token) => {
         let choosenTier = this.state.selectedOption;
-        this.props.Actions.createCharge(this.props.token, choosenTier, token)
+        let stripeToken = token.tokenId;
+        this.props.createCharge(this.props.token, choosenTier, token);
       }).catch((err) => {
         console.log("Error retrieving token", err);
       })
@@ -282,6 +271,7 @@ function mapStateToProps(state) {
     firstName: state.user.details.first_name,
     userId: state.user.details.id,
     billingStartDate: state.user.details.billing_start_date,
+    token: state.user.token
   }
 }
 
