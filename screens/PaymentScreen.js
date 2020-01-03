@@ -106,7 +106,12 @@ class PaymentScreen extends Component {
     console.log("purchasing starting with option " + this.state.selectedOption + " selected");
     if (paymentOptions) {
       let price = this.paymentOptions[this.state.selectedOption].price.toString();
+<<<<<<< HEAD
       stripe.paymentRequestWithNativePay(options={
+=======
+      console.log("selected price:", price);
+      stripe.paymentRequestWithNativePay({
+>>>>>>> dbefdb9c339d010f2b965d422fc401dc118a12d6
         total_price: price,
         currency_code: 'USD',
         shipping_address_required: false,
@@ -126,7 +131,10 @@ class PaymentScreen extends Component {
         unit_price: price,
         quantity: '1',
       }]
+<<<<<<< HEAD
 
+=======
+>>>>>>> dbefdb9c339d010f2b965d422fc401dc118a12d6
     ).then((token) => {
         let choosenTier = this.state.selectedOption;
         let stripeToken = token.tokenId;
