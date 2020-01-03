@@ -73,8 +73,8 @@ class GymDetailContainer extends Component {
           <ActionBar gym={gym} />
           <EnhancedHours hours={gym.hours_enhanced} hoursString={gym.hours}/>
           <View style={styles.descriptionContainer}>
-            <Text>Description</Text>
-            <Text>{gym.amenities}</Text>
+            <Text style={styles.descriptionText}>Description</Text>
+            <Text style={styles.descriptionDetailText}>{gym.amenities}</Text>
           </View>
           <GymSchedule gym={gym} />
         </View>
@@ -120,6 +120,13 @@ const styles = StyleSheet.create({
   descriptionContainer: {
     marginTop: 10
   },
+    descriptionText: {
+      marginBottom: 3,
+      fontWeight: "bold"
+    },
+    descriptionDetailText: {
+
+    }
 })
 
 export default GymDetailContainer

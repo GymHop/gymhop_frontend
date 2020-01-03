@@ -11,7 +11,8 @@ class GymDetailScreen extends Component {
   }
 
   static navigationOptions = {
-    header: null,
+    title: 'Our Member Gyms',
+    backButtonTitle: ''
   };
 
   render() {

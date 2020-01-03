@@ -10,7 +10,9 @@ class GymListScreen extends Component {
   }
   static navigationOptions = {
      title: 'Our Member Gyms',
+     backButtonTitle: ''
    };
+
 
   render() {
     return (
