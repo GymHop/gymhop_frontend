@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TextInput, TouchableOpacity, Platform, AsyncStorage,
+  View, Text, TextInput, TouchableOpacity, Platform,
   ActivityIndicator, StyleSheet, Image, Button, KeyboardAvoidingView
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

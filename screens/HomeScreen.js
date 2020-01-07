@@ -10,9 +10,9 @@ import {
   StatusBar,
   Dimensions,
   RefreshControl,
-  AsyncStorage,
   ActivityIndicator
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import PropTypes from 'prop-types';
 import {SafeAreaView} from 'react-navigation';
 
@@ -164,9 +164,6 @@ class HomeScreen extends React.Component {
                 style={styles.brandLogo}
                 resizeMode='contain'
               />
-            </View>
-            <View>
-              <ErrorBar payment_tier={this.props.payment_tier} />
             </View>
             <GymListBtn />
             <PullUpMenu>

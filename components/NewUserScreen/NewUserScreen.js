@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from "react";
 import {
-  AsyncStorage,
   Modal,
   View,
   Text,
@@ -8,6 +7,7 @@ import {
   StyleSheet,
   Image
 } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { withNavigation } from 'react-navigation';
 

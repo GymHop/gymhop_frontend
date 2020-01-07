@@ -6,6 +6,7 @@ This contains useful tips on how to build the project into files that can be sen
 
 ## Running locally
 - npm jettify
+----  also try npx jetify
 - react-native run-android
 
 ## Building a release

@@ -8,6 +8,8 @@ target 'gymhop_frontend' do
 
   # Pods for gymhop_frontend
 
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
   target 'gymhop_frontendTests' do
     inherit! :search_paths
     # Pods for testing

@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  View, Text, Image, StyleSheet, TouchableOpacity,
-  AsyncStorage, Button, ScrollView
+  View, Text, Image, StyleSheet, TouchableOpacity, Button, ScrollView
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { SafeAreaView } from 'react-navigation';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
