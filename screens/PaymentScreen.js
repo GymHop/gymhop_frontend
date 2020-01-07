@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Text, StyleSheet, Button, TouchableOpacity, NativeModules } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity, NativeModules, ActivityIndicator } from 'react-native';
 import { CheckBox } from 'react-native-elements'
 import { connect } from 'react-redux';
 import stripe from 'tipsi-stripe'
@@ -50,6 +50,12 @@ class PaymentScreen extends Component {
       merchantId: 'merchant.frontend.gymhop.us', // iOS
       androidPayMode: 'test', // Android
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.paymentSuccessful && this.props.paymentSuccessful != prevProps.paymentSuccessful) {
+      this.props.navigation.push("PaymentSuccess");
+    }
   }
 
   static navigationOptions = {
@@ -185,9 +191,10 @@ class PaymentScreen extends Component {
         </View>
         <View style={styles.selectBtnContainer}>
           <TouchableOpacity
-            style={[{backgroundColor: borderColor, color: "white"} ,styles.lightGrayBtn]}
+            style={[{backgroundColor: borderColor, color: "white", flexDirection: "row", justifyContent: "center"} ,styles.lightGrayBtn]}
             onPress={this.openNativePurchaseOption}>
             <Text style={styles.lightGrayBtnText}>Purchase</Text>
+            {this.props.paymentPending ? <ActivityIndicator size="small" color="#009688" /> : null}
           </TouchableOpacity>
         </View>
       </View>
@@ -280,7 +287,9 @@ function mapStateToProps(state) {
     firstName: state.user.details.first_name,
     userId: state.user.details.id,
     billingStartDate: state.user.details.billing_start_date,
-    token: state.user.token
+    token: state.user.token,
+    paymentPending: state.user.paymentPending,
+    paymentSuccessful: state.user.paymentSuccessful
   }
 }
 

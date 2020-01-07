@@ -13,7 +13,10 @@ import {
   UPDATE_USER_DETAILS_SUCCESS,
   UPDATE_USER_DETAILS_FAILURE,
   LOG_OUT_USER,
-  SET_USER_TOKEN
+  SET_USER_TOKEN,
+  CREATE_SUBSCRIPTION_CHARGE_SUCCESS,
+  CREATE_SUBSCRIPTION_CHARGE_FAILURE,
+  CREATE_SUBSCRIPTION_CHARGE_PENDING
 } from '../actions/actiontypes';
 
 export default function userReducer(state={
@@ -26,7 +29,9 @@ export default function userReducer(state={
     userDetailsUpdateSuccess: null,
     details: {},
     registeredSuccessfully: null,
-    errors: {}
+    errors: {},
+    paymentSuccessful: false,
+    paymentPending: false
 }, action) {
   switch (action.type) {
     // post user == register
@@ -122,6 +127,23 @@ export default function userReducer(state={
       return {
         ...state,
         errors: {}
+      }
+    case CREATE_SUBSCRIPTION_CHARGE_PENDING:
+      return {
+        ...state,
+        paymentPending: true
+      }
+    case CREATE_SUBSCRIPTION_CHARGE_SUCCESS:
+      return {
+        ...state,
+        paymentSuccessful: true,
+        paymentPending: false
+      }
+    case CREATE_SUBSCRIPTION_CHARGE_FAILURE:
+      return {
+        ...state,
+        paymentSuccessful: false,
+        paymentPending: false
       }
     default:
       // console.log("default case hit with " + action.type);
