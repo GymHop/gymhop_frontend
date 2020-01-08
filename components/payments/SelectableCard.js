@@ -7,19 +7,19 @@ import Layout from '../../constants/Layout';
 class SelectableCard extends Component {
   constructor(props) {
     super(props);
-    this.animatedTopValue = new Animated.Value(10);
+    this.animatedTopValue = new Animated.Value(0);
   }
 
   animateSelected = () => {
     console.log("animateSelected");
     Animated.spring(this.animatedTopValue, {
-      toValue: 40
+      toValue: 30
     }).start()
   }
   animateUnselect = () => {
     console.log("animateUnselect");
     Animated.spring(this.animatedTopValue, {
-      toValue: 10
+      toValue: 0
     }).start()
   }
 
@@ -49,7 +49,7 @@ class SelectableCard extends Component {
     var today = new Date();
     switch (period) {
       case "month":
-        var nextMonth = new Date(today.getFullYear(), today.getMonth()+1, today.getDate());
+        var nextMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
         return this.getDateStr(nextMonth);
       case "week":
         var nextweek = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
@@ -60,18 +60,12 @@ class SelectableCard extends Component {
 
   render() {
     let animatedTop = this.animatedTopValue;
-    let animatedColor = this.animatedTopValue.interpolate({
-        inputRange: [0, 40],
-       outputRange: ['#F2F2F2', '#B3D6FF']
-    });
 
     return (
       <Animated.View style={[{backgroundColor: this.props.background, top: animatedTop}, styles.container]}>
-        <TouchableOpacity onPress={this.props.onSelect} style={styles.touchableContainer}>
-              {this.props.icon}
-              <Text style={styles.titleText}>{this.props.title}</Text>
-              <Text style={styles.subTitle}>{this.props.price}/{this.props.period}</Text>
-              <Text>Expires: {this.getAutoRenewDate(this.props.period)}</Text>
+        <TouchableOpacity onPress={this.props.onSelect}>
+            <Text style={styles.titleText}>{this.props.title}</Text>
+            <Text style={styles.subTitle}>{this.props.chargeInfoText}{this.getAutoRenewDate(this.props.period)}</Text>
         </TouchableOpacity>
       </Animated.View>
     )
@@ -80,11 +74,11 @@ class SelectableCard extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    position: "relative",
     width: Layout.window.width * .8 / 2,
     marginHorizontal: Layout.window.width *.01,
-    padding: Layout.window.width *.03,
+    paddingHorizontal: Layout.window.width *.03,
     borderRadius: 8,
+    height: 130,
     shadowColor: "#000",
     shadowOffset: {
     	width: 0,
@@ -93,11 +87,20 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
-    color: "#F2F2F2"
   },
   touchableContainer: {
-    flex: 1
-  }
+    borderWidth: 1,
+    height: 130,
+  },
+    titleText: {
+      fontSize: 24,
+      textAlign: "center",
+      marginTop: 10
+    },
+    subTitle: {
+      textAlign: "center",
+    }
+
 })
 
 export default SelectableCard

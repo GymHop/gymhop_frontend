@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { View, Text, StyleSheet, Button, TouchableWithoutFeedback,
-         TouchableOpacity, NativeModules, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableWithoutFeedback, ScrollView,
+         TouchableOpacity, NativeModules, ActivityIndicator, Linking } from 'react-native';
 import { CheckBox } from 'react-native-elements'
 import { connect } from 'react-redux';
 import stripe from 'tipsi-stripe'
@@ -22,36 +22,41 @@ class PaymentScreen extends Component {
     this.paymentOptions = [
       {
         key: "70",
+        title: "Monthly Access",
         price: 70,
         period: "month",
+        chargeInfoText: "Your card will be charged on ",
         bullets: [
           (<Text>Try Gymhop free for one week</Text>),
           (<Text>Get unlimited access to every GymHop gym</Text>),
-          (<View style={{flexDirection: "row"}}><Text>When the week trial is up, you will be billed </Text><Text style={{fontWeight: "bold"}}>$80 a month.</Text></View>),
-          (<View style={{flexDirection: "row"}}>
+          (<Text><Text>When the week trial is up, you will be billed </Text><Text style={{fontWeight: "bold"}}>$80 a month.</Text></Text>),
+          (<Text>
             <Text>Cancel anytime to avoid charges by emailing us at </Text>
-            <TouchableWithoutFeedback onPress={() => {
+            <Text
+                style={{color:"#0000EE"}}
+                onPress={() => {
                   Linking.openURL('mailto:contact@gymhop.us?subject=Cancel%20Subscription&body=Let%20us%20know%20what%20we%20could%20do%20better')
                 }}>
-                <Text style={{color:"#0000EE"}}>contact@gymhop.us</Text>
-            </TouchableWithoutFeedback>
-          </View>)
+                contact@gymhop.us
+            </Text>
+          </Text>)
         ],
         extraInfo: <Text>**Limit one free trial per customer. If your have already used the trial, you will be billed immediately upon signup.</Text>,
         image: {
           uri: require("../assets/images/monthly_photo.jpg")
         },
         background: "#39E3FF",
-        icon: <Icon name="idcard" size={30} color="#000000" />
       },
       {
         key: "20",
+        title: "One Week Access",
         price: 20,
         period: "week",
+        chargeInfoText: "Immediate charge, expires on ",
         bullets: [
           (<Text>Afraid of commitment? Buy a week!</Text>),
           (<Text>Get unlimited access to every GymHop Gym</Text>),
-          (<View style={{flexDirection: "row"}}><Text>You'll be billed</Text><Text style={{fontWeight:"bold"}}> $20</Text><Text> upon checkout</Text></View>),
+          (<Text><Text>You'll be billed</Text><Text style={{fontWeight:"bold"}}> $20</Text><Text> upon checkout</Text></Text>),
           (<Text>Refund available if the pass is unused</Text>)
         ],
         extraInfo: <Text>Pass will last for one week before automatically expiring. To regain access, buy another pass or sign up for our monthly membership.</Text>,
@@ -59,7 +64,6 @@ class PaymentScreen extends Component {
           uri: require("../assets/images/weekly_photo.jpg")
         },
         background: "#FF695D",
-        icon: <Icon name="carryout" size={30} color="#000000" />
       }
     ]
   }
@@ -127,12 +131,12 @@ class PaymentScreen extends Component {
   }
 
   getBullets = () => {
-    if (this.state.selectedOption) {
-      return this.paymentOptions[this.state.selectedOption].bullets.map((item) => {
+    if (this.state.selectedOption != null) {
+      return this.paymentOptions[this.state.selectedOption].bullets.map((item, idx) => {
         return (
-          <View>
-            <View style={flex: 1}><Text>-</Text></View>
-            <View style={flex: 5}>{item}</View>
+          <View style={{flexDirection: "row"}} key={"gym_bullets_"+idx}>
+            <View style={{flex: 1, justifyContent: "center"}}><Text>&mdash;</Text></View>
+            <View style={{flex: 6}}>{item}</View>
           </View>
         )
       });
@@ -141,7 +145,7 @@ class PaymentScreen extends Component {
     }
   }
   getExtraInfo = () => {
-    if (this.state.selectedOption) {
+    if (this.state.selectedOption != null) {
       return this.paymentOptions[this.state.selectedOption].extraInfo
     } else {
       return null;
@@ -209,19 +213,11 @@ class PaymentScreen extends Component {
           })}
         </View>
         <View style={styles.optionsExecuteContainer}>
-          <View style={styles.descriptionContainer}>
-            <View style={styles.textContainer}>
-              <Text style={styles.selectedOptionText}>{this.getPassName()}</Text>
-              <View style={styles.bulletsContainer}>{this.getBullets()}</View>
-              <View style={styles.extraInfoContainer}>{this.getExtraInfo()}</View>
-            </View>
-            {/*<View style={styles.autoRenewContainer}>
-              <Text style={styles.autoRenewText}>Auto Renew?</Text>
-              <CheckBox
-                checked={this.state.autoRenew}
-                onPress={() => this.setState({autoRenew: !this.state.autoRenew})}/>
-            </View>*/}
-          </View>
+          <ScrollView contentContainerStyle={styles.textContainer}>
+            <Text style={styles.selectedOptionText}>{this.getPassName()}</Text>
+            <View style={styles.bulletsContainer}>{this.getBullets()}</View>
+            <View style={styles.extraInfoContainer}>{this.getExtraInfo()}</View>
+          </ScrollView>
         </View>
         <View style={styles.selectBtnContainer}>
           <TouchableOpacity
@@ -242,6 +238,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000"
   },
   titleTextContainer: {
+    flex: 1,
     paddingLeft: Layout.window.width * .03,
   },
     titleText: {
@@ -253,8 +250,7 @@ const styles = StyleSheet.create({
     },
   optionsSelectableContainer: {
     position: "relative",
-    marginHorizontal: Layout.window.width *.02,
-    paddingTop: Layout.window.height *.03,
+    marginBottom: 30,
     zIndex: 2,
     flex: 1,
     backgroundColor: "#000000",
@@ -262,28 +258,26 @@ const styles = StyleSheet.create({
     justifyContent: "space-around"
   },
   optionsExecuteContainer: {
-    flex: 1,
+    flex: 4,
     zIndex: 1,
     position: "relative",
     backgroundColor: "#ffffff",
     paddingHorizontal: Layout.window.width *.07,
     marginHorizontal: Layout.window.width *.02,
+    marginTop: 10,
     paddingTop: 70,
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
     alignItems: "center"
   },
-    descriptionContainer: {
-      flexDirection: "row"
-    },
     textContainer: {
-      flex: 3
+      flex: 5,
     },
       bulletsContainer: {
 
       },
       extraInfoContainer: {
-
+        marginTop: 5
       },
     autoRenewContainer: {
       flex: 1,
@@ -294,7 +288,7 @@ const styles = StyleSheet.create({
       textAlign: "center"
     },
     selectedOptionText: {
-      fontSize: 16,
+      fontSize: 26,
       marginVertical: 4
     },
   selectBtnContainer: {
@@ -309,7 +303,7 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       justifyContent: "space-around",
       alignItems: "center",
-      paddingHorizontal: 10,
+      paddingHorizontal: 2,
       paddingVertical: 7,
       backgroundColor: "white",
       borderWidth: 1
