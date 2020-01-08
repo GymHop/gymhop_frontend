@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { View, Text, StyleSheet, Button, TouchableOpacity, NativeModules, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableWithoutFeedback,
+         TouchableOpacity, NativeModules, ActivityIndicator } from 'react-native';
 import { CheckBox } from 'react-native-elements'
 import { connect } from 'react-redux';
 import stripe from 'tipsi-stripe'
@@ -23,7 +24,20 @@ class PaymentScreen extends Component {
         key: "70",
         price: 70,
         period: "month",
-        description: "Get access to our entire network for the entire month. Plus full support from our team",
+        bullets: [
+          (<Text>Try Gymhop free for one week</Text>),
+          (<Text>Get unlimited access to every GymHop gym</Text>),
+          (<View style={{flexDirection: "row"}}><Text>When the week trial is up, you will be billed </Text><Text style={{fontWeight: "bold"}}>$80 a month.</Text></View>),
+          (<View style={{flexDirection: "row"}}>
+            <Text>Cancel anytime to avoid charges by emailing us at </Text>
+            <TouchableWithoutFeedback onPress={() => {
+                  Linking.openURL('mailto:contact@gymhop.us?subject=Cancel%20Subscription&body=Let%20us%20know%20what%20we%20could%20do%20better')
+                }}>
+                <Text style={{color:"#0000EE"}}>contact@gymhop.us</Text>
+            </TouchableWithoutFeedback>
+          </View>)
+        ],
+        extraInfo: <Text>**Limit one free trial per customer. If your have already used the trial, you will be billed immediately upon signup.</Text>,
         image: {
           uri: require("../assets/images/monthly_photo.jpg")
         },
@@ -34,7 +48,13 @@ class PaymentScreen extends Component {
         key: "20",
         price: 20,
         period: "week",
-        description: "Our most popular option. Useful if you're on the go or just don't like that commitment thing",
+        bullets: [
+          (<Text>Afraid of commitment? Buy a week!</Text>),
+          (<Text>Get unlimited access to every GymHop Gym</Text>),
+          (<View style={{flexDirection: "row"}}><Text>You'll be billed</Text><Text style={{fontWeight:"bold"}}> $20</Text><Text> upon checkout</Text></View>),
+          (<Text>Refund available if the pass is unused</Text>)
+        ],
+        extraInfo: <Text>Pass will last for one week before automatically expiring. To regain access, buy another pass or sign up for our monthly membership.</Text>,
         image: {
           uri: require("../assets/images/weekly_photo.jpg")
         },
@@ -98,12 +118,33 @@ class PaymentScreen extends Component {
   getPassName = () => {
     switch (this.state.selectedOption) {
       case 0:
-        return "The Monthly Hustler";
+        return "The Monthly Hustler: $80";
       case 1:
-        return "The Weekly Workhorse";
+        return "The Weekly Warrior: $20";
       default:
         return "Select a pass option"
+    }
+  }
 
+  getBullets = () => {
+    if (this.state.selectedOption) {
+      return this.paymentOptions[this.state.selectedOption].bullets.map((item) => {
+        return (
+          <View>
+            <View style={flex: 1}><Text>-</Text></View>
+            <View style={flex: 5}>{item}</View>
+          </View>
+        )
+      });
+    } else {
+      return null;
+    }
+  }
+  getExtraInfo = () => {
+    if (this.state.selectedOption) {
+      return this.paymentOptions[this.state.selectedOption].extraInfo
+    } else {
+      return null;
     }
   }
 
@@ -153,14 +194,6 @@ class PaymentScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.titleTextContainer}>
-          <Text style={styles.titleText}>
-            Hey {this.props.firstName}!
-          </Text>
-          <Text style={styles.titleSubtext}>
-            Its time to get to work
-          </Text>
-        </View>
         <View style={styles.optionsSelectableContainer}>
           {this.paymentOptions.map((option, idx) => {
             return (
@@ -179,7 +212,8 @@ class PaymentScreen extends Component {
           <View style={styles.descriptionContainer}>
             <View style={styles.textContainer}>
               <Text style={styles.selectedOptionText}>{this.getPassName()}</Text>
-              <Text>{description}</Text>
+              <View style={styles.bulletsContainer}>{this.getBullets()}</View>
+              <View style={styles.extraInfoContainer}>{this.getExtraInfo()}</View>
             </View>
             {/*<View style={styles.autoRenewContainer}>
               <Text style={styles.autoRenewText}>Auto Renew?</Text>
@@ -222,7 +256,7 @@ const styles = StyleSheet.create({
     marginHorizontal: Layout.window.width *.02,
     paddingTop: Layout.window.height *.03,
     zIndex: 2,
-    flex: 2,
+    flex: 1,
     backgroundColor: "#000000",
     flexDirection: "row",
     justifyContent: "space-around"
@@ -245,6 +279,12 @@ const styles = StyleSheet.create({
     textContainer: {
       flex: 3
     },
+      bulletsContainer: {
+
+      },
+      extraInfoContainer: {
+
+      },
     autoRenewContainer: {
       flex: 1,
       justifyContent: "center",

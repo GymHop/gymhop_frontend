@@ -3,6 +3,7 @@ package com.gymhop;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.gettipsi.stripe.StripeReactPackage;
 import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
 import com.rnfs.RNFSPackage;
@@ -33,6 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new AsyncStoragePackage(),
             new RNPermissionsPackage(),
             new RNFSPackage(),
             new ImageResizerPackage(),
