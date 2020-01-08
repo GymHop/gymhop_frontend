@@ -250,9 +250,10 @@ const styles = StyleSheet.create({
     },
   optionsSelectableContainer: {
     position: "relative",
-    marginBottom: 30,
+    marginBottom: 8,
     zIndex: 2,
     flex: 1,
+    minHeight: 85,
     backgroundColor: "#000000",
     flexDirection: "row",
     justifyContent: "space-around"
@@ -264,8 +265,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     paddingHorizontal: Layout.window.width *.07,
     marginHorizontal: Layout.window.width *.02,
-    marginTop: 10,
-    paddingTop: 70,
+    marginTop: 17,
+    paddingTop: 13,
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
     alignItems: "center"
