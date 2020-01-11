@@ -45,16 +45,11 @@ export default function ProfilePage({tier,
         tierType = null;
         break;
       case 8:
-        tierType = "Premium tier @80/month"
+        tierType = "All Access @80/month"
         break;
       default:
           tierType = "No Tier"
     }
-    var billingEndDate;
-    let d = new Date(billingStartDate)
-    d.setMonth(d.getMonth() + 1);
-
-    billingEndDate = dateFormatter(d, "date-time")
     let bday = birthday ? dateFormatter(birthday, "date") : "";
 
     let profileHeight = Layout.window.height/6
@@ -62,7 +57,40 @@ export default function ProfilePage({tier,
     gotoPayments = () => {
       navigation.push("Payments");
     }
+    getBillingDetails = () => {
+      if (tier==2) {
+        var billingEndDate;
+        let d = new Date(billingStartDate)
+        d.setDate(d.getDate() + 7);
 
+        billingEndDate = dateFormatter(d, "date-time")
+        return (
+          <View style={styles.dataLabel}>
+            <Text>Weekly membership expires on</Text>
+          </View>
+          <Text style={styles.dataField}>{billingEndDate}</Text>
+        );
+      } else if (tier==8) {
+        var billingEndDate;
+        let d = new Date(billingStartDate)
+        d.setMonth(d.getMonth() + 1);
+
+        billingEndDate = dateFormatter(d, "date-time")
+        return (
+          <View style={styles.dataLabel}>
+            <Text>Subscription Renews on</Text>
+          </View>
+          <Text style={styles.dataField}>{billingEndDate}</Text>
+        )
+      } else {
+        return (
+          <View style={styles.dataLabel}>
+            <Text>You dont currently have a subscription</Text>
+          </View>
+          <Text style={styles.dataField}>--</Text>
+        );
+      }
+    }
 
     return (
         // <View style={styles.imageContainer}>
@@ -102,12 +130,7 @@ export default function ProfilePage({tier,
               <Text>Last Name</Text>
             </View>
             <Text style={styles.dataField}>  {lastName}</Text>
-
-            <View style={styles.dataLabel}>
-              <Text>Billing End Date</Text>
-            </View>
-            <Text style={styles.dataField}>  {billingEndDate}</Text>
-
+            {getBillingDetails}
             <View style={styles.dataLabel}>
               <Text>Payment Tier</Text>
             </View>

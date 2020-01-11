@@ -20,7 +20,8 @@ class GymSchedule extends Component {
     let schedulePhoto = gym.schedule_photo;
 
     let images = [{
-        source: { uri: schedulePhoto}
+        source: { uri: schedulePhoto},
+        title: "Schedule"
       }]
 
     return (
@@ -39,6 +40,7 @@ class GymSchedule extends Component {
           imageIndex={0}
           isVisible={this.state.visible}
           onClose={() => this.setState({visible: false})}
+          isSwipeCloseEnabled={true}
           renderFooter={(currentImage) => (<View><Text>{this.props.gym.name}</Text></View>)}
           />
       </View>

@@ -43,5 +43,24 @@ export const styles = StyleSheet.create({
     },
       tileElement: {
         width: "50%"
-      }
+      },
+  noCheckinsContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+    noCheckinsImage: {
+      width: 320,
+      height: 200
+    },
+    noCheckinsText: {
+      marginTop: 25,
+      textAlign: "center",
+      fontSize: 24
+    },
+    noCheckinsSubtext: {
+      marginTop: 12,
+      textAlign: "center",
+      fontSize: 16
+    }
 })

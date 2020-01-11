@@ -54,8 +54,8 @@ class PaymentScreen extends Component {
         period: "week",
         chargeInfoText: "Immediate charge, expires on ",
         bullets: [
-          (<Text>Afraid of commitment? Buy a week!</Text>),
-          (<Text>Get unlimited access to every GymHop Gym</Text>),
+          (<Text>Want to try Gymhop? Buy a week!</Text>),
+          (<Text>Get unlimited access to every GymHop gym</Text>),
           (<Text><Text>You'll be billed</Text><Text style={{fontWeight:"bold"}}> $20</Text><Text> upon checkout</Text></Text>),
           (<Text>Refund available if the pass is unused</Text>)
         ],

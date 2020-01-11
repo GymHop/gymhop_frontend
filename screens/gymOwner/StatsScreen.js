@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
+import { View, Text, ActivityIndicator, ScrollView, Image, Linking } from 'react-native';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -48,8 +48,27 @@ class StatsScreen extends Component {
     var { check_ins } = stats;
     check_ins.sort((a, b) => {
       return new Date(b.when) - new Date(a.when);
-      console.log('Fucking Returned')
     });
+
+    if (check_ins.length == 0) {
+      return (
+        <View style={styles.noCheckinsContainer}>
+          <Image style={styles.noCheckinsImage}
+              source={require("../../assets/images/personal_trainer.png")}/>
+          <Text style={styles.noCheckinsText}>No one has checked in yet</Text>
+          <Text style={styles.noCheckinsSubtext}>
+            Have questions? Shoot us an&nbsp;
+            <Text
+                style={{color:"#0000EE"}}
+                onPress={() => {
+                  Linking.openURL('mailto:contact@gymhop.us')
+                }}>
+                email!
+            </Text>
+          </Text>
+        </View>
+      )
+    }
 
     return (
       <ScrollView style={styles.container}>
@@ -57,9 +76,9 @@ class StatsScreen extends Component {
           <Text style={styles.monthText}>{for_month_of}</Text>
         </View>
         {/*<View styles={styles.checkinGraph}>*/}
-        <CheckinGraph
+        {/*<CheckinGraph
         checkins={stats.check_ins}
-        />
+        />*/}
         {/*</View>*/}
         <View style={styles.tileRow}>
           <View style={styles.tileElement}>
