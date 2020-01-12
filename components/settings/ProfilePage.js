@@ -65,10 +65,12 @@ export default function ProfilePage({tier,
 
         billingEndDate = dateFormatter(d, "date-time")
         return (
-          <View style={styles.dataLabel}>
-            <Text>Weekly membership expires on</Text>
+          <View>
+            <View style={styles.dataLabel}>
+              <Text>Weekly membership expires on</Text>
+            </View>
+            <Text style={styles.dataField}>{billingEndDate}</Text>
           </View>
-          <Text style={styles.dataField}>{billingEndDate}</Text>
         );
       } else if (tier==8) {
         var billingEndDate;
@@ -77,17 +79,21 @@ export default function ProfilePage({tier,
 
         billingEndDate = dateFormatter(d, "date-time")
         return (
-          <View style={styles.dataLabel}>
-            <Text>Subscription Renews on</Text>
+          <View>
+            <View style={styles.dataLabel}>
+              <Text>Subscription Renews on</Text>
+            </View>
+            <Text style={styles.dataField}>{billingEndDate}</Text>
           </View>
-          <Text style={styles.dataField}>{billingEndDate}</Text>
         )
       } else {
         return (
-          <View style={styles.dataLabel}>
-            <Text>You dont currently have a subscription</Text>
+          <View>
+            <View style={styles.dataLabel}>
+              <Text>You dont currently have a subscription</Text>
+            </View>
+            <Text style={styles.dataField}>--</Text>
           </View>
-          <Text style={styles.dataField}>--</Text>
         );
       }
     }
