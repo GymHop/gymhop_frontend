@@ -43,9 +43,11 @@ class PullUpMenu extends Component {
           //determine which open size to open to
           // if they do a big swipe animated all the way down/up
           if (gestureState.dy > Layout.window.height *.25) {
+            this.setState({allowMenuMovement: true})
             this.animateToLevel(0);
             return;
           } else if (gestureState.dy < -Layout.window.height *.25) {
+            this.setState({allowMenuMovement: true})
             this.animateToLevel(2);
             return;
           }
@@ -58,6 +60,7 @@ class PullUpMenu extends Component {
             this.animatedUpALevel();
             return;
           }
+
         }
       });
   }
@@ -69,12 +72,20 @@ class PullUpMenu extends Component {
   }
 
   shouldAllowPanresponderCapture = (evt, gestureState) => {
+    if (this.state.currentLevel === 1 && gestureState.dy < 5 && gestureState.dy > -5) {
+      this.setState({allowMenuMovement: false})
+      this.shouldAllowPanresponderSet()
+      return;
+    } else if (this.state.currentLevel === 2 && gestureState.dy > -20) {
+      return this.setState({allowMenuMovement: false})
+    } else {
+      return this.setState({allowMenuMovement: true})
+    }
             // if they swipe up
             // and we are at the top of the menu
             // and the menu is fully open
             //      -> then disable panresponder
             // otherwise allow
-      return this.state.allowMenuMovement;
   }
 
   shouldAllowPanresponderSet = (evt, gestureState) => {
@@ -100,7 +111,7 @@ class PullUpMenu extends Component {
     if (this.state.currentLevel + 1 == 2) {
       this.setState({
         currentLevel: this.state.currentLevel + 1,
-        allowMenuMovement: false,
+        allowMenuMovement: true,
         justHitLevelTwo: true
       })
     } else {
@@ -140,13 +151,14 @@ class PullUpMenu extends Component {
   isScrollAtTop = ({nativeEvent}) => {
     if (this.state.justHitLevelTwo) {
       this.setState({justHitLevelTwo: false});
+      this.setState({allowMenuMovement: true})
     }
     if (nativeEvent.contentOffset != undefined) {
       if (nativeEvent.contentOffset.y === 0) {
         this.setState({allowMenuMovement: true})
       } else {
-        console.log("not at top");
         this.setState({allowMenuMovement: false})
+        this.animatedUpALevel();
       }
     } else {
       console.log("cant capture scroll event");

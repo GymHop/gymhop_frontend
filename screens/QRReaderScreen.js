@@ -50,14 +50,13 @@ class QRReaderScreen extends React.Component {
          } else if (isFocused) {
              return (
                <View style={styles.container}>
-               <NewUserScreen pagekey={"QR"} title={"Welcome to GymHop!"} description={"Find a gym near you on the home page, scan the QR code at the front desk of the gym, workout! It's that simple!"}/>
                <QRCodeScanner
                          onRead={this._handleBarCodeRead}
                          ref={(node) => { this.scanner = node }}
                          cameraProps={{captureAudio: false}}
                          containerStyle={styles.container}
                          showMarker={true}
-                         topContent={<Text style={styles.topText}>Scan QR Code Upon Entering Gym!</Text>}
+                         
                  />
                  </View>
              )

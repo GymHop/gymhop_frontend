@@ -62,7 +62,9 @@ class SelectableCard extends Component {
     let animatedTop = this.animatedTopValue;
 
     return (
-      <Animated.View style={[{backgroundColor: this.props.background, top: animatedTop}, styles.container]}>
+      <Animated.View 
+        useNativeDriver={true}
+        style={[{backgroundColor: this.props.background, top: animatedTop}, styles.container,]}>
         <TouchableOpacity onPress={this.props.onSelect}>
             <Text style={styles.titleText}>{this.props.title}</Text>
             <Text style={styles.subTitle}>{this.props.chargeInfoText}{this.getAutoRenewDate(this.props.period)}</Text>

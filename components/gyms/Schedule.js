@@ -30,8 +30,8 @@ class GymSchedule extends Component {
           <TouchableOpacity
             onPress={() => {this.setState({visible: true})}}
             style={styles.lightGrayBtn}>
-            <Icon name="ios-calendar" size={18} color="#979999"/>
-            <Text style={styles.lightGrayBtnText}>Schedule</Text>
+            <Icon name="ios-calendar" size={18} color="#000"/>
+            <Text style={styles.lightGrayBtnText}>Class Schedule</Text>
           </TouchableOpacity>
         </View>
 
@@ -58,16 +58,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    borderColor: "#97999988",
+    borderColor: "#000",
     paddingHorizontal: 10,
     paddingVertical: 7,
     backgroundColor: "white",
-    borderWidth: 1
+    borderWidth: 2,
+    borderRadius: 25
   },
     lightGrayBtnText: {
       fontSize: 16,
-      color: "#979999",
-      marginLeft: 4
+      color: "#000",
+      marginLeft: 10
     },
 })
 

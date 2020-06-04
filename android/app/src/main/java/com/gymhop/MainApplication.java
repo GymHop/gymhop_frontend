@@ -18,6 +18,8 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.reactnativecommunity.geolocation.GeolocationPackage;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +46,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new SvgPackage(),
             new MapsPackage(),
-            new StripeReactPackage()
+            new StripeReactPackage(),
+            new GeolocationPackage()
       );
     }
 

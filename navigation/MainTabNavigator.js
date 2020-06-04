@@ -10,7 +10,6 @@ import QRReaderScreen from '../screens/QRReaderScreen';
 import GymListScreen from '../screens/GymListScreen';
 import GymDetailScreen from '../screens/GymDetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import QRScreen from '../screens/QRScreen';
 import PostCheckInScreen from '../screens/PostCheckInScreen';
 import StatsScreen from '../screens/gymOwner/StatsScreen';
 import PaymentScreen from '../screens/PaymentScreen';
@@ -34,7 +33,6 @@ const handleCustomTransition = ({ scenes }) => {
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  QR: QRScreen,
   GymList: GymListScreen,
   GymDetail: GymDetailScreen
 }, {
@@ -46,10 +44,8 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      iconSet={"feather"}
-      name={
-        'home'
-      }
+      iconSet={"ion"}
+      name={Platform.OS === 'ios' ? 'ios-home' : 'md-home'}
     />
   ),
 };
@@ -66,12 +62,12 @@ const QRScanningStack = createStackNavigator({
 });
 
 QRScanningStack.navigationOptions = {
-  tabBarLabel: 'Scanner',
+  tabBarLabel: 'Check In',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      iconSet={"feather"}
-      name={'camera'}
+      iconSet={"ion"}
+      name={Platform.OS === 'ios' ? 'ios-camera' : 'md-camera'}
     />
   ),
 

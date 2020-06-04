@@ -73,7 +73,8 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js"
+    entryFile: "index.js",
+    enableHermes: false,
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -94,6 +95,10 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+def jscFlavor = 'org.webkit:android-jsc:+'
+
+def enableHermes = project.ext.react.get("enableHermes", false);
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -104,6 +109,7 @@ android {
         versionCode 29
         versionName "2.0.2"
         multiDexEnabled true
+        missingDimensionStrategy 'react-native-camera', 'general'
     }
     signingConfigs {
         release {
@@ -157,10 +163,27 @@ dependencies {
     implementation project(':react-native-svg')
     implementation project(':react-native-maps')
     implementation project(':tipsi-stripe')
+    implementation project(':react-native-community-geolocation')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation "androidx.annotation:annotation:1.1.0"
+
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "com.facebook.react:react-native:+"  // From node_modules
+
+    if (enableHermes) {
+        // for RN 0.61+
+        def hermesPath = "../../node_modules/hermes-engine/android/";
+
+
+        debugImplementation files(hermesPath + "hermes-debug.aar")
+        releaseImplementation files(hermesPath + "hermes-release.aar")
+    } else {
+        implementation jscFlavor
+    }
 
 }
 

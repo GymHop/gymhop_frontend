@@ -9,7 +9,6 @@ import { withNavigation } from 'react-navigation'
 import Colors from "../../constants/Colors";
 
 import { styles } from '../../styles/gymList/tile'
-import QRScreen from "../../screens/QRScreen";
 import OpenOrClosedRightNow from './OpenOrClosedRightNow';
 import { selectGym } from '../../actions/gymActions';
 
@@ -45,6 +44,7 @@ class GymTile extends Component {
       }}>
         <View style={styles.gymTileContainer}>
           <View style={styles.gymPhotoContainer}>
+
             <Image
             source={{uri: gym.lead_photo}}
             style={styles.gymLeadPhoto}

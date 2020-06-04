@@ -4,7 +4,7 @@ import Layout from '../constants/Layout';
 
 export const styles = StyleSheet.create({
   imageContainer: {
-    backgroundColor: 'black',
+    backgroundColor: '#ffd1dc',
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
       },
     })},
       brandLogo: {
-        backgroundColor: '#000000',
+        backgroundColor: '#ffd1dc',
         width: '35%',
         height: Layout.noStatusBarHeight * .03,
       },
@@ -30,12 +30,13 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.tintColor
+    backgroundColor: '#ffd1dc'
+
   },
       profilePicContainer: {
-        flex: .4,
-        marginTop: 30,
-        marginBottom: 5,
+        flex: .5,
+        paddingTop: 30,
+        paddingBottom: 5,
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
@@ -57,29 +58,60 @@ export const styles = StyleSheet.create({
           borderRadius: 100,
           backgroundColor: 'white'
         },
-        editPromptText: {
-          color: "gray",
-          marginTop: -15
+        promptTextContainer: {
+          marginTop: 10
         },
+          editPromptText: {
+            color: 'black',
+            fontWeight: 'bold'
+          },
       profileDetailsContainer: {
-        flex: .6,
+        flex: .2,
         width: "100%",
-        marginTop: 5,
+        marginTop: '15%',
+        paddingTop: 5,
+        paddingHorizontal: 10,
         backgroundColor: "white",
         borderTopColor: "gray",
         borderTopWidth: StyleSheet.hairlineWidth,
 
+
       },
         dataLabel: {
-          borderTopColor: "gray",
-          borderTopWidth: StyleSheet.hairlineWidth,
           width: "100%",
-          paddingVertical: 5,
-          marginLeft: 5
+          // paddingVertical: 5,
+          marginLeft: 5,
+
         },
-        dataField: {
-          width: "100%",
-          paddingVertical: 8,
-          marginLeft: 10
+        dataLabelText: {
+          fontWeight: 'bold',
+          color: 'black'
         },
+        dataFieldCont: {
+          borderBottomColor: "gray",
+          borderBottomWidth: StyleSheet.hairlineWidth,
+        },
+          dataField: {
+            width: "100%",
+            paddingVertical: 8,
+            marginLeft: 10
+          },
+      buttonBox: {
+        flex: .4,
+        width: '100%',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        paddingBottom: '20%'
+      },
+      button: {
+        backgroundColor: '#fff',
+        borderColor: '#000',
+        borderWidth: 2,
+        width: 175,
+        height: 50,
+        borderRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 10,
+      }
 })

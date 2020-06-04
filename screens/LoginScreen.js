@@ -30,13 +30,13 @@ class LoginScreen extends Component {
     this.getToken();
   }
 
-  getToken = async () => {
-     const token = await AsyncStorage.getItem("@Auth:APIToken");
-     if (token != null) {
-       this.props.TokenActions.setToken(token);
-       // setting the token will make component did update fire
-     }
-   }
+  // getToken = async () => {
+  //    const token = await AsyncStorage.getItem("@Auth:APIToken");
+  //    if (token != null) {
+  //      this.props.TokenActions.setToken(token);
+  //      // setting the token will make component did update fire
+  //    }
+  //  }
   // componentDidMount() {
   //
   // }
@@ -73,7 +73,7 @@ class LoginScreen extends Component {
       <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
         <View style={styles.headLogoContainer}>
           <Image
-            source={require('../assets/images/loginheader.png')}
+            source={require('../assets/images/bunnyblackwhite.png')}
             style={styles.headLogo}
             resizeMode='contain'
           />
@@ -135,20 +135,19 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    backgroundColor: '#000000',
+    backgroundColor: '#ffd1dc',
     height: '100%',
     // https://facebook.github.io/react-native/docs/stylesheet
     // refer to this
   },
   headLogoContainer: {
-    marginBottom: "7.11%",
-    width: '50%',
+    width: '60%',
   },
   headLogo: {
     marginTop: Platform.OS === 'ios' ? '35%' : '-10%',
-    backgroundColor: '#000000',
+    backgroundColor: '#ffd1dc',
     width: '100%',
-    marginBottom: '-20%',
+    marginBottom: '-50%',
   },
 
   loginInput: {
@@ -165,7 +164,7 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     height: 40,
-    backgroundColor: '#8f8f8f',
+    backgroundColor: '#000000',
     width: '75%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -174,15 +173,15 @@ const styles = StyleSheet.create({
   },
   loginText: {
     fontSize: 20,
-    color: '#000000',
+    color: '#ffffff',
   },
   registerButton: {
-    backgroundColor: '#000000',
+    backgroundColor: '#ffd1dc',
   },
   registerText: {
     marginTop: '5%',
     fontSize: 14,
-    color: '#8f8f8f',
+    color: 'grey',
   }
 });
 

@@ -11,7 +11,7 @@ class GymDetailScreen extends Component {
   }
 
   static navigationOptions = {
-    title: 'Our Member Gyms',
+    title: 'Available Gyms',
     backButtonTitle: ''
   };
 
@@ -19,7 +19,7 @@ class GymDetailScreen extends Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <GymDetailContainer gym={this.props.selectedGym} />
+          <GymDetailContainer gym={this.props.selectedGym} key={this.props.selectedGym.id}/>
         </ScrollView>
       </View>
     )

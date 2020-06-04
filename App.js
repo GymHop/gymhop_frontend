@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from './store';
 
 import FlashMessage from "react-native-flash-message";
+import {Provider as AuthProvider} from './context/AuthContext';
 
 export const store = configureStore({});
 
@@ -20,11 +21,13 @@ export default class App extends React.Component {
   render() {
       return (
         <Provider store={store} >
+          <AuthProvider>
           <SafeAreaView style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
             <AppNavigator />
             <FlashMessage position="top" />
           </SafeAreaView>
+          </AuthProvider>
         </Provider>
       );
 

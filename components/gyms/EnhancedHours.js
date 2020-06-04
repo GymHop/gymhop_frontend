@@ -36,10 +36,10 @@ class EnhancedHours extends Component {
           return (
             <View style={styles.dayContainer} key={day+"__enhanced_hours"}>
               <View style={styles.dayItem}>
-                <Text>{day}:</Text>
+                <Text style={styles.textColor}>{day}:</Text>
               </View>
               <View style={styles.dayItem}>
-                <Text>{renderHoursString(hoursByDay[day])}</Text>
+                <Text style={styles.textColor}>{renderHoursString(hoursByDay[day])}</Text>
               </View>
             </View>
           )
@@ -61,7 +61,7 @@ class EnhancedHours extends Component {
       var hoursByDay_renderable = this.renderHoursByDay(hours);
       return (
         <View style={styles.hoursContainer}>
-          <Text style={{marginBottom: 3,fontWeight: "bold"}}>Hours: </Text>
+          <Text style={{marginBottom: 3,fontWeight: "bold", color: 'black'}}>Hours: </Text>
           {hoursByDay_renderable}
         </View>
       )
@@ -80,8 +80,12 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
     dayItem: {
-      flex: 1
+      flex: 1,
+    },
+    textColor: {
+      color: 'black'
     }
+
 })
 
 export default EnhancedHours
