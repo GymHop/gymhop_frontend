@@ -30,7 +30,7 @@ export default class TabBarIcon extends React.Component<Props> {
     // active and inactive one, so we can fade between them.
     return (
       <View style={style}>
-        <Animated.View style={[styles.icon, { opacity: activeOpacity }]}>
+        <Animated.View style={[styles.icon, { opacity: activeOpacity }]} useNativeDriver={true}>
           {renderIcon({
             route,
             focused: true,
@@ -38,7 +38,7 @@ export default class TabBarIcon extends React.Component<Props> {
             tintColor: activeTintColor,
           })}
         </Animated.View>
-        <Animated.View style={[styles.icon, { opacity: inactiveOpacity }]}>
+        <Animated.View style={[styles.icon, { opacity: inactiveOpacity }]} useNativeDriver={true}>
           {renderIcon({
             route,
             focused: false,

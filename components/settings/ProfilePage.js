@@ -7,6 +7,8 @@ import { styles } from '../../styles/settings';
 import Feather from 'react-native-vector-icons/Feather';
 import Colors from '../../constants/Colors';
 import Layout from '../../constants/Layout';
+import UpgradeButton from '../UpgradeButton';
+import SubscriptionButton from '../SubscriptionButton';
 
 export default function ProfilePage({tier,
                       profilePic,
@@ -57,6 +59,7 @@ export default function ProfilePage({tier,
     gotoPayments = () => {
       navigation.push("Payments");
     }
+
     getBillingDetails = () => {
       if (tier==2) {
         var billingEndDate;
@@ -154,11 +157,8 @@ export default function ProfilePage({tier,
             </View>
         </ScrollView>
         <View style={styles.buttonBox}>
-            <TouchableOpacity onPress={gotoPayments}
-            style={styles.button}
-            >
-              <Text style={{color: 'black', fontSize: 16}}>Subscription Options</Text>
-            </TouchableOpacity>
+            <SubscriptionButton tier={tier}/>
+            <UpgradeButton tier={tier} />
             <TouchableOpacity  style={styles.button} onPress={logout}>
               <Text style={{color: 'black', fontSize: 16}}>Log Out</Text>
             </TouchableOpacity>

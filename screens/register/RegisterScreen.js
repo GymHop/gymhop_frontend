@@ -113,7 +113,7 @@ class RegisterScreen extends React.Component {
       return (
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
           <Image
-            source={require('../../assets/images/loginheader.png')}
+            source={require('../../assets/images/bunnyblackwhite.png')}
             style={styles.headLogo}
             resizeMode='contain'
         />

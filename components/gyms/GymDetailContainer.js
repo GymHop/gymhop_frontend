@@ -34,11 +34,14 @@ class GymDetailContainer extends Component {
       case 0:
         dollarSigns = "";
         break;
-      case 1:
+      case 2:
+        dollarSigns = "Trial";
+        break;
+      case 4:
         dollarSigns = "Budget";
         break;
-      case 2:
-        dollarSigns = "Premium ";
+      case 8:
+        dollarSigns = "Premium";
         break;
       default:
         dollarSigns = ""
@@ -46,6 +49,8 @@ class GymDetailContainer extends Component {
 
 
     let gymPhotos = gym.photos.map(a => a.url)
+    console.log(gym.price)
+
 
     return (
       <View style={styles.container}>
@@ -78,7 +83,7 @@ class GymDetailContainer extends Component {
             <Text style={styles.descriptionDetailText}>{gym.amenities}</Text>
           </View>
           <EnhancedHours hours={gym.hours_enhanced} hoursString={gym.hours}/>
-          <GymSchedule gym={gym} />
+            <GymSchedule gym={gym} />
         </View>
       </View>
     )
@@ -87,7 +92,7 @@ class GymDetailContainer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: Layout.window.height * .9 - 49
+    height: Layout.window.height * .9 - 49,
   },
   gymPhotoContainer: {},
   gymLeadPhoto: {

@@ -108,10 +108,20 @@ export const styles = StyleSheet.create({
         borderColor: '#000',
         borderWidth: 2,
         width: 175,
+        height: 30,
+        borderRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 15,
+      },
+      goldButton: {
+        backgroundColor: '#bba445',
+        width: 175,
         height: 50,
         borderRadius: 25,
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 10,
+        marginBottom: 15,
+        
       }
 })

@@ -50,8 +50,8 @@ class GymSchedule extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 17,
-    alignItems: 'center'
+    marginVertical: 20,
+    alignItems: 'center',
   },
   lightGrayBtn: {
     width: Layout.window.width / 1.8,

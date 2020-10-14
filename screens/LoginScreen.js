@@ -27,7 +27,7 @@ class LoginScreen extends Component {
       password: null,
     }
     this._storeToken = this._storeToken.bind(this);
-    this.getToken();
+    // this.getToken();
   }
 
   // getToken = async () => {
@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     backgroundColor: '#ffd1dc',
     height: '100%',
+    paddingBottom: 50
     // https://facebook.github.io/react-native/docs/stylesheet
     // refer to this
   },

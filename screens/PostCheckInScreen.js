@@ -7,7 +7,7 @@ import { dateFormatter } from '../utils/datetime';
 import { showMessage, hideMessage } from "react-native-flash-message";
 
 import Layout from '../constants/Layout';
-import ErrorBar from '../components/errorBar/errorBar';
+// import ErrorBar from '../components/errorBar/errorBar';
 
 
 class PostCheckIn extends React.Component {
@@ -23,15 +23,16 @@ class PostCheckIn extends React.Component {
   }
 
   static navigationOptions = {
+      title: null,
       headerBackground: (
         <View style={{
           flexDirection: "row",
           justifyContent: "center",
-          backgroundColor: '#000000',
+          backgroundColor: '#ffd1dc',
           marginBottom: 40
         }}>
           <Image
-            source={require('../assets/images/gymHopWhite.png')}
+            source={require('../assets/images/gymhop.png')}
             style={{
               width: '60%',
               height: 44
@@ -43,6 +44,7 @@ class PostCheckIn extends React.Component {
   };
 
   componentDidMount() {
+    console.log(this.props)
       BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
       let checkin_failure = Object.keys(this.props.errors).length ? true : false;
 
@@ -111,7 +113,7 @@ class PostCheckIn extends React.Component {
 
     return (
       <View style={styles.container}>
-        <ErrorBar payment_tier={this.props.userProfile.payment_tier}/>
+        {/* <ErrorBar payment_tier={this.props.userProfile.payment_tier}/> */}
         <View style={styles.heading}>
           <View style={styles.imgContainer}>
             <Image
@@ -121,6 +123,7 @@ class PostCheckIn extends React.Component {
           </View>
           <View style={styles.nameHolder}>
             <Text style={styles.headingFirstName}>{this.props.userProfile.first_name} {this.props.userProfile.last_name}</Text>
+            <Text style={{fontSize: 24}}>{this.props.gyms[0].name}</Text>
             <Text style={styles.headingTier}>{this.getTier(this.props.userProfile.payment_tier)}</Text>
           </View>
         </View>
@@ -134,7 +137,7 @@ class PostCheckIn extends React.Component {
           </View>
           <View style={styles.checkmarkContainer}>
             <Image
-              source={!checkin_failure ? require('../assets/images/checkmark.png') : require('../assets/images/error.png')}
+              source={!checkin_failure ? require('../assets/images/whitecheck.png') : require('../assets/images/error.png')}
               style={styles.checkmark}
               resizeMode='contain'
             />
@@ -151,22 +154,22 @@ class PostCheckIn extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#32cd32',
     height: '100%'
   },
 
-  errorBar: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: 'red',
-    color: 'white'
-  },
+  // errorBar: {
+  //   display: 'flex',
+  //   flexDirection: 'row',
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   padding: 10,
+  //   backgroundColor: 'red',
+  //   color: 'white'
+  // },
   heading: {
     flex: .7,
-    marginTop: 15,
+    paddingTop: 15,
     width: Layout.window.width,
   },
     imgContainer: {
@@ -222,7 +225,6 @@ const styles = StyleSheet.create({
       fontWeight: "bold"
     },
     checkmarkContainer: {
-
     },
       checkmark: {
         width: Layout.window.height*2/9,
@@ -238,7 +240,8 @@ function mapStateToProps(state){
   return {
     checkin: state.checkin.checkin,
     userProfile: state.user.details,
-    errors: state.checkin.errors
+    errors: state.checkin.errors,
+    gyms: state.gyms.gyms,
   }
 }
 

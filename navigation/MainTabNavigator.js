@@ -1,12 +1,12 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator} from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
 import CustomBottomTabBar from '../components/CustomBottomTabBar';
 
 import HomeScreen from '../screens/HomeScreen';
-import QRReaderScreen from '../screens/QRReaderScreen';
 import GymListScreen from '../screens/GymListScreen';
 import GymDetailScreen from '../screens/GymDetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -14,6 +14,7 @@ import PostCheckInScreen from '../screens/PostCheckInScreen';
 import StatsScreen from '../screens/gymOwner/StatsScreen';
 import PaymentScreen from '../screens/PaymentScreen';
 import PaymentSuccessScreen from '../screens/PaymentSuccessScreen';
+import CheckInScreen from '../screens/CheckInScreen';
 
 import { fromLeft, fromRight } from 'react-navigation-transitions';
 
@@ -51,7 +52,7 @@ HomeStack.navigationOptions = {
 };
 
 const QRScanningStack = createStackNavigator({
-  QRReader: QRReaderScreen,
+  CheckIn: CheckInScreen,
   PostCheckIn: {
     screen: PostCheckInScreen,
     navigationOptions: {

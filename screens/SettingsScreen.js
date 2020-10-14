@@ -50,7 +50,8 @@ class SettingsScreen extends React.Component {
         :
         (<ProfilePage {...this.props}
                      logout={this.logout}
-                     toggleEditing={this.toggleEditing} />)
+                     toggleEditing={this.toggleEditing} />
+                     )
     }
 }
 function mapStateToProps(state) {

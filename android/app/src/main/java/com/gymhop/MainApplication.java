@@ -3,6 +3,7 @@ package com.gymhop;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.gettipsi.stripe.StripeReactPackage;
 import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
@@ -19,6 +20,9 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.reactnativecommunity.geolocation.GeolocationPackage;
+import com.swmansion.reanimated.ReanimatedPackage;
+import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
 
 import java.util.Arrays;
@@ -36,18 +40,21 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new RNGestureHandlerPackage(),
             new AsyncStoragePackage(),
             new RNPermissionsPackage(),
             new RNFSPackage(),
             new ImageResizerPackage(),
             new ImagePickerPackage(),
             new RNCameraPackage(),
-            new RNGestureHandlerPackage(),
             new VectorIconsPackage(),
             new SvgPackage(),
             new MapsPackage(),
             new StripeReactPackage(),
-            new GeolocationPackage()
+            new GeolocationPackage(),
+            new ReanimatedPackage(),
+            new SafeAreaContextPackage(),
+            new SplashScreenReactPackage()
       );
     }
 

@@ -218,23 +218,23 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 6,
     zIndex: 10,
-    maxHeight: Layout.window.height * .93 - 49
+    maxHeight: Layout.window.height * .93 - 49,
   },
   pullUpBarContainer: {
-    marginVertical: 4,
+    marginVertical: 6,
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
 
   },
     pullUpBar: {
-      height: 7,
+      height: 8,
       width: 60,
       borderRadius:10,
       backgroundColor: "#97999988"
     },
   tabbarPadded: {
-    paddingBottom: 109
+    paddingBottom: 200
   }
 })
 

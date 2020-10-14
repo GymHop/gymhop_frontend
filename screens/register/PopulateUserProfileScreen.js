@@ -129,7 +129,7 @@ class RegisterPart2 extends React.Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
         <View style={styles.textStyle}>
-          <Text style={styles.photoText}>Click here to add a photo to your profile</Text>
+          <Text style={styles.photoText}>Click to add a profile picture!</Text>
         </View>
         <View style={styles.photoUploadContainer}>
           <PhotoUploadForm

@@ -5,7 +5,8 @@ export const styles = StyleSheet.create({
   loadingScreen: {
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#ffffff"
   },
     loadingTextTitle: {
       fontSize:  28
@@ -47,7 +48,8 @@ export const styles = StyleSheet.create({
   noCheckinsContainer: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#ffffff"
   },
     noCheckinsImage: {
       width: 320,

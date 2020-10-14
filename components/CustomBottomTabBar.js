@@ -108,6 +108,7 @@ class TabBarBottom extends React.Component<Props> {
     if (typeof label === 'string') {
       return (
         <Animated.Text
+          useNativeDriver={true}
           numberOfLines={1}
           style={[
             styles.label,

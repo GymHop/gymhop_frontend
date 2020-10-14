@@ -1,10 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Text,
-         LayoutAnimation, Dimensions, TouchableOpacity,
+import { StyleSheet, View,
+         LayoutAnimation,
          Vibration, PermissionsAndroid } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-
-import { SafeAreaView } from 'react-navigation';
 
 import Colors from "../constants/Colors";
 

@@ -63,7 +63,6 @@ class SelectableCard extends Component {
 
     return (
       <Animated.View 
-        useNativeDriver={true}
         style={[{backgroundColor: this.props.background, top: animatedTop}, styles.container,]}>
         <TouchableOpacity onPress={this.props.onSelect}>
             <Text style={styles.titleText}>{this.props.title}</Text>

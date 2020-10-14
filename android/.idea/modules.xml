@@ -2,29 +2,25 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/@react-native-community/async-storage/android/@react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/../node_modules/@react-native-community/async-storage/android/@react-native-community_async-storage.iml" group="gymhop/@react-native-community_async-storage" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-camera/android/android-react-native-camera.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-camera/android/android-react-native-camera.iml" group="gymhop/react-native-camera" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-fs/android/android-react-native-fs.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-fs/android/android-react-native-fs.iml" group="gymhop/react-native-fs" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/android-react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/android-react-native-gesture-handler.iml" group="gymhop/react-native-gesture-handler" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-image-picker/android/android-react-native-image-picker.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-image-picker/android/android-react-native-image-picker.iml" group="gymhop/react-native-image-picker" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-image-resizer/android/android-react-native-image-resizer.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-image-resizer/android/android-react-native-image-resizer.iml" group="gymhop/react-native-image-resizer" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-maps/lib/android/android-react-native-maps.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-maps/lib/android/android-react-native-maps.iml" group="gymhop/react-native-maps" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-svg/android/android-react-native-svg.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-svg/android/android-react-native-svg.iml" group="gymhop/react-native-svg" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/android-react-native-vector-icons.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/android-react-native-vector-icons.iml" group="gymhop/react-native-vector-icons" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="gymhop/app" />
-      <module fileurl="file://$PROJECT_DIR$/gymhop.iml" filepath="$PROJECT_DIR$/gymhop.iml" group="gymhop" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-camera/android/react-native-camera.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-camera/android/react-native-camera.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/@react-native-community/geolocation/android/react-native-community-geolocation.iml" filepath="$PROJECT_DIR$/../node_modules/@react-native-community/geolocation/android/react-native-community-geolocation.iml" group="gymhop/react-native-community-geolocation" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-fs/android/react-native-fs.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-fs/android/react-native-fs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gymhop.iml" filepath="$PROJECT_DIR$/gymhop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/891865634/gymhop.@react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/891865634/gymhop.@react-native-community_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/gymhop.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/gymhop.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1234416979/gymhop.react-native-camera.iml" filepath="$PROJECT_DIR$/.idea/modules/1234416979/gymhop.react-native-camera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-761342466/gymhop.react-native-community-geolocation.iml" filepath="$PROJECT_DIR$/.idea/modules/-761342466/gymhop.react-native-community-geolocation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1294462459/gymhop.react-native-fs.iml" filepath="$PROJECT_DIR$/.idea/modules/1294462459/gymhop.react-native-fs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2137882648/gymhop.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/2137882648/gymhop.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1091128850/gymhop.react-native-image-picker.iml" filepath="$PROJECT_DIR$/.idea/modules/-1091128850/gymhop.react-native-image-picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-662819938/gymhop.react-native-image-resizer.iml" filepath="$PROJECT_DIR$/.idea/modules/-662819938/gymhop.react-native-image-resizer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-861359685/gymhop.react-native-maps.iml" filepath="$PROJECT_DIR$/.idea/modules/-861359685/gymhop.react-native-maps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-982228778/gymhop.react-native-permissions.iml" filepath="$PROJECT_DIR$/.idea/modules/-982228778/gymhop.react-native-permissions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-922915068/gymhop.react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/-922915068/gymhop.react-native-reanimated.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2132741503/gymhop.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/-2132741503/gymhop.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1520183196/gymhop.react-native-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/-1520183196/gymhop.react-native-splash-screen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1239964854/gymhop.react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/1239964854/gymhop.react-native-svg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/534138558/gymhop.react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/534138558/gymhop.react-native-vector-icons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1358238365/gymhop.tipsi-stripe.iml" filepath="$PROJECT_DIR$/.idea/modules/-1358238365/gymhop.tipsi-stripe.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/react-native-gesture-handler-android-react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/react-native-gesture-handler-android-react-native-gesture-handler.iml" group="gymhop/react-native-gesture-handler" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-image-picker/android/react-native-image-picker.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-image-picker/android/react-native-image-picker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-image-resizer/android/react-native-image-resizer.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-image-resizer/android/react-native-image-resizer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-maps/lib/android/react-native-maps.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-maps/lib/android/react-native-maps.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-permissions/android/react-native-permissions.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-permissions/android/react-native-permissions.iml" group="gymhop/react-native-permissions" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-svg/android/react-native-svg.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-svg/android/react-native-svg.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/tipsi-stripe/android/tipsi-stripe.iml" filepath="$PROJECT_DIR$/../node_modules/tipsi-stripe/android/tipsi-stripe.iml" group="gymhop/tipsi-stripe" />
     </modules>
   </component>
 </project>
