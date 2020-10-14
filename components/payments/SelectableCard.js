@@ -77,9 +77,9 @@ const styles = StyleSheet.create({
   container: {
     width: Layout.window.width * .8 / 2,
     marginHorizontal: Layout.window.width *.01,
-    paddingHorizontal: Layout.window.width *.03,
+    paddingHorizontal: Layout.window.width *.01,
     borderRadius: 8,
-    height: 130,
+    height: 150,
     shadowColor: "#000",
     shadowOffset: {
     	width: 0,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
   touchableContainer: {
     borderWidth: 1,
-    height: 130,
+    height: 160,
   },
     titleText: {
       fontSize: 24,

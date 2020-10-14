@@ -98,7 +98,7 @@ GymOwnerStack.navigationOptions = {
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
-  Payments: PaymentScreen,
+  Subscribe: PaymentScreen,
   PaymentSuccess: PaymentSuccessScreen
 });
 

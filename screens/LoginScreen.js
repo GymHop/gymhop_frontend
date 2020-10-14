@@ -104,7 +104,7 @@ class LoginScreen extends Component {
               this.props.navigation.navigate("Register");
               }
             }>
-              <Text style={styles.registerText}>Register Here!</Text>
+              <Text style={styles.registerText}>Click here to register!</Text>
             </TouchableOpacity>
          {loading}
          <View style={{ flex: 1 }} />
@@ -181,8 +181,8 @@ const styles = StyleSheet.create({
   },
   registerText: {
     marginTop: '5%',
-    fontSize: 14,
-    color: 'grey',
+    fontSize: 16,
+    color: 'black',
   }
 });
 

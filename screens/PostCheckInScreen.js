@@ -7,8 +7,8 @@ import { dateFormatter } from '../utils/datetime';
 import { showMessage, hideMessage } from "react-native-flash-message";
 
 import Layout from '../constants/Layout';
+import { string } from 'prop-types';
 // import ErrorBar from '../components/errorBar/errorBar';
-
 
 class PostCheckIn extends React.Component {
 
@@ -44,20 +44,19 @@ class PostCheckIn extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.props)
       BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
       let checkin_failure = Object.keys(this.props.errors).length ? true : false;
 
-      if (checkin_failure == false) {
-        showMessage({
-          message: "Checked In!",
-          type: "info",
-          backgroundColor: "#00FF00",
-          flex: "1",
-          justifyContent: "center",
-          fontSize: "18"
-        });
-      }
+      // if (checkin_failure == false) {
+      //   showMessage({
+      //     message: "Checked In!",
+      //     type: "info",
+      //     backgroundColor: "#00FF00",
+      //     flex: "1",
+      //     justifyContent: "center",
+      //     fontSize: "18"
+      //   });
+      // }
     }
 
     componentWillUnmount() {
@@ -110,9 +109,8 @@ class PostCheckIn extends React.Component {
     }
     let checkin_failure = Object.keys(this.props.errors).length ? true : false;
 
-
     return (
-      <View style={styles.container}>
+      <View style={{flex: 1, height: '100%', backgroundColor: !checkin_failure ? '#32cd32' : 'red'}}>
         {/* <ErrorBar payment_tier={this.props.userProfile.payment_tier}/> */}
         <View style={styles.heading}>
           <View style={styles.imgContainer}>
@@ -129,7 +127,7 @@ class PostCheckIn extends React.Component {
         </View>
         <View style={styles.body}>
           <View style={styles.checkinTextContainer}>
-            <Text style={styles.checkinText}>{!checkin_failure ? "Check in Complete!" : "Invalid Checkin"}</Text>
+            <Text style={styles.checkinText}>{!checkin_failure ? "Check in Complete!" : 'Please wait 30 minutes before checking in again.'}</Text>
             {!checkin_failure ? (<View style={styles.datetimeContainer}>
               <Text style={styles.checkinSubtext} >{dateFormatter(this.props.checkin.when, "date")}</Text>
               <Text style={styles.checkinSubtext}>{dateFormatter(this.props.checkin.when, "time")}</Text>
@@ -137,7 +135,7 @@ class PostCheckIn extends React.Component {
           </View>
           <View style={styles.checkmarkContainer}>
             <Image
-              source={!checkin_failure ? require('../assets/images/whitecheck.png') : require('../assets/images/error.png')}
+              source={!checkin_failure ? require('../assets/images/whitecheck.png') : require('../assets/images/x-icon-vector-27.jpg')}
               style={styles.checkmark}
               resizeMode='contain'
             />
@@ -154,7 +152,6 @@ class PostCheckIn extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#32cd32',
     height: '100%'
   },
 

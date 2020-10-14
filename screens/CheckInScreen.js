@@ -36,8 +36,6 @@ class CheckInScreen extends React.Component {
     }
     
     componentDidMount() {
-      console.log(this.props.gyms[0].distance)
-      console.log(this.props.gyms[0])
     }
 
     renderButton() {
@@ -52,8 +50,8 @@ class CheckInScreen extends React.Component {
 
         let gymPhotos = this.props.gyms[0].photos.map(a => a.url)
 
-        //if (this.props.gyms[0].distance < 0.113636) {   /* USE THIS ONE FR */
-          if (this.props.gyms[0].distance < 10.113636) {
+        if (this.props.gyms[0].distance < 0.113636) {   /* USE THIS ONE FR */
+          //if (this.props.gyms[0].distance < 10.113636) { /* USE THIS ONE WHEN TESTING GYM 33 FROM YOUR HOUSE */
           return(
             <>
               <View style={styles.imageContainer}>

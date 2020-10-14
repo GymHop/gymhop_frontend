@@ -57,7 +57,7 @@ export default function ProfilePage({tier,
     let profileHeight = Layout.window.height/6
 
     gotoPayments = () => {
-      navigation.push("Payments");
+      navigation.push("Subscribe");
     }
 
     getBillingDetails = () => {

@@ -55,7 +55,7 @@ class ViewGymListBtn extends Component {
         <View style={{zIndex:0, position:"relative",left: 0, top: 30}}><Pulse color='#FF3F4F' numPulses={4} diameter={70} speed={20} duration={1400} /></View>
         <View style={[styles.itemContainer, styles.ccPrompt, ]}>
           <TouchableOpacity style={styles.btnContainer} onPress={() => {
-            this.props.navigation.push("Payments");
+            this.props.navigation.push("Subscribe");
           }}>
             <AntIcon size={20} name="creditcard" />
           </TouchableOpacity>

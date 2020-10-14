@@ -22,7 +22,7 @@ class PaymentScreen extends Component {
     this.paymentOptions = [
       {
         key: "70",
-        title: "Monthly Access",
+        title: "Free Trial+       Monthly Access",
         price: 70,
         period: "month",
         chargeInfoText: "Your card will be charged on ",
@@ -63,7 +63,7 @@ class PaymentScreen extends Component {
         image: {
           uri: require("../assets/images/weekly_photo.jpg")
         },
-        background: "#FF695D",
+        background: "yellow",
       }
     ]
   }
@@ -77,6 +77,7 @@ class PaymentScreen extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(this.state)
     if (this.props.paymentSuccessful && this.props.paymentSuccessful != prevProps.paymentSuccessful) {
       this.props.navigation.push("PaymentSuccess");
     }
@@ -84,7 +85,7 @@ class PaymentScreen extends Component {
 
   static navigationOptions = {
     headerStyle: {
-            backgroundColor: '#000000',
+            backgroundColor: '#ffd1dc',
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -223,7 +224,7 @@ class PaymentScreen extends Component {
           <TouchableOpacity
             style={[{backgroundColor: borderColor, color: "white", flexDirection: "row", justifyContent: "center"} ,styles.lightGrayBtn]}
             onPress={this.openNativePurchaseOption}>
-            <Text style={styles.lightGrayBtnText}>Purchase</Text>
+            <Text style={styles.lightGrayBtnText}>Subscribe</Text>
             {this.props.paymentPending ? <ActivityIndicator size="small" color="#009688" /> : null}
           </TouchableOpacity>
         </View>
@@ -235,7 +236,8 @@ class PaymentScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000000"
+    backgroundColor: "#000"
+    
   },
   titleTextContainer: {
     flex: 1,
@@ -251,10 +253,11 @@ const styles = StyleSheet.create({
   optionsSelectableContainer: {
     position: "relative",
     marginBottom: 8,
+    marginTop: 8,
     zIndex: 2,
     flex: 1,
     minHeight: 85,
-    backgroundColor: "#000000",
+    backgroundColor: "#000",
     flexDirection: "row",
     justifyContent: "space-around"
   },
@@ -278,7 +281,7 @@ const styles = StyleSheet.create({
 
       },
       extraInfoContainer: {
-        marginTop: 5
+        marginTop: 5,
       },
     autoRenewContainer: {
       flex: 1,
@@ -298,7 +301,8 @@ const styles = StyleSheet.create({
     marginHorizontal: Layout.window.width *.02,
     paddingHorizontal: Layout.window.width *.07,
     backgroundColor: "#ffffff",
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: 'center'
   },
   lightGrayBtn: {
       flexDirection: "row",
@@ -306,12 +310,18 @@ const styles = StyleSheet.create({
       alignItems: "center",
       paddingHorizontal: 2,
       paddingVertical: 7,
-      backgroundColor: "white",
-      borderWidth: 1
+      backgroundColor: '#ffd1dc',
+      borderColor: '#000',
+      borderWidth: 2,
+      width: 175,
+      height: 50,
+      borderRadius: 25,
+      marginBottom: 15,
+      marginTop: 10
     },
       lightGrayBtnText: {
         fontSize: 16,
-        color: "#979999",
+        color: "black",
         marginLeft: 4
       },
 

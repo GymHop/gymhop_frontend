@@ -22,9 +22,9 @@ class RegisterPart2 extends React.Component {
     let dt = new Date()
     dt.setYear(1996)
     this.state = {
-      profile_pic: null,//user profile fields here
-      first_name: null, // server side _ casing b/c its just faster to put together
-      last_name: null,
+      // profile_pic: null,//user profile fields here
+      // first_name: null, // server side _ casing b/c its just faster to put together
+      // last_name: null,
       phone: null,
       birthday: dt
     }
@@ -41,6 +41,7 @@ class RegisterPart2 extends React.Component {
 
   registerUser() {
     const baseUser = this.props.navigation.getParam('baseUser', {});
+    const baseIdentity = this.props.navigation.getParam('baseIdentity', {});
 
     let { birthday, ...restOfState } = this.state
     if (this.state.profile_pic === null) {
@@ -73,6 +74,7 @@ class RegisterPart2 extends React.Component {
     } else {
       this.props.Actions.registerUser({
         ...baseUser,
+        ...baseIdentity,
         ...restOfState,
         birthday: birthday.valueOf(),
 
@@ -126,77 +128,87 @@ class RegisterPart2 extends React.Component {
 
     // let selectedYear = this.state.birthday.getFullYear();
     return (
+      // <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      //   <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
+      //   <View style={styles.textStyle}>
+      //     <Text style={styles.photoText}>Click to add a profile picture!</Text>
+      //   </View>
+      //   <View style={styles.photoUploadContainer}>
+      //     <PhotoUploadForm
+      //     profile_pic={this.state.profile_pic}
+      //     onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>
+      //   </View>
+      //   <TextInput
+      //     style={styles.registerInput}
+      //     placeholder={'First Name'}
+      //     placeholderTextColor={'#8f8f8f'}
+      //     onChangeText={(text) => this.setState({first_name: text})}
+      //   />
+      //   <TextInput
+      //     style={styles.registerInput}
+      //     placeholder={'Last Name'}
+      //     placeholderTextColor={'#8f8f8f'}
+      //     onChangeText={(text) => this.setState({last_name: text})}
+      //   />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios'?'padding':null} enabled>
-        <View style={styles.textStyle}>
-          <Text style={styles.photoText}>Click to add a profile picture!</Text>
-        </View>
-        <View style={styles.photoUploadContainer}>
-          <PhotoUploadForm
-          profile_pic={this.state.profile_pic}
-          onPhotoSelected={(pic)=>this.setState({profile_pic: pic})}/>
-        </View>
-        <TextInput
-          style={styles.registerInput}
-          placeholder={'First Name'}
-          placeholderTextColor={'#8f8f8f'}
-          onChangeText={(text) => this.setState({first_name: text})}
-        />
-        <TextInput
-          style={styles.registerInput}
-          placeholder={'Last Name'}
-          placeholderTextColor={'#8f8f8f'}
-          onChangeText={(text) => this.setState({last_name: text})}
-        />
-        <TextInput
-          style={styles.registerInput}
-          placeholder={'Cell phone number'}
-          inlineImageLeft='phone'
-          keyboardType={'phone-pad'}
-          placeholderTextColor={'#8f8f8f'}
-          maxLength={10}
-          onChangeText={(text) => {
-            if (text.replace(/\D/g,'').length > 9) {
-              Keyboard.dismiss();
-            }
-              this.setState({phone: text.replace(/\D/g,'')});}}
-          // onChangeText={(text) => {this.handlePhoneInput(text)}}
-        />
-        <Text style={[styles.whiteText, {marginTop: 10}]}>Enter your birthday</Text>
-        <View style={{marginBottom:22}}>
-          <BirthdayPicker
-            styles={[styles.registerInput, styles.registerBirthdayPicker]}
-            lightmode
-            selectedYear={year}
-            selectedMonth={month}
-            selectedDay={day}
-            onYearValueChange={(year,i) => {
-              let bDay = new Date(this.state.birthday);
-              bDay.setFullYear(year);
-              this.setState({birthday: bDay}) // never use the same instance of mutated state in setState
-            }}
-            onMonthValueChange={(month,i) => {
-              let bDay = new Date(this.state.birthday);
-              bDay.setMonth(month);
-              this.setState({birthday: bDay})
-            }}
-            onDayValueChange={(day,i) => {
-              let bDay = new Date(this.state.birthday);
-              bDay.setDate(day);
-              this.setState({birthday: bDay})
-            }}
+          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '10%'}}>
+            <Image
+              source={require('../../assets/images/bunnyblackwhite.png')}
+              style={styles.headLogo}
+              resizeMode='contain'
           />
-        </View>
-        <TouchableOpacity style={styles.registerButton} onPress={() => {this.registerUser()}}>
-          <Text style={styles.registerText}>Register</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.loginButton} onPress={() => {
-              this.props.navigation.pop()
-          }}>
-          <Text style={styles.loginText}>Back</Text>
-        </TouchableOpacity>
-        <View style={{ flex: 1 }} />
-      </KeyboardAvoidingView>
+          <Text style={[styles.whiteText, {marginTop: 10, marginBottom: 5}]}>Enter your cell number</Text>
+            <TextInput
+              style={styles.registerInput}
+              placeholder={'Cell phone number'}
+              inlineImageLeft='phone'
+              keyboardType={'phone-pad'}
+              placeholderTextColor={'#8f8f8f'}
+              maxLength={10}
+              onChangeText={(text) => {
+                if (text.replace(/\D/g,'').length > 9) {
+                  Keyboard.dismiss();
+                }
+                  this.setState({phone: text.replace(/\D/g,'')});}}
+              // onChangeText={(text) => {this.handlePhoneInput(text)}}
+            />
+            <Text style={[styles.whiteText, {marginTop: 10, marginBottom: 5}]}>Enter your birthday</Text>
+            <View style={{marginBottom:22}}>
+              <BirthdayPicker
+                styles={[styles.registerInput, styles.registerBirthdayPicker]}
+                lightmode
+                selectedYear={year}
+                selectedMonth={month}
+                selectedDay={day}
+                onYearValueChange={(year,i) => {
+                  let bDay = new Date(this.state.birthday);
+                  bDay.setFullYear(year);
+                  this.setState({birthday: bDay}) // never use the same instance of mutated state in setState
+                }}
+                onMonthValueChange={(month,i) => {
+                  let bDay = new Date(this.state.birthday);
+                  bDay.setMonth(month);
+                  this.setState({birthday: bDay})
+                }}
+                onDayValueChange={(day,i) => {
+                  let bDay = new Date(this.state.birthday);
+                  bDay.setDate(day);
+                  this.setState({birthday: bDay})
+                }}
+              />
+            </View>
+            <TouchableOpacity style={styles.registerButton} onPress={() => {this.registerUser()}}>
+              <Text style={styles.registerText}>Register</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.loginButton} onPress={() => {
+                  this.props.navigation.pop()
+              }}>
+              <Text style={styles.loginText}>Back</Text>
+            </TouchableOpacity>
+            <View style={{ flex: 1 }} />
+          </View>
+        </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     )
   }

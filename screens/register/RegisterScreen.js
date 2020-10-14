@@ -63,7 +63,7 @@ class RegisterScreen extends React.Component {
         });
     } else if (this.validateEmail(this.state.email)) {
       // If the email is valid && password matches, move them to the second register screen
-      this.props.navigation.push("PopulateUserProfile", {
+      this.props.navigation.push("PopUserIdentity", {
         baseUser: {
           username: this.state.username,
           password: this.state.password,
