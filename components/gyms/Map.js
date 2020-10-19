@@ -80,7 +80,7 @@ class GymMap extends Component {
                       latitude: parseFloat(gym.latitude),
                       longitude: parseFloat(gym.longitude)
                     }
-                      if (gym.price === 4) {
+                      if (gym.price === 4 || gym.price === 2) {
                           return (
                               <Marker
                               key={gym.id}

@@ -29,7 +29,7 @@ class PaymentScreen extends Component {
         bullets: [
           (<Text>Try Gymhop free for one week</Text>),
           (<Text>Get unlimited access to every GymHop gym</Text>),
-          (<Text><Text>When the week trial is up, you will be billed </Text><Text style={{fontWeight: "bold"}}>$80 a month.</Text></Text>),
+          (<Text><Text>When the week trial is up, you will be billed </Text><Text style={{fontWeight: "bold"}}>$70 a month.</Text></Text>),
           (<Text>
             <Text>Cancel anytime to avoid charges by emailing us at </Text>
             <Text
@@ -123,7 +123,7 @@ class PaymentScreen extends Component {
   getPassName = () => {
     switch (this.state.selectedOption) {
       case 0:
-        return "The Monthly Hustler: $80";
+        return "The Monthly Hustler: $70";
       case 1:
         return "The Weekly Warrior: $20";
       default:

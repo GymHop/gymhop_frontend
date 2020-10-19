@@ -36,6 +36,7 @@ class CheckInScreen extends React.Component {
     }
     
     componentDidMount() {
+      console.log(this.props.gyms[0].distance)
     }
 
     renderButton() {
