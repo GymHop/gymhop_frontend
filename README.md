@@ -25,6 +25,33 @@ Make sure you've setup the keystore
 the keystore password is roryjudah
 
 ### IOS
+please follow these steps verbatim. DO NOT USE NPM FOR ANYTHING EVER
+
+`brew install rbenv`
+
+`rbenv init`
+
+`rbenv install 2.7.1`
+
+`rbenv global 2.7.1`
+
+`rbenv rehash`
+
+`gem install bundler`
+
+`bundle install`
+
+`yarn install`
+
+`yarn run podInstall`
+
+`yarn start --reset-cache` 
+
+In another terminal: 
+
+`npx react-native run-ios`
+
+
 Make sure to increment the bundle version in info.plist
 
 - open Xcode
