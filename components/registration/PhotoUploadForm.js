@@ -8,7 +8,7 @@ export default class PhotoUploadForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      src: this.props.profile_pic ? this.props.profile_pic : 'https://i.imgur.com/IKwp1Bd.png'
+      src: this.props.profile_pic ? this.props.profile_pic : 'https://i.imgur.com/IKwp1Bd.png' 
     }
   }
   render() {

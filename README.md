@@ -25,6 +25,33 @@ Make sure you've setup the keystore
 the keystore password is roryjudah
 
 ### IOS
+please follow these steps verbatim. DO NOT USE NPM FOR ANYTHING EVER
+
+`brew install rbenv`
+
+`rbenv init`
+
+`rbenv install 2.7.1`
+
+`rbenv global 2.7.1`
+
+`rbenv rehash`
+
+`gem install bundler`
+
+`bundle install`
+
+`yarn install`
+
+`yarn run podInstall`
+
+`yarn start --reset-cache` 
+
+In another terminal: 
+
+`npx react-native run-ios`
+
+
 Make sure to increment the bundle version in info.plist
 
 - open Xcode
@@ -32,3 +59,9 @@ Make sure to increment the bundle version in info.plist
 - increment the build and do what you want to the version (major.minor.patch syntax is good)
 - set build target (thing in top left near play btn) to generic ios device
 - product -> archive -> say yes to everything
+
+Xcode troubleshooting:
+if you get any "invalid symlink", "native module cannot be null", "no permission handler detected"- follow these steps in order:
+
+1.) Force quit simulator, File-> workspace settings-> delete the Derived Data folder, Product -> clean build folder, delete the pods folder and reinstall
+2.) Run a full audit of the dependencies used for the app. Native modules will just be renamed/ brokenly updated without warning. Start by commenting out imports in app.js to narrow it down. Impossible to trace errors with this shit so theres literally not a more efficient way to do this LOL

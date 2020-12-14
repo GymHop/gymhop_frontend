@@ -5,8 +5,6 @@ import { View, Text, Image, Platform, Keyboard, TouchableWithoutFeedback,
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-
-import PhotoUploadForm from '../../components/registration/PhotoUploadForm';
 import BirthdayPicker from '../../components/registration/BirthdayPicker';
 import * as ActionCreators from '../../actions/registerActions';
 import { styles } from '../../styles/registration';

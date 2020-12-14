@@ -130,7 +130,8 @@ var bottomTabNavSettings = {
 //   bottomTabNavSettings.initialRouteName = "gymOwner"
 // }
 
-export default createBottomTabNavigator(
+
+const MainTabNavigator =  createBottomTabNavigator(
   {
       home: HomeStack,
       scan: QRScanningStack,
@@ -139,3 +140,4 @@ export default createBottomTabNavigator(
   },
   bottomTabNavSettings
 );
+export default MainTabNavigator

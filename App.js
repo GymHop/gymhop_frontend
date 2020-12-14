@@ -1,8 +1,11 @@
+import 'react-native-gesture-handler';
+
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View} from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import AppNavigator from './navigation/AppNavigator';
-import { createStore, applyMiddleware } from 'redux';
+
+
 import { Provider } from 'react-redux';
 
 import { configureStore } from './store';
@@ -22,7 +25,7 @@ export default class App extends React.Component {
         <Provider store={store} >
           <SafeAreaView style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
-            <AppNavigator />
+            <AppNavigator/>
             <FlashMessage position="top" />
           </SafeAreaView>
         </Provider>

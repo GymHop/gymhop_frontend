@@ -7,7 +7,7 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Geolocation from '@react-native-community/geolocation';
 
 import {request, PERMISSIONS} from 'react-native-permissions';
