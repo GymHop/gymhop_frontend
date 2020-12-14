@@ -1,1 +1,0 @@
-../../../../../node_modules/react-native-svg/ios/RNSVGRenderable 2.h

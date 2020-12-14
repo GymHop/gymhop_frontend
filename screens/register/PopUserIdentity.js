@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
-import PhotoUploadForm from '../../components/registration/PhotoUploadForm';
+import PhotoUploadForm from '../../components/registration/PhotoUploadForm'; 
 import * as ActionCreators from '../../actions/registerActions';
 import { styles } from '../../styles/registration';
 import { showMessage, hideMessage } from "react-native-flash-message";
