@@ -50,7 +50,7 @@ class HomeScreen extends React.Component {
   }
 
   async componentDidMount() {
-    request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then((result) => {
+    request(Platform.OS === 'android' ? PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : PERMISSIONS.IOS.LOCATION_WHEN_IN_USE).then((result) => {
       if (result === "granted") {
         this.setState({hasLocationPermission: true})
         if (this.props.gyms.length === 0) {

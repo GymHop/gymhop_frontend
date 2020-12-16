@@ -50,6 +50,7 @@ class GymDetailContainer extends Component {
 
     let gymPhotos = gym.photos.map(a => a.url)
     console.log(gym.price)
+    console.log("------" + gym.distance)
 
 
     return (
