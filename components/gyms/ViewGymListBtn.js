@@ -52,12 +52,13 @@ class ViewGymListBtn extends Component {
 
     let paymentsIndicator = this.props.payment_tier === 0 ? (
       <Animated.View style={{alignItems: "center",justifyContent: "center", left: this.leftAnimatedValue_second }}>
-        <View style={{zIndex:0, position:"relative",left: 0, top: 30}}><Pulse color='#FF3F4F' numPulses={4} diameter={70} speed={20} duration={1400} /></View>
+        <View style={{zIndex:0, position:"relative",left: 0, top: 70}}><Pulse color='#FF3F4F' numPulses={3} diameter={150} speed={20} duration={1000} /></View>
         <View style={[styles.itemContainer, styles.ccPrompt, ]}>
           <TouchableOpacity style={styles.btnContainer} onPress={() => {
             this.props.navigation.push("Subscribe");
           }}>
-            <AntIcon size={20} name="creditcard" />
+            <AntIcon size={30} name="creditcard" />
+            <Text style={{fontSize: 16, paddingTop: 5}}>Subscribe</Text>
           </TouchableOpacity>
         </View>
       </Animated.View>
@@ -70,7 +71,8 @@ class ViewGymListBtn extends Component {
           <TouchableOpacity style={styles.btnContainer} onPress={() => {
             this.props.navigation.push("GymList");
           }}>
-            <Icon size={20} name="ios-list" />
+              <Icon size={30} name="ios-list" />
+              <Text style={{fontSize: 16, paddingTop: 5}}>List of Gyms</Text>
           </TouchableOpacity>
         </Animated.View>
 
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
   container: {
     position: "absolute",
     zIndex: 2, // map is 1
-    bottom: 49 + 5,
+    bottom: Layout.window.height * .15,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20
@@ -92,8 +94,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "white",
-    width: 43,
-    height: 43,
+    width: Layout.window.width * .25,
+    height: Layout.window.height * .1,
     borderRadius: 15,
     shadowColor: "#000",
     shadowOffset: {
@@ -103,11 +105,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
-    marginTop: 10,
+    marginTop: 25,
 
   },
   btnContainer: {
-    flexDirection: "row"
+    flexDirection: "column",
+    alignItems: 'center',
+    paddingHorizontal: 5,
   }
 })
 
