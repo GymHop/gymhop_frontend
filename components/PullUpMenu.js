@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import Layout from '../constants/Layout';
 import { setPullUpLevel } from '../actions/uiActions';
 
-const closedDistanceFromBottom = Layout.window.height * .85 - 49;
+const closedDistanceFromBottom = Layout.window.height * .7 
 const mediumDistanceFromBottom = Layout.window.height * .50 - 49;
-const openDistanceFromBottom = Layout.window.height * .07 - 49;
+const openDistanceFromBottom = Layout.window.height * .07;
 
 class PullUpMenu extends Component {
   constructor(props) {

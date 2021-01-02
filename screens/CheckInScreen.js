@@ -51,8 +51,8 @@ class CheckInScreen extends React.Component {
 
         let gymPhotos = this.props.gyms[0].photos.map(a => a.url)
 
-        if (this.props.gyms[0].distance < 0.113636) {   /* USE THIS ONE FR */
-          //if (this.props.gyms[0].distance < 10.113636) { /* USE THIS ONE WHEN TESTING GYM 33 FROM YOUR HOUSE */
+        //if (this.props.gyms[0].distance < 0.113636) {   /* USE THIS ONE FR */
+          if (this.props.gyms[0].distance < 10.113636) { /* USE THIS ONE WHEN TESTING GYM 33 FROM YOUR HOUSE */
           return(
             <>
               <View style={styles.imageContainer}>
@@ -74,14 +74,14 @@ class CheckInScreen extends React.Component {
               
               <View style={styles.buttonContainer}>
                 <View style={styles.gymImageContainer}>
-                  <Image source={{uri: this.props.gyms[0].lead_photo}} style={styles.logoPic} />
+                  {/* <Image source={{uri: this.props.gyms[0].lead_photo}} style={styles.logoPic} /> */}
                   <View>
-                    <Text style={{paddingTop: '5%', paddingLeft: '3%', color: '#000', fontSize: 24, fontWeight: 'bold'}}>{this.props.gyms[0].name}</Text>
-                    <Text style={{paddingTop: '5%', paddingLeft: '3%', paddingRight: '40%', color: '#000', fontSize: 16}}>{this.props.gyms[0].amenities}</Text>
+                    <Text style={{paddingLeft: '3%', paddingRight: '3%', color: '#000', fontSize: 24, fontWeight: 'bold'}}>{this.props.gyms[0].name}</Text>
+                    <Text style={{paddingTop: '1%', paddingLeft: '3%', paddingRight: '3%', color: '#000', fontSize: 16}}>{this.props.gyms[0].amenities}</Text>
                   </View>
                 </View>
                 <View style={styles.ButtonContainer2}>
-                  <View style={{flexDirection: 'row'}}><Text>Gym 33 is currently </Text><OpenOrClosedRightNow hours={this.props.gyms[0].hours_enhanced} /></View>
+                  <View style={{flexDirection: 'row', padding: '5%'}}><Text>{this.props.gyms[0].name} is currently {<OpenOrClosedRightNow hours={this.props.gyms[0].hours_enhanced} />}</Text></View>
                   <GymSchedule gym={this.props.gyms[0]} />
                   <TouchableOpacity 
                       onPress={this.handleCheckIn}
@@ -111,7 +111,7 @@ class CheckInScreen extends React.Component {
                   <Image source={{uri: this.props.gyms[0].lead_photo}} style={{height: 200, width: 200, borderRadius: 25}}/>
                 </View>
                 <Text style={{fontWeight: "bold", fontSize: 18, color: '#000', paddingBottom: '10%'}}>Move within 200 yards to check in!</Text>
-                <View style={{flexDirection: 'row'}}><Text>Gym 33 is currently </Text><OpenOrClosedRightNow hours={this.props.gyms[0].hours_enhanced} /></View>
+                <View style={{flexDirection: 'row', padding: '5%'}}><Text>{this.props.gyms[0].name} is currently {<OpenOrClosedRightNow hours={this.props.gyms[0].hours_enhanced} />}</Text></View>
               </View>
             </View>
           )
@@ -158,7 +158,7 @@ class CheckInScreen extends React.Component {
 
 const styles = StyleSheet.create({
   gymLeadPhoto: {
-    height: 200,
+    height: '100%',
     width: Layout.window.width
   },
   failContainer: {
@@ -194,17 +194,14 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     backgroundColor: 'white',
-    height: 175,
+    height: Layout.window.height * .3,
     width: '100%',
   },
     gymContainerPic: {
       flex: 1,
       width: '100%',
-      height: '20%'
     },
       containerPic: {
-        width: '100%',
-        height: 250
       },
 
   buttonContainer: {
@@ -213,20 +210,21 @@ const styles = StyleSheet.create({
   },
     gymImageContainer: {    
         display: 'flex',
-        height: 200,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingTop: 8,
 
     },
       logoPic: {
-          width: 150,
-          height: 150,
+          width: Layout.window.width * .4,
+          height: '100%',
+          // Layout.window.width * .45
           // borderWidth: 1,
           // borderColor: '#000'
       },
       ButtonContainer2: {
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: '90%'
+        paddingTop: '5%'
       },  
         Button: {
           height: 50,

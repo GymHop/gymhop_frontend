@@ -61,7 +61,9 @@ class HomeScreen extends React.Component {
               longitude: crd.longitude
             }
               // get location aware list of gyms
+
               this.props.Actions.getGyms(this.props.token, coords);
+
             },
             (err) => {
               // error getting location, just get all gyms

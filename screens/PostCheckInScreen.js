@@ -127,7 +127,7 @@ class PostCheckIn extends React.Component {
         </View>
         <View style={styles.body}>
           <View style={styles.checkinTextContainer}>
-            <Text style={styles.checkinText}>{!checkin_failure ? "Check in Complete!" : 'Please wait 30 minutes before checking in again.'}</Text>
+            <Text style={styles.checkinText}>{!checkin_failure ? "Check in Complete!" : this.props.errors.user}</Text>
             {!checkin_failure ? (<View style={styles.datetimeContainer}>
               <Text style={styles.checkinSubtext} >{dateFormatter(this.props.checkin.when, "date")}</Text>
               <Text style={styles.checkinSubtext}>{dateFormatter(this.props.checkin.when, "time")}</Text>
