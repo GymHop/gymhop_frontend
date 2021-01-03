@@ -19,6 +19,7 @@ import CheckInScreen from '../screens/CheckInScreen';
 import { fromLeft, fromRight } from 'react-navigation-transitions';
 
 import Colors from '../constants/Colors';
+import Layout from '../constants/Layout';
 
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
@@ -119,7 +120,7 @@ var bottomTabNavSettings = {
   tabBarComponent: props =>
       <CustomBottomTabBar
         {...props}
-        style={{ borderTopColor: '#605F60' }}
+        style={{ borderTopColor: '#605F60', height: Layout.window.height * .1 }}
       />,
 };
 

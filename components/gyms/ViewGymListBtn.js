@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   container: {
     position: "absolute",
     zIndex: 2, // map is 1
-    bottom: Layout.window.height * .15,
+    bottom: Layout.window.height * .2,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20

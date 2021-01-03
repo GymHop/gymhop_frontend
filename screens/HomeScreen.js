@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         zIndex: 999,
-        height: Layout.noStatusBarHeight * .04
+        height: Layout.window.height * .05
       },
       android: {
         elevation: 30,
@@ -187,13 +187,14 @@ const styles = StyleSheet.create({
       },
     }),
       backgroundColor: '#ffd1dc',
-      justifyContent: 'center',
-      alignItems: 'center'
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      paddingBottom: Layout.window.height * .01
     },
       brandLogo: {
       backgroundColor: '#ffd1dc',
       width: '35%',
-      height: Layout.noStatusBarHeight * .03,
+      height: Layout.window.width * .05,
     },
     mapsContainer: {
       position: "absolute",
