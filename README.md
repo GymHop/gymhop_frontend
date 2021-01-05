@@ -47,6 +47,12 @@ please follow these steps verbatim. DO NOT USE NPM FOR ANYTHING EVER
 
 `yarn start --reset-cache` 
 
+Open up terminal, and do:
+
+`ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2`
+
+Copy your IP address, and paste into ios/gymhop_frontend/AppDelegate.m line 19
+
 In another terminal: 
 
 `npx react-native run-ios`
