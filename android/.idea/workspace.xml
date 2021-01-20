@@ -14,16 +14,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5134781f-7a9f-4ba6-a7c0-519f4fcdea97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../screens/CheckInScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../screens/CheckInScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../screens/PaymentScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../screens/PaymentScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LGH810203da1c4]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -84,10 +83,12 @@
     <property name="ExportApk.ApkPath" value="C:\Users\Rory\Desktop\gymhop_frontend\android\app" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV2" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="Pixel_XL_API_Q_2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1564615635282" />
   </component>
   <component name="RunManager">
@@ -227,9 +228,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="252" y="192" width="1391" height="852" key="AVDManager" timestamp="1602554185968">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="151" y="113" width="835" height="502" key="AVDManager" timestamp="1611155492156">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="151" y="113" width="835" height="502" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1611155492156" />
     <state x="252" y="192" width="1391" height="852" key="AVDManager/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1602554185968" />
+    <state x="500" y="34" width="981" height="707" key="SettingsEditor" timestamp="1611156196307">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="500" y="34" width="981" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1611156196307" />
   </component>
 </project>
