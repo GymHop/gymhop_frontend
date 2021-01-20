@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { View, Text, StyleSheet, Button, TouchableWithoutFeedback, ScrollView,
-         TouchableOpacity, NativeModules, ActivityIndicator, Linking } from 'react-native';
+         TouchableOpacity, NativeModules, ActivityIndicator, Linking,SafeAreaView } from 'react-native';
 import { CheckBox } from 'react-native-elements'
 import { connect } from 'react-redux';
 import stripe from 'tipsi-stripe'
@@ -11,12 +11,13 @@ import { createCharge } from '../actions/paymentActions';
 
 
 import SelectableCard from '../components/payments/SelectableCard';
+import PlanCarousel from '../components/payments/PlanCarousel';
 
 class PaymentScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: null,
+      selectedOption: 0,
       // autoRenew: false
     }
     this.paymentOptions = [
@@ -198,133 +199,20 @@ class PaymentScreen extends Component {
       this.paymentOptions[this.state.selectedOption].background : "#979999";
 
     return (
-      <View style={styles.container}>
-        <View style={styles.optionsSelectableContainer}>
-          {this.paymentOptions.map((option, idx) => {
-            return (
-              <SelectableCard
-                  key={option.key}
-                  selected={this.state.selectedOption === idx}
-                  onSelect={() => {
-                    this.setState({selectedOption: idx})
-                  }}
-                  {...option}
-                  />
-            )
-          })}
-        </View>
-        <View style={styles.optionsExecuteContainer}>
-          <ScrollView contentContainerStyle={styles.textContainer}>
-            <Text style={styles.selectedOptionText}>{this.getPassName()}</Text>
-            <View style={styles.bulletsContainer}>{this.getBullets()}</View>
-            <View style={styles.extraInfoContainer}>{this.getExtraInfo()}</View>
-          </ScrollView>
-        </View>
-        <View style={styles.selectBtnContainer}>
-          <TouchableOpacity
-            style={[{backgroundColor: borderColor, color: "white", flexDirection: "row", justifyContent: "center"} ,styles.lightGrayBtn]}
-            onPress={this.openNativePurchaseOption}>
-            <Text style={styles.lightGrayBtnText}>Subscribe</Text>
-            {this.props.paymentPending ? <ActivityIndicator size="small" color="#009688" /> : null}
-          </TouchableOpacity>
-        </View>
-      </View>
+      <SafeAreaView style={styles.container}>
+        <PlanCarousel />
+      </SafeAreaView>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#000"
-    
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 50
   },
-  titleTextContainer: {
-    flex: 1,
-    paddingLeft: Layout.window.width * .03,
-  },
-    titleText: {
-      color: "#ffffff",
-      fontSize: 16
-    },
-    titleSubtext: {
-      color: "#ffffff",
-    },
-  optionsSelectableContainer: {
-    position: "relative",
-    marginBottom: 8,
-    marginTop: 8,
-    zIndex: 2,
-    flex: 1,
-    minHeight: 85,
-    backgroundColor: "#000",
-    flexDirection: "row",
-    justifyContent: "space-around"
-  },
-  optionsExecuteContainer: {
-    flex: 4,
-    zIndex: 1,
-    position: "relative",
-    backgroundColor: "#ffffff",
-    paddingHorizontal: Layout.window.width *.07,
-    marginHorizontal: Layout.window.width *.02,
-    marginTop: 17,
-    paddingTop: 13,
-    borderTopRightRadius: 40,
-    borderTopLeftRadius: 40,
-    alignItems: "center"
-  },
-    textContainer: {
-      flex: 5,
-    },
-      bulletsContainer: {
-
-      },
-      extraInfoContainer: {
-        marginTop: 5,
-      },
-    autoRenewContainer: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center"
-    },
-    autoRenewText: {
-      textAlign: "center"
-    },
-    selectedOptionText: {
-      fontSize: 26,
-      marginVertical: 4
-    },
-  selectBtnContainer: {
-    flex: 1,
-    zIndex: 1,
-    marginHorizontal: Layout.window.width *.02,
-    paddingHorizontal: Layout.window.width *.07,
-    backgroundColor: "#ffffff",
-    justifyContent: "center",
-    alignItems: 'center'
-  },
-  lightGrayBtn: {
-      flexDirection: "row",
-      justifyContent: "space-around",
-      alignItems: "center",
-      paddingHorizontal: 2,
-      paddingVertical: 7,
-      backgroundColor: '#ffd1dc',
-      borderColor: '#000',
-      borderWidth: 2,
-      width: 175,
-      height: 50,
-      borderRadius: 25,
-      marginBottom: 15,
-      marginTop: 10
-    },
-      lightGrayBtnText: {
-        fontSize: 16,
-        color: "black",
-        marginLeft: 4
-      },
-
 })
 
 function mapStateToProps(state) {
