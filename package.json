@@ -64,6 +64,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
+    "clean": "cd android && ./gradlew clean",
     "podInstall": "cd ios && bundle exec pod install"
   },
   "repository": {
