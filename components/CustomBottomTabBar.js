@@ -275,8 +275,8 @@ class TabBarBottom extends React.Component<Props> {
   }
 }
 
-const DEFAULT_HEIGHT = 49;
-const COMPACT_HEIGHT = 44;
+const DEFAULT_HEIGHT = 44;
+const COMPACT_HEIGHT = 40;
 
 const styles = StyleSheet.create({
   tabBar: {
