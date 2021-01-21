@@ -8,14 +8,15 @@ import stripe from 'tipsi-stripe'
 import Layout from '../constants/Layout';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { createCharge } from '../actions/paymentActions';
+import CarouselCard, { ITEM_WIDTH } from '../components/payments/CarouselCard'
+import Carousel, { Pagination } from 'react-native-snap-carousel'
+import plans from '../components/payments/Plans'
 
-
-import SelectableCard from '../components/payments/SelectableCard';
-import PlanCarousel from '../components/payments/PlanCarousel';
 
 class PaymentScreen extends Component {
   constructor(props) {
     super(props);
+    this.plans=plans;
     this.state = {
       selectedOption: 0,
       // autoRenew: false
@@ -97,8 +98,8 @@ class PaymentScreen extends Component {
   constructPaymentDetail = () => {
     if (this.state.selectedOption != null) {
       var userId = this.props.userId;
-      var passName = this.paymentOptions[this.state.selectedOption].period+ "ly pass";
-      var passAmount = this.paymentOptions[this.state.selectedOption].price;
+      var passName = plans[this.state.selectedOption].period+ "ly pass";
+      var passAmount = plans[this.state.selectedOption].price;
 
       let details = {
         id: 'gymhop_member_'+ userId,
@@ -131,29 +132,7 @@ class PaymentScreen extends Component {
         return "Select a pass option"
     }
   }
-
-  getBullets = () => {
-    if (this.state.selectedOption != null) {
-      return this.paymentOptions[this.state.selectedOption].bullets.map((item, idx) => {
-        return (
-          <View style={{flexDirection: "row"}} key={"gym_bullets_"+idx}>
-            <View style={{flex: 1, justifyContent: "center"}}><Text>&mdash;</Text></View>
-            <View style={{flex: 6}}>{item}</View>
-          </View>
-        )
-      });
-    } else {
-      return null;
-    }
-  }
-  getExtraInfo = () => {
-    if (this.state.selectedOption != null) {
-      return this.paymentOptions[this.state.selectedOption].extraInfo
-    } else {
-      return null;
-    }
-  }
-
+  
   openNativePurchaseOption = () => {
     let paymentOptions = this.constructPaymentDetail();
     console.log("purchasing starting with option " + this.state.selectedOption + " selected");
@@ -192,16 +171,54 @@ class PaymentScreen extends Component {
     }
   }
 
+
   render() {
-    var description = this.state.selectedOption != null ?
-      this.paymentOptions[this.state.selectedOption].description : "";
-    var borderColor = this.state.selectedOption != null ?
-      this.paymentOptions[this.state.selectedOption].background : "#979999";
+    let activeColor = this.plans[this.state.selectedOption].color
 
     return (
-      <SafeAreaView style={styles.container}>
-        <PlanCarousel />
-      </SafeAreaView>
+      <View style={styles.container}>
+          <View style={[styles.carousel]}>
+            <Carousel
+                    layout={"default"}
+                    ref={ref => this.carousel = ref}
+                    data={this.plans}
+                    sliderWidth={ITEM_WIDTH}
+                    itemWidth={ITEM_WIDTH}
+                    renderItem={CarouselCard}
+                    onSnapToItem = { index => 
+                      this.setState({selectedOption:index})
+                     } 
+            />
+            {/* <View style={styles.detailsWrap}>
+              <ScrollView style={styles.details}>
+                <TouchableOpacity
+                  style={[{backgroundColor: activeColor, color: "white", flexDirection: "row", justifyContent: "center"} ,styles.lightGrayBtn]}
+                  onPress={this.openNativePurchaseOption}>
+                    <Text style={styles.lightGrayBtnText}>Subscribe</Text>
+                  {this.props.paymentPending ? <ActivityIndicator size="small" color="#009688" /> : null}
+                </TouchableOpacity>
+            </ScrollView>
+          </View> */}
+          </View>
+          <View style={styles.dotWrap}>
+              <Pagination
+                dotsLength={this.plans.length}
+                activeDotIndex={this.state.selectedOption}
+                carouselRef={this.carousel}
+                dotStyle={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: 5,
+                  marginHorizontal: 0,
+                  backgroundColor: 'rgba(0, 0, 0, 0.92)'
+                }}
+                inactiveDotOpacity={0.4}
+                inactiveDotScale={0.6}
+                tappableDots={true}
+              />
+            </View>
+      </View>
+      
     )
   }
 }
@@ -209,10 +226,23 @@ class PaymentScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 50
+    flex:1,
   },
+  carousel:{
+    elevation:1,
+    justifyContent:'center',
+    flex:9
+  },
+  details:{
+    padding:20,
+  },
+  detailsWrap:{
+    borderTopColor: '#1a1a1a',
+    borderTopWidth: 1,
+  },
+  dotWrap:{
+    justifyContent:'flex-end'
+  }
 })
 
 function mapStateToProps(state) {
