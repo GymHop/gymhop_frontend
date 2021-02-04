@@ -68,7 +68,7 @@ Make sure to increment the bundle version in info.plist
 - set build target (thing in top left near play btn) to generic ios device
 - product -> archive -> say yes to everything
 
-##iOS troubleshooting:
+## iOS troubleshooting:
 if you get any "invalid symlink", "native module cannot be null", "no permission handler detected"- follow these steps in order:
 
 1.) `yarn cleanIos`
