@@ -7,6 +7,8 @@ import { dateFormatter } from '../utils/datetime';
 import { showMessage, hideMessage } from "react-native-flash-message";
 
 import Layout from '../constants/Layout';
+import Colors from '../constants/Colors';
+
 import { string } from 'prop-types';
 // import ErrorBar from '../components/errorBar/errorBar';
 
@@ -28,7 +30,7 @@ class PostCheckIn extends React.Component {
         <View style={{
           flexDirection: "row",
           justifyContent: "center",
-          backgroundColor: '#ffd1dc',
+          backgroundColor: Colors.tabBar,
           marginBottom: 40
         }}>
           <Image

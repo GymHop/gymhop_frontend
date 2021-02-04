@@ -12,6 +12,8 @@ import CarouselCard, { ITEM_WIDTH } from '../components/payments/CarouselCard'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 import plans from '../components/payments/Plans'
 
+import Colors from '../constants/Colors';
+
 
 class PaymentScreen extends Component {
   constructor(props) {
@@ -87,7 +89,7 @@ class PaymentScreen extends Component {
 
   static navigationOptions = {
     headerStyle: {
-            backgroundColor: '#ffd1dc',
+            backgroundColor: Colors.tabBar,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -98,7 +100,7 @@ class PaymentScreen extends Component {
   constructPaymentDetail = () => {
     if (this.state.selectedOption != null) {
       var userId = this.props.userId;
-      var passName = plans[this.state.selectedOption].period+ "ly pass";
+      var passName = plans[this.state.selectedOption].title;
       var passAmount = plans[this.state.selectedOption].price;
 
       let details = {
@@ -173,8 +175,6 @@ class PaymentScreen extends Component {
 
 
   render() {
-    let activeColor = this.plans[this.state.selectedOption].color
-
     return (
       <View style={styles.container}>
           <View style={[styles.carousel]}>
@@ -191,14 +191,17 @@ class PaymentScreen extends Component {
             />
             {/* <View style={styles.detailsWrap}>
               <ScrollView style={styles.details}>
-                <TouchableOpacity
-                  style={[{backgroundColor: activeColor, color: "white", flexDirection: "row", justifyContent: "center"} ,styles.lightGrayBtn]}
-                  onPress={this.openNativePurchaseOption}>
-                    <Text style={styles.lightGrayBtnText}>Subscribe</Text>
-                  {this.props.paymentPending ? <ActivityIndicator size="small" color="#009688" /> : null}
-                </TouchableOpacity>
+                
             </ScrollView>
           </View> */}
+          </View>
+          <View>
+            <TouchableOpacity
+                  style={[{backgroundColor: this.plans[this.state.selectedOption].color} ,styles.subButton]}
+                  onPress={this.openNativePurchaseOption}>
+                    <Text style={styles.subButtonText}>{this.plans[this.state.selectedOption].buttonText}</Text>
+                  {this.props.paymentPending ? <ActivityIndicator size="small" color="#009688" /> : null}
+            </TouchableOpacity>
           </View>
           <View style={styles.dotWrap}>
               <Pagination
@@ -217,6 +220,7 @@ class PaymentScreen extends Component {
                 tappableDots={true}
               />
             </View>
+            
       </View>
       
     )
@@ -225,7 +229,7 @@ class PaymentScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#fdfdfd',
     flex:1,
   },
   carousel:{
@@ -242,6 +246,22 @@ const styles = StyleSheet.create({
   },
   dotWrap:{
     justifyContent:'flex-end'
+  },
+  subButton:{
+    marginLeft:20,
+    marginRight:20,
+    borderRadius:50,
+    justifyContent:'center',
+    height: 55,
+    
+  },
+  subButtonText:{
+    color: "#fff",
+    fontSize: 28,
+    fontWeight: "700",
+    textAlign:'center',
+    textShadowColor: '#1a1a1a',
+    textShadowRadius: 2,
   }
 })
 

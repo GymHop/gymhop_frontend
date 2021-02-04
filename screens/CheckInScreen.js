@@ -14,6 +14,7 @@ import {SliderBox} from 'react-native-image-slider-box';
 import GymSchedule from '../components/gyms/Schedule';
 import OpenOrClosedRightNow from '../components/gyms/OpenOrClosedRightNow';
 
+import Colors from '../constants/Colors';
 
 
 class CheckInScreen extends React.Component {
@@ -182,12 +183,12 @@ const styles = StyleSheet.create({
           paddingVertical: 6
         },
       }),
-        backgroundColor: '#ffd1dc',
+        backgroundColor: Colors.tabBar,
         justifyContent: 'center',
         alignItems: 'center'
       },
       brandLogo: {
-      backgroundColor: '#ffd1dc',
+      backgroundColor: Colors.tabBar,
       width: '35%',
       height: Layout.noStatusBarHeight * .03,
     },
@@ -229,7 +230,7 @@ const styles = StyleSheet.create({
         Button: {
           height: 50,
           width: 200,
-          backgroundColor: '#ffd1dc',
+          backgroundColor: Colors.tabBar,
           borderColor: '#000',
           borderWidth: 2,
           borderRadius: 100,
@@ -251,7 +252,6 @@ function mapStateToProps(state) {
       checkin: state.checkin.checkin,
       errors: state.checkin.errors,
       token: state.user.token
-  
     }
   }
   

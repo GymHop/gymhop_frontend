@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {View, Image} from 'react-native';
 import Layout from '../constants/Layout';
+import Colors from '../constants/Colors';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -41,7 +42,7 @@ class WelcomeScreen extends Component {
 
     render() {
         return(
-          <View style={{backgroundColor: '#ffd1dc', flex: 1}}>
+          <View style={{backgroundColor: Colors.tabBar, flex: 1}}>
           </View>
         )
     }

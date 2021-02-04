@@ -15,6 +15,8 @@ import { connect } from 'react-redux';
 import CrossFadeIcon from './CrossFadeIcon';
 import withDimensions from '../utils/withDimensions';
 
+import Colors from '../constants/Colors';
+
 export type TabBarOptions = {
   activeTintColor?: string,
   inactiveTintColor?: string,
@@ -80,7 +82,7 @@ class TabBarBottom extends React.Component<Props> {
     activeTintColor: '#000',
     activeBackgroundColor: 'transparent',
     inactiveTintColor: '#8E8E93',
-    inactiveBackgroundColor: '#ffd1dc',
+    inactiveBackgroundColor: Colors.tabBar,
     showLabel: true,
     showIcon: true,
     allowFontScaling: true,

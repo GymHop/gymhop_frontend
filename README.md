@@ -25,7 +25,7 @@ Make sure you've setup the keystore
 the keystore password is roryjudah
 
 ### IOS
-please follow these steps verbatim. DO NOT USE NPM FOR ANYTHING EVER
+First time setup. please follow these steps verbatim. DO NOT USE NPM FOR ANYTHING EVER
 
 `brew install rbenv`
 
@@ -47,7 +47,7 @@ please follow these steps verbatim. DO NOT USE NPM FOR ANYTHING EVER
 
 `yarn start --reset-cache` 
 
-Open up terminal, and do:
+If you want to run on a physical iPhone: open up terminal, and do:
 
 `ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2`
 

@@ -64,7 +64,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "clean": "cd android && ./gradlew clean",
+    "cleanAndroid": "cd android && ./gradlew clean",
+    "cleanIos": "rm -rf ~/Library/Developer/Xcode/DerivedData/ && rm -rf ~/Library/Caches/CocoaPods/",
     "podInstall": "cd ios && bundle exec pod install"
   },
   "repository": {

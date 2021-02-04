@@ -13,6 +13,7 @@ import * as TokenActionCreators from '../actions/tokenActions';
 import * as UserDetailsActionCreators from '../actions/userDetailActions';
 
 import Layout from '../constants/Layout';
+import Colors from '../constants/Colors';
 
 import { showMessage, hideMessage } from "react-native-flash-message";
 
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    backgroundColor: '#ffd1dc',
+    backgroundColor: Colors.tabBar,
     height: '100%',
     paddingBottom: 50
     // https://facebook.github.io/react-native/docs/stylesheet
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
   },
   headLogo: {
     marginTop: Platform.OS === 'ios' ? '35%' : '-10%',
-    backgroundColor: '#ffd1dc',
+    backgroundColor: Colors.tabBar,
     width: '100%',
     marginBottom: '-50%',
   },
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   registerButton: {
-    backgroundColor: '#ffd1dc',
+    backgroundColor: Colors.tabBar,
   },
   registerText: {
     marginTop: '5%',

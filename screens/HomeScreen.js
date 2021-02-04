@@ -186,13 +186,13 @@ const styles = StyleSheet.create({
         paddingVertical: 6
       },
     }),
-      backgroundColor: '#ffd1dc',
+      backgroundColor: Colors.tabBar,
       justifyContent: 'flex-end',
       alignItems: 'center',
       paddingBottom: Layout.window.height * .01
     },
       brandLogo: {
-      backgroundColor: '#ffd1dc',
+      backgroundColor: Colors.tabBar,
       width: '35%',
       height: Layout.window.width * .05,
     },

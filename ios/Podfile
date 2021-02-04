@@ -2,7 +2,7 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+platform :ios, '12.0'
 
 target 'gymhop_frontend' do
   
@@ -34,6 +34,7 @@ target 'gymhop_frontend' do
   pod 'Permission-SpeechRecognition', :path => "#{permissions_path}/SpeechRecognition"
   pod 'Permission-StoreKit', :path => "#{permissions_path}/StoreKit"
   pod 'Stripe', '~> 14.0.0'
+
 
 end
 
