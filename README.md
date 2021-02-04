@@ -72,4 +72,5 @@ Make sure to increment the bundle version in info.plist
 if you get any "invalid symlink", "native module cannot be null", "no permission handler detected"- follow these steps in order:
 
 1.) `yarn cleanIos`
+
 2.) Run a full audit of the dependencies used for the app. Native modules will just be renamed/ brokenly updated without warning. Start by commenting out imports in app.js to narrow it down
