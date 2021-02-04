@@ -1,7 +1,7 @@
 export default Plans = [
     {
       key: 0,
-      title: "BEGINNER",
+      title: "1 WEEK",
       color:"#a9a9a9",
       price: 20,
       bullets:[
@@ -10,11 +10,12 @@ export default Plans = [
         "✓ Start right now",
         "✓ A fourth bullet",
       ],
+      buttonText:"Purchase"
     },
     {
       key: 1,
-      title: "PROFESSIONAL",
-      color:"#D4AF37",
+      title: "MONTHLY",
+      color:"#ffadc1",
       price: 80,
       bullets:[
         "✓ Standard access to GymHop",
@@ -22,11 +23,12 @@ export default Plans = [
         "✓ Free cookies",
         "✓ Cancel anytime",
       ],
+      buttonText:"Subscribe"
     },
     {
         key:2,
-        title: "EXPERT",
-        color:'#70d1f4',
+        title: "MONTHLY+",
+        color:"#7CCDED",
         price: 135,
         bullets:[
           "✓ Unlimited access to GymHop",
@@ -34,5 +36,6 @@ export default Plans = [
           "✓ A free lambo",
           "✓ Earn reward points and shit idk",
         ],
+        buttonText:"Subscribe"
     },
   ]

@@ -4,7 +4,7 @@ import Layout from '../constants/Layout';
 
 export const styles = StyleSheet.create({
   imageContainer: {
-    backgroundColor: '#ffd1dc',
+    backgroundColor: Colors.tabBar,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
       },
     })},
       brandLogo: {
-        backgroundColor: '#ffd1dc',
+        backgroundColor: Colors.tabBar,
         width: '35%',
         height: Layout.noStatusBarHeight * .03,
       },
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: '#ffd1dc'
+    backgroundColor: Colors.tabBar
 
   },
       profilePicContainer: {
