@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     textAlign:'center',
     paddingTop:30,
-    paddingBottom:20
+    paddingBottom:30
   },
   bullet:{
     paddingTop:10,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     
   },
   price:{
-    paddingTop:10,
+    paddingBottom:30,
     textAlign:'center',
     fontWeight:"900",
     fontSize:40,
