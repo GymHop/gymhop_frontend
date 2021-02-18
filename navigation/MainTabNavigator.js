@@ -120,7 +120,7 @@ var bottomTabNavSettings = {
   tabBarComponent: props =>
       <CustomBottomTabBar
         {...props}
-        style={{ borderTopColor: '#605F60', height: Layout.window.height * .1 }}
+        style={{ borderTopColor: '#605F60', height: Layout.window.height * .08 }}
       />,
 };
 

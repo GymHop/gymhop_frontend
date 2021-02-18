@@ -13,6 +13,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel'
 import plans from '../components/payments/Plans'
 
 import Colors from '../constants/Colors';
+import { color } from 'react-native-reanimated';
 
 
 class PaymentScreen extends Component {
@@ -23,53 +24,6 @@ class PaymentScreen extends Component {
       selectedOption: 0,
       // autoRenew: false
     }
-    this.paymentOptions = [
-      {
-        key: "70",
-        title: "Free Trial+       Monthly Access",
-        price: 70,
-        period: "month",
-        chargeInfoText: "Your card will be charged on ",
-        bullets: [
-          (<Text>Try Gymhop free for one week</Text>),
-          (<Text>Get unlimited access to every GymHop gym</Text>),
-          (<Text><Text>When the week trial is up, you will be billed </Text><Text style={{fontWeight: "bold"}}>$70 a month.</Text></Text>),
-          (<Text>
-            <Text>Cancel anytime to avoid charges by emailing us at </Text>
-            <Text
-                style={{color:"#0000EE"}}
-                onPress={() => {
-                  Linking.openURL('mailto:contact@gymhop.us?subject=Cancel%20Subscription&body=Let%20us%20know%20what%20we%20could%20do%20better')
-                }}>
-                contact@gymhop.us
-            </Text>
-          </Text>)
-        ],
-        extraInfo: <Text>**Limit one free trial per customer. If your have already used the trial, you will be billed immediately upon signup.</Text>,
-        image: {
-          uri: require("../assets/images/monthly_photo.jpg")
-        },
-        background: "#39E3FF",
-      },
-      {
-        key: "20",
-        title: "One Week Access",
-        price: 20,
-        period: "week",
-        chargeInfoText: "Immediate charge, expires on ",
-        bullets: [
-          (<Text>Want to try Gymhop? Buy a week!</Text>),
-          (<Text>Get unlimited access to every GymHop gym</Text>),
-          (<Text><Text>You'll be billed</Text><Text style={{fontWeight:"bold"}}> $20</Text><Text> upon checkout</Text></Text>),
-          (<Text>Refund available if the pass is unused</Text>)
-        ],
-        extraInfo: <Text>Pass will last for one week before automatically expiring. To regain access, buy another pass or sign up for our monthly membership.</Text>,
-        image: {
-          uri: require("../assets/images/weekly_photo.jpg")
-        },
-        background: "yellow",
-      }
-    ]
   }
 
   componentDidMount = () => {
@@ -100,14 +54,14 @@ class PaymentScreen extends Component {
   constructPaymentDetail = () => {
     if (this.state.selectedOption != null) {
       var userId = this.props.userId;
-      var passName = plans[this.state.selectedOption].title;
-      var passAmount = plans[this.state.selectedOption].price;
+      var passName = this.plans[this.state.selectedOption].title;
+      var passAmount = this.plans[this.state.selectedOption].price;
 
       let details = {
         id: 'gymhop_member_'+ userId,
         displayItems: [
           {
-            label: 'Gymhop US ' + passName,
+            label: 'Gymhop US ' + passName + ' pass',
             amount: { currency: 'USD', value: passAmount }
           }
         ],
@@ -124,22 +78,12 @@ class PaymentScreen extends Component {
 
   }
 
-  getPassName = () => {
-    switch (this.state.selectedOption) {
-      case 0:
-        return "The Monthly Hustler: $70";
-      case 1:
-        return "The Weekly Warrior: $20";
-      default:
-        return "Select a pass option"
-    }
-  }
   
   openNativePurchaseOption = () => {
     let paymentOptions = this.constructPaymentDetail();
     console.log("purchasing starting with option " + this.state.selectedOption + " selected");
     if (paymentOptions) {
-      let price = this.paymentOptions[this.state.selectedOption].price.toString();
+      let price = this.plans[this.state.selectedOption].price.toString();
       stripe.paymentRequestWithNativePay(options={
         total_price: price,
         currency_code: 'USD',
@@ -155,10 +99,12 @@ class PaymentScreen extends Component {
       },
       [{
         currency_code: 'USD',
+        label:'GymHop US ',
         description: 'Gymhop Membership',
         total_price: price,
         unit_price: price,
         quantity: '1',
+        amount:price
       }]
 
     ).then((token) => {
@@ -189,11 +135,21 @@ class PaymentScreen extends Component {
                       this.setState({selectedOption:index})
                      } 
             />
-            {/* <View style={styles.detailsWrap}>
-              <ScrollView style={styles.details}>
-                
-            </ScrollView>
-          </View> */}
+          </View>
+          <View style={styles.termsWrap}>
+            <Text style={styles.terms}>
+              {this.plans[this.state.selectedOption].terms}
+            </Text>
+            <Text style={styles.terms}>
+                    Cancel anytime by emailing&nbsp;
+                    <Text
+                      style={[styles.terms,{color:"blue"}]}
+                      onPress={() => {
+                      Linking.openURL('mailto:contact@gymhop.us?subject=Cancel%20Subscription&body=Let%20us%20know%20what%20we%20could%20do%20better')
+                      }}>
+                      contact@gymhop.us
+                    </Text>
+            </Text>
           </View>
           <View>
             <TouchableOpacity
@@ -203,6 +159,7 @@ class PaymentScreen extends Component {
                   {this.props.paymentPending ? <ActivityIndicator size="small" color="#009688" /> : null}
             </TouchableOpacity>
           </View>
+          
           <View style={styles.dotWrap}>
               <Pagination
                 dotsLength={this.plans.length}
@@ -262,6 +219,15 @@ const styles = StyleSheet.create({
     textAlign:'center',
     textShadowColor: '#1a1a1a',
     textShadowRadius: 2,
+  },
+  termsWrap:{
+    flex:4,
+    marginLeft:20,
+    marginRight:20,
+  },
+  terms:{
+    textAlign:'center',
+    paddingBottom:10
   }
 })
 
