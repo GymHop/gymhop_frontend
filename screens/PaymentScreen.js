@@ -13,6 +13,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel'
 import plans from '../components/payments/Plans'
 
 import Colors from '../constants/Colors';
+import { color } from 'react-native-reanimated';
 
 
 class PaymentScreen extends Component {
@@ -60,7 +61,7 @@ class PaymentScreen extends Component {
         id: 'gymhop_member_'+ userId,
         displayItems: [
           {
-            label: 'Gymhop US ' + passName,
+            label: 'Gymhop US ' + passName + ' pass',
             amount: { currency: 'USD', value: passAmount }
           }
         ],
@@ -77,16 +78,6 @@ class PaymentScreen extends Component {
 
   }
 
-  getPassName = () => {
-    switch (this.state.selectedOption) {
-      case 0:
-        return "The Monthly Hustler: $70";
-      case 1:
-        return "The Weekly Warrior: $20";
-      default:
-        return "Select a pass option"
-    }
-  }
   
   openNativePurchaseOption = () => {
     let paymentOptions = this.constructPaymentDetail();
@@ -94,13 +85,11 @@ class PaymentScreen extends Component {
     if (paymentOptions) {
       let price = this.plans[this.state.selectedOption].price.toString();
       stripe.paymentRequestWithNativePay(options={
-        label:'GymHop US ' + this.plans[this.state.selectedOption].title,
         total_price: price,
         currency_code: 'USD',
         shipping_address_required: false,
         phone_number_required: false,
         line_items: [{
-          label:'GymHop US ' + this.plans[this.state.selectedOption].title,
           currency_code: 'USD',
           description: 'Gymhop Membership',
           total_price: price,
@@ -110,10 +99,12 @@ class PaymentScreen extends Component {
       },
       [{
         currency_code: 'USD',
+        label:'GymHop US ',
         description: 'Gymhop Membership',
         total_price: price,
         unit_price: price,
         quantity: '1',
+        amount:price
       }]
 
     ).then((token) => {
@@ -144,11 +135,21 @@ class PaymentScreen extends Component {
                       this.setState({selectedOption:index})
                      } 
             />
-            {/* <View style={styles.detailsWrap}>
-              <ScrollView style={styles.details}>
-                
-            </ScrollView>
-          </View> */}
+          </View>
+          <View style={styles.termsWrap}>
+            <Text style={styles.terms}>
+              {this.plans[this.state.selectedOption].terms}
+            </Text>
+            <Text style={styles.terms}>
+                    Cancel anytime by emailing&nbsp;
+                    <Text
+                      style={[styles.terms,{color:"blue"}]}
+                      onPress={() => {
+                      Linking.openURL('mailto:contact@gymhop.us?subject=Cancel%20Subscription&body=Let%20us%20know%20what%20we%20could%20do%20better')
+                      }}>
+                      contact@gymhop.us
+                    </Text>
+            </Text>
           </View>
           <View>
             <TouchableOpacity
@@ -158,6 +159,7 @@ class PaymentScreen extends Component {
                   {this.props.paymentPending ? <ActivityIndicator size="small" color="#009688" /> : null}
             </TouchableOpacity>
           </View>
+          
           <View style={styles.dotWrap}>
               <Pagination
                 dotsLength={this.plans.length}
@@ -217,6 +219,15 @@ const styles = StyleSheet.create({
     textAlign:'center',
     textShadowColor: '#1a1a1a',
     textShadowRadius: 2,
+  },
+  termsWrap:{
+    flex:4,
+    marginLeft:20,
+    marginRight:20,
+  },
+  terms:{
+    textAlign:'center',
+    paddingBottom:10
   }
 })
 

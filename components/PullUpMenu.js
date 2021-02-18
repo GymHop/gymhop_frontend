@@ -127,7 +127,7 @@ class PullUpMenu extends Component {
     Animated.spring(
       this.heightAnimatedValue,
       {
-        toValue: this.levelValues[this.state.currentLevel - 1]
+        toValue: this.levelValues[this.state.currentLevel - 1],
       }
     ).start()
     this.setState({currentLevel: this.state.currentLevel - 1})
@@ -137,7 +137,7 @@ class PullUpMenu extends Component {
     Animated.spring(
       this.heightAnimatedValue,
       {
-        toValue: this.levelValues[level]
+        toValue: this.levelValues[level],
       }
     ).start()
 
@@ -196,8 +196,10 @@ class PullUpMenu extends Component {
                   width: widthInterpolatedValue,
                   top: this.heightAnimatedValue,
                   marginLeft: leftInterpolatedValue
-                }
-        ]}>
+                },
+        ]}
+        useNativeDriver={true}
+        >
         <View style={styles.pullUpBarContainer}>
           <View style={styles.pullUpBar}></View>
         </View>

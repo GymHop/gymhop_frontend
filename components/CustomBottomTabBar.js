@@ -81,7 +81,7 @@ class TabBarBottom extends React.Component<Props> {
   static defaultProps = {
     activeTintColor: '#000',
     activeBackgroundColor: 'transparent',
-    inactiveTintColor: '#8E8E93',
+    inactiveTintColor: '#fff',
     inactiveBackgroundColor: Colors.tabBar,
     showLabel: true,
     showIcon: true,
@@ -319,7 +319,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   labelBeneath: {
-    fontSize: 11,
+    fontSize: 12,
+    fontWeight:'bold',
     marginBottom: 1.5,
   },
   labelBeside: {
