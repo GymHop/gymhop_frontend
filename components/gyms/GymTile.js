@@ -27,11 +27,14 @@ class GymTile extends Component {
       case 0:
         dollarSigns = "";
         break;
-      case 1:
-        dollarSigns = "Budget";
-        break;
       case 2:
-        dollarSigns = "Premium ";
+        dollarSigns = "Trial";
+        break;
+      case 4:
+        dollarSigns = "Standard";
+        break;
+      case 8:
+        dollarSigns = "Premium";
         break;
       default:
         dollarSigns = ""
@@ -57,6 +60,7 @@ class GymTile extends Component {
           <View style={styles.extraDetailsContainer}>
             <Text style={styles.milesFigure}>{Math.round(gym.distance*10)/10}</Text>
             <Text style={styles.milesText}>miles</Text>
+            <Text style={styles.premiumText}>{dollarSigns}</Text>
           </View>
         </View>
       </TouchableWithoutFeedback>

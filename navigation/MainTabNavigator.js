@@ -69,7 +69,7 @@ QRScanningStack.navigationOptions = {
     <TabBarIcon
       focused={focused}
       iconSet={"ion"}
-      name={Platform.OS === 'ios' ? 'ios-camera' : 'md-camera'}
+      name={Platform.OS === 'ios' ? 'checkmark-circle-outline' : 'checkmark-circle-outline'}
     />
   ),
 
@@ -120,7 +120,7 @@ var bottomTabNavSettings = {
   tabBarComponent: props =>
       <CustomBottomTabBar
         {...props}
-        style={{ borderTopColor: '#605F60', height: Layout.window.height * .08 }}
+        style={{ borderTopColor: '#605F60', height: Layout.window.height * .06 }}
       />,
 };
 

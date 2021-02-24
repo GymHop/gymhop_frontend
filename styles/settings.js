@@ -115,13 +115,15 @@ export const styles = StyleSheet.create({
         marginBottom: 15,
       },
       goldButton: {
-        backgroundColor: '#bba445',
+        backgroundColor: '#4DD542',
+        borderWidth: 2,
+        borderColor: '#000',
         width: 175,
         height: 50,
         borderRadius: 25,
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 15,
+        marginBottom: 25,
         
       }
 })

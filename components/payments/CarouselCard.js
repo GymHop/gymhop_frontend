@@ -14,7 +14,7 @@ const CarouselCard = ({ item, index }) => {
         </View>
         <View style={styles.priceWrap}>
           <Text style={styles.price}>
-              {item.price} $
+              ${item.price}
           </Text>
         </View>
         <View style={styles.bulletWrap}>
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     width: ITEM_WIDTH,
     elevation: 7,
     flex:1,
+    backgroundColor: '#FFF'
     },
   headerWrap:{
     marginLeft:50,

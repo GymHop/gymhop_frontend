@@ -57,7 +57,7 @@ class ViewGymListBtn extends Component {
           <TouchableOpacity style={styles.btnContainer} onPress={() => {
             this.props.navigation.push("Subscribe");
           }}>
-            <AntIcon size={30} name="creditcard" />
+            <AntIcon size={25} name="creditcard" />
             <Text style={{fontSize: 16, paddingTop: 5}}>Subscribe</Text>
           </TouchableOpacity>
         </View>
@@ -71,8 +71,8 @@ class ViewGymListBtn extends Component {
           <TouchableOpacity style={styles.btnContainer} onPress={() => {
             this.props.navigation.push("GymList");
           }}>
-              <Icon size={30} name="ios-list" />
-              <Text style={{fontSize: 16, paddingTop: 5}}>List of Gyms</Text>
+              <Icon size={25} name="ios-list" />
+              <Text style={{fontSize: 16, paddingTop: 5}}>Gyms</Text>
           </TouchableOpacity>
         </Animated.View>
 
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "white",
-    width: Layout.window.width * .25,
+    width: Layout.window.width * .23,
     height: Layout.window.height * .1,
     borderRadius: 15,
     shadowColor: "#000",

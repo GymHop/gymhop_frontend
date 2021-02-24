@@ -136,6 +136,23 @@ class PaymentScreen extends Component {
                      } 
             />
           </View>
+          <View style={styles.dotWrap}>
+              <Pagination
+                dotsLength={this.plans.length}
+                activeDotIndex={this.state.selectedOption}
+                carouselRef={this.carousel}
+                dotStyle={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: 5,
+                  marginHorizontal: 0,
+                  backgroundColor: 'rgba(0, 0, 0, 0.92)'
+                }}
+                inactiveDotOpacity={0.4}
+                inactiveDotScale={0.6}
+                tappableDots={true}
+              />
+            </View>
           <View style={styles.termsWrap}>
             <Text style={styles.terms}>
               {this.plans[this.state.selectedOption].terms}
@@ -160,23 +177,7 @@ class PaymentScreen extends Component {
             </TouchableOpacity>
           </View>
           
-          <View style={styles.dotWrap}>
-              <Pagination
-                dotsLength={this.plans.length}
-                activeDotIndex={this.state.selectedOption}
-                carouselRef={this.carousel}
-                dotStyle={{
-                  width: 10,
-                  height: 10,
-                  borderRadius: 5,
-                  marginHorizontal: 0,
-                  backgroundColor: 'rgba(0, 0, 0, 0.92)'
-                }}
-                inactiveDotOpacity={0.4}
-                inactiveDotScale={0.6}
-                tappableDots={true}
-              />
-            </View>
+          
             
       </View>
       
@@ -207,6 +208,7 @@ const styles = StyleSheet.create({
   subButton:{
     marginLeft:20,
     marginRight:20,
+    marginBottom: 50,
     borderRadius:50,
     justifyContent:'center',
     height: 55,

@@ -52,8 +52,8 @@ class CheckInScreen extends React.Component {
 
         let gymPhotos = this.props.gyms[0].photos.map(a => a.url)
 
-        //if (this.props.gyms[0].distance < 0.113636) {   /* USE THIS ONE FR */
-          if (this.props.gyms[0].distance < 10.113636) { /* USE THIS ONE WHEN TESTING GYM 33 FROM YOUR HOUSE */
+        if (this.props.gyms[0].distance < 0.113636) {   /* USE THIS ONE FR */
+         // if (this.props.gyms[0].distance < 10.113636) { /* USE THIS ONE WHEN TESTING GYM 33 FROM YOUR HOUSE */
           return(
             <>
               <View style={styles.imageContainer}>
@@ -78,7 +78,7 @@ class CheckInScreen extends React.Component {
                   {/* <Image source={{uri: this.props.gyms[0].lead_photo}} style={styles.logoPic} /> */}
                   <View>
                     <Text style={{paddingLeft: '3%', paddingRight: '3%', color: '#000', fontSize: 24, fontWeight: 'bold'}}>{this.props.gyms[0].name}</Text>
-                    <Text style={{paddingTop: '1%', paddingLeft: '3%', paddingRight: '3%', color: '#000', fontSize: 16}}>{this.props.gyms[0].amenities}</Text>
+                    {/* <Text style={{paddingTop: '1%', paddingLeft: '3%', paddingRight: '3%', color: '#000', fontSize: 16}}>{this.props.gyms[0].amenities}</Text>*/}                 
                   </View>
                 </View>
                 <View style={styles.ButtonContainer2}>
@@ -228,9 +228,9 @@ const styles = StyleSheet.create({
         paddingTop: '5%'
       },  
         Button: {
-          height: 50,
-          width: 200,
-          backgroundColor: Colors.tabBar,
+          height: 150,
+          width: 250,
+          backgroundColor: '#4BB543',
           borderColor: '#000',
           borderWidth: 2,
           borderRadius: 100,
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
           justifyContent: 'center',
         },
           buttonText: {
-            fontSize: 18,
+            fontSize: 24,
             fontWeight: 'bold',
             color: '#000'
           }

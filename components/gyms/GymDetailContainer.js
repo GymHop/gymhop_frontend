@@ -38,7 +38,7 @@ class GymDetailContainer extends Component {
         dollarSigns = "Trial";
         break;
       case 4:
-        dollarSigns = "Budget";
+        dollarSigns = "Standard";
         break;
       case 8:
         dollarSigns = "Premium";
