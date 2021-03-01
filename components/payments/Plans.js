@@ -3,7 +3,7 @@ export default Plans = [
       key: 0,
       title: "Standard Membership  – First Week On Us –",
       color:"#ffadc1",
-      price: 70,
+      price: 7000,
       bullets:[
         "✓ Unlimited access to GymHop standard partner locations",
         "✓ Subscription includes free trial",
@@ -17,7 +17,7 @@ export default Plans = [
       key: 1,
       title: "Week Pass",
       color:"#02C805",
-      price: 20,
+      price: 2000,
       bullets:[
         "✓ Unlimited access to GymHop standard partner locations",
         "✓ Pass active for seven days",
@@ -31,7 +31,7 @@ export default Plans = [
         key:2,
         title: "Premium Membership",
         color:"#7CCDED",
-        price: 140,
+        price: 14000,
         bullets:[
           "✓ Unlimited access to all PREMIUM and standard GymHop locations",
           "✓ Diverse facilities and classes",
