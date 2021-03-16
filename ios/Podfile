@@ -14,7 +14,7 @@ target 'gymhop_frontend' do
   # Pods for gymhop_frontend
   permissions_path = '../node_modules/react-native-permissions/ios'
    
-  pod 'Permission-AppTrackingTransparency', :path => "#{permissions_path}/AppTrackingTransparency"
+  pod 'Permission-AppTrackingTransparency', :path => "#{permissions_path}/AppTracksudo gem update cocoapodsingTransparency"
   pod 'Permission-BluetoothPeripheral', :path => "#{permissions_path}/BluetoothPeripheral"
   pod 'Permission-Calendars', :path => "#{permissions_path}/Calendars"
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
