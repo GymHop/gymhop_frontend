@@ -313,7 +313,7 @@ PODS:
     - React
   - RNVectorIcons (7.1.0):
     - React
-  - Stripe (14.0.1)
+  - Stripe (14.0.2)
   - tipsi-stripe (7.5.3):
     - React
     - Stripe (~> 14.0.1)
@@ -575,10 +575,10 @@ SPEC CHECKSUMS:
   RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
-  Stripe: 4305b646743612854819fb5d5cf67aaeb93577c0
+  Stripe: 25c07000e7e86ffc53da0e41a5dd1bce30470fe0
   tipsi-stripe: fb5b32e890a4528322c491e1827133a3cb919e0a
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
 PODFILE CHECKSUM: c7a6f9b6500a88f4a982e8484205183e08ac049c
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1
