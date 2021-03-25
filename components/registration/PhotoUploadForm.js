@@ -26,10 +26,8 @@ export default class PhotoUploadForm extends Component {
         includeBase64: true,
       })
         .then((image) => {
-          console.log(image)
-
-        this.props.onPhotoSelected(image.path)
-        this.setState({ src: `data:image/gif;base64,${image.data}` })
+          this.props.onPhotoSelected(image.data)
+          this.setState({ src: `data:image/gif;base64,${image.data}` })
         })
         .catch((err) => console.log(err))
     }, 800)
@@ -43,9 +41,8 @@ export default class PhotoUploadForm extends Component {
         cropping: true,
         includeBase64: true,
       }).then((image) => {
-        this.props.onPhotoSelected(image.path)
+        this.props.onPhotoSelected(image.data)
         this.setState({ src: `data:image/gif;base64,${image.data}` })
-        console.log(image)
       })
     }, 800)
   }
