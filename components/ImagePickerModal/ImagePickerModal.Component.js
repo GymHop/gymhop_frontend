@@ -6,6 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { totalSize } from 'react-native-dimension';
 class ModalComponent extends React.Component {
+    
     render() {
         
         return (<Modal isVisible={this.props.isVisible} >

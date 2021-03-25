@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
         width: width(70),
         height: height(15),
         justifyContent: 'space-evenly',
+        alignItems: 'flex-start',
     },
     picOption: {
-        paddingLeft: width(12),
+        paddingLeft: width(8),
         alignItems: 'center',
         flexDirection: 'row'
     },

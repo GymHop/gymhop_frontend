@@ -46,6 +46,9 @@ export default class PhotoUploadForm extends Component {
       })
     }, 800)
   }
+  onClose = () => {
+    this.setState({modalVisible: false})
+  }
   render() {
     const { modalVisible } = this.state
     return (
@@ -68,6 +71,7 @@ export default class PhotoUploadForm extends Component {
         />
         <ImagePickerModal
           isVisible={modalVisible}
+          onClose={this.onClose}
           imageFromCamera={this.imageFromCamera}
           imageFromGallery={this.imageFromGallery}
         />
