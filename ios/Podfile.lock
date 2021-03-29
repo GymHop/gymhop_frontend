@@ -19,43 +19,43 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - Permission-AppTrackingTransparency (3.0.0):
+  - Permission-AppTrackingTransparency (3.0.1):
     - RNPermissions
-  - Permission-BluetoothPeripheral (3.0.0):
+  - Permission-BluetoothPeripheral (3.0.1):
     - RNPermissions
-  - Permission-Calendars (3.0.0):
+  - Permission-Calendars (3.0.1):
     - RNPermissions
-  - Permission-Camera (3.0.0):
+  - Permission-Camera (3.0.1):
     - RNPermissions
-  - Permission-Contacts (3.0.0):
+  - Permission-Contacts (3.0.1):
     - RNPermissions
-  - Permission-FaceID (3.0.0):
+  - Permission-FaceID (3.0.1):
     - RNPermissions
-  - Permission-LocationAccuracy (3.0.0):
+  - Permission-LocationAccuracy (3.0.1):
     - RNPermissions
-  - Permission-LocationAlways (3.0.0):
+  - Permission-LocationAlways (3.0.1):
     - RNPermissions
-  - Permission-LocationWhenInUse (3.0.0):
+  - Permission-LocationWhenInUse (3.0.1):
     - RNPermissions
-  - Permission-MediaLibrary (3.0.0):
+  - Permission-MediaLibrary (3.0.1):
     - RNPermissions
-  - Permission-Microphone (3.0.0):
+  - Permission-Microphone (3.0.1):
     - RNPermissions
-  - Permission-Motion (3.0.0):
+  - Permission-Motion (3.0.1):
     - RNPermissions
-  - Permission-Notifications (3.0.0):
+  - Permission-Notifications (3.0.1):
     - RNPermissions
-  - Permission-PhotoLibrary (3.0.0):
+  - Permission-PhotoLibrary (3.0.1):
     - RNPermissions
-  - Permission-PhotoLibraryAddOnly (3.0.0):
+  - Permission-PhotoLibraryAddOnly (3.0.1):
     - RNPermissions
-  - Permission-Reminders (3.0.0):
+  - Permission-Reminders (3.0.1):
     - RNPermissions
-  - Permission-Siri (3.0.0):
+  - Permission-Siri (3.0.1):
     - RNPermissions
-  - Permission-SpeechRecognition (3.0.0):
+  - Permission-SpeechRecognition (3.0.1):
     - RNPermissions
-  - Permission-StoreKit (3.0.0):
+  - Permission-StoreKit (3.0.1):
     - RNPermissions
   - RCTRequired (0.63.4)
   - RCTTypeSafety (0.63.4):
@@ -225,13 +225,13 @@ PODS:
   - React-jsinspector (0.63.4)
   - react-native-geolocation (2.0.2):
     - React
-  - react-native-image-picker (3.2.1):
+  - react-native-image-picker (3.3.2):
     - React-Core
-  - react-native-image-resizer (1.4.3):
+  - react-native-image-resizer (1.4.4):
     - React-Core
   - react-native-maps (0.27.1):
     - React
-  - react-native-safe-area-context (3.1.9):
+  - react-native-safe-area-context (3.2.0):
     - React-Core
   - react-native-splash-screen (3.2.0):
     - React
@@ -301,13 +301,22 @@ PODS:
     - React
   - RNFS (2.16.6):
     - React
-  - RNGestureHandler (1.10.2):
+  - RNGestureHandler (1.10.3):
     - React-Core
-  - RNPermissions (3.0.0):
+  - RNImageCropPicker (0.31.1):
+    - React-Core
+    - React-RCTImage
+    - RNImageCropPicker/QBImagePickerController (= 0.31.1)
+    - TOCropViewController
+  - RNImageCropPicker/QBImagePickerController (0.31.1):
+    - React-Core
+    - React-RCTImage
+    - TOCropViewController
+  - RNPermissions (3.0.1):
     - React-Core
   - RNReanimated (1.13.2):
     - React-Core
-  - RNScreens (2.17.1):
+  - RNScreens (2.18.1):
     - React-Core
   - RNSVG (12.1.0):
     - React
@@ -317,6 +326,7 @@ PODS:
   - tipsi-stripe (7.5.3):
     - React
     - Stripe (~> 14.0.1)
+  - TOCropViewController (2.6.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -376,6 +386,7 @@ DEPENDENCIES:
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNFS (from `../node_modules/react-native-fs`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -389,6 +400,7 @@ SPEC REPOS:
   trunk:
     - boost-for-react-native
     - Stripe
+    - TOCropViewController
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -499,6 +511,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fs"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNImageCropPicker:
+    :path: "../node_modules/react-native-image-crop-picker"
   RNPermissions:
     :path: "../node_modules/react-native-permissions"
   RNReanimated:
@@ -521,25 +535,25 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
-  Permission-AppTrackingTransparency: 15da2933d9d04f5106fa19407eb452fa1b4e8059
-  Permission-BluetoothPeripheral: 0111f6d0b7c3e9013c6b93ab6fa6446875facf03
-  Permission-Calendars: aafa227e5dee83c7346fc2ca488d45ca1d63a148
-  Permission-Camera: 119b01de97a5b3edb637999e38476b68143b9d17
-  Permission-Contacts: b04d927dd11f31bb7131384c05ee416d154343f5
-  Permission-FaceID: b1c6121dc9587cc19d35d864e4b1ee5dee65634d
-  Permission-LocationAccuracy: e748463597fb8789cacdab1f9aa7d7a5924faae5
-  Permission-LocationAlways: c083f45f28c4b78ddc6f9668cf1a984d879a80ec
-  Permission-LocationWhenInUse: e2b8c40ce0f3675a521f26787ab47ebb9bace503
-  Permission-MediaLibrary: 37de8bf0149851d5213b74380aa9fbe76754e4c8
-  Permission-Microphone: e426a115ddf9591e8c30c55ea2b28572d4cbd07e
-  Permission-Motion: 07807a6fd7df77866d02824ee56515411e9018f1
-  Permission-Notifications: 5c69bf2f6c1e30345af4f25e2981dc1c8dafbc22
-  Permission-PhotoLibrary: cb9cdc1e3744e26ab404297a8e289d50c8ee27e8
-  Permission-PhotoLibraryAddOnly: b179f1487560123186a45d8aac39483987acdf3e
-  Permission-Reminders: 446c88b1b8ede6c40b45f232027db1f737362a1d
-  Permission-Siri: 2b3c0b9b093bd9502a98ce66568d741155920294
-  Permission-SpeechRecognition: c7018ed17b1c2c553e583aba53d268815fb4ab99
-  Permission-StoreKit: 34aa13ff3c36372fe03f551924e654722eb1af1a
+  Permission-AppTrackingTransparency: b529454e0fa560f0dcb7c4fd74399417cc1e674b
+  Permission-BluetoothPeripheral: 9f0bd529583f759e49fdc60eaa1191b8be69f709
+  Permission-Calendars: beecff003fc9fa36979f95e19cfcd54ba26a5ddf
+  Permission-Camera: b2e50546c095139bb1264be9c34c796332340d32
+  Permission-Contacts: db364c0086fc1fa1d5af33256cf9ab6ff2336ed1
+  Permission-FaceID: 6db862861e789c479daf88431b5f8f5f3436a65d
+  Permission-LocationAccuracy: 76669f87b4c276f5ae803cc0ddd1862a4c0e9dd8
+  Permission-LocationAlways: a274bc04bb386068782468dbdaca3859f51634ca
+  Permission-LocationWhenInUse: 3a2b0dbc167d79e8e920a4377ff9520cdc108407
+  Permission-MediaLibrary: 468eee83eb186823bb55b7252626539e0e4a2d97
+  Permission-Microphone: bcdaaa22af6217b86fad0843413a238b9413f2d6
+  Permission-Motion: 629f9b549c48d25216fdf2ebea365178e315f61c
+  Permission-Notifications: 504dcbc12f929b72cdab0c89a4245816d53d1452
+  Permission-PhotoLibrary: 29a07bdd077ae760363f73ab52d22a7b88cbd781
+  Permission-PhotoLibraryAddOnly: fa32d59bded28fe9f77519289ceba90df946382b
+  Permission-Reminders: 9f920c4def6f09fbee9373807543fcc29bef1cf2
+  Permission-Siri: 3e54dd61ff5708fa6946ceff9ba4adc9bc673576
+  Permission-SpeechRecognition: 714f191e9c54762d8960438aa0aafa8df5bef6a4
+  Permission-StoreKit: f172158c9c4e25085bc6a2a055ba6d80ee872e3e
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
   React: b0a957a2c44da4113b0c4c9853d8387f8e64e615
@@ -551,10 +565,10 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
   react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
-  react-native-image-picker: 64d12e81f3d9dad0af107fe6536b295d51932ec0
-  react-native-image-resizer: 5dfbf934fe5788c11ed06ebbcdb6e6fb6beec20c
+  react-native-image-picker: b42940647478bf106ad3c491d6f5d9d40916d865
+  react-native-image-resizer: 13ac4af788f88af36d0353a1324401ebabd04fe4
   react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
-  react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
+  react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
@@ -569,14 +583,16 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: fe58eec522885718d6b297b7b658bf87d7ca557b
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
-  RNGestureHandler: e66feb0fda7da74ea6a3094656b3c1efe05f5c07
-  RNPermissions: 99dd8d4a30ff13509b949ca63cd1f69edc461775
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNImageCropPicker: 38865ab4af1b0b2146ad66061196bc0184946855
+  RNPermissions: 4c8a37b4dde50f1f152bf8cd08c4a43d2355829e
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
-  RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
+  RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
   Stripe: 25c07000e7e86ffc53da0e41a5dd1bce30470fe0
   tipsi-stripe: fb5b32e890a4528322c491e1827133a3cb919e0a
+  TOCropViewController: 3105367e808b7d3d886a74ff59bf4804e7d3ab38
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
 PODFILE CHECKSUM: c7a6f9b6500a88f4a982e8484205183e08ac049c
