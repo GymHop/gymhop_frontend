@@ -67,7 +67,7 @@
     "cleanAndroid": "cd android && ./gradlew clean",
     "cleanIos": "rm -rf ~/Library/Developer/Xcode/DerivedData/ && rm -rf ~/Library/Caches/CocoaPods/",
     "podInstall": "cd ios && bundle exec pod install",
-    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'"
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "repository": {
     "type": "git",

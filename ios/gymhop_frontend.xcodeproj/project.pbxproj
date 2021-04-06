@@ -10,13 +10,13 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		98104236260198680085D1EA /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 008F07F21AC5B25A0029DE68 /* main.jsbundle */; };
+		98FA3CC2261C06080013EDE4 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 98FA3CC1261C06080013EDE4 /* main.jsbundle */; };
+		98FA3CC6261C0A890013EDE4 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 98FA3CC5261C0A890013EDE4 /* assets */; };
 		CF00608E51856B597C5F83A3 /* libPods-gymhop_frontend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2796F216BECFBDFF3B9FCCB /* libPods-gymhop_frontend.a */; };
 		F44560C2257E81FD0072E08A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44560C1257E81E00072E08A /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		0B7794570889412598534D5E /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* gymhop_frontend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gymhop_frontend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = gymhop_frontend/AppDelegate.h; sourceTree = "<group>"; };
@@ -35,6 +35,9 @@
 		5CCBAC4529B44973B5855C1E /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		62C292DBC62640CA9DA5768B /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		70F498BE49D9702AAFB0A0F8 /* Pods-gymhop_frontend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymhop_frontend.debug.xcconfig"; path = "Target Support Files/Pods-gymhop_frontend/Pods-gymhop_frontend.debug.xcconfig"; sourceTree = "<group>"; };
+		98FA3CC1261C06080013EDE4 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.jsbundle; path = gymhop_frontend/main.jsbundle; sourceTree = "<group>"; };
+		98FA3CC5261C0A890013EDE4 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		98FA3CCA261C0CEA0013EDE4 /* gymhop_frontend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = gymhop_frontend.entitlements; path = gymhop_frontend/gymhop_frontend.entitlements; sourceTree = "<group>"; };
 		B2796F216BECFBDFF3B9FCCB /* libPods-gymhop_frontend.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gymhop_frontend.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27A28D040F2A2A4F4627FFC /* Pods-gymhop_frontend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymhop_frontend.release.xcconfig"; path = "Target Support Files/Pods-gymhop_frontend/Pods-gymhop_frontend.release.xcconfig"; sourceTree = "<group>"; };
 		C3D737BE759F4ECBB53E30C8 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
@@ -62,7 +65,8 @@
 		13B07FAE1A68108700A75B9A /* gymhop_frontend */ = {
 			isa = PBXGroup;
 			children = (
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				98FA3CCA261C0CEA0013EDE4 /* gymhop_frontend.entitlements */,
+				98FA3CC1261C06080013EDE4 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -115,6 +119,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				98FA3CC5261C0A890013EDE4 /* assets */,
 				13B07FAE1A68108700A75B9A /* gymhop_frontend */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -207,8 +212,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98104236260198680085D1EA /* main.jsbundle in Resources */,
+				98FA3CC6261C0A890013EDE4 /* assets in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				98FA3CC2261C06080013EDE4 /* main.jsbundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +233,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "export NODE_BINARY=node\n\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		879654EDABB2967CC938FE60 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -357,9 +363,10 @@
 			baseConfigurationReference = 70F498BE49D9702AAFB0A0F8 /* Pods-gymhop_frontend.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = gymhop_frontend/gymhop_frontend.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 38;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 8D7TMGP5RH;
 				HEADER_SEARCH_PATHS = (
@@ -387,13 +394,13 @@
 				INFOPLIST_FILE = gymhop_frontend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.3.1;
+				MARKETING_VERSION = 2.3.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "us.gymhop.gymhop-frontend31320192";
+				PRODUCT_BUNDLE_IDENTIFIER = "us.gymhop.gymhop-frontend3132019";
 				PRODUCT_NAME = gymhop_frontend;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -405,9 +412,10 @@
 			baseConfigurationReference = C27A28D040F2A2A4F4627FFC /* Pods-gymhop_frontend.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = gymhop_frontend/gymhop_frontend.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 38;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 8D7TMGP5RH;
 				HEADER_SEARCH_PATHS = (
@@ -495,7 +503,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/tipsi-stripe\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Permission-AppTrackingTransparency\"",
 				);
-				MARKETING_VERSION = 2.3.1;
+				MARKETING_VERSION = 2.3.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

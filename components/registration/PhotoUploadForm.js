@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import PhotoUpload from 'react-native-photo-upload'
 import ImagePicker from 'react-native-image-crop-picker'
 import Colors from '../../constants/Colors'
 import ImagePickerModal from '../../components/ImagePickerModal/ImagePickerModal.Component'
