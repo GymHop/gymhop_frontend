@@ -1,6 +1,4 @@
 import React from 'react';
-import TakeMoney from '../Stripe/StripeCheckout';
-
 import { View, Text, Image, StyleSheet, BackHandler, 
     TouchableOpacity, Linking } from 'react-native';
 
