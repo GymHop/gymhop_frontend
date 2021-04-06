@@ -101,8 +101,8 @@ android {
         applicationId "com.gymhop"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 29
-        versionName "2.0.2"
+        versionCode 32
+        versionName "2.2.1"
         multiDexEnabled true
     }
     signingConfigs {
