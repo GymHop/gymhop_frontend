@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import Layout from '../constants/Layout';
 import { setPullUpLevel } from '../actions/uiActions';
 
-const closedDistanceFromBottom = Layout.window.height * .85 - 49;
+const closedDistanceFromBottom = Layout.window.height * .7 
 const mediumDistanceFromBottom = Layout.window.height * .50 - 49;
-const openDistanceFromBottom = Layout.window.height * .07 - 49;
+const openDistanceFromBottom = Layout.window.height * .07;
 
 class PullUpMenu extends Component {
   constructor(props) {
@@ -43,9 +43,11 @@ class PullUpMenu extends Component {
           //determine which open size to open to
           // if they do a big swipe animated all the way down/up
           if (gestureState.dy > Layout.window.height *.25) {
+            this.setState({allowMenuMovement: true})
             this.animateToLevel(0);
             return;
           } else if (gestureState.dy < -Layout.window.height *.25) {
+            this.setState({allowMenuMovement: true})
             this.animateToLevel(2);
             return;
           }
@@ -58,6 +60,7 @@ class PullUpMenu extends Component {
             this.animatedUpALevel();
             return;
           }
+
         }
       });
   }
@@ -69,12 +72,20 @@ class PullUpMenu extends Component {
   }
 
   shouldAllowPanresponderCapture = (evt, gestureState) => {
+    if (this.state.currentLevel === 1 && gestureState.dy < 5 && gestureState.dy > -5) {
+      this.setState({allowMenuMovement: false})
+      this.shouldAllowPanresponderSet()
+      return;
+    } else if (this.state.currentLevel === 2 && gestureState.dy > -20) {
+      return this.setState({allowMenuMovement: false})
+    } else {
+      return this.setState({allowMenuMovement: true})
+    }
             // if they swipe up
             // and we are at the top of the menu
             // and the menu is fully open
             //      -> then disable panresponder
             // otherwise allow
-      return this.state.allowMenuMovement;
   }
 
   shouldAllowPanresponderSet = (evt, gestureState) => {
@@ -100,7 +111,7 @@ class PullUpMenu extends Component {
     if (this.state.currentLevel + 1 == 2) {
       this.setState({
         currentLevel: this.state.currentLevel + 1,
-        allowMenuMovement: false,
+        allowMenuMovement: true,
         justHitLevelTwo: true
       })
     } else {
@@ -116,7 +127,7 @@ class PullUpMenu extends Component {
     Animated.spring(
       this.heightAnimatedValue,
       {
-        toValue: this.levelValues[this.state.currentLevel - 1]
+        toValue: this.levelValues[this.state.currentLevel - 1],
       }
     ).start()
     this.setState({currentLevel: this.state.currentLevel - 1})
@@ -126,7 +137,7 @@ class PullUpMenu extends Component {
     Animated.spring(
       this.heightAnimatedValue,
       {
-        toValue: this.levelValues[level]
+        toValue: this.levelValues[level],
       }
     ).start()
 
@@ -140,13 +151,15 @@ class PullUpMenu extends Component {
   isScrollAtTop = ({nativeEvent}) => {
     if (this.state.justHitLevelTwo) {
       this.setState({justHitLevelTwo: false});
+      this.setState({allowMenuMovement: true})
+      console.log("top")
     }
     if (nativeEvent.contentOffset != undefined) {
       if (nativeEvent.contentOffset.y === 0) {
         this.setState({allowMenuMovement: true})
       } else {
-        console.log("not at top");
         this.setState({allowMenuMovement: false})
+        this.animatedUpALevel();
       }
     } else {
       console.log("cant capture scroll event");
@@ -183,8 +196,10 @@ class PullUpMenu extends Component {
                   width: widthInterpolatedValue,
                   top: this.heightAnimatedValue,
                   marginLeft: leftInterpolatedValue
-                }
-        ]}>
+                },
+        ]}
+        useNativeDriver={true}
+        >
         <View style={styles.pullUpBarContainer}>
           <View style={styles.pullUpBar}></View>
         </View>
@@ -206,23 +221,23 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 6,
     zIndex: 10,
-    maxHeight: Layout.window.height * .93 - 49
+    maxHeight: Layout.window.height * .93 - 49,
   },
   pullUpBarContainer: {
-    marginVertical: 4,
+    marginVertical: 6,
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
 
   },
     pullUpBar: {
-      height: 7,
+      height: 8,
       width: 60,
       borderRadius:10,
       backgroundColor: "#97999988"
     },
   tabbarPadded: {
-    paddingBottom: 109
+    paddingBottom: 200
   }
 })
 

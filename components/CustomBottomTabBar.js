@@ -15,6 +15,8 @@ import { connect } from 'react-redux';
 import CrossFadeIcon from './CrossFadeIcon';
 import withDimensions from '../utils/withDimensions';
 
+import Colors from '../constants/Colors';
+
 export type TabBarOptions = {
   activeTintColor?: string,
   inactiveTintColor?: string,
@@ -77,10 +79,10 @@ class TouchableWithoutFeedbackWrapper extends React.Component<*> {
 
 class TabBarBottom extends React.Component<Props> {
   static defaultProps = {
-    activeTintColor: '#007AFF',
+    activeTintColor: '#000',
     activeBackgroundColor: 'transparent',
-    inactiveTintColor: '#8E8E93',
-    inactiveBackgroundColor: 'transparent',
+    inactiveTintColor: '#fff',
+    inactiveBackgroundColor: Colors.tabBar,
     showLabel: true,
     showIcon: true,
     allowFontScaling: true,
@@ -108,6 +110,7 @@ class TabBarBottom extends React.Component<Props> {
     if (typeof label === 'string') {
       return (
         <Animated.Text
+          useNativeDriver={true}
           numberOfLines={1}
           style={[
             styles.label,
@@ -274,8 +277,8 @@ class TabBarBottom extends React.Component<Props> {
   }
 }
 
-const DEFAULT_HEIGHT = 49;
-const COMPACT_HEIGHT = 44;
+const DEFAULT_HEIGHT = 44;
+const COMPACT_HEIGHT = 40;
 
 const styles = StyleSheet.create({
   tabBar: {
@@ -316,7 +319,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   labelBeneath: {
-    fontSize: 11,
+    fontSize: 12,
+    fontWeight:'bold',
     marginBottom: 1.5,
   },
   labelBeside: {

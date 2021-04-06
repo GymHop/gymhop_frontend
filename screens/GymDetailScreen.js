@@ -11,7 +11,7 @@ class GymDetailScreen extends Component {
   }
 
   static navigationOptions = {
-    title: 'Our Member Gyms',
+    title: 'Available Gyms',
     backButtonTitle: ''
   };
 
@@ -19,7 +19,9 @@ class GymDetailScreen extends Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <GymDetailContainer gym={this.props.selectedGym} />
+          <View style={styles.scrollView}>
+            <GymDetailContainer gym={this.props.selectedGym} key={this.props.selectedGym.id}/>
+          </View>        
         </ScrollView>
       </View>
     )
@@ -29,7 +31,8 @@ class GymDetailScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  }
+  },
+
 })
 
 function mapStateToProps(state) {

@@ -62,7 +62,8 @@ class SelectableCard extends Component {
     let animatedTop = this.animatedTopValue;
 
     return (
-      <Animated.View style={[{backgroundColor: this.props.background, top: animatedTop}, styles.container]}>
+      <Animated.View 
+        style={[{backgroundColor: this.props.background, top: animatedTop}, styles.container,]}>
         <TouchableOpacity onPress={this.props.onSelect}>
             <Text style={styles.titleText}>{this.props.title}</Text>
             <Text style={styles.subTitle}>{this.props.chargeInfoText}{this.getAutoRenewDate(this.props.period)}</Text>
@@ -76,9 +77,9 @@ const styles = StyleSheet.create({
   container: {
     width: Layout.window.width * .8 / 2,
     marginHorizontal: Layout.window.width *.01,
-    paddingHorizontal: Layout.window.width *.03,
+    paddingHorizontal: Layout.window.width *.01,
     borderRadius: 8,
-    height: 130,
+    height: 150,
     shadowColor: "#000",
     shadowOffset: {
     	width: 0,
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
   },
   touchableContainer: {
     borderWidth: 1,
-    height: 130,
+    height: 160,
   },
     titleText: {
       fontSize: 24,

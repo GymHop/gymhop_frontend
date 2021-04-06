@@ -1,71 +1,29 @@
 import React, { Component } from 'react';
 
 import { View, Text, StyleSheet, Button, TouchableWithoutFeedback, ScrollView,
-         TouchableOpacity, NativeModules, ActivityIndicator, Linking } from 'react-native';
+         TouchableOpacity, NativeModules, ActivityIndicator, Linking,SafeAreaView } from 'react-native';
 import { CheckBox } from 'react-native-elements'
 import { connect } from 'react-redux';
 import stripe from 'tipsi-stripe'
 import Layout from '../constants/Layout';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { createCharge } from '../actions/paymentActions';
+import CarouselCard, { ITEM_WIDTH } from '../components/payments/CarouselCard'
+import Carousel, { Pagination } from 'react-native-snap-carousel'
+import plans from '../components/payments/Plans'
 
+import Colors from '../constants/Colors';
+import { color } from 'react-native-reanimated';
 
-import SelectableCard from '../components/payments/SelectableCard';
 
 class PaymentScreen extends Component {
   constructor(props) {
     super(props);
+    this.plans=plans;
     this.state = {
-      selectedOption: null,
+      selectedOption: 0,
       // autoRenew: false
     }
-    this.paymentOptions = [
-      {
-        key: "70",
-        title: "Monthly Access",
-        price: 70,
-        period: "month",
-        chargeInfoText: "Your card will be charged on ",
-        bullets: [
-          (<Text>Try Gymhop free for one week</Text>),
-          (<Text>Get unlimited access to every GymHop gym</Text>),
-          (<Text><Text>When the week trial is up, you will be billed </Text><Text style={{fontWeight: "bold"}}>$80 a month.</Text></Text>),
-          (<Text>
-            <Text>Cancel anytime to avoid charges by emailing us at </Text>
-            <Text
-                style={{color:"#0000EE"}}
-                onPress={() => {
-                  Linking.openURL('mailto:contact@gymhop.us?subject=Cancel%20Subscription&body=Let%20us%20know%20what%20we%20could%20do%20better')
-                }}>
-                contact@gymhop.us
-            </Text>
-          </Text>)
-        ],
-        extraInfo: <Text>**Limit one free trial per customer. If your have already used the trial, you will be billed immediately upon signup.</Text>,
-        image: {
-          uri: require("../assets/images/monthly_photo.jpg")
-        },
-        background: "#39E3FF",
-      },
-      {
-        key: "20",
-        title: "One Week Access",
-        price: 20,
-        period: "week",
-        chargeInfoText: "Immediate charge, expires on ",
-        bullets: [
-          (<Text>Want to try Gymhop? Buy a week!</Text>),
-          (<Text>Get unlimited access to every GymHop gym</Text>),
-          (<Text><Text>You'll be billed</Text><Text style={{fontWeight:"bold"}}> $20</Text><Text> upon checkout</Text></Text>),
-          (<Text>Refund available if the pass is unused</Text>)
-        ],
-        extraInfo: <Text>Pass will last for one week before automatically expiring. To regain access, buy another pass or sign up for our monthly membership.</Text>,
-        image: {
-          uri: require("../assets/images/weekly_photo.jpg")
-        },
-        background: "#FF695D",
-      }
-    ]
   }
 
   componentDidMount = () => {
@@ -77,6 +35,7 @@ class PaymentScreen extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(this.state)
     if (this.props.paymentSuccessful && this.props.paymentSuccessful != prevProps.paymentSuccessful) {
       this.props.navigation.push("PaymentSuccess");
     }
@@ -84,7 +43,7 @@ class PaymentScreen extends Component {
 
   static navigationOptions = {
     headerStyle: {
-            backgroundColor: '#000000',
+            backgroundColor: Colors.tabBar,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -95,14 +54,14 @@ class PaymentScreen extends Component {
   constructPaymentDetail = () => {
     if (this.state.selectedOption != null) {
       var userId = this.props.userId;
-      var passName = this.paymentOptions[this.state.selectedOption].period+ "ly pass";
-      var passAmount = this.paymentOptions[this.state.selectedOption].price;
+      var passName = this.plans[this.state.selectedOption].title;
+      var passAmount = this.plans[this.state.selectedOption].price;
 
       let details = {
         id: 'gymhop_member_'+ userId,
         displayItems: [
           {
-            label: 'Gymhop US ' + passName,
+            label: 'Gymhop US ' + passName + ' pass',
             amount: { currency: 'USD', value: passAmount }
           }
         ],
@@ -119,44 +78,12 @@ class PaymentScreen extends Component {
 
   }
 
-  getPassName = () => {
-    switch (this.state.selectedOption) {
-      case 0:
-        return "The Monthly Hustler: $80";
-      case 1:
-        return "The Weekly Warrior: $20";
-      default:
-        return "Select a pass option"
-    }
-  }
-
-  getBullets = () => {
-    if (this.state.selectedOption != null) {
-      return this.paymentOptions[this.state.selectedOption].bullets.map((item, idx) => {
-        return (
-          <View style={{flexDirection: "row"}} key={"gym_bullets_"+idx}>
-            <View style={{flex: 1, justifyContent: "center"}}><Text>&mdash;</Text></View>
-            <View style={{flex: 6}}>{item}</View>
-          </View>
-        )
-      });
-    } else {
-      return null;
-    }
-  }
-  getExtraInfo = () => {
-    if (this.state.selectedOption != null) {
-      return this.paymentOptions[this.state.selectedOption].extraInfo
-    } else {
-      return null;
-    }
-  }
-
+  
   openNativePurchaseOption = () => {
     let paymentOptions = this.constructPaymentDetail();
     console.log("purchasing starting with option " + this.state.selectedOption + " selected");
     if (paymentOptions) {
-      let price = this.paymentOptions[this.state.selectedOption].price.toString();
+      let price = this.plans[this.state.selectedOption].price.toString();
       stripe.paymentRequestWithNativePay(options={
         total_price: price,
         currency_code: 'USD',
@@ -172,10 +99,12 @@ class PaymentScreen extends Component {
       },
       [{
         currency_code: 'USD',
+        label:'GymHop US ',
         description: 'Gymhop Membership',
         total_price: price,
         unit_price: price,
         quantity: '1',
+        amount:price
       }]
 
     ).then((token) => {
@@ -190,131 +119,118 @@ class PaymentScreen extends Component {
     }
   }
 
-  render() {
-    var description = this.state.selectedOption != null ?
-      this.paymentOptions[this.state.selectedOption].description : "";
-    var borderColor = this.state.selectedOption != null ?
-      this.paymentOptions[this.state.selectedOption].background : "#979999";
 
+  render() {
     return (
       <View style={styles.container}>
-        <View style={styles.optionsSelectableContainer}>
-          {this.paymentOptions.map((option, idx) => {
-            return (
-              <SelectableCard
-                  key={option.key}
-                  selected={this.state.selectedOption === idx}
-                  onSelect={() => {
-                    this.setState({selectedOption: idx})
-                  }}
-                  {...option}
-                  />
-            )
-          })}
-        </View>
-        <View style={styles.optionsExecuteContainer}>
-          <ScrollView contentContainerStyle={styles.textContainer}>
-            <Text style={styles.selectedOptionText}>{this.getPassName()}</Text>
-            <View style={styles.bulletsContainer}>{this.getBullets()}</View>
-            <View style={styles.extraInfoContainer}>{this.getExtraInfo()}</View>
-          </ScrollView>
-        </View>
-        <View style={styles.selectBtnContainer}>
-          <TouchableOpacity
-            style={[{backgroundColor: borderColor, color: "white", flexDirection: "row", justifyContent: "center"} ,styles.lightGrayBtn]}
-            onPress={this.openNativePurchaseOption}>
-            <Text style={styles.lightGrayBtnText}>Purchase</Text>
-            {this.props.paymentPending ? <ActivityIndicator size="small" color="#009688" /> : null}
-          </TouchableOpacity>
-        </View>
+          <View style={[styles.carousel]}>
+            <Carousel
+                    layout={"default"}
+                    ref={ref => this.carousel = ref}
+                    data={this.plans}
+                    sliderWidth={ITEM_WIDTH}
+                    itemWidth={ITEM_WIDTH}
+                    renderItem={CarouselCard}
+                    onSnapToItem = { index => 
+                      this.setState({selectedOption:index})
+                     } 
+            />
+          </View>
+          <View style={styles.dotWrap}>
+              <Pagination
+                dotsLength={this.plans.length}
+                activeDotIndex={this.state.selectedOption}
+                carouselRef={this.carousel}
+                dotStyle={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: 5,
+                  marginHorizontal: 0,
+                  backgroundColor: 'rgba(0, 0, 0, 0.92)'
+                }}
+                inactiveDotOpacity={0.4}
+                inactiveDotScale={0.6}
+                tappableDots={true}
+              />
+            </View>
+          <View style={styles.termsWrap}>
+            <Text style={styles.terms}>
+              {this.plans[this.state.selectedOption].terms}
+            </Text>
+            <Text style={styles.terms}>
+                    Cancel anytime by emailing&nbsp;
+                    <Text
+                      style={[styles.terms,{color:"blue"}]}
+                      onPress={() => {
+                      Linking.openURL('mailto:contact@gymhop.us?subject=Cancel%20Subscription&body=Let%20us%20know%20what%20we%20could%20do%20better')
+                      }}>
+                      contact@gymhop.us
+                    </Text>
+            </Text>
+          </View>
+          <View>
+            <TouchableOpacity
+                  style={[{backgroundColor: this.plans[this.state.selectedOption].color} ,styles.subButton]}
+                  onPress={this.openNativePurchaseOption}>
+                    <Text style={styles.subButtonText}>{this.plans[this.state.selectedOption].buttonText}</Text>
+                  {this.props.paymentPending ? <ActivityIndicator size="small" color="#009688" /> : null}
+            </TouchableOpacity>
+          </View>
+          
+          
+            
       </View>
+      
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#000000"
+    backgroundColor: '#fdfdfd',
+    flex:1,
   },
-  titleTextContainer: {
-    flex: 1,
-    paddingLeft: Layout.window.width * .03,
+  carousel:{
+    elevation:1,
+    justifyContent:'center',
+    flex:9
   },
-    titleText: {
-      color: "#ffffff",
-      fontSize: 16
-    },
-    titleSubtext: {
-      color: "#ffffff",
-    },
-  optionsSelectableContainer: {
-    position: "relative",
-    marginBottom: 8,
-    zIndex: 2,
-    flex: 1,
-    minHeight: 85,
-    backgroundColor: "#000000",
-    flexDirection: "row",
-    justifyContent: "space-around"
+  details:{
+    padding:20,
   },
-  optionsExecuteContainer: {
-    flex: 4,
-    zIndex: 1,
-    position: "relative",
-    backgroundColor: "#ffffff",
-    paddingHorizontal: Layout.window.width *.07,
-    marginHorizontal: Layout.window.width *.02,
-    marginTop: 17,
-    paddingTop: 13,
-    borderTopRightRadius: 40,
-    borderTopLeftRadius: 40,
-    alignItems: "center"
+  detailsWrap:{
+    borderTopColor: '#1a1a1a',
+    borderTopWidth: 1,
   },
-    textContainer: {
-      flex: 5,
-    },
-      bulletsContainer: {
-
-      },
-      extraInfoContainer: {
-        marginTop: 5
-      },
-    autoRenewContainer: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center"
-    },
-    autoRenewText: {
-      textAlign: "center"
-    },
-    selectedOptionText: {
-      fontSize: 26,
-      marginVertical: 4
-    },
-  selectBtnContainer: {
-    flex: 1,
-    zIndex: 1,
-    marginHorizontal: Layout.window.width *.02,
-    paddingHorizontal: Layout.window.width *.07,
-    backgroundColor: "#ffffff",
-    justifyContent: "center"
+  dotWrap:{
+    justifyContent:'flex-end'
   },
-  lightGrayBtn: {
-      flexDirection: "row",
-      justifyContent: "space-around",
-      alignItems: "center",
-      paddingHorizontal: 2,
-      paddingVertical: 7,
-      backgroundColor: "white",
-      borderWidth: 1
-    },
-      lightGrayBtnText: {
-        fontSize: 16,
-        color: "#979999",
-        marginLeft: 4
-      },
-
+  subButton:{
+    marginLeft:20,
+    marginRight:20,
+    marginBottom: 50,
+    borderRadius:50,
+    justifyContent:'center',
+    height: 55,
+    
+  },
+  subButtonText:{
+    color: "#fff",
+    fontSize: 28,
+    fontWeight: "700",
+    textAlign:'center',
+    textShadowColor: '#1a1a1a',
+    textShadowRadius: 2,
+  },
+  termsWrap:{
+    flex:4,
+    marginLeft:20,
+    marginRight:20,
+  },
+  terms:{
+    textAlign:'center',
+    paddingBottom:10
+  }
 })
 
 function mapStateToProps(state) {

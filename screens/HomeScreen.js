@@ -2,116 +2,84 @@ import React from 'react';
 import {
   Image,
   Platform,
-  ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-  StatusBar,
-  Dimensions,
-  RefreshControl,
-  ActivityIndicator
+  ActivityIndicator,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-import PropTypes from 'prop-types';
-import {SafeAreaView} from 'react-navigation';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Geolocation from '@react-native-community/geolocation';
+
+import {request, PERMISSIONS} from 'react-native-permissions';
 
 
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 
-import Accordion from 'react-native-collapsible/Accordion';
-
 import PullUpMenu from '../components/PullUpMenu';
 import GymTile from '../components/gyms/GymTile';
 import GymDetail from '../components/gyms/GymDetail';
 import GymMap from '../components/gyms/Map';
-import ErrorBar from '../components/errorBar/errorBar';
-import GymhopTouchable from '../components/gymhopAccordion/gymhopAccordionTouchable';
 import GymDetailContainer from '../components/gyms/GymDetailContainer';
 import GymListBtn from '../components/gyms/ViewGymListBtn';
 
 import * as ActionCreators from '../actions/gymActions';
 
-import { MonoText } from '../components/StyledText';
 import Layout from '../constants/Layout';
 
 import Colors from "../constants/Colors";
-import { copilot, walkthroughable, CopilotStep } from 'react-native-copilot';
-
-
-const CopilotView = walkthroughable(View);
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
-  // static propTypes = {
-  //   start: PropTypes.func.isRequired,
-  //   copilotEvents: PropTypes.shape({
-  //     on: PropTypes.func.isRequired,
-  //   }).isRequired,
-  // };
-
   constructor(props) {
     super(props);
     this.state = {
       activeSections: [],
-      copilotDone: null,
+      hasLocationPermission: null,
     }
     this._renderHeader = this._renderHeader.bind(this);
     this._renderContent = this._renderContent.bind(this);
     this._updateSections = this._updateSections.bind(this);
     this.getGymIdxFromActiveSections = this.getGymIdxFromActiveSections.bind(this);
-    this.handleStepChange = this.handleStepChange.bind(this);
+    // this._requestLocationPermission = this._requestLocationPermission.bind(this);
+    // this.requestLocationPermission = this.requestLocationPermission.bind(this);
+    // this.getLocation = this.getLocation.bind(this);
   }
 
-  componentDidMount() {
-    AsyncStorage.getItem("Home", (err, result) => {
-      if (err) {
+  async componentDidMount() {
+    request(Platform.OS === 'android' ? PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : PERMISSIONS.IOS.LOCATION_WHEN_IN_USE).then((result) => {
+      if (result === "granted") {
+        this.setState({hasLocationPermission: true})
+        if (this.props.gyms.length === 0) {
+          Geolocation.getCurrentPosition((pos) => {
+            var crd = pos.coords;
+            let coords = {
+              latitude: crd.latitude,
+              longitude: crd.longitude
+            }
+              // get location aware list of gyms
+
+              this.props.Actions.getGyms(this.props.token, coords);
+
+            },
+            (err) => {
+              // error getting location, just get all gyms
+              this.props.Actions.getGyms(this.props.token);
+            }
+    
+          )
+        }
       } else {
-        if (result == null && this.state.copilotDone == null) {
-          console.log("null value recieved", result);
-          this.props.copilotEvents.on('stepChange', this.handleStepChange);
-          this.props.start();
-          this.props.copilotEvents.on('stop', () => {
-            // Copilot tutorial finished!
-            this.props.copilotEvents.off('stop');
-            this.setState({copilotDone: true});
-          });
-          AsyncStorage.setItem("Home", JSON.stringify({"value":"true"}), (err,result) => {
-            console.log("error",err,"result",result);
-            });
-        } else {
-          console.log("result", result);
-        }
+        console.log('why rory')
       }
-    });
-
-    if (this.props.gyms.length === 0) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        var crd = pos.coords;
-        let coords = {
-          latitude: crd.latitude,
-          longitude: crd.longitude
-        }
-          // get location aware list of gyms
-          this.props.Actions.getGyms(this.props.token, coords);
-        },
-        (err) => {
-          // error getting location, just get all gyms
-          this.props.Actions.getGyms(this.props.token);
-        }
-
-      );
-    }
-	}
-
-  handleStepChange = (step) => {
-    console.log(`Current step is: ${step.name}`);
+    }).catch((err) => {
+      console.log(err)
+      }) 
   }
-
+  
 
   _renderHeader(section, index) {
     // header of expanded section
@@ -160,7 +128,7 @@ class HomeScreen extends React.Component {
             </View>
             <View style={styles.imageContainer}>
               <Image
-                source={require('../assets/images/gymHopWhite.png')}
+                source={require('../assets/images/gymhop.png')}
                 style={styles.brandLogo}
                 resizeMode='contain'
               />
@@ -211,21 +179,22 @@ const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         zIndex: 999,
-        height: Layout.noStatusBarHeight * .04
+        height: Layout.window.height * .05
       },
       android: {
         elevation: 30,
         paddingVertical: 6
       },
     }),
-      backgroundColor: '#000000',
-      justifyContent: 'center',
-      alignItems: 'center'
+      backgroundColor: Colors.tabBar,
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      paddingBottom: Layout.window.height * .01
     },
       brandLogo: {
-      backgroundColor: '#000000',
+      backgroundColor: Colors.tabBar,
       width: '35%',
-      height: Layout.noStatusBarHeight * .03,
+      height: Layout.window.width * .05,
     },
     mapsContainer: {
       position: "absolute",
@@ -261,4 +230,4 @@ function mapDispatchToProps(dispatch) {
     Actions: bindActionCreators(ActionCreators, dispatch)
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(copilot({overlay: 'svg', animated: true, ...Platform.select({ios: {}, android: {verticalOffset: 24}})})(HomeScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

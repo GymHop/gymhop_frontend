@@ -25,6 +25,41 @@ Make sure you've setup the keystore
 the keystore password is roryjudah
 
 ### IOS
+First time setup. please follow these steps verbatim. DO NOT USE NPM FOR ANYTHING EVER
+
+`brew install rbenv`
+
+`rbenv init`
+
+`rbenv install 2.7.1`
+
+`rbenv global 2.7.1`
+
+`rbenv rehash`
+
+`gem install bundler`
+
+`bundle install`
+
+`yarn install`
+
+`yarn run podInstall`
+
+`yarn start --reset-cache` 
+
+In another terminal: 
+
+`yarn ios`
+
+
+
+*If you want to run on a physical iPhone: open up terminal, and do this before `yarn ios`:
+
+`ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2`
+
+Copy your IP address, and paste into ios/gymhop_frontend/AppDelegate.m line 19
+
+
 Make sure to increment the bundle version in info.plist
 
 - open Xcode
@@ -32,3 +67,10 @@ Make sure to increment the bundle version in info.plist
 - increment the build and do what you want to the version (major.minor.patch syntax is good)
 - set build target (thing in top left near play btn) to generic ios device
 - product -> archive -> say yes to everything
+
+## iOS troubleshooting:
+if you get any "invalid symlink", "native module cannot be null", "no permission handler detected"- follow these steps in order:
+
+1.) `yarn cleanIos`
+
+2.) Run a full audit of the dependencies used for the app. Native modules will just be renamed/ brokenly updated without warning. Start by commenting out imports in app.js to narrow it down

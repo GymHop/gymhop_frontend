@@ -7,6 +7,8 @@ import { styles } from '../../styles/settings';
 import Feather from 'react-native-vector-icons/Feather';
 import Colors from '../../constants/Colors';
 import Layout from '../../constants/Layout';
+import UpgradeButton from '../UpgradeButton';
+import SubscriptionButton from '../SubscriptionButton';
 
 export default function ProfilePage({tier,
                       profilePic,
@@ -55,8 +57,9 @@ export default function ProfilePage({tier,
     let profileHeight = Layout.window.height/6
 
     gotoPayments = () => {
-      navigation.push("Payments");
+      navigation.push("Subscribe");
     }
+
     getBillingDetails = () => {
       if (tier==2) {
         var billingEndDate;
@@ -107,20 +110,18 @@ export default function ProfilePage({tier,
         //   />
         // </View>
       <View style={styles.profileContainer}>
-              <View style={styles.imageContainer}>
-          <Image
-          source={require('../../assets/images/gymHopWhite.png')}
-          style={styles.brandLogo}
-          resizeMode='contain'
-          />
-        </View>
+            <View style={styles.imageContainer}>
+            <Image
+            source={require('../../assets/images/gymhop.png')}
+            style={styles.brandLogo}
+            resizeMode='contain'
+            />
+          </View>
           <View style={styles.profilePicContainer}>
+            <Image source={require('../../assets/images/try_this.jpg')} style={{position: 'absolute', width: '100%', height: 250, opacity: .5}} />
             <Image source={{uri: profilePic}}
             style={[styles.profilePic, {width: profileHeight, height: profileHeight }]}
             />
-            <TouchableOpacity onPress={toggleEditing} style={styles.profileIconContainer} >
-              <Feather name="edit-2" size={32} color={Colors.tintColor} />
-            </TouchableOpacity>
             <TouchableOpacity onPress={toggleEditing} style={styles.promptTextContainer}>
               <Text style={styles.editPromptText}>Tap to edit your details</Text>
             </TouchableOpacity>
@@ -128,36 +129,40 @@ export default function ProfilePage({tier,
         <ScrollView style={styles.profileDetailsContainer}>
           <View style={styles.dataContainer}>
             <View style={styles.dataLabel}>
-                <Text>First Name</Text>
+                <Text style={styles.dataLabelText}>Full Name</Text>
             </View>
-            <Text style={styles.dataField}>  {firstName}</Text>
+            <View style={styles.dataFieldCont} >
+              <Text style={styles.dataField}>  {firstName} {lastName} </Text>
+            </View>
           </View>
-            <View style={styles.dataLabel}>
-              <Text>Last Name</Text>
-            </View>
-            <Text style={styles.dataField}>  {lastName}</Text>
             {getBillingDetails}
             <View style={styles.dataLabel}>
-              <Text>Payment Tier</Text>
+              <Text style={styles.dataLabelText}>Payment Tier</Text>
             </View>
+            <View style={styles.dataFieldCont} >
             <Text style={styles.dataField}>  {tierType}</Text>
+            </View>
+            <View style={styles.dataLabel}>
+              <Text style={styles.dataLabelText}>Birthday</Text>
+            </View>
+            <View style={styles.dataFieldCont} >
+              <Text style={styles.dataField}>{bday}</Text>
+            </View>
 
             <View style={styles.dataLabel}>
-              <Text>Birthday</Text>
+              <Text style={styles.dataLabelText}>Phone</Text>
             </View>
-            <Text style={styles.dataField}>{bday}</Text>
-
-            <View style={styles.dataLabel}>
-              <Text>Phone</Text>
+            <View style={styles.dataFieldCont} >
+              <Text style={styles.dataField}>{phone}</Text>
             </View>
-            <Text style={styles.dataField}>{phone}</Text>
-          <Button onPress={gotoPayments}
-          title="Payments"
-          ></Button>
-          <Button onPress={logout}
-          title="Logout"
-          ></Button>
         </ScrollView>
+        <View style={styles.buttonBox}>
+            <SubscriptionButton tier={tier}/>
+            <UpgradeButton tier={tier} />
+            <TouchableOpacity  style={styles.button} onPress={logout}>
+              <Text style={{color: 'black', fontSize: 16}}>Log Out</Text>
+            </TouchableOpacity>
+          </View>
       </View>
     )
 }

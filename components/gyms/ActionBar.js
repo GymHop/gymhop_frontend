@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
     lightGrayBtn: {
       flexDirection: "row",
-      justifyContent: "space-around",
+      justifyContent: "center",
       alignItems: "center",
       borderColor: "#97999988",
       paddingHorizontal: 10,
@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
     },
       lightGrayBtnText: {
         fontSize: 16,
-        color: "#979999",
-        marginLeft: 4
+       color: "#979999",
+       paddingLeft: 5
       },
 })
 

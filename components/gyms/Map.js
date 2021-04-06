@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, Image } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { connect } from 'react-redux';
+import Geolocation from '@react-native-community/geolocation';
 
 import { selectGym } from '../../actions/gymActions';
 
 import Layout from '../../constants/Layout';
+import MapMarker from './MapMarker'
 
 class GymMap extends Component {
   constructor(props){
@@ -32,7 +34,7 @@ class GymMap extends Component {
     // else {
     //   console.log( "ACCESS_FINE_LOCATION permission denied" )
     // }
-      navigator.geolocation.getCurrentPosition((pos) => {
+    Geolocation.getCurrentPosition((pos) => {
         var tempRegion = {...this.state.region};
         var crd = pos.coords;
         tempRegion.latitude = crd.latitude;
@@ -73,24 +75,38 @@ class GymMap extends Component {
               onRegionChange={() => this.handleRegionChange()}
               showsUserLocation={true}
               animateToRegion={() => animateToHighlightGym()}>
-        {gyms.map(gym => {
-          let latlng = {
-            latitude: parseFloat(gym.latitude),
-            longitude: parseFloat(gym.longitude)
-          }
-          return (
-            <Marker
-              key={gym.id}
-              coordinate={latlng}
-              title={gym.name}
-              onPress={(coord, position) => {
-                  this.props.selectGym(gym);
-              }}
-              />
-            )
-          }
-        )}
-  </MapView>)
+                  {gyms.map(gym => {
+                    let latlng = {
+                      latitude: parseFloat(gym.latitude),
+                      longitude: parseFloat(gym.longitude)
+                    }
+                      if (gym.price === 4 || gym.price === 2) {
+                          return (
+                              <Marker
+                              key={gym.id}
+                              coordinate={latlng}
+                              title={gym.name}
+                              image={require('../../assets/images/location-pin.png')}
+                              onPress={(coord, position) => {
+                                  this.props.selectGym(gym);
+                              }}
+                              />
+                          )
+                      } else {
+                          return (
+                              <Marker
+                              key={gym.id}
+                              coordinate={latlng}
+                              title={gym.name}
+                              image={require('../../assets/images/location-pingold.png')}
+                              onPress={(coord, position) => {
+                                  this.props.selectGym(gym);
+                              }}
+                              />
+                          )
+                      }
+                  })} 
+    </MapView>)
   }
 }
 
@@ -99,7 +115,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height:  ( Layout.noStatusBarHeight)* .35,
     width: (Layout.window.width)
-  }
+  },
 })
 
 function mapDispatchToProps(dispatch) {

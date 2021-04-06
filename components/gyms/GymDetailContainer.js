@@ -8,6 +8,7 @@ import EnhancedHours from './EnhancedHours';
 import TodaysHours from './TodaysHours';
 import GymSchedule from './Schedule';
 import ActionBar from './ActionBar';
+import {SliderBox} from 'react-native-image-slider-box';
 
 class GymDetailContainer extends Component {
   constructor(props) {
@@ -33,25 +34,30 @@ class GymDetailContainer extends Component {
       case 0:
         dollarSigns = "";
         break;
-      case 1:
-        dollarSigns = "Budget";
-        break;
       case 2:
-        dollarSigns = "Premium ";
+        dollarSigns = "Trial";
+        break;
+      case 4:
+        dollarSigns = "Standard";
+        break;
+      case 8:
+        dollarSigns = "Premium";
         break;
       default:
         dollarSigns = ""
     }
 
-    console.log(gym);
+
+    let gymPhotos = gym.photos.map(a => a.url)
 
 
     return (
       <View style={styles.container}>
         <View style={styles.gymPhotoContainer}>
-          <Image
+          <SliderBox images={gymPhotos} style={styles.gymLeadPhoto} circleLoop disableOnPress/>
+          {/* <Image
           source={{uri: gym.lead_photo}}
-          style={styles.gymLeadPhoto} />
+          style={styles.gymLeadPhoto} /> */}
         </View>
         <View style={styles.textContainer}>
           <View style={styles.titleContainer}>
@@ -71,12 +77,12 @@ class GymDetailContainer extends Component {
             </View>
           </View>
           <ActionBar gym={gym} />
-          <EnhancedHours hours={gym.hours_enhanced} hoursString={gym.hours}/>
           <View style={styles.descriptionContainer}>
             <Text style={styles.descriptionText}>Description</Text>
             <Text style={styles.descriptionDetailText}>{gym.amenities}</Text>
           </View>
-          <GymSchedule gym={gym} />
+          <EnhancedHours hours={gym.hours_enhanced} hoursString={gym.hours}/>
+            <GymSchedule gym={gym} />
         </View>
       </View>
     )
@@ -85,11 +91,11 @@ class GymDetailContainer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: Layout.window.height * .9 - 49
+    height: Layout.window.height * .9 - 49,
   },
   gymPhotoContainer: {},
   gymLeadPhoto: {
-    height: 140,
+    height: 200,
     width: Layout.window.width
   },
   textContainer: {
@@ -100,6 +106,7 @@ const styles = StyleSheet.create({
     },
       gymTileTitle: {
         fontSize: 19,
+        color: 'black'
       },
   subTextContainer: {
     display: "flex",
@@ -122,10 +129,11 @@ const styles = StyleSheet.create({
   },
     descriptionText: {
       marginBottom: 3,
-      fontWeight: "bold"
+      fontWeight: "bold",
+      color: 'black'
     },
     descriptionDetailText: {
-
+      color: 'black'
     }
 })
 

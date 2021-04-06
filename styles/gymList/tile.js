@@ -49,6 +49,12 @@ export const styles = StyleSheet.create({
       },
       milesText: {
         fontSize: 12,
-        textAlign: "center"
+        textAlign: "center",
+        marginBottom: 15
+      },
+      PremiumText: {
+        fontSize: 12,
+        textAlign: "center",
       }
+
 });

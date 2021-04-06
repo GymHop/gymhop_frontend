@@ -1,5 +1,6 @@
 import { StyleSheet, Platform } from 'react-native';
 import Layout from '../constants/Layout';
+import Colors from '../constants/Colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,12 +8,12 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: '#000000',
+    backgroundColor: Colors.tabBar,
     height: '100%'
   },
   headLogo: {
     marginTop: 0,
-    backgroundColor: '#000000',
+    backgroundColor: Colors.tabBar,
     width: Layout.window.width / 3,
     height: Layout.window.width / 2,
   },
@@ -53,7 +54,7 @@ registerBirthdayPicker: {
 },
 registerButton: {
   height: 40,
-  backgroundColor: '#8f8f8f',
+  backgroundColor: '#000',
   width: '75%',
   justifyContent: 'center',
   alignItems: 'center',
@@ -62,10 +63,11 @@ registerButton: {
 },
 registerText: {
   fontSize: 20,
-  color: '#000000',
+  color: '#fff',
 },
 loginButton: {
-  backgroundColor: '#000000',
+  backgroundColor: Colors.tabBar,
+  marginTop: 15
 },
 loginText: {
   marginTop: 2,

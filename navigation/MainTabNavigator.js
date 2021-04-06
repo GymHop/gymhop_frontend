@@ -1,24 +1,25 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator} from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
 import CustomBottomTabBar from '../components/CustomBottomTabBar';
 
 import HomeScreen from '../screens/HomeScreen';
-import QRReaderScreen from '../screens/QRReaderScreen';
 import GymListScreen from '../screens/GymListScreen';
 import GymDetailScreen from '../screens/GymDetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import QRScreen from '../screens/QRScreen';
 import PostCheckInScreen from '../screens/PostCheckInScreen';
 import StatsScreen from '../screens/gymOwner/StatsScreen';
 import PaymentScreen from '../screens/PaymentScreen';
 import PaymentSuccessScreen from '../screens/PaymentSuccessScreen';
+import CheckInScreen from '../screens/CheckInScreen';
 
 import { fromLeft, fromRight } from 'react-navigation-transitions';
 
 import Colors from '../constants/Colors';
+import Layout from '../constants/Layout';
 
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
@@ -34,7 +35,6 @@ const handleCustomTransition = ({ scenes }) => {
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  QR: QRScreen,
   GymList: GymListScreen,
   GymDetail: GymDetailScreen
 }, {
@@ -46,16 +46,14 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      iconSet={"feather"}
-      name={
-        'home'
-      }
+      iconSet={"ion"}
+      name={Platform.OS === 'ios' ? 'ios-home' : 'md-home'}
     />
   ),
 };
 
 const QRScanningStack = createStackNavigator({
-  QRReader: QRReaderScreen,
+  CheckIn: CheckInScreen,
   PostCheckIn: {
     screen: PostCheckInScreen,
     navigationOptions: {
@@ -66,12 +64,12 @@ const QRScanningStack = createStackNavigator({
 });
 
 QRScanningStack.navigationOptions = {
-  tabBarLabel: 'Scanner',
+  tabBarLabel: 'Check In',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      iconSet={"feather"}
-      name={'camera'}
+      iconSet={"ion"}
+      name={Platform.OS === 'ios' ? 'checkmark-circle-outline' : 'checkmark-circle-outline'}
     />
   ),
 
@@ -101,7 +99,7 @@ GymOwnerStack.navigationOptions = {
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
-  Payments: PaymentScreen,
+  Subscribe: PaymentScreen,
   PaymentSuccess: PaymentSuccessScreen
 });
 
@@ -122,7 +120,7 @@ var bottomTabNavSettings = {
   tabBarComponent: props =>
       <CustomBottomTabBar
         {...props}
-        style={{ borderTopColor: '#605F60' }}
+        style={{ borderTopColor: '#605F60', height: Layout.window.height * .06 }}
       />,
 };
 
@@ -133,7 +131,8 @@ var bottomTabNavSettings = {
 //   bottomTabNavSettings.initialRouteName = "gymOwner"
 // }
 
-export default createBottomTabNavigator(
+
+const MainTabNavigator =  createBottomTabNavigator(
   {
       home: HomeStack,
       scan: QRScanningStack,
@@ -142,3 +141,4 @@ export default createBottomTabNavigator(
   },
   bottomTabNavSettings
 );
+export default MainTabNavigator
