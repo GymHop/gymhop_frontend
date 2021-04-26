@@ -173,7 +173,6 @@ class PullUpMenu extends Component {
     if (this.state.justHitLevelTwo) {
       this.setState({ justHitLevelTwo: false });
       this.setState({ allowMenuMovement: true });
-      console.log("top");
     }
     if (nativeEvent.contentOffset != undefined) {
       if (nativeEvent.contentOffset.y === 0) {

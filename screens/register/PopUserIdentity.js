@@ -46,7 +46,7 @@ class RegisterPart extends React.Component {
         justifyContent: "center",
         fontSize: "18",
       });
-    } else if (this.state.first_name === null) {
+    } else if (this.state.first_name === null || this.state.first_name === "") {
       showMessage({
         message: "Please input your first name!",
         type: "info",
@@ -55,7 +55,7 @@ class RegisterPart extends React.Component {
         justifyContent: "center",
         fontSize: "18",
       });
-    } else if (this.state.last_name === null) {
+    } else if (this.state.last_name === null || this.state.first_name === "") {
       showMessage({
         message: "Please input your last name!",
         type: "info",
