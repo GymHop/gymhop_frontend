@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
 import GymDetailContainer from '../components/gyms/GymDetailContainer'
