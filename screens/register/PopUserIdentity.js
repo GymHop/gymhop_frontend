@@ -36,6 +36,7 @@ class RegisterPart extends React.Component {
 
   moveOn() {
     const baseUser = this.props.navigation.getParam("baseUser", {});
+    //added validation of user information by each input and picture
     if (this.state.profile_pic === null) {
       showMessage({
         message: "Please upload a profile picture!",

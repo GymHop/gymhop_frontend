@@ -143,6 +143,7 @@ class PaymentScreen extends Component {
 
   render() {
     return (
+      //changed View to ScrollView to be able scroll in little screens
       <ScrollView style={styles.container}>
         <View style={[styles.carousel]}>
           <Carousel

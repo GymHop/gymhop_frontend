@@ -77,7 +77,7 @@ class RegisterPart2 extends React.Component {
         justifyContent: "center",
         fontSize: "18",
       });
-    } else if (this.state.phone === null) {
+    } else if (this.state.phone === null) { //added validation of user user phone number
       showMessage({
         message: "Please input phone number!",
         type: "info",

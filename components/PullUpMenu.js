@@ -36,6 +36,7 @@ class PullUpMenu extends Component {
 
     this.heightAnimatedValue = new Animated.Value(closedDistanceFromBottom);
 
+    // create another pan handler for little top side of container to be able close container
     this.wrapperPanResponder = PanResponder.create({
       onStartShouldSetPanResponder: (e, g) => true,
       onPanResponderMove: this.onPanResponderMove,
@@ -59,6 +60,7 @@ class PullUpMenu extends Component {
     }
   }
 
+  //took out responder move handler methos to don`t repeat  1 code 2 times for another pan handler
   onPanResponderMove = (e, gestureState) => {
     // this.heightAnimatedValue.setValue(closedDistanceFromBottom + gestureState.dy)
     if (this.state.currentLevel === 0 && gestureState.dy < 0) {
@@ -68,6 +70,7 @@ class PullUpMenu extends Component {
     }
   };
 
+  //took out responder release handler methos to don`t repeat  1 code 2 times for another pan handler
   onPanResponderRelease = (evt, gestureState) => {
     //determine which open size to open to
     // if they do a big swipe animated all the way down/up
@@ -225,7 +228,7 @@ class PullUpMenu extends Component {
         useNativeDriver={true}
       >
         <View
-          {...this.wrapperPanResponder.panHandlers}
+          {...this.wrapperPanResponder.panHandlers} //add another handler to that part from where you want to close the container
           style={styles.pullUpBarContainer}
         >
           <View style={styles.pullUpBar}></View>
