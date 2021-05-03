@@ -127,7 +127,6 @@ class PullUpMenu extends Component {
       this.setState({ allowMenuMovement: false, justHitLevelTwo: true });
       return;
     }
-    console.log("moving up a level ");
     Animated.spring(this.heightAnimatedValue, {
       toValue: this.levelValues[this.state.currentLevel + 1],
     }).start();
