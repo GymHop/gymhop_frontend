@@ -115,7 +115,7 @@ class PullUpMenu extends Component {
   };
 
   shouldAllowPanresponderSet = (evt, gestureState) => {
-    return this.state.allowMenuMovement;
+    return this.state.currentLevel !== 2;
     // if (this.state.justHitLevelTwo && gestureState.dy < 0) {
     //   return true;
     // }
@@ -127,7 +127,6 @@ class PullUpMenu extends Component {
       this.setState({ allowMenuMovement: false, justHitLevelTwo: true });
       return;
     }
-    console.log("moving up a level");
     Animated.spring(this.heightAnimatedValue, {
       toValue: this.levelValues[this.state.currentLevel + 1],
     }).start();
