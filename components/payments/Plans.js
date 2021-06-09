@@ -1,8 +1,10 @@
+import Colors from '../../constants/Colors';
+
 export default Plans = [
     {
       key: 0,
       title: "Standard Membership  – First Week On Us –",
-      color:"#ffadc1",
+      color: Colors.darkGreen,
       price: 70,
       bullets:[
         "✓ Unlimited access to GymHop standard partner locations",
@@ -16,7 +18,7 @@ export default Plans = [
     {
       key: 1,
       title: "Week Pass",
-      color:"#02C805",
+      color: Colors.darkGreen,
       price: 20,
       bullets:[
         "✓ Unlimited access to GymHop standard partner locations",
@@ -30,7 +32,7 @@ export default Plans = [
     {
         key:2,
         title: "Premium Membership",
-        color:"#7CCDED",
+        color: Colors.darkGreen,
         price: 140,
         bullets:[
           "✓ Unlimited access to all PREMIUM and standard GymHop locations",

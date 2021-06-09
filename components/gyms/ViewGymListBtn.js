@@ -8,6 +8,7 @@ import Pulse from 'react-native-pulse';
 import Icon from "react-native-vector-icons/Ionicons";
 import AntIcon from "react-native-vector-icons/AntDesign";
 import Layout from '../../constants/Layout';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 class ViewGymListBtn extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class ViewGymListBtn extends Component {
 
     let paymentsIndicator = this.props.payment_tier === 0 ? (
       <Animated.View style={{alignItems: "center",justifyContent: "center", left: this.leftAnimatedValue_second }}>
-        <View style={{zIndex:0, position:"relative",left: 0, top: 70}}><Pulse color='#FF3F4F' numPulses={3} diameter={150} speed={20} duration={1000} /></View>
+        <View style={{zIndex:0, position:"relative",left: 0, top: 60}}><Pulse color='red' numPulses={2} diameter={125} speed={15} duration={1000} /></View>
         <View style={[styles.itemContainer, styles.ccPrompt, ]}>
           <TouchableOpacity style={styles.btnContainer} onPress={() => {
             this.props.navigation.push("Subscribe");

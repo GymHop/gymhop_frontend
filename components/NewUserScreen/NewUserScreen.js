@@ -103,7 +103,7 @@ class NewUserScreen extends Component {
 
   const styles = StyleSheet.create({
     screenContainer:{
-        backgroundColor: Colors.tintColor,
+        backgroundColor: Colors.darkGreen,
         flex:1,
         marginTop:70,
         marginBottom:40,

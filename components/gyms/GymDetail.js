@@ -37,13 +37,13 @@ const GymDetail = ({gym}) => {
 
         <View style={styles.actionButton}>
             <Button
-                color={Colors.tintColor}
+                color={Colors.darkGreen}
                 onPress={goToGym}
                 title="Open Map 🗺" />
         </View>
         <View style={styles.actionButton}>
             <Button
-                color={Colors.tintColor}
+                color={Colors.darkGreen}
                 onPress={() => {
                   Linking.openURL(gym.website_url)
                 }}

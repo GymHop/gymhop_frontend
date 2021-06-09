@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
       ...Platform.select({
         ios: {
           zIndex: 999,
-          height: Layout.noStatusBarHeight * .04
+          height: Layout.noStatusBarHeight * .05
         },
         android: {
           elevation: 30,

@@ -118,7 +118,7 @@ export default function ProfilePage({tier,
             />
           </View>
           <View style={styles.profilePicContainer}>
-            <Image source={require('../../assets/images/try_this.jpg')} style={{position: 'absolute', width: '100%', height: 250, opacity: .5}} />
+            <Image source={require('../../assets/images/try_this.jpg')} style={{position: 'absolute', width: '100%', height: 250, opacity: .8}} />
             <Image source={{uri: profilePic}}
             style={[styles.profilePic, {width: profileHeight, height: profileHeight }]}
             />

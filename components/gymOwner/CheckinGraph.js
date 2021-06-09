@@ -84,7 +84,7 @@ const CheckinGraph = ({checkins, styles}) => {
           data={countData}
           style={{ flex: 1 }}
           contentInset={verticalContentInset}
-          svg={{stroke: Colors.tintColor, strokeWidth: 2, fill: 'rgba(75, 205, 255, 0.6)'}}
+          svg={{stroke: Colors.darkGreen, strokeWidth: 2, fill: 'rgba(75, 205, 255, 0.6)'}}
           >
           <Grid />
         </AreaChart>

@@ -1,14 +1,14 @@
-const tintColor = '#7CCDED';
+const darkGreen = '#00CF58';
 
 export default {
-  tintColor,
+  darkGreen,
   tabIconDefault: '#000000',
   tabIconSelected: '#000',
-  tabBar: '#ffadc1',
+  tabBar: '#00CF58',
   errorBackground: 'red',
   errorText: '#fff',
   warningBackground: '#EAEB5E',
   warningText: '#666804',
-  noticeBackground: tintColor,
+  noticeBackground: darkGreen,
   noticeText: '#fff',
 };
