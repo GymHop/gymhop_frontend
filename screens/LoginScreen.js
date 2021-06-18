@@ -146,10 +146,10 @@ const styles = StyleSheet.create({
     width: '60%',
   },
   headLogo: {
-    marginTop: Platform.OS === 'ios' ? '35%' : '-10%',
+    marginTop: Platform.OS === 'ios' ? '10%' : '-10%',
     backgroundColor: Colors.tabBar,
     width: '100%',
-    marginBottom: '-50%',
+    marginBottom: '-30%',
   },
 
   loginInput: {

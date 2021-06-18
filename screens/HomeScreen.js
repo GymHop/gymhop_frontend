@@ -73,7 +73,7 @@ class HomeScreen extends React.Component {
           )
         }
       } else {
-        console.log('why rory')
+        this.props.Actions.getGyms(this.props.token);
       }
     }).catch((err) => {
       console.log(err)

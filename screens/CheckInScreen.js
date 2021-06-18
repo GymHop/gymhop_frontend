@@ -37,88 +37,87 @@ class CheckInScreen extends React.Component {
     }
     
     componentDidMount() {
-      console.log(this.props.gyms[0].distance)
     }
 
     renderButton() {
-        Geolocation.getCurrentPosition((pos) => {
-            var tempRegion = {...this.state.region};
-            var crd = pos.coords;
-            tempRegion.latitude = crd.latitude;
-            tempRegion.longitude = crd.longitude;
-    
-            this.setState({region: tempRegion});
-          })
+      Geolocation.getCurrentPosition((pos) => {
+          var tempRegion = {...this.state.region};
+          var crd = pos.coords;
+          tempRegion.latitude = crd.latitude;
+          tempRegion.longitude = crd.longitude;
+  
+          this.setState({region: tempRegion});
+        })
 
-        let gymPhotos = this.props.gyms[0].photos.map(a => a.url)
+      let gymPhotos = this.props.gyms[0].photos.map(a => a.url)
 
-        if (this.props.gyms[0].distance < 0.113636) {   /* USE THIS ONE FR */
-         // if (this.props.gyms[0].distance < 10.113636) { /* USE THIS ONE WHEN TESTING GYM 33 FROM YOUR HOUSE */
-          return(
-            <>
-              <View style={styles.imageContainer}>
-                <View style={styles.imageContainer1}>
-                  <Image
-                    source={require('../assets/images/gymhop.png')}
-                    style={styles.brandLogo}
-                    resizeMode='contain'
-                  />
-                </View>
-              </View>
-              <View style={styles.container}>
-                <View style={styles.gymContainerPic}> 
-                  {/* <Image source={{uri: gymPhotos[0]}} style={styles.containerPic} /> */}
-                  <SliderBox images={gymPhotos} style={styles.gymLeadPhoto} circleLoop disableOnPress/>
-                </View>
-              </View>
-
-              
-              <View style={styles.buttonContainer}>
-                <View style={styles.gymImageContainer}>
-                  {/* <Image source={{uri: this.props.gyms[0].lead_photo}} style={styles.logoPic} /> */}
-                  <View>
-                    <Text style={{paddingLeft: '3%', paddingRight: '3%', color: '#000', fontSize: 24, fontWeight: 'bold'}}>{this.props.gyms[0].name}</Text>
-                    {/* <Text style={{paddingTop: '1%', paddingLeft: '3%', paddingRight: '3%', color: '#000', fontSize: 16}}>{this.props.gyms[0].amenities}</Text>*/}                 
-                  </View>
-                </View>
-                <View style={styles.ButtonContainer2}>
-                  <View style={{flexDirection: 'row', padding: '5%'}}><Text>{this.props.gyms[0].name} is currently {<OpenOrClosedRightNow hours={this.props.gyms[0].hours_enhanced} />}</Text></View>
-                  <GymSchedule gym={this.props.gyms[0]} />
-                  <TouchableOpacity 
-                      onPress={this.handleCheckIn}
-                      style={styles.Button}
-                  >
-                    <Text style={styles.buttonText}>Check In!</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-              </>
-          )
-        } else {
-          return (
-          <View>
+      if (this.props.gyms[0].distance < 0.113636) {   /* USE THIS ONE FR */
+       // if (this.props.gyms[0].distance < 10.113636) { /* USE THIS ONE WHEN TESTING GYM 33 FROM YOUR HOUSE */
+        return(
+          <>
             <View style={styles.imageContainer}>
-                <View style={styles.imageContainer1}>
-                  <Image
-                    source={require('../assets/images/gymhop.png')}
-                    style={styles.brandLogo}
-                    resizeMode='contain'
-                  />
-                </View>
-              </View>
-              <View style={styles.failContainer}>
-                <Text style={{fontWeight: "bold", fontSize: 28, color: '#000', paddingBottom: '10%'}}>Your closest gym is</Text> 
-                <View style={{alignItems: 'center', justifyContent: 'center', marginBottom: '10%', padding: '5%'}}>
-                  <Image source={{uri: this.props.gyms[0].lead_photo}} style={{height: 200, width: 200, borderRadius: 25}}/>
-                </View>
-                <Text style={{fontWeight: "bold", fontSize: 18, color: '#000', paddingBottom: '10%'}}>Move within 200 yards to check in!</Text>
-                <View style={{flexDirection: 'row', padding: '5%'}}><Text>{this.props.gyms[0].name} is currently {<OpenOrClosedRightNow hours={this.props.gyms[0].hours_enhanced} />}</Text></View>
+              <View style={styles.imageContainer1}>
+                <Image
+                  source={require('../assets/images/gymhop.png')}
+                  style={styles.brandLogo}
+                  resizeMode='contain'
+                />
               </View>
             </View>
-          )
-        }
+            <View style={styles.container}>
+              <View style={styles.gymContainerPic}> 
+                {/* <Image source={{uri: gymPhotos[0]}} style={styles.containerPic} /> */}
+                <SliderBox images={gymPhotos} style={styles.gymLeadPhoto} circleLoop disableOnPress/>
+              </View>
+            </View>
 
-    }
+            
+            <View style={styles.buttonContainer}>
+              <View style={styles.gymImageContainer}>
+                {/* <Image source={{uri: this.props.gyms[0].lead_photo}} style={styles.logoPic} /> */}
+                <View>
+                  <Text style={{paddingLeft: '3%', paddingRight: '3%', color: '#000', fontSize: 24, fontWeight: 'bold'}}>{this.props.gyms[0].name}</Text>
+                  {/* <Text style={{paddingTop: '1%', paddingLeft: '3%', paddingRight: '3%', color: '#000', fontSize: 16}}>{this.props.gyms[0].amenities}</Text>*/}                 
+                </View>
+              </View>
+              <View style={styles.ButtonContainer2}>
+                <View style={{flexDirection: 'row', padding: '5%'}}><Text>{this.props.gyms[0].name} is currently {<OpenOrClosedRightNow hours={this.props.gyms[0].hours_enhanced} />}</Text></View>
+                <GymSchedule gym={this.props.gyms[0]} />
+                <TouchableOpacity 
+                    onPress={this.handleCheckIn}
+                    style={styles.Button}
+                >
+                  <Text style={styles.buttonText}>Check In!</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            </>
+        )
+      } else {
+        return (
+        <View>
+          <View style={styles.imageContainer}>
+              <View style={styles.imageContainer1}>
+                <Image
+                  source={require('../assets/images/gymhop.png')}
+                  style={styles.brandLogo}
+                  resizeMode='contain'
+                />
+              </View>
+            </View>
+            <View style={styles.failContainer}>
+              <Text style={{fontWeight: "bold", fontSize: 28, color: '#000', paddingBottom: '10%'}}>Your closest gym is</Text> 
+              <View style={{alignItems: 'center', justifyContent: 'center', marginBottom: '10%', padding: '5%'}}>
+                <Image source={{uri: this.props.gyms[0].lead_photo}} style={{height: 200, width: 200, borderRadius: 25}}/>
+              </View>
+              <Text style={{fontWeight: "bold", fontSize: 18, color: '#000', paddingBottom: '10%'}}>Move within 200 yards to check in!</Text>
+              <View style={{flexDirection: 'row', padding: '5%'}}><Text>{this.props.gyms[0].name} is currently {<OpenOrClosedRightNow hours={this.props.gyms[0].hours_enhanced} />}</Text></View>
+            </View>
+          </View>
+        )
+      }
+
+  }
 
     handleCheckIn = result =>  {
       let resetDateTime;
