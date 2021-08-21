@@ -8,6 +8,7 @@ export function getGyms(token, coords={}) {
     lng: coords.longitude || ""
   }
   console.log(token);
+  console.log(coords)
   return axios.get(domain+"/api/v1/gyms/",
             {
               params: latLng,

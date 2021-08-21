@@ -115,9 +115,9 @@ class TabBarBottom extends React.Component<Props> {
           style={[
             styles.label,
             { color: tintColor },
-            showIcon && this._shouldUseHorizontalLabels()
-              ? styles.labelBeside
-              : styles.labelBeneath,
+            showIcon && /*this._shouldUseHorizontalLabels()*/
+              //? styles.labelBeside
+              //: styles.labelBeneath,
             labelStyle,
           ]}
           allowFontScaling={allowFontScaling}
@@ -147,7 +147,7 @@ class TabBarBottom extends React.Component<Props> {
       return null;
     }
 
-    const horizontal = this._shouldUseHorizontalLabels();
+    //const horizontal = this._shouldUseHorizontalLabels();
 
     const activeOpacity = focused ? 1 : 0;
     const inactiveOpacity = focused ? 0 : 1;
@@ -155,7 +155,7 @@ class TabBarBottom extends React.Component<Props> {
     return (
       <CrossFadeIcon
         route={route}
-        horizontal={horizontal}
+        // horizontal={horizontal}
         navigation={navigation}
         activeOpacity={activeOpacity}
         inactiveOpacity={inactiveOpacity}
@@ -164,39 +164,39 @@ class TabBarBottom extends React.Component<Props> {
         renderIcon={renderIcon}
         style={[
           styles.iconWithExplicitHeight,
-          showLabel === false && !horizontal && styles.iconWithoutLabel,
-          showLabel !== false && !horizontal && styles.iconWithLabel,
+          //showLabel === false && !horizontal && styles.iconWithoutLabel,
+          //showLabel !== false && !horizontal && styles.iconWithLabel,
         ]}
       />
     );
   };
 
-  _shouldUseHorizontalLabels = () => {
-    const { routes } = this.props.navigation.state;
-    const { isLandscape, dimensions, adaptive, tabStyle } = this.props;
+  // _shouldUseHorizontalLabels = () => {
+  //   const { routes } = this.props.navigation.state;
+  //   const { isLandscape, dimensions, adaptive, tabStyle } = this.props;
 
-    if (!adaptive) {
-      return false;
-    }
+  //   if (!adaptive) {
+  //     return false;
+  //   }
 
-    if (Platform.isPad) {
-      let maxTabItemWidth = DEFAULT_MAX_TAB_ITEM_WIDTH;
+  //   if (Platform.isPad) {
+  //     let maxTabItemWidth = DEFAULT_MAX_TAB_ITEM_WIDTH;
 
-      const flattenedStyle = StyleSheet.flatten(tabStyle);
+  //     const flattenedStyle = StyleSheet.flatten(tabStyle);
 
-      if (flattenedStyle) {
-        if (typeof flattenedStyle.width === 'number') {
-          maxTabItemWidth = flattenedStyle.width;
-        } else if (typeof flattenedStyle.maxWidth === 'number') {
-          maxTabItemWidth = flattenedStyle.maxWidth;
-        }
-      }
+  //     if (flattenedStyle) {
+  //       if (typeof flattenedStyle.width === 'number') {
+  //         maxTabItemWidth = flattenedStyle.width;
+  //       } else if (typeof flattenedStyle.maxWidth === 'number') {
+  //         maxTabItemWidth = flattenedStyle.maxWidth;
+  //       }
+  //     }
 
-      return routes.length * maxTabItemWidth <= dimensions.width;
-    } else {
-      return isLandscape;
-    }
-  };
+  //     return routes.length * maxTabItemWidth <= dimensions.width;
+  //   } else {
+  //     return isLandscape;
+  //   }
+  // };
 
   render() {
     const {
@@ -214,10 +214,10 @@ class TabBarBottom extends React.Component<Props> {
 
     const tabBarStyle = [
       styles.tabBar,
-      this._shouldUseHorizontalLabels() && !Platform.isPad
-        ? styles.tabBarCompact
-        : styles.tabBarRegular,
-      style,
+      //this._shouldUseHorizontalLabels() && !Platform.isPad
+        //? styles.tabBarCompact
+        //: styles.tabBarRegular,
+      //style,
     ];
 
 
@@ -261,9 +261,9 @@ class TabBarBottom extends React.Component<Props> {
               style={[
                 styles.tab,
                 { backgroundColor },
-                this._shouldUseHorizontalLabels()
-                  ? styles.tabLandscape
-                  : styles.tabPortrait,
+                // this._shouldUseHorizontalLabels()
+                //   ? styles.tabLandscape
+                //   : styles.tabPortrait,
                 tabStyle,
               ]}
             >
@@ -282,7 +282,7 @@ const COMPACT_HEIGHT = 40;
 
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.darkGreen,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: 'rgba(0, 0, 0, .3)',
     flexDirection: 'row',

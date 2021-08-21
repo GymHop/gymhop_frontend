@@ -23,10 +23,12 @@ function createChargeSuccess(results) {
   }
 }
 
-export function createCharge(APItoken, teir, stripeToken) {
+export function createCharge(APItoken, tier, stripeToken) {
   return (dispatch) => {
     dispatch(createChargePending());
-    API.createCharge(APItoken, teir, stripeToken).then((results) => {
+    console.log(APItoken, tier, stripeToken)
+    API.createCharge(APItoken, tier, stripeToken).then((results) => {
+      console.log(results.data)
       dispatch(createChargeSuccess(results));
     }).catch((err) => {
       console.log("error starting ");

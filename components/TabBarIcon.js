@@ -16,7 +16,7 @@ const TabBarIcon = ({iconSet,
          <Feather
          name={name}
          size={26}
-         style={{ marginBottom: -3 }}
+         style={{ marginBottom: 0 }}
          color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
          />
        )
@@ -25,7 +25,7 @@ const TabBarIcon = ({iconSet,
          <Foundation
            name={name}
            size={26}
-           style={{ marginBottom: -3 }}
+           style={{ marginBottom: 0 }}
            color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
          />
        )

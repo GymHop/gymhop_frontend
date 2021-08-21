@@ -4,6 +4,7 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View} from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import AppNavigator from './navigation/AppNavigator';
+import Colors from './constants/Colors';
 
 
 import { Provider } from 'react-redux';
@@ -38,6 +39,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: Colors.darkGreen,
   },
 });

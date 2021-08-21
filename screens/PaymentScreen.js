@@ -39,6 +39,7 @@ class PaymentScreen extends Component {
   componentDidMount = () => {
     stripe.setOptions({
       publishableKey: "pk_live_LuhTWIM44w3VZ89nVbvQNEph",
+      //publishableKey: "pk_test_77YUPGjCnGcpWsNkHegQjw8l",
       merchantId: "merchant.frontend.gymhop.us", // iOS
       androidPayMode: "production", // Android
     });
